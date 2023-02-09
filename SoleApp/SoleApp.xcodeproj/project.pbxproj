@@ -11,6 +11,10 @@
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
 		A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
+		A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E62994B49A001FAED3 /* LoginButtonView.swift */; };
+		A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E62994B49A001FAED3 /* LoginButtonView.swift */; };
+		A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E92994B769001FAED3 /* UIColor.swift */; };
+		A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E92994B769001FAED3 /* UIColor.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -25,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
+		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,8 +73,26 @@
 			isa = PBXGroup;
 			children = (
 				A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */,
+				A46B46E92994B769001FAED3 /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		A46B46E42994B44E001FAED3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A46B46E52994B476001FAED3 /* Components */,
+				A4C31C7D29913CF00014F458 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A46B46E52994B476001FAED3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A46B46E62994B49A001FAED3 /* LoginButtonView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A4C31C6D29913CF00014F458 = {
@@ -95,7 +119,7 @@
 				A46B46E02993125C001FAED3 /* Extension */,
 				A4C31C7929913CF00014F458 /* AppDelegate.swift */,
 				A4C31C7B29913CF00014F458 /* SceneDelegate.swift */,
-				A4C31C7D29913CF00014F458 /* LoginViewController.swift */,
+				A46B46E42994B44E001FAED3 /* Login */,
 				A4C31C8229913CF00014F458 /* Assets.xcassets */,
 				A4C31C8429913CF00014F458 /* LaunchScreen.storyboard */,
 				A4C31C8729913CF00014F458 /* Info.plist */,
@@ -210,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
+				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
@@ -221,6 +247,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
+				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
