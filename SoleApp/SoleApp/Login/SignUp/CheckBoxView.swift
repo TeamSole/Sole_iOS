@@ -10,14 +10,17 @@ import SwiftUI
 import SnapKit
 
 final class CheckBoxView: UIStackView {
-    @Binding var isSelected: Bool
+    @Binding var isSelected: Bool {
+        didSet {
+            checkBoxButton.isSelected = isSelected
+        }
+    }
     var title: String
-    var didTapArrowButton: () -> ()
-    
-    init(isSelected: Binding<Bool>, title: String, didTapArrowButton: @escaping () -> ()) {
+    var url: String
+    init(isSelected: Binding<Bool>, title: String, url: String) {
         self._isSelected = isSelected
         self.title = title
-        self.didTapArrowButton = didTapArrowButton
+        self.url = url
         super.init(frame: .zero)
         setupUI()
     }
@@ -38,8 +41,7 @@ final class CheckBoxView: UIStackView {
         button.titleLabel?.font = .pretendardRegular(size: 14.0)
         button.contentHorizontalAlignment = .leading
         button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 6.0, bottom: 0.0, right: 0.0)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(checkBox(_:)))
-        button.addGestureRecognizer(tapGesture)
+        button.addTarget(self, action: #selector(checkBox), for: .touchUpInside)
         return button
     }()
     
@@ -54,7 +56,6 @@ final class CheckBoxView: UIStackView {
     private func setupUI() {
         distribution = .fill
         contentMode = .center
-//        spacing = 15.0
         axis = .horizontal
         isUserInteractionEnabled = true
         
@@ -71,20 +72,12 @@ final class CheckBoxView: UIStackView {
         
     }
     
-    func didTapCheckBox() {
+    @objc private func checkBox() {
         isSelected.toggle()
-        if isSelected {
-            checkBoxButton.setImage(UIImage(named: "check_circle"), for: .normal)
-        } else {
-            checkBoxButton.setImage(UIImage(named: "radio_button_unchecked"), for: .normal)
-        }
-    }
-    
-    @objc private func checkBox(_ : UITapGestureRecognizer) {
-        didTapCheckBox()
     }
     
     @objc private func moveToLink() {
-        didTapArrowButton()
+        let url = URL(string: url)!
+        UIApplication.shared.open(url)
     }
 }

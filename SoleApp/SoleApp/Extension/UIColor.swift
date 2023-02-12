@@ -18,9 +18,12 @@ extension UIColor {
     }
     
     static let yellow_FBE520 = UIColor(hex: 0xFBE520)
-    
+    static let yellow_E9FF4B = UIColor(hex: 0xE9FF4B)
+
     
     static let gray_D6D6D6 = UIColor(hex: 0xD6D6D6)
     static let gray_F2F2F2 = UIColor(hex: 0xF2F2F2)
+    static let gray_D3D4D5 = UIColor(hex: 0xD3D4D5)
+
 
 }

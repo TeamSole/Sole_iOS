@@ -8,10 +8,12 @@
 import UIKit
 import SwiftUI
 import SnapKit
+import Combine
 
 final class SignUpFirstStepViewController: UIViewController {
     
     @ObservedObject var viewModel: SignUpFirstStepViewModel = SignUpFirstStepViewModel()
+    private var store = Set<AnyCancellable>()
     
     private let greetingLabel: UILabel = {
         let label = UILabel()
@@ -48,31 +50,44 @@ final class SignUpFirstStepViewController: UIViewController {
         button.contentHorizontalAlignment = .leading
         button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 6.0, bottom: 0.0, right: 0.0)
         button.adjustsImageWhenHighlighted = false
+        button.addTarget(self, action: #selector(checkAllBox), for: .touchUpInside)
         return button
     }()
     
-    private lazy var firstCheckBoxView: CheckBoxView = CheckBoxView(isSelected: self.$viewModel.isSelectedFirstTerm,
-                                                               title: "서비스 이용약관 동의 (필수)",
-                                                                    didTapArrowButton: { self.allCheckButton.isSelected = false})
+    private lazy var firstCheckBoxView: CheckBoxView = CheckBoxView(isSelected: $viewModel.isSelectedFirstTerm,
+                                                                    title: "서비스 이용약관 동의 (필수)",
+                                                                    url: "https://www.naver.com")
     
-    private lazy var secondCheckBoxView: CheckBoxView = CheckBoxView(isSelected: self.$viewModel.isSelectedSecondTerm,
-                                                               title: "개인정보 처리방침 동의 (필수)",
-                                                               didTapArrowButton: {})
+    private lazy var secondCheckBoxView: CheckBoxView = CheckBoxView(isSelected: $viewModel.isSelectedSecondTerm,
+                                                                     title: "개인정보 처리방침 동의 (필수)",
+                                                                     url: "https://www.naver.com")
     
-    private lazy var thirdCheckBoxView: CheckBoxView = CheckBoxView(isSelected: self.$viewModel.isSelectedThirdTerm,
-                                                               title: "마케팅 정보 제공 및 수신 동의 (선택)",
-                                                               didTapArrowButton: {})
-    private lazy var continueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "동의하고 계속하기"
-//        label.
-        return label
+    private lazy var thirdCheckBoxView: CheckBoxView = CheckBoxView(isSelected: $viewModel.isSelectedThirdTerm,
+                                                                    title: "마케팅 정보 제공 및 수신 동의 (선택)",
+                                                                    url: "https://www.naver.com")
+    private lazy var continueButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("동의하고 계속하기", for: .normal)
+        button.setTitle("동의하고 계속하기", for: .disabled)
+        button.isEnabled = false
+        button.titleLabel?.font = .pretendardRegular(size: 16.0)
+        button.setTitleColor(.white, for: .disabled)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.setBackgroundColor(.yellow_E9FF4B , for: .normal)
+        button.setBackgroundColor(.gray_D3D4D5 , for: .disabled)
+        button.layer.cornerRadius = 10.0
+        button.clipsToBounds = true
+        button.adjustsImageWhenHighlighted = false
+        button.addTarget(self, action: #selector(moveToNextStep), for: .touchUpInside)
+        return button
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +104,8 @@ final class SignUpFirstStepViewController: UIViewController {
          divider,
          firstCheckBoxView,
          secondCheckBoxView,
-         thirdCheckBoxView].forEach({ view.addSubview($0) })
+         thirdCheckBoxView,
+         continueButton].forEach({ view.addSubview($0) })
         let horizontalInset: CGFloat = 16.0
         
         greetingLabel.snp.makeConstraints({
@@ -109,6 +125,7 @@ final class SignUpFirstStepViewController: UIViewController {
         
         divider.snp.makeConstraints({
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            $0.height.equalTo(0.5)
             $0.top.equalTo(allCheckButton.snp.bottom).offset(12.0)
         })
         
@@ -126,10 +143,34 @@ final class SignUpFirstStepViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
             $0.top.equalTo(secondCheckBoxView.snp.bottom).offset(10.0)
         })
+        
+        continueButton.snp.makeConstraints({
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            $0.height.equalTo(48.0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(57.0)
+        })
     }
     
-    private func checkAllBox() {
-        firstCheckBoxView.didTapCheckBox()
+    private func bind() {
+        viewModel.isValidToAgreeOfTerms
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (isValid, isAllSelected) in
+                self?.continueButton.isEnabled = isValid
+                self?.allCheckButton.isSelected = isAllSelected
+            }
+            .store(in: &store)
+    }
+    
+    @objc private func checkAllBox() {
+        allCheckButton.isSelected.toggle()
+        firstCheckBoxView.isSelected = allCheckButton.isSelected
+        secondCheckBoxView.isSelected = allCheckButton.isSelected
+        thirdCheckBoxView.isSelected = allCheckButton.isSelected
+    }
+    
+    @objc private func moveToNextStep() {
+        let vc = SignUpSetNickNameViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
