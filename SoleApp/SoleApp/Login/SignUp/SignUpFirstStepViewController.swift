@@ -13,7 +13,7 @@ import Combine
 final class SignUpFirstStepViewController: UIViewController {
     
     @ObservedObject var viewModel: SignUpFirstStepViewModel = SignUpFirstStepViewModel()
-    private var store = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     private let greetingLabel: UILabel = {
         let label = UILabel()
@@ -158,7 +158,7 @@ final class SignUpFirstStepViewController: UIViewController {
                 self?.continueButton.isEnabled = isValid
                 self?.allCheckButton.isSelected = isAllSelected
             }
-            .store(in: &store)
+            .store(in: &cancellables)
     }
     
     @objc private func checkAllBox() {

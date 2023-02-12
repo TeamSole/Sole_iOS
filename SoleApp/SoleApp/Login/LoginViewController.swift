@@ -11,9 +11,9 @@ import SwiftUI
 
 final class LoginViewController: UIViewController {
     private let logoImageView: UIImageView = {
-        let image = UIImage(named: "sole_splash")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "sole_splash")
         let imageView = UIImageView(image: image)
-        imageView.tintColor = .black
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -37,8 +37,8 @@ final class LoginViewController: UIViewController {
     }()
     private lazy var appleLoginButtonView: UIView =  {
         let loginButton = LoginButtonView(title: "Apple로 시작하기",
-                                          color: .black,
-                                          textColor: .white,
+                                          color: .white,
+                                          textColor: .black,
                                           imageName: "apple_icon")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
         loginButton.addGestureRecognizer(tapGesture)
@@ -63,6 +63,7 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func setupUI() {
+        view.backgroundColor = .black
         [logoImageView,
         loginStackView,
         callInfoLabel]
@@ -74,7 +75,7 @@ extension LoginViewController {
         
         logoImageView.snp.makeConstraints({
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(UIScreen.main.bounds.height/15)
+            $0.verticalEdges.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.6)
         })
         
         loginStackView.snp.makeConstraints({
@@ -98,6 +99,7 @@ extension LoginViewController {
     
     @objc private func didTapLoginButton() {
         let vc = SignUpFirstStepViewController()
+        vc.navigationController?.navigationItem.title = "회원가입"
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

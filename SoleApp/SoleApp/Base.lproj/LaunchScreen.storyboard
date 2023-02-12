@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sole_splash" width="108.33333587646484" height="108.66666412353516"/>
+        <image name="sole_splash" width="110" height="108.33333587646484"/>
     </resources>
 </document>

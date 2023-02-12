@@ -21,6 +21,7 @@ extension UIViewController {
     func setupNavigationUI(title: String) {
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationItem.title = title
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "arrow_back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "arrow_back")

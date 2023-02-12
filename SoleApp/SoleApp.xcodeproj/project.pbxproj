@@ -47,6 +47,12 @@
 		A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */; };
 		A46B471C2998B395001FAED3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471B2998B395001FAED3 /* UIButton.swift */; };
 		A46B471D2998B395001FAED3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471B2998B395001FAED3 /* UIButton.swift */; };
+		A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */; };
+		A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */; };
+		A46B4722299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
+		A46B4723299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
+		A46B472529992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
+		A46B472629992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -79,6 +85,9 @@
 		A46B471529975CDE001FAED3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSetNickNameViewController.swift; sourceTree = "<group>"; };
 		A46B471B2998B395001FAED3 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteVIewController.swift; sourceTree = "<group>"; };
+		A46B4721299929C4001FAED3 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		A46B472429992BCD001FAED3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +134,8 @@
 				A46B470C29967086001FAED3 /* UIFont.swift */,
 				A46B471529975CDE001FAED3 /* UIViewController.swift */,
 				A46B471B2998B395001FAED3 /* UIButton.swift */,
+				A46B4721299929C4001FAED3 /* UITextField.swift */,
+				A46B472429992BCD001FAED3 /* UIControl.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 				A46B47122996845F001FAED3 /* SignUpFirstStepViewModel.swift */,
 				A46B470F299677C9001FAED3 /* CheckBoxView.swift */,
 				A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */,
+				A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -337,11 +349,14 @@
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
+				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A46B4710299677C9001FAED3 /* CheckBoxView.swift in Sources */,
+				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
+				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
@@ -357,11 +372,14 @@
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
+				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A46B4711299677C9001FAED3 /* CheckBoxView.swift in Sources */,
+				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
+				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
@@ -508,8 +526,8 @@
 				INFOPLIST_FILE = SoleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -539,8 +557,8 @@
 				INFOPLIST_FILE = SoleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,8 +588,8 @@
 				INFOPLIST_FILE = "SoleApp/Info-dev.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -602,8 +620,8 @@
 				INFOPLIST_FILE = "SoleApp/Info-dev.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
