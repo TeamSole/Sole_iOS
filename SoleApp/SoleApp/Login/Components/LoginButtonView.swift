@@ -21,7 +21,7 @@ final class LoginButtonView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = .systemFont(ofSize: 17.0, weight: .medium)
+        label.font = .pretendardMedium(size: 17.0)
         label.textColor = textColor
         label.textAlignment = .center
         return label

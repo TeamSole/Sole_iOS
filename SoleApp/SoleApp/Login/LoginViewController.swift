@@ -26,18 +26,22 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
     
-    private let kakaoLoginButtonView: UIView = {
+    private lazy var kakaoLoginButtonView: UIView = {
         let loginButton = LoginButtonView(title: "Kakao로 시작하기",
                                           color: .yellow_FBE520,
                                           textColor: .black,
                                           imageName: "kakao_icon")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
+        loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
-    private let appleLoginButtonView: UIView =  {
+    private lazy var appleLoginButtonView: UIView =  {
         let loginButton = LoginButtonView(title: "Apple로 시작하기",
                                           color: .black,
                                           textColor: .white,
                                           imageName: "apple_icon")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
+        loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
     
@@ -90,6 +94,11 @@ extension LoginViewController {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20.0)
         })
+    }
+    
+    @objc private func didTapLoginButton() {
+        let vc = SignUpFirstStepViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

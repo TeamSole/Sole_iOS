@@ -21,5 +21,6 @@ extension UIColor {
     
     
     static let gray_D6D6D6 = UIColor(hex: 0xD6D6D6)
+    static let gray_F2F2F2 = UIColor(hex: 0xF2F2F2)
 
 }
