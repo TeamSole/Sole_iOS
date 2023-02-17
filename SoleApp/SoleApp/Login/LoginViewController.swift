@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SwiftUI
+import KakaoSDKUser
 
 final class LoginViewController: UIViewController {
     private let logoImageView: UIImageView = {
@@ -31,7 +32,7 @@ final class LoginViewController: UIViewController {
                                           color: .yellow_FBE520,
                                           textColor: .black,
                                           imageName: "kakao_icon")
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginWithKakaoButton))
         loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
@@ -40,8 +41,8 @@ final class LoginViewController: UIViewController {
                                           color: .white,
                                           textColor: .black,
                                           imageName: "apple_icon")
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
-        loginButton.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
+//        loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
     
@@ -97,10 +98,38 @@ extension LoginViewController {
         })
     }
     
-    @objc private func didTapLoginButton() {
-        let vc = SignUpFirstStepViewController()
-        vc.navigationController?.navigationItem.title = "회원가입"
-        self.navigationController?.pushViewController(vc, animated: true)
+    @objc private func didTapLoginWithKakaoButton() {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+
+                    //do something
+                    _ = oauthToken
+                    let vc = SignUpFirstStepViewController()
+                    vc.navigationController?.navigationItem.title = "회원가입"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    
+                    //do something
+                    _ = oauthToken
+                    let vc = SignUpFirstStepViewController()
+                    vc.navigationController?.navigationItem.title = "회원가입"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
     }
 }
 
