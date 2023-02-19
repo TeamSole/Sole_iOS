@@ -7,6 +7,8 @@ target 'Dev' do
 
   # Pods for Dev
 
+pod 'NMapsMap'
+
 end
 
 target 'Release' do
@@ -14,5 +16,7 @@ target 'Release' do
   use_frameworks!
 
   # Pods for Release
+
+pod 'NMapsMap'
 
 end

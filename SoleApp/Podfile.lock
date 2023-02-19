@@ -1,3 +1,20 @@
-PODFILE CHECKSUM: 5560087b424e43635abd6e19d962a168dc7bc3ee
+PODS:
+  - NMapsGeometry (1.0.1)
+  - NMapsMap (3.16.2):
+    - NMapsGeometry
+
+DEPENDENCIES:
+  - NMapsMap
+
+SPEC REPOS:
+  trunk:
+    - NMapsGeometry
+    - NMapsMap
+
+SPEC CHECKSUMS:
+  NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
+  NMapsMap: aaa64717249b06ae82c3a3addb3a01f0e33100ab
+
+PODFILE CHECKSUM: cec85622d61c07a6d07f53f17bac8243ae285463
 
 COCOAPODS: 1.11.3
