@@ -17,6 +17,8 @@ extension UIColor {
         )
     }
     
+    static let mainBlackColor = UIColor.black_151515
+    
     static let yellow_FBE520 = UIColor(hex: 0xFBE520)
     static let yellow_E9FF4B = UIColor(hex: 0xE9FF4B)
 

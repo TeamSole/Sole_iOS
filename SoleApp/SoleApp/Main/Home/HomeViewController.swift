@@ -12,7 +12,6 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .red
         setupNavigationBar()
         let mapView = NMFMapView(frame: view.frame)
             view.addSubview(mapView)
@@ -20,9 +19,13 @@ final class HomeViewController: UIViewController {
     
     private func setupNavigationBar() {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .black_151515
+        appearance.backgroundColor = .mainBlackColor
+        let logoImage = UIImage(named: "small_logo")?.withRenderingMode(.alwaysOriginal)
+        let profileImage = UIImage(named: "profile24")?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoImage, style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: profileImage, style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
+//        navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 }

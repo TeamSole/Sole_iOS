@@ -37,8 +37,23 @@ final class MainTabbarViewController: UITabBarController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = .white
-        tabBar.isTranslucent = false
+        setupTabbar()
         viewControllers = [homeViewController, homeViewController2, homeViewController3, homeViewController4]
+    }
+    
+    private func setupTabbar() {
+        tabBar.isTranslucent = false
+        if #available(iOS 15, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.backgroundColor = .white
+            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.black]
+            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+            tabBar.standardAppearance = tabBarAppearance
+            tabBar.scrollEdgeAppearance = tabBarAppearance
+        } else {
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+            tabBar.barTintColor = .white
+        }
     }
 }
