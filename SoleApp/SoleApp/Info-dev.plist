@@ -42,7 +42,9 @@
 			</array>
 		</dict>
 	</dict>
-    <key>NMFClientId</key>
-        <string>3o0mfuhlwv</string>
+	<key>NMFClientId</key>
+	<string>3o0mfuhlwv</string>
+	<key>Kakao App Key</key>
+	<string>aaa0c1c1115d227126c32a83385a2763</string>
 </dict>
 </plist>

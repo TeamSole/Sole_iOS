@@ -54,6 +54,8 @@
 		A46B4723299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
 		A46B472529992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
 		A46B472629992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
+		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
+		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -102,6 +104,7 @@
 		A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteVIewController.swift; sourceTree = "<group>"; };
 		A46B4721299929C4001FAED3 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		A46B472429992BCD001FAED3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
+		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +158,6 @@
 				E4F07EFE21596AC1C86AA2FD /* Pods-Release.debug.xcconfig */,
 				0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -228,6 +230,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A4712C9529A1DEDD00CE1A59 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				A4712C9629A1DF2000CE1A59 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		A4C31C6D29913CF00014F458 = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +260,7 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A4712C9529A1DEDD00CE1A59 /* Constant */,
 				A4D983CB299F64E3008C599D /* Main */,
 				A4D983CA299F64CD008C599D /* System */,
 				A46B46F029966F2B001FAED3 /* Font */,
@@ -513,6 +524,7 @@
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
+				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A46B4710299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
@@ -538,6 +550,7 @@
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
+				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A46B4711299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
