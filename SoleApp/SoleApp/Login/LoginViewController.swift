@@ -38,8 +38,8 @@ final class LoginViewController: UIViewController {
     }()
     private lazy var appleLoginButtonView: UIView =  {
         let loginButton = LoginButtonView(title: "Apple로 시작하기",
-                                          color: .white,
-                                          textColor: .black,
+                                          color: .black,
+                                          textColor: .white,
                                           imageName: "apple_icon")
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
 //        loginButton.addGestureRecognizer(tapGesture)
@@ -64,7 +64,7 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func setupUI() {
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         [logoImageView,
         loginStackView,
         callInfoLabel]

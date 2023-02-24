@@ -52,9 +52,9 @@ final class SignUpSetNickNameViewController: UIViewController {
         button.isEnabled = false
         button.titleLabel?.font = .pretendardRegular(size: 16.0)
         button.setTitleColor(.white, for: .disabled)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.textAlignment = .center
-        button.setBackgroundColor(.yellow_E9FF4B , for: .normal)
+        button.setBackgroundColor(.blue_4708FA , for: .normal)
         button.setBackgroundColor(.gray_D3D4D5 , for: .disabled)
         button.layer.cornerRadius = 10.0
         button.clipsToBounds = true

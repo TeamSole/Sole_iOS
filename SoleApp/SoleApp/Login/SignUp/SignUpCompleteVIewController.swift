@@ -20,7 +20,7 @@ final class SignUpCompleteVIewController: UIViewController {
     private let completeSignUpTitlelabel: UILabel = {
         let label = UILabel()
         label.text = "회원가입 완료!"
-        label.textColor = .yellow_E9FF4B
+        label.textColor = .blue_4708FA
         label.font = .pretendardMedium(size: 24.0)
         label.textAlignment = .center
         return label
@@ -30,7 +30,7 @@ final class SignUpCompleteVIewController: UIViewController {
         let label = UILabel()
         label.text = "쏠과 함께 지도 위에\n나만의 발자국을 남겨봐요!"
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .black
         label.font = .pretendardRegular(size: 16.0)
         label.textAlignment = .center
         return label
@@ -40,9 +40,9 @@ final class SignUpCompleteVIewController: UIViewController {
         let button = UIButton()
         button.setTitle("쏠 시작하기", for: .normal)
         button.titleLabel?.font = .pretendardRegular(size: 16.0)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.textAlignment = .center
-        button.setBackgroundColor(.yellow_E9FF4B , for: .normal)
+        button.setBackgroundColor(.blue_4708FA , for: .normal)
         button.layer.cornerRadius = 10.0
         button.clipsToBounds = true
         button.adjustsImageWhenHighlighted = false
@@ -57,7 +57,7 @@ final class SignUpCompleteVIewController: UIViewController {
     
     private func setupUI() {
         navigationController?.isNavigationBarHidden = true
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         
         [logoImageView,
          completeSignUpTitlelabel,
