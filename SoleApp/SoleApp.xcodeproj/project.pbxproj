@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
+		A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
+		A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -82,6 +84,7 @@
 /* Begin PBXFileReference section */
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		A441777029A3B4F100FAE837 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -159,6 +162,14 @@
 				0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A441776F29A3B4DC00FAE837 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A441777029A3B4F100FAE837 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		A46B46DD299295CB001FAED3 /* Frameworks */ = {
@@ -286,6 +297,7 @@
 		A4D983CB299F64E3008C599D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A441776F29A3B4DC00FAE837 /* MyPage */,
 				A4D983CF299F661C008C599D /* Home */,
 				A4D983CC299F6560008C599D /* MainTabbarViewController.swift */,
 			);
@@ -531,6 +543,7 @@
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
+				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
@@ -557,6 +570,7 @@
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
+				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,

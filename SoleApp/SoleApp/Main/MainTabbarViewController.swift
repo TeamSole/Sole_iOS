@@ -17,21 +17,21 @@ final class MainTabbarViewController: UITabBarController {
     
     private lazy var homeViewController2: UIViewController = {
         let vc = UINavigationController(rootViewController: HomeViewController())
-        let tabbarItem = UITabBarItem(title: "홈2", image: nil, tag: 1)
+        let tabbarItem = UITabBarItem(title: "나의 기록", image: nil, tag: 1)
         vc.tabBarItem = tabbarItem
         return vc
     }()
     
     private lazy var homeViewController3: UIViewController = {
         let vc = UINavigationController(rootViewController: HomeViewController())
-        let tabbarItem = UITabBarItem(title: "홈3", image: nil, tag: 2)
+        let tabbarItem = UITabBarItem(title: "팔로잉", image: nil, tag: 2)
         vc.tabBarItem = tabbarItem
         return vc
     }()
     
     private lazy var homeViewController4: UIViewController = {
         let vc = UINavigationController(rootViewController: HomeViewController())
-        let tabbarItem = UITabBarItem(title: "홈4", image: nil, tag: 3)
+        let tabbarItem = UITabBarItem(title: "스크랩", image: nil, tag: 3)
         vc.tabBarItem = tabbarItem
         return vc
     }()
