@@ -7,14 +7,26 @@
 
 import UIKit
 import NMapsMap
+import FloatingPanel
 
 final class HomeViewController: UIViewController {
-    
+    private var fcp: FloatingPanelController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         let mapView = NMFMapView(frame: view.frame)
-            view.addSubview(mapView)
+        view.addSubview(mapView)
+        setupFcp()
+    }
+    
+    private func setupFcp() {
+        fcp = FloatingPanelController()
+        fcp.delegate = self
+        fcp.set(contentViewController: FloatingListViewController())
+        fcp.addPanel(toParent: self)
+        fcp.layout = FloatingListPanelLayout()
+        fcp.show()
     }
     
     private func setupNavigationBar() {
@@ -31,4 +43,8 @@ final class HomeViewController: UIViewController {
         let vc = MyPageViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension HomeViewController: FloatingPanelControllerDelegate {
+
 }

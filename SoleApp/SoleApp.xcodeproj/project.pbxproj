@@ -10,6 +10,12 @@
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
 		A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
 		A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
+		A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BC829A89BCB00B06132 /* FloatingPanel */; };
+		A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BCA29A89BDB00B06132 /* FloatingPanel */; };
+		A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */; };
+		A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */; };
+		A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
+		A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -85,6 +91,8 @@
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		A441777029A3B4F100FAE837 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListViewController.swift; sourceTree = "<group>"; };
+		A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListPanelLayout.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 				A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */,
 				A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */,
 				A4D983C1299F603C008C599D /* KakaoSDKCommon in Frameworks */,
+				A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */,
 				A4D983BF299F603C008C599D /* KakaoSDKAuth in Frameworks */,
 				FE01069E35B1A1072368E401 /* Pods_Release.framework in Frameworks */,
 			);
@@ -145,6 +154,7 @@
 				A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */,
 				A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */,
 				A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */,
+				A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */,
 				A4D983C3299F6075008C599D /* KakaoSDKAuth in Frameworks */,
 				9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */,
 			);
@@ -170,6 +180,15 @@
 				A441777029A3B4F100FAE837 /* MyPageViewController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A4597BCC29A89D8800B06132 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */,
+				A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		A46B46DD299295CB001FAED3 /* Frameworks */ = {
@@ -307,6 +326,7 @@
 		A4D983CF299F661C008C599D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A4597BCC29A89D8800B06132 /* Component */,
 				A4D983D0299F6633008C599D /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -335,6 +355,7 @@
 				A4D983BE299F603C008C599D /* KakaoSDKAuth */,
 				A4D983C0299F603C008C599D /* KakaoSDKCommon */,
 				A4D983C8299F63AF008C599D /* KakaoSDKUser */,
+				A4597BC829A89BCB00B06132 /* FloatingPanel */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C7629913CF00014F458 /* Release.app */;
@@ -360,6 +381,7 @@
 				A4D983C2299F6075008C599D /* KakaoSDKAuth */,
 				A4D983C4299F6075008C599D /* KakaoSDKCommon */,
 				A4D983C6299F63A7008C599D /* KakaoSDKUser */,
+				A4597BCA29A89BDB00B06132 /* FloatingPanel */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C99299140200014F458 /* Dev.app */;
@@ -392,6 +414,7 @@
 			packageReferences = (
 				A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = A4C31C7729913CF00014F458 /* Products */;
 			projectDirPath = "";
@@ -530,6 +553,8 @@
 			files = (
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
+				A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
@@ -557,6 +582,8 @@
 			files = (
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
+				A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
@@ -869,6 +896,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel#swift-package-manager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -888,6 +923,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A4597BC829A89BCB00B06132 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+		A4597BCA29A89BDB00B06132 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		A46B46DB299295B4001FAED3 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */;

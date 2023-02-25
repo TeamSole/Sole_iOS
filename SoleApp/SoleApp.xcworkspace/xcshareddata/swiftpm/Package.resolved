@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "floatingpanel#swift-package-manager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scenee/FloatingPanel#swift-package-manager",
+      "state" : {
+        "revision" : "d6bbf92339c9c002ba66895878ba0acaa7c1a05a",
+        "version" : "2.6.0"
+      }
+    },
+    {
       "identity" : "kakao-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao/kakao-ios-sdk",
