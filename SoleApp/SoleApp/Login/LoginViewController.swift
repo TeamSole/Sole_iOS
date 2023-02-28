@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SwiftUI
 import KakaoSDKUser
+import Alamofire
 
 final class LoginViewController: UIViewController {
     private let logoImageView: UIImageView = {
@@ -41,7 +42,7 @@ final class LoginViewController: UIViewController {
                                           color: .black,
                                           textColor: .white,
                                           imageName: "apple_icon")
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginButton))
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(kakaoAccess))
 //        loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
@@ -124,12 +125,54 @@ extension LoginViewController {
                     
                     //do something
                     _ = oauthToken
-                    let vc = SignUpFirstStepViewController()
-                    vc.navigationController?.navigationItem.title = "회원가입"
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.kakaoAccess(token: oauthToken?.accessToken ?? "")
+//                    let vc = SignUpFirstStepViewController()
+//                    vc.navigationController?.navigationItem.title = "회원가입"
+//                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
+    }
+    
+    private func kakaoAccess(token: String) {
+        let url: Alamofire.URLConvertible = URL(string:  K.baseUrl + "api/members/kakao/signup")!
+        let header: HTTPHeaders = [
+            "Content-Type" : "multipart/form-data"
+        ]
+        
+//        let model = SignUpModel()
+        let subModel = Model(accessToken: token)
+        let subModel2 = OauthRequest(accessToken: token)
+        
+//        let parameter: [String: Any] = [
+//            "infoAccepted": subModel.infoAccepted,
+//            "marketingAccepted": subModel.marketingAccepted,
+//            "serviceAccepted": subModel.serviceAccepted,
+//            "nickname": subModel.nickname,
+//            "accessToken": subModel.accessToken,
+//        ]
+//        let parameter: [String: Any] = [
+//            "memberRequestDto": subModel
+//        ]
+        
+        AF.upload(multipartFormData: { multipart in
+//            for (key, value) in parameter {
+                let data = try? JSONEncoder().encode(subModel)
+                multipart.append(data!, withName: "memberRequestDto")
+                print(multipart)
+//                            }
+        }, to: url, method: .post, headers: header)
+        .responseData { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure:
+                print(response.error)
+            default:
+                break
+            }
+        }
+        
     }
 }
 

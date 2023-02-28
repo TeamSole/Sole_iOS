@@ -16,6 +16,10 @@
 		A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */; };
 		A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
 		A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
+		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
+		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
+		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
+		A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -93,6 +97,8 @@
 		A441777029A3B4F100FAE837 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListViewController.swift; sourceTree = "<group>"; };
 		A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListPanelLayout.swift; sourceTree = "<group>"; };
+		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -191,6 +197,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		A4597BD329A9A1A200B06132 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A4597BD429A9A1B400B06132 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		A46B46DD299295CB001FAED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +254,7 @@
 				A46B470F299677C9001FAED3 /* CheckBoxView.swift */,
 				A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */,
 				A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */,
+				A4597BD729A9C1C200B06132 /* SignUpModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -290,6 +305,7 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
 				A4D983CB299F64E3008C599D /* Main */,
 				A4D983CA299F64CD008C599D /* System */,
@@ -554,6 +570,7 @@
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
 				A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -572,6 +589,7 @@
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +601,7 @@
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
 				A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -601,6 +620,7 @@
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

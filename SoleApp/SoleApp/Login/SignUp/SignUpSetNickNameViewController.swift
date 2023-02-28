@@ -10,6 +10,7 @@ import SnapKit
 import Combine
 
 final class SignUpSetNickNameViewController: UIViewController {
+//    @ObservedObject var viewModel: SignUpFirstStepViewModel = SignUpFirstStepViewModel()
     private var cancellables = Set<AnyCancellable>()
     
     private let profileImageView: UIImageView = {
