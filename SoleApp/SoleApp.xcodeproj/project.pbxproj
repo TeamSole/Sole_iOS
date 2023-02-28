@@ -20,6 +20,12 @@
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
 		A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
+		A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */; };
+		A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */; };
+		A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
+		A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
+		A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
+		A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -99,6 +105,9 @@
 		A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListPanelLayout.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewHeader.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -184,6 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				A441777029A3B4F100FAE837 /* MyPageViewController.swift */,
+				A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */,
+				A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */,
+				A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -580,8 +592,11 @@
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
+				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A46B4710299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
+				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
+				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
@@ -611,8 +626,11 @@
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
+				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A46B4711299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
+				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
+				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,

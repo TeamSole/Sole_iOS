@@ -7,14 +7,26 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 final class MyPageViewController: UIViewController {
+    @ObservedObject var viewModel: MyPageViewModel = MyPageViewModel()
     private lazy var listTableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tableView.rowHeight = 48.0
         tableView.dataSource = self
+        tableView.tableHeaderView = myPageHeaderView
+        tableView.register(MyPageTableViewCell.self, forCellReuseIdentifier: MyPageTableViewCell.identifier)
         return tableView
     }()
     
+    private lazy var myPageHeaderView: MyPageTableViewHeader = {
+        let header = MyPageTableViewHeader(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 100.0)))
+        return header
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -37,12 +49,12 @@ final class MyPageViewController: UIViewController {
 
 extension MyPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.myPageViewCellData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "QnA"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.identifier, for: indexPath) as? MyPageTableViewCell else { return UITableViewCell()}
+        cell.setupCellData(viewModel.myPageViewCellData[indexPath.row])
         return cell
     }
     
