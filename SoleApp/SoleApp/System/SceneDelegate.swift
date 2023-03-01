@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = MainTabbarViewController()//UINavigationController(rootViewController: LoginViewController())//
         window?.backgroundColor = .white
+        window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
     }
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

@@ -17,6 +17,7 @@ final class MyPageViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         tableView.rowHeight = 48.0
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableHeaderView = myPageHeaderView
         tableView.register(MyPageTableViewCell.self, forCellReuseIdentifier: MyPageTableViewCell.identifier)
         return tableView
@@ -35,9 +36,15 @@ final class MyPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationUI(title: "마이페이지")
+        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(listTableView)
         
         listTableView.snp.makeConstraints({
@@ -58,6 +65,12 @@ extension MyPageViewController: UITableViewDataSource {
         return cell
     }
     
-    
+}
+
+extension MyPageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = AccountSettingView()
+        navigationController?.pushViewController(UIHostingController(rootView: vc), animated: true)
+    }
 }
 

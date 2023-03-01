@@ -26,6 +26,10 @@
 		A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
 		A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
 		A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
+		A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
+		A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
+		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
+		A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -108,6 +112,8 @@
 		A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewHeader.swift; sourceTree = "<group>"; };
+		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
+		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				A4597BE429AF128700B06132 /* MyPageSetting */,
 				A441777029A3B4F100FAE837 /* MyPageViewController.swift */,
 				A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */,
 				A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */,
@@ -217,6 +224,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		A4597BE429AF128700B06132 /* MyPageSetting */ = {
+			isa = PBXGroup;
+			children = (
+				A4597BE529AF12E100B06132 /* AccountSettingView.swift */,
+			);
+			path = MyPageSetting;
+			sourceTree = "<group>";
+		};
 		A46B46DD299295CB001FAED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +251,7 @@
 				A46B471B2998B395001FAED3 /* UIButton.swift */,
 				A46B4721299929C4001FAED3 /* UITextField.swift */,
 				A46B472429992BCD001FAED3 /* UIControl.swift */,
+				A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -585,6 +601,7 @@
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
+				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
@@ -604,6 +621,7 @@
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 			);
@@ -619,6 +637,7 @@
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
+				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
@@ -638,6 +657,7 @@
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 			);
