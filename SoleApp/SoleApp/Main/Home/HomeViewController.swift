@@ -33,8 +33,15 @@ final class HomeViewController: UIViewController {
         let appearance = UINavigationBarAppearance()
         let logoImage = UIImage(named: "small_logo")?.withRenderingMode(.alwaysOriginal)
         let profileImage = UIImage(named: "profile24")?.withRenderingMode(.alwaysOriginal)
+        let searchImage = UIImage(named: "search24")?.withRenderingMode(.alwaysOriginal)
+        let profileButton = UIButton(type: .custom)
+        profileButton.setImage(profileImage, for: .normal)
+        profileButton.addTarget(self, action: #selector(moveToMyPage), for: .touchUpInside)
+        profileButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoImage, style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(moveToMyPage))
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(customView: profileButton),
+            UIBarButtonItem(image: searchImage, style: .plain, target: self, action: nil)]
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
