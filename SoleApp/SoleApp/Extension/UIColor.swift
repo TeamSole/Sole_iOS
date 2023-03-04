@@ -30,6 +30,7 @@ extension UIColor {
     static let gray_F2F2F2 = UIColor(hex: 0xF2F2F2)
     static let gray_D3D4D5 = UIColor(hex: 0xD3D4D5)
     static let gray_999999 = UIColor(hex: 0x999999)
+    static let gray_404040 = UIColor(hex: 0x404040)
     
     static let black_151515 = UIColor(hex: 0x151515)
 

@@ -10,6 +10,7 @@ import SnapKit
 import SwiftUI
 import KakaoSDKUser
 import Alamofire
+import AuthenticationServices
 
 final class LoginViewController: UIViewController {
     private let logoImageView: UIImageView = {
@@ -42,8 +43,8 @@ final class LoginViewController: UIViewController {
                                           color: .black,
                                           textColor: .white,
                                           imageName: "apple_icon")
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(kakaoAccess))
-//        loginButton.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapAppleLoginButton))
+        loginButton.addGestureRecognizer(tapGesture)
         return loginButton
     }()
     
@@ -134,6 +135,18 @@ extension LoginViewController {
         }
     }
     
+    @objc private func didTapAppleLoginButton() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
+    
     private func kakaoAccess(token: String) {
         let url: Alamofire.URLConvertible = URL(string:  K.baseUrl + "api/members/kakao/signup")!
         let header: HTTPHeaders = [
@@ -162,17 +175,47 @@ extension LoginViewController {
                 print(multipart)
 //                            }
         }, to: url, method: .post, headers: header)
-        .responseData { response in
+        .response { response in
             switch response.result {
             case .success(let response):
-                print(response)
-            case .failure:
-                print(response.error)
+                print(String(decoding: response ?? Data(), as: UTF8.self))
+            case .failure(let error):
+                print(error.localizedDescription)
+                
             default:
                 break
             }
         }
-        
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+            // Apple ID
+            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                    
+                // 계정 정보 가져오기
+                let userIdentifier = appleIDCredential.user
+                let fullName = appleIDCredential.fullName
+                let email = appleIDCredential.email
+                    
+                print("User ID : \(userIdentifier)")
+                print("User Email : \(email ?? "")")
+                print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+            
+            print("\(appleIDCredential.identityToken)")
+            
+
+            default:
+                break
+            }
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
 }
 

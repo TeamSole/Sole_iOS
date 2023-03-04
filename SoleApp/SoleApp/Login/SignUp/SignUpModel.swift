@@ -18,6 +18,7 @@ struct Model: Codable {
     var serviceAccepted: Bool = false
     var nickname: String = "gg"
     var accessToken: String = ""
+    var fcmToken: String = ""
 }
 
 struct MemberRequestDto: Codable {

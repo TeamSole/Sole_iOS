@@ -8,6 +8,7 @@
 import Combine
 
 final class SignUpFirstStepViewModel: ObservableObject {
+    
     @Published var isSelectedFirstTerm: Bool = false
     @Published var isSelectedSecondTerm: Bool = false
     @Published var isSelectedThirdTerm: Bool = false

@@ -41,13 +41,19 @@ final class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoImage, style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(customView: profileButton),
-            UIBarButtonItem(image: searchImage, style: .plain, target: self, action: nil)]
+            UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(moveToSearchVC))]
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     @objc func moveToMyPage() {
         let vc = MyPageViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func moveToSearchVC() {
+        let vc = SearchViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
