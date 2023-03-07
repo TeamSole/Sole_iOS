@@ -187,6 +187,33 @@ extension LoginViewController {
             }
         }
     }
+    
+    private func appleAccess(token: String) {
+        let url: Alamofire.URLConvertible = URL(string:  K.baseUrl + "api/members/apple/signup")!
+        let header: HTTPHeaders = [
+            "Content-Type" : "multipart/form-data"
+        ]
+        
+        let subModel = Model(accessToken: token)
+        AF.upload(multipartFormData: { multipart in
+//            for (key, value) in parameter {
+                let data = try? JSONEncoder().encode(subModel)
+                multipart.append(data!, withName: "memberRequestDto")
+                print(multipart)
+//                            }
+        }, to: url, method: .post, headers: header)
+        .response { response in
+            switch response.result {
+            case .success(let response):
+                print(String(decoding: response ?? Data(), as: UTF8.self))
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
@@ -205,6 +232,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
             
             print("\(appleIDCredential.identityToken)")
+            let token = String(decoding: appleIDCredential.identityToken ?? Data(), as: UTF8.self)
+            appleAccess(token: token)
             
 
             default:

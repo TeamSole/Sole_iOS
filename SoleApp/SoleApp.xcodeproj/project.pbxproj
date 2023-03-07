@@ -78,6 +78,12 @@
 		A46B4723299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
 		A46B472529992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
 		A46B472629992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
+		A46D712A29B4D4D700944912 /* HotCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712929B4D4D700944912 /* HotCourseCell.swift */; };
+		A46D712B29B4D4D700944912 /* HotCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712929B4D4D700944912 /* HotCourseCell.swift */; };
+		A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712C29B767AC00944912 /* HotCourseHeader.swift */; };
+		A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712C29B767AC00944912 /* HotCourseHeader.swift */; };
+		A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */; };
+		A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
@@ -141,6 +147,9 @@
 		A46B472429992BCD001FAED3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		A46D712729B3143800944912 /* Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		A46D712829B3144300944912 /* Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Release.entitlements; sourceTree = "<group>"; };
+		A46D712929B4D4D700944912 /* HotCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseCell.swift; sourceTree = "<group>"; };
+		A46D712C29B767AC00944912 /* HotCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseHeader.swift; sourceTree = "<group>"; };
+		A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseHeader.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -388,6 +397,9 @@
 				A4597BEB29AF7EF100B06132 /* Search */,
 				A4597BCC29A89D8800B06132 /* Component */,
 				A4D983D0299F6633008C599D /* HomeViewController.swift */,
+				A46D712929B4D4D700944912 /* HotCourseCell.swift */,
+				A46D712C29B767AC00944912 /* HotCourseHeader.swift */,
+				A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -632,15 +644,18 @@
 				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
+				A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
+				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
+				A46D712A29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,15 +684,18 @@
 				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
+				A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
 				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
+				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
+				A46D712B29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
