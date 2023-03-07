@@ -14,6 +14,7 @@ final class HomeViewController: UIViewController {
         collectionView.isScrollEnabled = true
         collectionView.dataSource = self
         collectionView.register(HotCourseCell.self, forCellWithReuseIdentifier: HotCourseCell.identifier)
+        collectionView.register(UserTasteCourseCell.self, forCellWithReuseIdentifier: UserTasteCourseCell.identifier)
         collectionView.register(HotCourseHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HotCourseHeader")
         collectionView.register(UserTasteCourseHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UserTasteCourseHeader")
         return collectionView
@@ -126,7 +127,7 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.backgroundColor = .red
             return cell
         case .User:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HotCourseCell.identifier, for: indexPath) as? HotCourseCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserTasteCourseCell.identifier, for: indexPath) as? UserTasteCourseCell else { return UICollectionViewCell() }
             cell.backgroundColor = .blue
             return cell
         }

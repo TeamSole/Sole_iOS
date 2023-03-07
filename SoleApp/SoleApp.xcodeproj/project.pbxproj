@@ -84,6 +84,10 @@
 		A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712C29B767AC00944912 /* HotCourseHeader.swift */; };
 		A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */; };
 		A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */; };
+		A46D713429B7D21E00944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713329B7D21E00944912 /* Kingfisher */; };
+		A46D713629B7D22700944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713529B7D22700944912 /* Kingfisher */; };
+		A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
+		A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
@@ -150,6 +154,7 @@
 		A46D712929B4D4D700944912 /* HotCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseCell.swift; sourceTree = "<group>"; };
 		A46D712C29B767AC00944912 /* HotCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseHeader.swift; sourceTree = "<group>"; };
 		A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseHeader.swift; sourceTree = "<group>"; };
+		A46D713729B7D94400944912 /* UserTasteCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseCell.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 			files = (
 				A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */,
 				A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */,
+				A46D713429B7D21E00944912 /* Kingfisher in Frameworks */,
 				A4D983C1299F603C008C599D /* KakaoSDKCommon in Frameworks */,
 				A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */,
 				A4D983BF299F603C008C599D /* KakaoSDKAuth in Frameworks */,
@@ -188,6 +194,7 @@
 			files = (
 				A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */,
 				A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */,
+				A46D713629B7D22700944912 /* Kingfisher in Frameworks */,
 				A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */,
 				A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */,
 				A4D983C3299F6075008C599D /* KakaoSDKAuth in Frameworks */,
@@ -400,6 +407,7 @@
 				A46D712929B4D4D700944912 /* HotCourseCell.swift */,
 				A46D712C29B767AC00944912 /* HotCourseHeader.swift */,
 				A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */,
+				A46D713729B7D94400944912 /* UserTasteCourseCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -428,6 +436,7 @@
 				A4D983C0299F603C008C599D /* KakaoSDKCommon */,
 				A4D983C8299F63AF008C599D /* KakaoSDKUser */,
 				A4597BC829A89BCB00B06132 /* FloatingPanel */,
+				A46D713329B7D21E00944912 /* Kingfisher */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C7629913CF00014F458 /* Release.app */;
@@ -454,6 +463,7 @@
 				A4D983C4299F6075008C599D /* KakaoSDKCommon */,
 				A4D983C6299F63A7008C599D /* KakaoSDKUser */,
 				A4597BCA29A89BDB00B06132 /* FloatingPanel */,
+				A46D713529B7D22700944912 /* Kingfisher */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C99299140200014F458 /* Dev.app */;
@@ -487,6 +497,7 @@
 				A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A4C31C7729913CF00014F458 /* Products */;
 			projectDirPath = "";
@@ -632,6 +643,7 @@
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
+				A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
@@ -672,6 +684,7 @@
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
+				A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
@@ -1014,6 +1027,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -1044,6 +1065,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		A46D713329B7D21E00944912 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		A46D713529B7D22700944912 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		A4D983BE299F603C008C599D /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
