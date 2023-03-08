@@ -88,6 +88,8 @@
 		A46D713629B7D22700944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713529B7D22700944912 /* Kingfisher */; };
 		A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
 		A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
+		A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
+		A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
@@ -155,6 +157,7 @@
 		A46D712C29B767AC00944912 /* HotCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseHeader.swift; sourceTree = "<group>"; };
 		A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseHeader.swift; sourceTree = "<group>"; };
 		A46D713729B7D94400944912 /* UserTasteCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseCell.swift; sourceTree = "<group>"; };
+		A46D713B29B7F14600944912 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +335,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A46D713A29B7F12C00944912 /* CourseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A46D713B29B7F14600944912 /* CourseDetailView.swift */,
+			);
+			path = CourseDetail;
+			sourceTree = "<group>";
+		};
 		A4712C9529A1DEDD00CE1A59 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +412,7 @@
 		A4D983CF299F661C008C599D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A46D713A29B7F12C00944912 /* CourseDetail */,
 				A4597BEB29AF7EF100B06132 /* Search */,
 				A4597BCC29A89D8800B06132 /* Component */,
 				A4D983D0299F6633008C599D /* HomeViewController.swift */,
@@ -659,6 +671,7 @@
 				A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
+				A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */,
 				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
@@ -700,6 +713,7 @@
 				A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
+				A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */,
 				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,

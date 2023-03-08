@@ -13,6 +13,7 @@ final class HomeViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
         collectionView.isScrollEnabled = true
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(HotCourseCell.self, forCellWithReuseIdentifier: HotCourseCell.identifier)
         collectionView.register(UserTasteCourseCell.self, forCellWithReuseIdentifier: UserTasteCourseCell.identifier)
         collectionView.register(HotCourseHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HotCourseHeader")
@@ -153,6 +154,14 @@ extension HomeViewController: UICollectionViewDataSource {
         return HomeSection.allCases.count
     }
     
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = CourseDetailView()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 
