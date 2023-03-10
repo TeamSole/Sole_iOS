@@ -11,6 +11,8 @@ import SnapKit
 
 final class CourseDetailView: UIViewController {
     private let mapView = NMFMapView()
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationUI(title: "")
@@ -19,13 +21,28 @@ final class CourseDetailView: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        [mapView].forEach({ view.addSubview($0) })
+        view.addSubview(scrollView)
+
+        scrollView.backgroundColor = .red
+        scrollView.snp.makeConstraints({
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.width.equalToSuperview()
+        })
+        
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints({
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        })
+        
+        [mapView].forEach({ contentView.addSubview($0) })
         
         mapView.snp.makeConstraints({
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(300.0)
         })
+
     }
     
 }
