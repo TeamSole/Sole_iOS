@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class MainTabbarViewController: UITabBarController {
     private lazy var homeViewController: UIViewController = {
@@ -24,8 +25,8 @@ final class MainTabbarViewController: UITabBarController {
         return vc
     }()
     
-    private lazy var homeViewController3: UIViewController = {
-        let vc = UINavigationController(rootViewController: HomeViewController())
+    private lazy var followingBoardView: UIViewController = {
+        let vc = UINavigationController(rootViewController: UIHostingController(rootView: FollowingBoardView()))
         let tabbarItem = UITabBarItem(title: "팔로잉", image: UIImage(named: "following_tap")?.withRenderingMode(.alwaysOriginal), tag: 1)
         tabbarItem.selectedImage = UIImage(named: "following_tap_selected")?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem = tabbarItem
@@ -42,7 +43,7 @@ final class MainTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabbar()
-        viewControllers = [homeViewController, homeViewController2, homeViewController3, homeViewController4]
+        viewControllers = [homeViewController, homeViewController2, followingBoardView, homeViewController4]
     }
     
     private func setupTabbar() {

@@ -90,6 +90,8 @@
 		A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
 		A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
 		A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
+		A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
+		A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
@@ -158,6 +160,7 @@
 		A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseHeader.swift; sourceTree = "<group>"; };
 		A46D713729B7D94400944912 /* UserTasteCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseCell.swift; sourceTree = "<group>"; };
 		A46D713B29B7F14600944912 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
+		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -343,6 +346,14 @@
 			path = CourseDetail;
 			sourceTree = "<group>";
 		};
+		A46D713E29B8C70700944912 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				A46D713F29B8C74400944912 /* FollowingBoardView.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
 		A4712C9529A1DEDD00CE1A59 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +413,7 @@
 		A4D983CB299F64E3008C599D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A46D713E29B8C70700944912 /* Following */,
 				A441776F29A3B4DC00FAE837 /* MyPage */,
 				A4D983CF299F661C008C599D /* Home */,
 				A4D983CC299F6560008C599D /* MainTabbarViewController.swift */,
@@ -677,6 +689,7 @@
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
@@ -719,6 +732,7 @@
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
