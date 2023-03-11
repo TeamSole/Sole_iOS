@@ -94,6 +94,8 @@
 		A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
+		A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
+		A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -162,6 +164,7 @@
 		A46D713B29B7F14600944912 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionView.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -341,6 +344,7 @@
 		A46D713A29B7F12C00944912 /* CourseDetail */ = {
 			isa = PBXGroup;
 			children = (
+				A4760F0329BC51300080A2CD /* Components */,
 				A46D713B29B7F14600944912 /* CourseDetailView.swift */,
 			);
 			path = CourseDetail;
@@ -360,6 +364,14 @@
 				A4712C9629A1DF2000CE1A59 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		A4760F0329BC51300080A2CD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A4C31C6D29913CF00014F458 = {
@@ -672,6 +684,7 @@
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
+				A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
@@ -715,6 +728,7 @@
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
+				A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
