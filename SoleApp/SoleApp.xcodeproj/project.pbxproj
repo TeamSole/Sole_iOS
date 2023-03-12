@@ -124,6 +124,10 @@
 		A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */; };
 		A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
 		A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
+		A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
+		A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
+		A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
+		A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
 		FE01069E35B1A1072368E401 /* Pods_Release.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465B9E530A5BC24A061BF6 /* Pods_Release.framework */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +192,8 @@
 		A4D983D0299F6633008C599D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailSectionView.swift; sourceTree = "<group>"; };
 		A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A4E052E729BE160C00FDB84B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A4E052EA29BE170F00FDB84B /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A648897200F7A406D45245E2 /* Pods-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.debug.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F07EFE21596AC1C86AA2FD /* Pods-Release.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.debug.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +309,7 @@
 				A46B4721299929C4001FAED3 /* UITextField.swift */,
 				A46B472429992BCD001FAED3 /* UIControl.swift */,
 				A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */,
+				A4E052EA29BE170F00FDB84B /* FontExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 		A4D983CF299F661C008C599D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A4E052E629BE15EA00FDB84B /* History */,
 				A46D713A29B7F12C00944912 /* CourseDetail */,
 				A4597BEB29AF7EF100B06132 /* Search */,
 				A4597BCC29A89D8800B06132 /* Component */,
@@ -462,6 +470,14 @@
 				A46D713729B7D94400944912 /* UserTasteCourseCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		A4E052E629BE15EA00FDB84B /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A4E052E729BE160C00FDB84B /* HistoryView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -693,10 +709,12 @@
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
+				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
+				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0B29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
@@ -741,10 +759,12 @@
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
+				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
+				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0C29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
