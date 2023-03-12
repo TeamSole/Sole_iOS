@@ -14,6 +14,12 @@ final class CourseDetailView: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let profileSectionView = ProfileSectionView(frame: .zero)
+    private let courseSummarySectionView = CourseSummarySectionView(frame: .zero)
+    private let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray_EDEDED
+        return view
+    }()
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -50,17 +56,20 @@ final class CourseDetailView: UIViewController {
         })
         
         [mapView,
-         profileSectionView].forEach({ stackView.addArrangedSubview($0) })
+         profileSectionView,
+         courseSummarySectionView,
+         dividerView].forEach({ stackView.addArrangedSubview($0) })
         
         mapView.snp.makeConstraints({
-//            $0.top.equalToSuperview()
-//            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(300.0)
         })
         
         profileSectionView.snp.makeConstraints({
-//            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(72.0)
+        })
+        
+        dividerView.snp.makeConstraints({
+            $0.height.equalTo(3.0)
         })
 
     }

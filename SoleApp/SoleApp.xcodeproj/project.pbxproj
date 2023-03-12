@@ -12,10 +12,6 @@
 		A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
 		A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BC829A89BCB00B06132 /* FloatingPanel */; };
 		A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BCA29A89BDB00B06132 /* FloatingPanel */; };
-		A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */; };
-		A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */; };
-		A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
-		A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -96,6 +92,14 @@
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
 		A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
+		A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */; };
+		A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */; };
+		A4760F0B29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0A29BC6B8A0080A2CD /* TagListCollectionView.swift */; };
+		A4760F0C29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0A29BC6B8A0080A2CD /* TagListCollectionView.swift */; };
+		A4760F0E29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0D29BC6C060080A2CD /* CollectionViewAutoLayout.swift */; };
+		A4760F0F29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0D29BC6C060080A2CD /* CollectionViewAutoLayout.swift */; };
+		A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
+		A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -123,8 +127,6 @@
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		A441777029A3B4F100FAE837 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListViewController.swift; sourceTree = "<group>"; };
-		A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingListPanelLayout.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,10 @@
 		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionView.swift; sourceTree = "<group>"; };
+		A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummarySectionView.swift; sourceTree = "<group>"; };
+		A4760F0A29BC6B8A0080A2CD /* TagListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionView.swift; sourceTree = "<group>"; };
+		A4760F0D29BC6C060080A2CD /* CollectionViewAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayout.swift; sourceTree = "<group>"; };
+		A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,8 +246,9 @@
 		A4597BCC29A89D8800B06132 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				A4597BCD29A89DCB00B06132 /* FloatingListViewController.swift */,
-				A4597BD029A89E7D00B06132 /* FloatingListPanelLayout.swift */,
+				A4760F0A29BC6B8A0080A2CD /* TagListCollectionView.swift */,
+				A4760F0D29BC6C060080A2CD /* CollectionViewAutoLayout.swift */,
+				A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -370,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */,
+				A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -673,9 +681,8 @@
 				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
-				A4597BD129A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4760F0E29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
-				A4597BCE29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -683,6 +690,7 @@
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
+				A4760F0B29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
@@ -692,6 +700,7 @@
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
+				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
@@ -707,6 +716,7 @@
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712A29B4D4D700944912 /* HotCourseCell.swift in Sources */,
+				A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,9 +727,8 @@
 				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
-				A4597BD229A89E7D00B06132 /* FloatingListPanelLayout.swift in Sources */,
+				A4760F0F29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
-				A4597BCF29A89DCB00B06132 /* FloatingListViewController.swift in Sources */,
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -727,6 +736,7 @@
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
+				A4760F0C29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
@@ -736,6 +746,7 @@
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
+				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
@@ -751,6 +762,7 @@
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712B29B4D4D700944912 /* HotCourseCell.swift in Sources */,
+				A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
