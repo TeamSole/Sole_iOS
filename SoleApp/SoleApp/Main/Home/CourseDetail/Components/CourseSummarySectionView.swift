@@ -130,7 +130,7 @@ final class CourseSummarySectionView: UIView {
         collectionView.snp.makeConstraints({
             $0.top.equalTo(locationInfoLabel.snp.bottom).offset(8.0)
             $0.horizontalEdges.bottom.equalToSuperview()
-//            $0.height.equalTo(400)
+            $0.height.equalTo(400)
         })
     }
 }

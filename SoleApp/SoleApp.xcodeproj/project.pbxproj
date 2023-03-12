@@ -120,6 +120,10 @@
 		A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D983CC299F6560008C599D /* MainTabbarViewController.swift */; };
 		A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D983D0299F6633008C599D /* HomeViewController.swift */; };
 		A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D983D0299F6633008C599D /* HomeViewController.swift */; };
+		A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */; };
+		A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */; };
+		A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
+		A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
 		FE01069E35B1A1072368E401 /* Pods_Release.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465B9E530A5BC24A061BF6 /* Pods_Release.framework */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +186,8 @@
 		A4C31C9B2991427D0014F458 /* Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
 		A4D983CC299F6560008C599D /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		A4D983D0299F6633008C599D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailSectionView.swift; sourceTree = "<group>"; };
+		A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A648897200F7A406D45245E2 /* Pods-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.debug.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F07EFE21596AC1C86AA2FD /* Pods-Release.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.debug.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.debug.xcconfig"; sourceTree = "<group>"; };
@@ -378,6 +384,8 @@
 			children = (
 				A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */,
 				A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */,
+				A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */,
+				A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -690,6 +698,7 @@
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
+				A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0B29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
@@ -707,6 +716,7 @@
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */,
 				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
+				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
@@ -736,6 +746,7 @@
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
+				A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0C29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
@@ -753,6 +764,7 @@
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */,
 				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
+				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
