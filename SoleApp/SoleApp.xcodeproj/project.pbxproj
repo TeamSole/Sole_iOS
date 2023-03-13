@@ -36,6 +36,10 @@
 		A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3C29BF5B010026D961 /* TagListView.swift */; };
 		A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4229BF624E0026D961 /* CourseSearchView.swift */; };
 		A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4229BF624E0026D961 /* CourseSearchView.swift */; };
+		A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4529BF77B80026D961 /* CourseDetailView.swift */; };
+		A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4529BF77B80026D961 /* CourseDetailView.swift */; };
+		A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4829BF77CC0026D961 /* NaverMapView.swift */; };
+		A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4829BF77CC0026D961 /* NaverMapView.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -92,8 +96,8 @@
 		A46D713629B7D22700944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713529B7D22700944912 /* Kingfisher */; };
 		A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
 		A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713729B7D94400944912 /* UserTasteCourseCell.swift */; };
-		A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
-		A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailView.swift */; };
+		A46D713C29B7F14600944912 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailViewController.swift */; };
+		A46D713D29B7F14600944912 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailViewController.swift */; };
 		A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
@@ -159,6 +163,8 @@
 		A46B3B3929BF5AB40026D961 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A46B3B3C29BF5B010026D961 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		A46B3B4229BF624E0026D961 /* CourseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchView.swift; sourceTree = "<group>"; };
+		A46B3B4529BF77B80026D961 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
+		A46B3B4829BF77CC0026D961 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -187,7 +193,7 @@
 		A46D712C29B767AC00944912 /* HotCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCourseHeader.swift; sourceTree = "<group>"; };
 		A46D712F29B7799300944912 /* UserTasteCourseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseHeader.swift; sourceTree = "<group>"; };
 		A46D713729B7D94400944912 /* UserTasteCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasteCourseCell.swift; sourceTree = "<group>"; };
-		A46D713B29B7F14600944912 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
+		A46D713B29B7F14600944912 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionView.swift; sourceTree = "<group>"; };
@@ -387,7 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				A4760F0329BC51300080A2CD /* Components */,
-				A46D713B29B7F14600944912 /* CourseDetailView.swift */,
+				A46D713B29B7F14600944912 /* CourseDetailViewController.swift */,
+				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
 			);
 			path = CourseDetail;
 			sourceTree = "<group>";
@@ -415,6 +422,7 @@
 				A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */,
 				A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */,
 				A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */,
+				A46B3B4829BF77CC0026D961 /* NaverMapView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -726,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
@@ -758,11 +767,12 @@
 				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
+				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
-				A46D713C29B7F14600944912 /* CourseDetailView.swift in Sources */,
+				A46D713C29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
 				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
@@ -782,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
@@ -814,11 +825,12 @@
 				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
+				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
-				A46D713D29B7F14600944912 /* CourseDetailView.swift in Sources */,
+				A46D713D29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
 				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
