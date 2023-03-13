@@ -34,6 +34,8 @@
 		A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3929BF5AB40026D961 /* ViewExtension.swift */; };
 		A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3C29BF5B010026D961 /* TagListView.swift */; };
 		A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3C29BF5B010026D961 /* TagListView.swift */; };
+		A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4229BF624E0026D961 /* CourseSearchView.swift */; };
+		A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B4229BF624E0026D961 /* CourseSearchView.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -156,6 +158,7 @@
 		A46B3B3629BF58010026D961 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A46B3B3929BF5AB40026D961 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A46B3B3C29BF5B010026D961 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		A46B3B4229BF624E0026D961 /* CourseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchView.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				A4597BEC29AF7F0400B06132 /* SearchViewController.swift */,
+				A46B3B4229BF624E0026D961 /* CourseSearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -731,6 +735,7 @@
 				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
+				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
@@ -786,6 +791,7 @@
 				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
+				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */,

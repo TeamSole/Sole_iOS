@@ -29,8 +29,12 @@ extension HomeView {
             Image("small_logo")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            Image("search24")
-                .padding(.trailing, 11.0)
+            NavigationLink(destination: {
+                CourseSearchView()
+            }, label: {
+                Image("search24")
+            })
+            .padding(.trailing, 11.0)
             Image("profile24")
         }
         .frame(height: 50.0)

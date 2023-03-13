@@ -12,6 +12,7 @@ extension Color {
     static let mainBlackColor = Color.black_151515
     
     static let blue_4708FA = Color(hex: "4708FA")
+    static let blue_0996F6 = Color(hex: "0996F6")
     
     static let yellow_FBE520 = Color(hex: "FBE520")
     static let yellow_E9FF4B = Color(hex: "E9FF4B")
