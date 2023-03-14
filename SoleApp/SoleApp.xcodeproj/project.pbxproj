@@ -46,6 +46,8 @@
 		A46B3B5229C01C260026D961 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = A46B3B5129C01C260026D961 /* Introspect */; };
 		A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5329C021710026D961 /* NotiSettingView.swift */; };
 		A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5329C021710026D961 /* NotiSettingView.swift */; };
+		A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5629C04D940026D961 /* NotiListView.swift */; };
+		A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5629C04D940026D961 /* NotiListView.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -173,6 +175,7 @@
 		A46B3B4829BF77CC0026D961 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		A46B3B4B29C006440026D961 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		A46B3B5329C021710026D961 /* NotiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingView.swift; sourceTree = "<group>"; };
+		A46B3B5629C04D940026D961 /* NotiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiListView.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -314,6 +317,7 @@
 			children = (
 				A4597BE529AF12E100B06132 /* AccountSettingView.swift */,
 				A46B3B5329C021710026D961 /* NotiSettingView.swift */,
+				A46B3B5629C04D940026D961 /* NotiListView.swift */,
 			);
 			path = MyPageSetting;
 			sourceTree = "<group>";
@@ -781,6 +785,7 @@
 				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
+				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
@@ -841,6 +846,7 @@
 				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
+				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
