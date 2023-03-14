@@ -8,23 +8,44 @@
 import SwiftUI
 
 struct AccountSettingView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var nickName: String = "너구리"
     @State private var introduceInfo: String = "ㅎㅎ"
     var body: some View {
         VStack(spacing: 0.0) {
-            profilImageView
-            customTextField(info: $nickName)
-            introduceTextEditorView
-            Spacer()
-            saveButton
-            secessionButton
+            navigationBar
+            VStack(spacing: 0.0) {
+                profilImageView
+                customTextField(info: $nickName)
+                introduceTextEditorView
+                Spacer()
+                saveButton
+                secessionButton
+            }
+            .padding(.horizontal, 16.0)
         }
-        .padding(.horizontal, 16.0)
-        .navigationTitle("계정설정")
     }
 }
 
 extension AccountSettingView {
+    private var navigationBar: some View {
+        ZStack {
+            Image("arrow_back")
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            Text("마이페이지")
+                .foregroundColor(.black)
+                .font(.pretendard(.medium, size: 16.0))
+                .frame(maxWidth: .infinity,
+                       alignment: .center)
+        }
+        .frame(height: 48.0)
+        .padding(.horizontal, 16.0)
+    }
+    
     private var profilImageView: some View {
         ZStack(alignment: .bottomTrailing) {
             Image("profile56")
