@@ -1,5 +1,5 @@
 //
-//  CourseDetailView.swift
+//  CourseDetailViewController.swift
 //  SoleApp
 //
 //  Created by SUN on 2023/03/08.

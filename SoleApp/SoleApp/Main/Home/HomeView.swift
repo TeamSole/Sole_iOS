@@ -35,7 +35,11 @@ extension HomeView {
                 Image("search24")
             })
             .padding(.trailing, 11.0)
-            Image("profile24")
+            NavigationLink(destination: {
+                MyPageView()
+            }, label: {
+                Image("profile24")
+            })
         }
         .frame(height: 50.0)
         .padding(.horizontal, 16.0)
@@ -58,8 +62,13 @@ extension HomeView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0) {
                     ForEach(0..<5) { index in
-                        hotCourseSectionItem(image: nil, title: "따듯한 3월에 가기 좋은 삼정동", course: "전시코스")
-                            .cornerRadius(4.0)
+                        NavigationLink(destination: {
+                            CourseDetailView()
+                        }, label: {
+                            hotCourseSectionItem(image: nil, title: "따듯한 3월에 가기 좋은 삼정동", course: "전시코스")
+                                .cornerRadius(4.0)
+                        })
+                        
                     }
                 }
             }
