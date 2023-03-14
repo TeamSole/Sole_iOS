@@ -496,6 +496,7 @@
 			children = (
 				A46D713E29B8C70700944912 /* Following */,
 				A441776F29A3B4DC00FAE837 /* MyPage */,
+				A4E052E629BE15EA00FDB84B /* History */,
 				A4D983CF299F661C008C599D /* Home */,
 				A4D983CC299F6560008C599D /* MainTabbarViewController.swift */,
 				A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */,
@@ -506,7 +507,6 @@
 		A4D983CF299F661C008C599D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A4E052E629BE15EA00FDB84B /* History */,
 				A46D713A29B7F12C00944912 /* CourseDetail */,
 				A4597BEB29AF7EF100B06132 /* Search */,
 				A4597BCC29A89D8800B06132 /* Component */,
