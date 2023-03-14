@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct HistoryView: View {
+    @State private var isShowSelectTagView: Bool = false
     private let filterType: [String] = ["장소", "동행", "교통"]
     var body: some View {
         VStack(spacing: 0.0) {
@@ -21,6 +22,10 @@ struct HistoryView: View {
                 }
             }
         }
+        .sheet(isPresented: $isShowSelectTagView,
+               content: {
+            SelectTagView()
+        })
     }
 }
 
@@ -100,6 +105,9 @@ extension HistoryView {
                         RoundedRectangle(cornerRadius: 4.0)
                             .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
                     )
+                    .onTapGesture {
+                        isShowSelectTagView = true
+                    }
                     
                 }
             }

@@ -21,7 +21,7 @@ struct MainTabbarView: View {
                         Text("홈")
                     }
                     .tag(0)
-                HomeView()
+                HistoryView()
                     .tabItem {
                         selectedIndex == 1 ? Image("history_tap_selected") : Image("history_tap")
                         Text("나의 기록")

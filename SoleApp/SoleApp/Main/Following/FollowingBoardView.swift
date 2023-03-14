@@ -48,6 +48,8 @@ extension FollowingBoardView {
             courseHeader(image: nil, userName: "닉네임", isScraped: true)
             courseItem(image: nil, courseName: "코스이름", description: "전시를 관람하다보면 창을 통해 빛이 들어오는 구도까지 생각해서 전시를 기획하는 것 같다는 느낌을 받았어요. 요시고 사진전에 이어서 이번 겨울, 많은 사람들이 사랑할 전시회가 되지 않을까 싶어요. 평일에 방문했더니 관람객이 별로 없어서 웨이팅 없이 여유롭게 전시를 관람할 수 있었어요!")
         }
+        .frame(maxWidth: .infinity,
+               alignment: .leading)
         .padding(.horizontal, 16.0)
     }
     
@@ -87,9 +89,9 @@ extension FollowingBoardView {
             Text(description)
                 .font(Font(UIFont.pretendardRegular(size: 13.0)))
                 .foregroundColor(.black)
-                .lineLimit(0)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
+                .lineLimit(nil)
             
         }
     }
