@@ -53,8 +53,8 @@ extension MyPageView {
                             .frame(width: 56.0,
                                    height: 56.0)
                     }
-                    .frame(width: 40.0,
-                           height: 40.0)
+                    .frame(width: 56.0,
+                           height: 56.0)
                 VStack(spacing: 3.0) {
                     HStack() {
                         Text("닉네임")

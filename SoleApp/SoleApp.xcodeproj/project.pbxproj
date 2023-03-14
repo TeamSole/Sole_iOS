@@ -50,6 +50,10 @@
 		A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5629C04D940026D961 /* NotiListView.swift */; };
 		A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5A29C070220026D961 /* SelectTagView.swift */; };
 		A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5A29C070220026D961 /* SelectTagView.swift */; };
+		A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */; };
+		A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */; };
+		A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
+		A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -179,6 +183,8 @@
 		A46B3B5329C021710026D961 /* NotiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingView.swift; sourceTree = "<group>"; };
 		A46B3B5629C04D940026D961 /* NotiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiListView.swift; sourceTree = "<group>"; };
 		A46B3B5A29C070220026D961 /* SelectTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTagView.swift; sourceTree = "<group>"; };
+		A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderView.swift; sourceTree = "<group>"; };
+		A46B3B6129C0A6230026D961 /* ScrapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListView.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -340,6 +346,15 @@
 				A46B3B5A29C070220026D961 /* SelectTagView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A46B3B5D29C09D610026D961 /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */,
+				A46B3B6129C0A6230026D961 /* ScrapListView.swift */,
+			);
+			path = Scrap;
 			sourceTree = "<group>";
 		};
 		A46B46DD299295CB001FAED3 /* Frameworks */ = {
@@ -505,6 +520,7 @@
 		A4D983CB299F64E3008C599D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A46B3B5D29C09D610026D961 /* Scrap */,
 				A46D713E29B8C70700944912 /* Following */,
 				A441776F29A3B4DC00FAE837 /* MyPage */,
 				A4E052E629BE15EA00FDB84B /* History */,
@@ -781,6 +797,7 @@
 				A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
+				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
@@ -799,6 +816,7 @@
 				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
+				A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
@@ -843,6 +861,7 @@
 				A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
+				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
@@ -861,6 +880,7 @@
 				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
+				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,

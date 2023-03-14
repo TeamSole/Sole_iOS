@@ -33,7 +33,7 @@ struct MainTabbarView: View {
                         Text("팔로잉")
                     }
                     .tag(2)
-                HomeView()
+                ScrapFolderView()
                     .tabItem {
                         selectedIndex == 3 ? Image("scrap_tap_selected") : Image("scrap_tap")
                         Text("스크랩")

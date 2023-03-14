@@ -128,7 +128,7 @@ extension HistoryView {
     }
     
     private func courseHistoryItem(image url: URL?, title: String, locationInfo: String, tagList: [String]) -> some View {
-        HStack(spacing: 15.0) {
+        HStack(alignment: .top, spacing: 15.0) {
             KFImage(url)
                 .placeholder {
                     Image(uiImage: UIImage(named: "profile56") ?? UIImage())
