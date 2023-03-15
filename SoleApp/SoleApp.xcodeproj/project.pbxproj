@@ -54,6 +54,10 @@
 		A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */; };
 		A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
 		A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
+		A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */; };
+		A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */; };
+		A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
+		A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
 		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
 		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -185,6 +189,8 @@
 		A46B3B5A29C070220026D961 /* SelectTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTagView.swift; sourceTree = "<group>"; };
 		A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderView.swift; sourceTree = "<group>"; };
 		A46B3B6129C0A6230026D961 /* ScrapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListView.swift; sourceTree = "<group>"; };
+		A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCouseView.swift; sourceTree = "<group>"; };
+		A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 				A4760F0329BC51300080A2CD /* Components */,
 				A46D713B29B7F14600944912 /* CourseDetailViewController.swift */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
+				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
 			);
 			path = CourseDetail;
 			sourceTree = "<group>";
@@ -465,6 +472,7 @@
 				A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */,
 				A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */,
 				A46B3B4829BF77CC0026D961 /* NaverMapView.swift */,
+				A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -820,6 +828,7 @@
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
+				A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A46D712D29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
@@ -828,6 +837,7 @@
 				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
+				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
@@ -884,6 +894,7 @@
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
+				A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */,
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A46D712E29B767AC00944912 /* HotCourseHeader.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
@@ -892,6 +903,7 @@
 				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
+				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
