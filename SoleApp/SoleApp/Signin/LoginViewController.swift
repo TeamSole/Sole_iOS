@@ -154,7 +154,7 @@ extension LoginViewController {
         ]
         
 //        let model = SignUpModel()
-        let subModel = Model(accessToken: token)
+        let subModel = SignUpModel(accessToken: token)
         let subModel2 = OauthRequest(accessToken: token)
         
 //        let parameter: [String: Any] = [
@@ -194,7 +194,7 @@ extension LoginViewController {
             "Content-Type" : "multipart/form-data"
         ]
         
-        let subModel = Model(accessToken: token)
+        let subModel = SignUpModel(accessToken: token)
         AF.upload(multipartFormData: { multipart in
 //            for (key, value) in parameter {
                 let data = try? JSONEncoder().encode(subModel)

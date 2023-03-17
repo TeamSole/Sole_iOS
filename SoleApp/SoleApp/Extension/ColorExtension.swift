@@ -26,10 +26,14 @@ extension Color {
     static let gray_404040 = Color(hex: "404040")
     static let gray_383838 = Color(hex: "383838")
     
+    static let green_8BDEB5 = Color(hex: "8BDEB5")
+
+    
     static let black_151515 = Color(hex: "151515")
     
     
-    
+    static let red_FF717D = Color(hex: "FF717D")
+
     
     
     init(hex: String){

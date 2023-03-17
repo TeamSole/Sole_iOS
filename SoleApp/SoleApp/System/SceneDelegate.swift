@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UIHostingController(rootView: MainTabbarView()) // MainTabbarViewController()//UINavigationController(rootViewController: LoginViewController())//
+        let mainViewModel = AppDelegate.shared.mainViewModel
+        window?.rootViewController = UIHostingController(rootView: SignInView()) // MainTabbarViewController()//UINavigationController(rootViewController: LoginViewController())//
         window?.backgroundColor = .white
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()

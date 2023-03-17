@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct SignUpCompleteView: View {
+    @StateObject var viewModel: SignUpViewModel
+    @State private var rotateDegree: Double = 10.0
     var body: some View {
         VStack(spacing: 0.0) {
             completeDescriptionView
             logoView
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
+                rotateDegree = rotateDegree == 10 ? -10 : 10
+            }
         }
     }
 }
@@ -37,6 +44,7 @@ extension SignUpCompleteView {
     private var logoView: some View {
         VStack(spacing: 0.0) {
             Image("onlyLogo")
+                .rotationEffect(.degrees(rotateDegree))
         }
         .frame(maxWidth: .infinity,
                maxHeight: .infinity)
@@ -45,6 +53,6 @@ extension SignUpCompleteView {
 
 struct SignUpCompleteView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpCompleteView()
+        SignUpCompleteView(viewModel: .init())
     }
 }

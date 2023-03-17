@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct SignInView: View {
+    @State private var showSignUpView: Bool = false
+    
+    let signUpViewModel = SignUpViewModel()
     var body: some View {
-        VStack(spacing: 0.0) {
-            logoView
-            SignInButtonsView
-            addminInfoView
+        NavigationView {
+            VStack(spacing: 0.0) {
+                logoView
+                SignInButtonsView
+                addminInfoView
+                navigateToSignUpView
+            }
         }
     }
 }
@@ -49,6 +55,10 @@ extension SignInView {
         .background(Color.yellow_FBE520)
         .cornerRadius(4.0)
         .padding(.horizontal, 16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            showSignUpView = true
+        }
     }
     
     private var appleSigninView: some View {
@@ -78,6 +88,15 @@ extension SignInView {
                 .foregroundColor(.gray_999999)
         }
         .padding(.bottom, 16.0)
+    }
+    
+    private var navigateToSignUpView: some View {
+        NavigationLink(destination:
+                        SignUpAgreeTermsView(viewModel: signUpViewModel),
+                       isActive: $showSignUpView,
+                       label: {
+            EmptyView()
+        })
     }
 }
 

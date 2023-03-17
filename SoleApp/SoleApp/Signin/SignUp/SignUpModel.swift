@@ -8,15 +8,10 @@
 import Foundation
 
 struct SignUpModel: Codable {
-    var memberRequestDto: MemberRequestDto
-    var oauthRequest: OauthRequest
-    var multipartFile: Data
-}
-struct Model: Codable {
     var infoAccepted: Bool = false
     var marketingAccepted: Bool = false
     var serviceAccepted: Bool = false
-    var nickname: String = "gg"
+    var nickname: String = ""
     var accessToken: String = ""
     var fcmToken: String = ""
 }

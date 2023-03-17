@@ -132,12 +132,16 @@
 		A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
 		A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
 		A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
-		A47EEA5429C1F1DC006BA3DB /* SignUpFirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5329C1F1DC006BA3DB /* SignUpFirstStepView.swift */; };
-		A47EEA5529C1F1DC006BA3DB /* SignUpFirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5329C1F1DC006BA3DB /* SignUpFirstStepView.swift */; };
+		A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */; };
+		A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */; };
 		A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */; };
 		A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */; };
 		A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
 		A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
+		A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
+		A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
+		A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
+		A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -236,9 +240,11 @@
 		A4760F0D29BC6C060080A2CD /* CollectionViewAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayout.swift; sourceTree = "<group>"; };
 		A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		A47EEA5329C1F1DC006BA3DB /* SignUpFirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstStepView.swift; sourceTree = "<group>"; };
+		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
 		A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
 		A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteView.swift; sourceTree = "<group>"; };
+		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -430,9 +436,10 @@
 				A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */,
 				A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */,
 				A4597BD729A9C1C200B06132 /* SignUpModel.swift */,
-				A47EEA5329C1F1DC006BA3DB /* SignUpFirstStepView.swift */,
+				A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */,
 				A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */,
 				A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */,
+				A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -528,10 +535,10 @@
 				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
 				A4D983CB299F64E3008C599D /* Main */,
+				A46B46E42994B44E001FAED3 /* Signin */,
 				A4D983CA299F64CD008C599D /* System */,
 				A46B46F029966F2B001FAED3 /* Font */,
 				A46B46E02993125C001FAED3 /* Extension */,
-				A46B46E42994B44E001FAED3 /* Signin */,
 				A4C31C8229913CF00014F458 /* Assets.xcassets */,
 				A4C31C8429913CF00014F458 /* LaunchScreen.storyboard */,
 				A4C31C8729913CF00014F458 /* Info.plist */,
@@ -559,6 +566,7 @@
 				A4D983CF299F661C008C599D /* Home */,
 				A4D983CC299F6560008C599D /* MainTabbarViewController.swift */,
 				A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */,
+				A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -817,6 +825,7 @@
 				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
+				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A4760F0E29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
@@ -864,7 +873,7 @@
 				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
-				A47EEA5429C1F1DC006BA3DB /* SignUpFirstStepView.swift in Sources */,
+				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
@@ -876,6 +885,7 @@
 				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712A29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 				A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
+				A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +897,7 @@
 				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
+				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A4760F0F29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
@@ -934,7 +945,7 @@
 				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
-				A47EEA5529C1F1DC006BA3DB /* SignUpFirstStepView.swift in Sources */,
+				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
@@ -946,6 +957,7 @@
 				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712B29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 				A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
+				A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

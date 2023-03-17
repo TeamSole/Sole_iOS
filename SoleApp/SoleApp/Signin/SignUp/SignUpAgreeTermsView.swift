@@ -1,5 +1,5 @@
 //
-//  SignUpFirstStepView.swift
+//  SignUpAgreeTermsView.swift
 //  SoleApp
 //
 //  Created by SUN on 2023/03/15.
@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-struct SignUpFirstStepView: View {
+struct SignUpAgreeTermsView: View {
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var viewModel: SignUpViewModel
+    
+    @State private var showSignUpUserInfoView: Bool = false
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -16,12 +20,13 @@ struct SignUpFirstStepView: View {
             allCheckBoxView
             checkTermsView
             continueButton
+            navigateToSignUpUserInfoView
         }
         .navigationBarHidden(true)
     }
 }
 
-extension SignUpFirstStepView {
+extension SignUpAgreeTermsView {
     private var navigationBar: some View {
         ZStack {
             Image("arrow_back")
@@ -60,7 +65,12 @@ extension SignUpFirstStepView {
     private var allCheckBoxView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 14.0) {
-                Image("radio_button_unchecked")
+                Image(viewModel.isSelectedAllTerms
+                      ? "check_circle"
+                      : "radio_button_unchecked")
+                    .onTapGesture {
+                        viewModel.didTapCheckAllTerms()
+                    }
                 Text("약관 전체 동의")
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
@@ -77,7 +87,12 @@ extension SignUpFirstStepView {
     private var checkTermsView: some View {
         VStack(spacing: 16.0) {
             HStack(spacing: 14.0) {
-                Image("radio_button_unchecked")
+                Image(viewModel.isSelectedFirstTerm
+                      ? "check_circle"
+                      : "radio_button_unchecked")
+                .onTapGesture {
+                    viewModel.isSelectedFirstTerm.toggle()
+                }
                 Text("서비스 이용약관 동의 (필수)")
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
@@ -87,7 +102,12 @@ extension SignUpFirstStepView {
             }
             
             HStack(spacing: 14.0) {
-                Image("radio_button_unchecked")
+                Image(viewModel.isSelectedSecondTerm
+                      ? "check_circle"
+                      : "radio_button_unchecked")
+                .onTapGesture {
+                    viewModel.isSelectedSecondTerm.toggle()
+                }
                 Text("개인정보 처리방침 동의 (필수)")
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
@@ -97,7 +117,12 @@ extension SignUpFirstStepView {
             }
             
             HStack(spacing: 14.0) {
-                Image("radio_button_unchecked")
+                Image(viewModel.isSelectedThirdTerm
+                      ? "check_circle"
+                      : "radio_button_unchecked")
+                .onTapGesture {
+                    viewModel.isSelectedThirdTerm.toggle()
+                }
                 Text("마케팅 정보 제공 및 수신 동의 (선택)")
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
@@ -118,15 +143,31 @@ extension SignUpFirstStepView {
             .frame(maxWidth: .infinity,
                    alignment: .center)
             .frame(height: 48.0)
-            .background(Color.blue_4708FA)
+            .background(viewModel.isValidCheckingTerms
+                        ? Color.blue_4708FA
+                        : Color.gray_D3D4D5)
             .cornerRadius(8.0)
             .padding(.horizontal, 16.0)
             .padding(.bottom, 40.0)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                guard viewModel.isValidCheckingTerms else { return }
+                showSignUpUserInfoView = true
+            }
+    }
+    
+    private var navigateToSignUpUserInfoView: some View {
+        NavigationLink(destination:
+                        SignUpUserInfoView(viewModel: viewModel),
+                       isActive: $showSignUpUserInfoView,
+                       label: {
+            EmptyView()
+        })
     }
 }
 
 struct SignUpFirstStepView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpFirstStepView()
+        SignUpAgreeTermsView(viewModel: .init())
     }
 }
