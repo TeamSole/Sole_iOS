@@ -16,31 +16,22 @@ struct SignUpModel: Codable {
     var fcmToken: String = ""
 }
 
-struct MemberRequestDto: Codable {
-    var infoAccepted: Bool = false
-    var marketingAccepted: Bool = false
-    var serviceAccepted: Bool = false
-    var nickname: String = "gg"
-}
-
-struct OauthRequest: Codable {
-    var accessToken: String = ""
-}
-
 
 struct SignUpModelResponse: Codable {
-    var status: Int
-    var success: Bool
-    var data: DataModel?
+    let data: DataClass?
+    let status: Int
+    let success: Bool
 }
 
-struct DataModel: Codable {
-    var accessToken: String?
-    var email: String?
-    var memberId: Int?
-    var nickname: String?
-    var profileImgUrl: String?
-    var refreshToken: String?
-    var role: String?
-    var social: String?
+// MARK: - DataClass
+struct DataClass: Codable {
+    let accessToken: String?
+    let check: Bool?
+    let memberId: Int?
+    let nickname: String
+    let profileImgURL: String?
+    let refreshToken: String?
+    let role: String?
+    let social: String?
+    let socialId: String?
 }

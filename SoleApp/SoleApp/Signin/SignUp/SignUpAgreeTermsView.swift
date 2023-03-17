@@ -152,6 +152,7 @@ extension SignUpAgreeTermsView {
             .contentShape(Rectangle())
             .onTapGesture {
                 guard viewModel.isValidCheckingTerms else { return }
+                viewModel.setSignupData()
                 showSignUpUserInfoView = true
             }
     }

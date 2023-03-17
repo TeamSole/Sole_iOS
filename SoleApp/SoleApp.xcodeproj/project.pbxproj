@@ -142,6 +142,10 @@
 		A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
 		A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
 		A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
+		A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
+		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
+		A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
+		A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -245,6 +249,8 @@
 		A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteView.swift; sourceTree = "<group>"; };
 		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		A47EEA6A29C50C7D006BA3DB /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -503,8 +509,17 @@
 		A47EEA5229C1EB7B006BA3DB /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				A47EEA6A29C50C7D006BA3DB /* IntroView.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		A47EEA6429C45B88006BA3DB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEA6529C45B96006BA3DB /* Utility.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		A4C31C6D29913CF00014F458 = {
@@ -531,6 +546,7 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A47EEA6429C45B88006BA3DB /* Util */,
 				A47EEA5229C1EB7B006BA3DB /* Intro */,
 				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
@@ -835,6 +851,7 @@
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
+				A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */,
 				A46D713829B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
@@ -876,6 +893,7 @@
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CD299F6560008C599D /* MainTabbarViewController.swift in Sources */,
+				A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */,
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
@@ -907,6 +925,7 @@
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
+				A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */,
 				A46D713929B7D94400944912 /* UserTasteCourseCell.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
@@ -948,6 +967,7 @@
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A4D983CE299F6560008C599D /* MainTabbarViewController.swift in Sources */,
+				A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */,
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,

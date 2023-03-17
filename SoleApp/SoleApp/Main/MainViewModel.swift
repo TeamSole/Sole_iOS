@@ -8,5 +8,6 @@
 import SwiftUI
 
 final class MainViewModel: ObservableObject {
-    
+    @Published var canShowMain = false
+    @Published var existToken = false
 }

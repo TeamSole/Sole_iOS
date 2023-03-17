@@ -13,7 +13,7 @@ struct SignUpUserInfoView: View {
     @State private var nickName: String = ""
     @State private var showPhotoPicker: Bool = false
     @State private var showSignUpCompleteView: Bool = false
-    @State private var selectedImage: UIImage? = nil
+
    
     var body: some View {
         VStack(spacing: 0.0) {
@@ -32,7 +32,7 @@ struct SignUpUserInfoView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: results) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-                            selectedImage = first
+                            viewModel.selectedImage = first
                         }
                     }
                 }
@@ -62,13 +62,13 @@ extension SignUpUserInfoView {
     
     private var profileImageView: some View {
         ZStack(alignment: .bottomTrailing) {
-            if selectedImage == nil {
+            if viewModel.selectedImage == nil {
                 Image("profile56")
                     .resizable()
                     .frame(width: 120.0,
                            height: 120.0)
             } else {
-                Image(uiImage: selectedImage!)
+                Image(uiImage: viewModel.selectedImage!)
                     .resizable()
                     .frame(width: 120.0,
                            height: 120.0)
@@ -132,6 +132,11 @@ extension SignUpUserInfoView {
             .contentShape(Rectangle())
             .onTapGesture {
                 guard viewModel.isAvailableNickname == true else { return }
+                viewModel.model.nickname = nickName
+                viewModel.signUp {
+                    showSignUpCompleteView = true
+                }
+                
             }
     }
     

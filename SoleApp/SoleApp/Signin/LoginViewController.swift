@@ -155,7 +155,7 @@ extension LoginViewController {
         
 //        let model = SignUpModel()
         let subModel = SignUpModel(accessToken: token)
-        let subModel2 = OauthRequest(accessToken: token)
+//        let subModel2 = OauthRequest(accessToken: token)
         
 //        let parameter: [String: Any] = [
 //            "infoAccepted": subModel.infoAccepted,
