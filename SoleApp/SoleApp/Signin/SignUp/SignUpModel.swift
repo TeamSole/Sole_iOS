@@ -28,8 +28,8 @@ struct DataClass: Codable {
     let accessToken: String?
     let check: Bool?
     let memberId: Int?
-    let nickname: String
-    let profileImgURL: String?
+    let nickname: String?
+    let profileImgUrl: String?
     let refreshToken: String?
     let role: String?
     let social: String?

@@ -13,7 +13,13 @@ struct CourseDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var availableWidth: CGFloat = 10
     @State private var isExpanded: Bool = false
+    @State private var isScrapped: Bool = false
     @State private var showActionSheet: Bool = false
+    @State private var showPopup: Bool = false
+    @State private var alertType: DetailViewAlertType = .declare
+    @State private var isFollowing: Bool = true
+    private var titltInfo = ["너구리 라면집", "도쿄등심 롯데 캐슬 잠실점", "전시관"]
+    private var subtitleInfo = ["한식", "소고기구이", "전시"]
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -30,6 +36,12 @@ struct CourseDetailView: View {
         }
         .navigationBarHidden(true)
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
+        .modifier(CourseDetailPopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
+                                            complete: {
+            if alertType == .remove {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }))
     }
 }
 
@@ -42,10 +54,15 @@ extension CourseDetailView {
                 .onTapGesture {
                     presentationMode.wrappedValue.dismiss()
                 }
-            Image(systemName: "heart")
-            Image("more-vertical")
+            Image(isScrapped ? "love_selected" : "love")
                 .onTapGesture {
-                    showActionSheet = true
+                    isScrapped.toggle()
+                }
+//            Image("more-vertical")
+            Image("report")
+                .onTapGesture {
+                    alertType = .declare
+                    showPopup = true
                 }
         }
         .frame(height: 48.0)
@@ -72,19 +89,19 @@ extension CourseDetailView {
                 .frame(width: 40.0,
                        height: 40.0)
             VStack(spacing: 3.0) {
-                Text("닉네임")
+                Text("너구리 친구 라쿤")
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 7.0) {
-                    Text("팔로워")
+                    Text("팔로워 0")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                     Color.black
                         .frame(width: 1.0,
                                height: 11.0)
-                    Text("팔로잉")
+                    Text("팔로잉 0")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                         .frame(maxWidth: .infinity,
@@ -93,17 +110,20 @@ extension CourseDetailView {
                 }
             }
             .padding(.leading)
-            Text("팔로잉")
-                .foregroundColor(.blue_4708FA)
+            Text(isFollowing ? "팔로잉" : "팔로우")
+                .foregroundColor(isFollowing ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
                        height: 20.0,
                        alignment: .center)
-                .background(Color.white)
+                .background(isFollowing ? Color.white : Color.blue_4708FA)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
                         .stroke(Color.blue_4708FA, lineWidth: 1.0)
                 )
+                .onTapGesture {
+                    isFollowing.toggle()
+                }
             
                
         }
@@ -114,7 +134,7 @@ extension CourseDetailView {
     private var courseSummarySectionView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             HStack(spacing: 0.0) {
-                Text("코스 이름")
+                Text("너구리 추천 코스")
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -143,7 +163,7 @@ extension CourseDetailView {
                     availableWidth = size.width
                 }
             TagListView(availableWidth: availableWidth,
-                        data:  ["1", "2", "3", "4"],
+                        data:  ["🍚 맛집", "☕️ 카페", "🙋‍♀️ 혼자서", "👟 걸어서"],
                         spacing: 8.0,
                         alignment: .leading,
                         isExpandedUserTagListView: .constant(false),
@@ -181,7 +201,7 @@ extension CourseDetailView {
             }
             .padding(.horizontal, 16.0)
             .frame(height: 40.0)
-            ForEach(0..<4) { index in
+            ForEach(0..<3) { index in
                 courseDetailItem(index: index)
             }
         }
@@ -189,7 +209,7 @@ extension CourseDetailView {
     
     private func courseDetailItem(index: Int) -> some View {
         HStack(alignment: .top, spacing: 16.0) {
-            Text("\(index)")
+            Text("\(index + 1)")
                 .font(.pretendard(.bold, size: 12))
                 .foregroundColor(.white)
                 .frame(width: 20.0,
@@ -197,10 +217,10 @@ extension CourseDetailView {
                 .background(Color.blue_4708FA.cornerRadius(10.0))
             VStack(spacing: 0.0) {
                 HStack(spacing: 12.0) {
-                    Text("도쿄등심 롯데 캐슬 잠실점")
+                    Text(titltInfo[index])
                         .font(.pretendard(.medium, size: 15.0))
                         .foregroundColor(.black)
-                    Text("소고기 구이")
+                    Text(subtitleInfo[index])
                         .font(.pretendard(.reguler, size: 12.0))
                         .foregroundColor(.black)
                 }
@@ -228,8 +248,9 @@ extension CourseDetailView {
                             ForEach(0..<4) { index in
                                 KFImage(nil)
                                     .placeholder {
-                                        Image(uiImage: UIImage(named: "profile24") ?? UIImage())
-                                            .resizable()
+//                                        Image(uiImage: UIImage(named: "splash_logo") ?? UIImage())
+//                                            .resizable()
+                                        Color.gray_D3D4D5
                                             .frame(width: 140.0,
                                                    height: 140.0)
                                     }
@@ -276,7 +297,10 @@ extension CourseDetailView {
     }
     
     func getActionSheet() -> ActionSheet {
-        let button1: ActionSheet.Button = .default(Text("수정"))
+        let button1: ActionSheet.Button = .default(Text("수정"),
+                                                   action: {
+            
+        })
         let button2: ActionSheet.Button = .default(Text("삭제"))
         let button3: ActionSheet.Button = .cancel(Text("취소"))
         

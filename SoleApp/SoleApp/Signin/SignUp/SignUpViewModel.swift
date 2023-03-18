@@ -9,8 +9,9 @@ import Foundation
 import Alamofire
 import SwiftUI
 import KakaoSDKUser
+import AuthenticationServices
 
-final class SignUpViewModel: ObservableObject {
+final class SignUpViewModel: NSObject, ObservableObject {
     var model: SignUpModel = SignUpModel()
 
     @Published var isSelectedFirstTerm: Bool = false
@@ -21,6 +22,8 @@ final class SignUpViewModel: ObservableObject {
     @Published var isAvailableNickname: Bool? = nil
     @Published var token: String = ""
     @Published var selectedImage: UIImage? = nil
+    
+    @Published var showSignUpView: Bool = false
     
     var isSelectedAllTerms: Bool {
         return isSelectedFirstTerm && isSelectedSecondTerm && isSelectedThirdTerm
@@ -73,6 +76,41 @@ extension SignUpViewModel {
             }
     }
     
+    func kakaoLogin(complete: @escaping () -> ()) {
+        loginPlaform = "kakao"
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+
+                    //do something
+                    if let token = oauthToken?.accessToken {
+                        self.token = token
+                        complete()
+                    }
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    
+                    //do something
+                    if let token = oauthToken?.accessToken {
+                        self.token = token
+                        complete()
+                    }
+                }
+            }
+        }
+    }
+    
     func signUp(complete: (() -> ())? = nil) {
         guard loginPlaform.isEmpty == false,
               token.isEmpty == false,
@@ -84,15 +122,16 @@ extension SignUpViewModel {
         AF.upload(multipartFormData: { [weak self] multipart in
             let data = try? JSONEncoder().encode(subModel)
             multipart.append(data!, withName: "memberRequestDto")
-            if let image = self?.selectedImage?.pngData() {
-                multipart.append(image, withName: "multipartFile", fileName: "\(image).png", mimeType: "image/png")
+            if let image = self?.selectedImage?.jpegData(compressionQuality: 1.0) {
+                multipart.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
             }
         }, to: url, method: .post, headers: header)
-        .responseDecodable(of: SignUpModelResponse.self, completionHandler: { response in
+        .responseDecodable(of: SignUpModelResponse.self, completionHandler: { [weak self] response in
             switch response.result {
             case .success(let response):
                 if let token = response.data?.accessToken {
                     Utility.save(key: Constant.token, value: token)
+                    Utility.save(key: Constant.loginPlatform, value: self?.loginPlaform ?? "")
                     AppDelegate.shared.mainViewModel.existToken = true
                     AppDelegate.shared.mainViewModel.canShowMain = true
                     complete?()
@@ -102,6 +141,7 @@ extension SignUpViewModel {
             }
         })
     }
+    
     
     func setSignupData() {
         model.serviceAccepted = isSelectedFirstTerm
@@ -121,5 +161,40 @@ private extension SignUpViewModel {
         }
     }
     
+    private func checkAlreadyExistAccount(token: String) {
+        
+    }
+}
+
+extension SignUpViewModel: ASAuthorizationControllerDelegate {
     
+    private func performAppleSignIn() {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.performRequests()
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+            // Apple ID
+            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                    
+                // 계정 정보 가져오기
+                let userIdentifier = appleIDCredential.user
+                let fullName = appleIDCredential.fullName
+                let email = appleIDCredential.email
+                    
+                print("User ID : \(userIdentifier)")
+                print("User Email : \(email ?? "")")
+                print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+            
+            token = String(decoding: appleIDCredential.identityToken ?? Data(), as: UTF8.self)
+            
+            default:
+                break
+            }
+    }
 }

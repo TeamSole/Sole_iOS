@@ -21,9 +21,14 @@ struct SignUpUserInfoView: View {
             profileImageView
             nickNameTextFieldView
             continueButton
+            navigateToSignUpSignUpCompleteView
         }
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
+        .onAppear {
+            viewModel.isAvailableNickname = nil
+            viewModel.selectedImage = nil
+        }
         .sheet(isPresented: $showPhotoPicker,
                content: {
             PhotoPicker(isPresented: $showPhotoPicker,
@@ -140,13 +145,15 @@ extension SignUpUserInfoView {
             }
     }
     
-    private var navigateToSignUpUserInfoView: some View {
+    private var navigateToSignUpSignUpCompleteView: some View {
         NavigationLink(destination:
-                        SignUpCompleteView(viewModel: viewModel),
+                        SignUpCompleteView(viewModel: viewModel)
+            .environmentObject(AppDelegate.shared.mainViewModel),
                        isActive: $showSignUpCompleteView,
                        label: {
             EmptyView()
         })
+        .isDetailLink(false)
     }
 }
 

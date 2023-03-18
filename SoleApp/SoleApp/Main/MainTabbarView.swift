@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabbarView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var selectedIndex: Int = 0
     init() {
         UITabBar.appearance().backgroundColor = .white

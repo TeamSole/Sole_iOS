@@ -66,8 +66,6 @@
 		A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E62994B49A001FAED3 /* LoginButtonView.swift */; };
 		A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E92994B769001FAED3 /* UIColor.swift */; };
 		A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E92994B769001FAED3 /* UIColor.swift */; };
-		A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46ED299665DD001FAED3 /* SignUpFirstStepViewController.swift */; };
-		A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46ED299665DD001FAED3 /* SignUpFirstStepViewController.swift */; };
 		A46B46FA29966FBF001FAED3 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B46F129966FBE001FAED3 /* Pretendard-ExtraBold.otf */; };
 		A46B46FB29966FBF001FAED3 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B46F129966FBE001FAED3 /* Pretendard-ExtraBold.otf */; };
 		A46B46FC29966FBF001FAED3 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B46F229966FBE001FAED3 /* Pretendard-Light.otf */; };
@@ -88,18 +86,10 @@
 		A46B470B29966FBF001FAED3 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B46F929966FBF001FAED3 /* Pretendard-Thin.otf */; };
 		A46B470D29967086001FAED3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B470C29967086001FAED3 /* UIFont.swift */; };
 		A46B470E29967086001FAED3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B470C29967086001FAED3 /* UIFont.swift */; };
-		A46B4710299677C9001FAED3 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B470F299677C9001FAED3 /* CheckBoxView.swift */; };
-		A46B4711299677C9001FAED3 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B470F299677C9001FAED3 /* CheckBoxView.swift */; };
-		A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B47122996845F001FAED3 /* SignUpFirstStepViewModel.swift */; };
-		A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B47122996845F001FAED3 /* SignUpFirstStepViewModel.swift */; };
 		A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471529975CDE001FAED3 /* UIViewController.swift */; };
 		A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471529975CDE001FAED3 /* UIViewController.swift */; };
-		A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */; };
-		A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */; };
 		A46B471C2998B395001FAED3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471B2998B395001FAED3 /* UIButton.swift */; };
 		A46B471D2998B395001FAED3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471B2998B395001FAED3 /* UIButton.swift */; };
-		A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */; };
-		A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */; };
 		A46B4722299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
 		A46B4723299929C4001FAED3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B4721299929C4001FAED3 /* UITextField.swift */; };
 		A46B472529992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
@@ -146,6 +136,10 @@
 		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
 		A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
+		A47EEA6E29C530F0006BA3DB /* CourseDetailPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */; };
+		A47EEA6F29C530F0006BA3DB /* CourseDetailPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */; };
+		A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
+		A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -210,7 +204,6 @@
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E62994B49A001FAED3 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		A46B46ED299665DD001FAED3 /* SignUpFirstStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstStepViewController.swift; sourceTree = "<group>"; };
 		A46B46F129966FBE001FAED3 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		A46B46F229966FBE001FAED3 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		A46B46F329966FBE001FAED3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -221,12 +214,8 @@
 		A46B46F829966FBF001FAED3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		A46B46F929966FBF001FAED3 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		A46B470C29967086001FAED3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		A46B470F299677C9001FAED3 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
-		A46B47122996845F001FAED3 /* SignUpFirstStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstStepViewModel.swift; sourceTree = "<group>"; };
 		A46B471529975CDE001FAED3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSetNickNameViewController.swift; sourceTree = "<group>"; };
 		A46B471B2998B395001FAED3 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteVIewController.swift; sourceTree = "<group>"; };
 		A46B4721299929C4001FAED3 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		A46B472429992BCD001FAED3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		A46D712729B3143800944912 /* Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
@@ -251,6 +240,8 @@
 		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A47EEA6A29C50C7D006BA3DB /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailPopupModifier.swift; sourceTree = "<group>"; };
+		A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExistAccountModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -436,16 +427,12 @@
 		A46B46EC29966584001FAED3 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				A46B46ED299665DD001FAED3 /* SignUpFirstStepViewController.swift */,
-				A46B47122996845F001FAED3 /* SignUpFirstStepViewModel.swift */,
-				A46B470F299677C9001FAED3 /* CheckBoxView.swift */,
-				A46B47182998A67C001FAED3 /* SignUpSetNickNameViewController.swift */,
-				A46B471E2998BD15001FAED3 /* SignUpCompleteVIewController.swift */,
 				A4597BD729A9C1C200B06132 /* SignUpModel.swift */,
 				A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */,
 				A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */,
 				A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */,
 				A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */,
+				A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -502,6 +489,7 @@
 				A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */,
 				A46B3B4829BF77CC0026D961 /* NaverMapView.swift */,
 				A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */,
+				A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -845,7 +833,6 @@
 				A4760F0E29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
-				A46B46EE299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
@@ -857,21 +844,20 @@
 				A4D983D1299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
-				A46B471F2998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0B29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
-				A46B47132996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
+				A47EEA6E29C530F0006BA3DB /* CourseDetailPopupModifier.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
-				A46B4710299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
 				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
+				A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
@@ -900,7 +886,6 @@
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
-				A46B47192998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712A29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 				A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 				A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */,
@@ -919,7 +904,6 @@
 				A4760F0F29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
-				A46B46EF299665DD001FAED3 /* SignUpFirstStepViewController.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
@@ -931,21 +915,20 @@
 				A4D983D2299F6634008C599D /* HomeViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
-				A46B47202998BD15001FAED3 /* SignUpCompleteVIewController.swift in Sources */,
 				A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A4760F0C29BC6B8A0080A2CD /* TagListCollectionView.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
-				A46B47142996845F001FAED3 /* SignUpFirstStepViewModel.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
+				A47EEA6F29C530F0006BA3DB /* CourseDetailPopupModifier.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
-				A46B4711299677C9001FAED3 /* CheckBoxView.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
 				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
 				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
+				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
@@ -974,7 +957,6 @@
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
-				A46B471A2998A67C001FAED3 /* SignUpSetNickNameViewController.swift in Sources */,
 				A46D712B29B4D4D700944912 /* HotCourseCell.swift in Sources */,
 				A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 				A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */,

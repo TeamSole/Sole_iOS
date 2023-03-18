@@ -18,12 +18,16 @@ struct IntroView: View {
                 }
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
-            }
-            else if mainViewModel.canShowMain, mainViewModel.existToken {
-                MainTabbarView()
-                    .environmentObject(mainViewModel)
+            } else if mainViewModel.canShowMain && mainViewModel.existToken {
+                VStack() {
+                    MainTabbarView()
+                        .environmentObject(mainViewModel)
+                }
             } else {
-                SignInView()
+                VStack() {
+                    SignInView()
+                }
+                
             }
         }
         .onAppear {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpCompleteView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @StateObject var viewModel: SignUpViewModel
     @State private var rotateDegree: Double = 10.0
     var body: some View {
@@ -15,9 +16,16 @@ struct SignUpCompleteView: View {
             completeDescriptionView
             logoView
         }
+        .navigationBarHidden(true)
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
-                rotateDegree = rotateDegree == 10 ? -10 : 10
+//            withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
+//                rotateDegree = rotateDegree == 10 ? -10 : 10
+//            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                
+                mainViewModel.existToken = true
+                mainViewModel.canShowMain = true
+                NavigationUtil.popToRootView()
             }
         }
     }
@@ -43,12 +51,37 @@ extension SignUpCompleteView {
     
     private var logoView: some View {
         VStack(spacing: 0.0) {
-            Image("onlyLogo")
-                .rotationEffect(.degrees(rotateDegree))
+            VStack() {
+                Image("onlyLogo")
+            }
+//            .rotationEffect(.degrees(rotateDegree))
         }
         .frame(maxWidth: .infinity,
                maxHeight: .infinity)
     }
+}
+
+struct NavigationUtil {
+  static func popToRootView() {
+    findNavigationController(viewController: UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController)?
+      .popToRootViewController(animated: true)
+  }
+
+  static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {
+    guard let viewController = viewController else {
+      return nil
+    }
+
+    if let navigationController = viewController as? UINavigationController {
+      return navigationController
+    }
+
+    for childViewController in viewController.children {
+      return findNavigationController(viewController: childViewController)
+    }
+
+    return nil
+  }
 }
 
 struct SignUpCompleteView_Previews: PreviewProvider {

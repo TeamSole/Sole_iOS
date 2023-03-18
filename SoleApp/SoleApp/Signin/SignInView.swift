@@ -57,12 +57,15 @@ extension SignInView {
         .padding(.horizontal, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            showSignUpView = true
+            signUpViewModel.kakaoLogin {
+                showSignUpView = true
+            }
         }
     }
     
     private var appleSigninView: some View {
         ZStack() {
+            
             Image("apple_icon")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
@@ -97,6 +100,7 @@ extension SignInView {
                        label: {
             EmptyView()
         })
+        .isDetailLink(false)
     }
 }
 

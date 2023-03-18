@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SignUpAgreeTermsView: View {
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: SignUpViewModel
     
@@ -99,6 +98,9 @@ extension SignUpAgreeTermsView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("arrow_right")
+                    .onTapGesture {
+                        UIApplication.shared.open(URL(string: "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3")!)
+                    }
             }
             
             HStack(spacing: 14.0) {
@@ -114,6 +116,9 @@ extension SignUpAgreeTermsView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("arrow_right")
+                    .onTapGesture {
+                        UIApplication.shared.open(URL(string: "https://team-sole.notion.site/8c353f0248ef4b838797863738c7b458")!)
+                    }
             }
             
             HStack(spacing: 14.0) {
@@ -129,6 +134,9 @@ extension SignUpAgreeTermsView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("arrow_right")
+                    .onTapGesture {
+                        UIApplication.shared.open(URL(string: "https://team-sole.notion.site/37661e4412d345b8a5c2ce5a609e120b")!)
+                    }
             }
             
             Spacer()
@@ -164,6 +172,7 @@ extension SignUpAgreeTermsView {
                        label: {
             EmptyView()
         })
+        .isDetailLink(false)
     }
 }
 

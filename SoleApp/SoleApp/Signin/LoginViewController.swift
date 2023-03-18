@@ -111,9 +111,9 @@ extension LoginViewController {
 
                     //do something
                     _ = oauthToken
-                    let vc = SignUpFirstStepViewController()
-                    vc.navigationController?.navigationItem.title = "회원가입"
-                    self.navigationController?.pushViewController(vc, animated: true)
+//                    let vc = SignUpFirstStepViewController()
+//                    vc.navigationController?.navigationItem.title = "회원가입"
+//                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         } else {
