@@ -26,6 +26,11 @@ extension K {
             "Authorization": Utility.load(key: Constant.token),
             "Refresh": Utility.load(key: Constant.refreshToken)
         ]
+        
+        static let jsonHeaderWithToken: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
     }
 }
 
@@ -35,14 +40,21 @@ extension K {
         static let signUpApple: String = "api/members/apple/signup"
         static let signUpKakao: String = "api/members/kakao/signup"
         static let reissueToken: String = "api/members/reissue"
+        
+        // MARK: MyPage
+        static let myAccountInfo: String = "api/mypage"
+        static let withdrawal: String = "api/mypage/quit"
     }
 }
 
 
 final class APIClient {
+    static var apiReqeust: Bool = false
     static func reissueToken() {
-        guard Utility.load(key: Constant.token).isEmpty == false,
+        guard apiReqeust == false,
+              Utility.load(key: Constant.token).isEmpty == false,
               Utility.load(key: Constant.refreshToken).isEmpty == false else { return }
+        apiReqeust = true
         let url: Alamofire.URLConvertible = URL(string:  K.baseUrl + K.Path.reissueToken)!
         let headers: HTTPHeaders = K.Header.reissueHeader
         AF.request(url, method: .post, headers: headers)
@@ -53,14 +65,16 @@ final class APIClient {
                     if let token = response.data?.accessToken,
                        let refreshToken = response.data?.refreshToken {
                         Utility.save(key: Constant.token, value: token)
-                        Utility.save(key: Constant.token, value: refreshToken)
+                        Utility.save(key: Constant.refreshToken, value: refreshToken)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
+                apiReqeust = false
             })
     }
 }
+
 
 
 struct ReissueResponse: Codable {

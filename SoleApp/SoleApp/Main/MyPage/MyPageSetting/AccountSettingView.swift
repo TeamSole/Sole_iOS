@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AccountSettingView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
     @State private var nickName: String = "너구리"
     @State private var introduceInfo: String = "ㅎㅎ"
+    @State private var showPopup: Bool = false
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -24,6 +26,11 @@ struct AccountSettingView: View {
             }
             .padding(.horizontal, 16.0)
         }
+        .navigationBarHidden(true)
+        .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
+                                            complete: {
+            viewModel.withdrawal()
+        }))
     }
 }
 
@@ -107,7 +114,7 @@ extension AccountSettingView {
             .underline()
             .padding(.bottom, 28.0)
             .onTapGesture {
-                // TODO: 탈퇴하기 기능 추가
+                showPopup = true
             }
         
     }

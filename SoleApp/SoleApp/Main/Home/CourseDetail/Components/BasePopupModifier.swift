@@ -1,5 +1,5 @@
 //
-//  CourseDetailPopupModifier.swift
+//  BasePopupModifier.swift
 //  SoleApp
 //
 //  Created by SUN on 2023/03/18.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-enum DetailViewAlertType {
-    case remove, declare
+enum AlertType {
+    case remove, declare, withdrawal, logout
     
     var title: String {
         switch self {
@@ -16,6 +16,10 @@ enum DetailViewAlertType {
             return "작성하신 코스를 삭제하시겠습니까?"
         case .declare:
             return "해당 코스를 신고하시겠습니까?"
+        case .withdrawal:
+            return "탈퇴 시 쏠을 이용할 수 없어요.\n정말 탈퇴하시겠어요?"
+        case .logout:
+            return "로그아웃 하시겠어요?"
         }
     }
     
@@ -25,13 +29,17 @@ enum DetailViewAlertType {
             return "삭제하기"
         case .declare:
             return "신고하기"
+        case .withdrawal:
+            return "탈퇴하기"
+        case .logout:
+            return "로그아웃"
         }
     }
 }
 
-struct CourseDetailPopupModifier: ViewModifier {
+struct BasePopupModifier: ViewModifier {
     @Binding var isShowFlag: Bool
-    let detailViewAlertType: DetailViewAlertType
+    let detailViewAlertType: AlertType
     let complete: () -> ()
     func body(content: Content) -> some View {
         ZStack() {
@@ -84,7 +92,7 @@ struct CourseDetailPopupModifier: ViewModifier {
 struct CourseDetailPopupModifier_Previews: PreviewProvider {
     static var previews: some View {
         Color.red
-            .modifier(CourseDetailPopupModifier(isShowFlag: .constant(true), detailViewAlertType: .declare,
+            .modifier(BasePopupModifier(isShowFlag: .constant(true), detailViewAlertType: .declare,
                                                 complete: {}))
     }
 }

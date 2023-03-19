@@ -17,6 +17,7 @@ struct MainTabbarView: View {
         NavigationView {
             TabView(selection: $selectedIndex) {
                 HomeView()
+                    .environmentObject(mainViewModel)
                     .tabItem {
                         selectedIndex == 0 ? Image("home_tap_selected") : Image("home_tap")
                         Text("홈")

@@ -9,6 +9,10 @@ import SwiftUI
 
 
 extension View {
+    func onLoaded(perform action: (() -> Void)? = nil) -> some View {
+        self.modifier(ViewDidLoadModifier(perform: action))
+    }
+    
     func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
         background(
             GeometryReader { geometryProxy in
@@ -35,6 +39,24 @@ extension View {
 private struct SizePreferenceKey: PreferenceKey {
   static var defaultValue: CGSize = .zero
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}
+
+struct ViewDidLoadModifier: ViewModifier {
+    @State private var didLoad = false
+    private let action: (() -> Void)?
+
+    init(perform action: (() -> Void)? = nil) {
+        self.action = action
+    }
+
+    func body(content: Content) -> some View {
+        content.onAppear {
+            if self.didLoad == false {
+                self.didLoad = true
+                self.action?()
+            }
+        }
+    }
 }
 
 

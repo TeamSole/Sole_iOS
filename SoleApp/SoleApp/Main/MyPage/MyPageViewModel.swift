@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 enum MyPageCell: CaseIterable {
     case setPush
@@ -46,6 +47,24 @@ enum MyPageCell: CaseIterable {
 }
 
 final class MyPageViewModel: ObservableObject {
+    typealias AccountInfo = MyPageResponse.DataModel
     var myPageViewCellData = MyPageCell.allCases
     
+    @Published var accountInfo: AccountInfo = AccountInfo()
+    
+    func getmyAccountInfo() {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.myAccountInfo)!
+        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: MyPageResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else { return }
+                    self?.accountInfo = data
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
 }

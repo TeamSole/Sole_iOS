@@ -16,7 +16,7 @@ struct CourseDetailView: View {
     @State private var isScrapped: Bool = false
     @State private var showActionSheet: Bool = false
     @State private var showPopup: Bool = false
-    @State private var alertType: DetailViewAlertType = .declare
+    @State private var alertType: AlertType = .declare
     @State private var isFollowing: Bool = true
     private var titltInfo = ["너구리 라면집", "도쿄등심 롯데 캐슬 잠실점", "전시관"]
     private var subtitleInfo = ["한식", "소고기구이", "전시"]
@@ -36,7 +36,7 @@ struct CourseDetailView: View {
         }
         .navigationBarHidden(true)
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
-        .modifier(CourseDetailPopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
+        .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {
             if alertType == .remove {
                 presentationMode.wrappedValue.dismiss()

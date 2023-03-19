@@ -11,7 +11,7 @@ import Introspect
 
 struct MyPageView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var viewModel: MyPageViewModel = MyPageViewModel()
+    @StateObject var viewModel: MyPageViewModel = MyPageViewModel()
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -22,6 +22,10 @@ struct MyPageView: View {
             $0.isScrollEnabled = false
         }
         .navigationBarHidden(true)
+        .onLoaded {
+            viewModel.getmyAccountInfo()
+        }
+        
     }
 }
 
@@ -46,31 +50,40 @@ extension MyPageView {
     private var profileView: some View {
         VStack(spacing: 0.0) {
             HStack(alignment: .center, spacing: 0.0) {
-                KFImage(nil)
+                KFImage(URL(string: viewModel.accountInfo.profileImgUrl ?? ""))
                     .placeholder {
                         Image(uiImage: UIImage(named: "profile56") ?? UIImage())
                             .resizable()
                             .frame(width: 56.0,
                                    height: 56.0)
                     }
+                    .resizable()
                     .frame(width: 56.0,
                            height: 56.0)
+                    .cornerRadius(.infinity)
                 VStack(spacing: 3.0) {
                     HStack() {
-                        Text("닉네임")
+                        Text(viewModel.accountInfo.nickname ?? "-")
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 14.0))
-                            .frame(maxWidth: .infinity,
-                                   alignment: .leading)
+                        NavigationLink(destination: {
+                            AccountSettingView()
+                        }, label: {
+                            Image("edit-circle")
+                        })
                     }
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
                     HStack(spacing: 7.0) {
-                        Text("팔로워")
+                        Text(String(format: "팔로워 %d",
+                                    viewModel.accountInfo.follower ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
                         Color.black
                             .frame(width: 1.0,
                                    height: 11.0)
-                        Text("팔로잉")
+                        Text(String(format: "팔로잉 %d",
+                                    viewModel.accountInfo.following ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
                             .frame(maxWidth: .infinity,

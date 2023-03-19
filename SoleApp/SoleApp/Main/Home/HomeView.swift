@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct HomeView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var availableWidth: CGFloat = 10
     var body: some View {
         ZStack() {
