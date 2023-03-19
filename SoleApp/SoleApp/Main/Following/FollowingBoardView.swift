@@ -9,23 +9,35 @@ import SwiftUI
 import Kingfisher
 
 struct FollowingBoardView: View {
+    typealias boardItem = FollowBoardModelResponse.DataModel
+    @StateObject var viewModel: FollowingBoardViewModel = FollowingBoardViewModel()
     var body: some View {
             VStack(spacing: 0.0) {
                 navigationView
                 ScrollView {
-                    VStack(spacing: 0.0) {
-                        ForEach(0..<50, id: \.self) { index in
-                            NavigationLink(destination: {
-                                Text("\(index)")
-                            }, label: {
-                                courseListItem()
-                            })
+                    if viewModel.apiRequestStatus == false &&
+                        viewModel.boardList.isEmpty {
+                        emptyResultView
+                    } else {
+                        VStack(spacing: 0.0) {
+                            ForEach(0..<viewModel.boardList.count, id: \.self) { index in
+                                courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
+                                               index: index,
+                                               image: viewModel.boardList[index].profileImg,
+                                               image: viewModel.boardList[index].thumbnailImg,
+                                               userName: viewModel.boardList[index].nickname ?? "",
+                                               title: viewModel.boardList[index].title ?? "",
+                                               description: viewModel.boardList[index].description ?? "")
+                            }
                         }
-                    }
+                    } 
                 }
             }
             .frame(maxHeight: .infinity)
             .navigationBarHidden(true)
+            .onLoaded {
+                viewModel.getFollowingBoardList()
+            }
     }
 }
 
@@ -43,17 +55,17 @@ extension FollowingBoardView {
         .frame(height: 46.0)
     }
     
-    private func courseListItem() -> some View {
+    private func courseListItem(courseId: Int, index: Int, image profileImgurl: String?, image thumbnailImgurl: String?, userName: String, title: String, description: String) -> some View {
         VStack(spacing: 0.0) {
-            courseHeader(image: nil, userName: "닉네임", isScraped: true)
-            courseItem(image: nil, courseName: "코스이름", description: "전시를 관람하다보면 창을 통해 빛이 들어오는 구도까지 생각해서 전시를 기획하는 것 같다는 느낌을 받았어요. 요시고 사진전에 이어서 이번 겨울, 많은 사람들이 사랑할 전시회가 되지 않을까 싶어요. 평일에 방문했더니 관람객이 별로 없어서 웨이팅 없이 여유롭게 전시를 관람할 수 있었어요!")
+            courseHeader(courseId: courseId, image: URL(string: profileImgurl ?? ""), userName: userName, index: index)
+            courseItem(courseId: courseId, image: URL(string: thumbnailImgurl ?? ""), courseName: title, description: description)
         }
         .frame(maxWidth: .infinity,
                alignment: .leading)
         .padding(.horizontal, 16.0)
     }
     
-    private func courseHeader(image url: URL?, userName: String, isScraped: Bool) -> some View {
+    private func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
         HStack(spacing: 0.0) {
             KFImage(url)
                 .resizable()
@@ -65,15 +77,16 @@ extension FollowingBoardView {
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            Image(isScraped ? "love_selected" : "love")
+            Image(viewModel.boardList[index].like == true ? "love_selected" : "love")
                 .onTapGesture {
-//                    isScraped.toggle()
+                    viewModel.boardList[index].like?.toggle()
+                    viewModel.scrap(courseId: courseId)
                 }
         }
         .frame(height: 52.0)
     }
     
-    private func courseItem(image url: URL?, courseName: String, description: String) -> some View {
+    private func courseItem(courseId: Int, image url: URL?, courseName: String, description: String) -> some View {
         VStack(spacing: 0.0) {
             KFImage(url)
                 .resizable()
@@ -94,6 +107,20 @@ extension FollowingBoardView {
                 .lineLimit(nil)
             
         }
+    }
+    
+    
+    private var emptyResultView: some View {
+        VStack(spacing: 17.0) {
+            Image("emptyResult")
+            Text("아직 팔로우한 유저의 장소가 없습니다.")
+                .font(.pretendard(.bold, size: 16.0))
+                .foregroundColor(.black)
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .center)
+        .padding(.top, 100.0)
     }
     
 }

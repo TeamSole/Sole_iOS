@@ -142,6 +142,10 @@
 		A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
 		A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
 		A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
+		A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
+		A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
+		A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
+		A47EEA8729C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -245,6 +249,8 @@
 		A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResonse.swift; sourceTree = "<group>"; };
 		A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderViewModel.swift; sourceTree = "<group>"; };
+		A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardViewModel.swift; sourceTree = "<group>"; };
+		A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -472,6 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				A46D713F29B8C74400944912 /* FollowingBoardView.swift */,
+				A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */,
+				A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */,
 			);
 			path = Following;
 			sourceTree = "<group>";
@@ -860,6 +868,7 @@
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */,
 				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
+				A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
 				A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
@@ -888,6 +897,7 @@
 				A46D713029B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
+				A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
@@ -932,6 +942,7 @@
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4C31C8F299140200014F458 /* LoginViewController.swift in Sources */,
 				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
+				A47EEA8729C7A568006BA3DB /* FollowBoardModel.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
@@ -960,6 +971,7 @@
 				A46D713129B7799300944912 /* UserTasteCourseHeader.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
+				A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,

@@ -46,6 +46,15 @@ extension K {
         static let myAccountInfo: String = "api/mypage"
         static let withdrawal: String = "api/mypage/quit"
         static let logout: String = "api/members/logout"
+        
+        // MARK: Folllowing
+        static let boardList: String = "api/follows"
+        
+        // MARK: HOME
+        static func couseScrap(courseId: Int) -> String {
+            return "api/courses/\(courseId)/scrap"
+        }
+        
     }
 }
 
