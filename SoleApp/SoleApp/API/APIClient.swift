@@ -40,6 +40,7 @@ extension K {
         static let signUpApple: String = "api/members/apple/signup"
         static let signUpKakao: String = "api/members/kakao/signup"
         static let reissueToken: String = "api/members/reissue"
+        static let checkExistAccount: String = "api/members/"
         
         // MARK: MyPage
         static let myAccountInfo: String = "api/mypage"

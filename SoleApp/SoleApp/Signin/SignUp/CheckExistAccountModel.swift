@@ -12,6 +12,3 @@ struct CheckExistAccountRequest: Codable {
     var fcmToken: String = ""
 }
 
-struct CheckExistAccountRespone: Codable {
-    
-}

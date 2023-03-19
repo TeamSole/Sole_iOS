@@ -92,7 +92,7 @@ extension SignUpViewModel {
                     //do something
                     if let token = oauthToken?.accessToken {
                         self?.token = token
-                        self?.showSignUpView = true
+                        self?.checkExistAccount()
                         complete()
                     }
                 }
@@ -108,7 +108,7 @@ extension SignUpViewModel {
                     //do something
                     if let token = oauthToken?.accessToken {
                         self?.token = token
-                        self?.showSignUpView = true
+                        self?.checkExistAccount()
                         complete()
                     }
                 }
@@ -151,6 +151,39 @@ extension SignUpViewModel {
                 print(error.localizedDescription)
             }
         })
+    }
+    
+    func checkExistAccount() {
+        guard loginPlaform.isEmpty == false,
+              token.isEmpty == false else { return }
+        let parameter = CheckExistAccountRequest(accessToken: token)
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.checkExistAccount + loginPlaform)!
+        AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default)
+            .validate()
+            .responseDecodable(of: SignUpModelResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.data?.check == true {
+                        if let imageUrl = response.data?.profileImgUrl {
+                            Utility.save(key: Constant.profileImage, value: imageUrl)
+                        }
+                        if let token = response.data?.accessToken,
+                           let refreshToken = response.data?.refreshToken {
+                            Utility.save(key: Constant.token, value: token)
+                            Utility.save(key: Constant.refreshToken, value: refreshToken)
+                            Utility.save(key: Constant.loginPlatform, value: self?.loginPlaform ?? "")
+                            AppDelegate.shared.mainViewModel.existToken = true
+                            AppDelegate.shared.mainViewModel.canShowMain = true
+                        }
+                    } else {
+                        self?.showSignUpView = true
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+        
+        
     }
     
     
@@ -205,7 +238,7 @@ extension SignUpViewModel: ASAuthorizationControllerDelegate {
             
             token = String(decoding: appleIDCredential.identityToken ?? Data(), as: UTF8.self)
             loginPlaform = "apple"
-            showSignUpView = true
+            checkExistAccount()
             default:
                 break
             }
