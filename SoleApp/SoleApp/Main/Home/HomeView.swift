@@ -11,14 +11,20 @@ import Kingfisher
 struct HomeView: View {
     @State private var availableWidth: CGFloat = 10
     var body: some View {
-        VStack(spacing: 0.0) {
-            navigationBar
-            ScrollView {
-                LazyVStack(spacing: 40.0) {
-                    hotCourseSectionView
-                    userTasteCourseSectionView
+        ZStack() {
+            VStack(spacing: 0.0) {
+                navigationBar
+                ScrollView {
+                    LazyVStack(spacing: 40.0) {
+                        hotCourseSectionView
+                        userTasteCourseSectionView
+                    }
                 }
             }
+            floatingButton
+        }
+        .onAppear {
+            APIClient.reissueToken()
         }
     }
 }
@@ -38,7 +44,19 @@ extension HomeView {
             NavigationLink(destination: {
                 MyPageView()
             }, label: {
-                Image("profile24")
+                if Utility.load(key: Constant.profileImage).isEmpty {
+                    Image("profile24")
+                } else {
+                    KFImage(URL(string: Utility.load(key: Constant.profileImage)))
+                        .placeholder {
+                            Image(uiImage: UIImage(named: "profile24") ?? UIImage())
+                        }
+                        .resizable()
+                        .frame(width: 24.0,
+                               height: 24.0)
+                        .cornerRadius(.infinity)
+                }
+                
             })
         }
         .frame(height: 50.0)
@@ -185,6 +203,34 @@ extension HomeView {
         .border(Color.gray_EDEDED, width:  1.0)
         .cornerRadius(12.0)
         .padding(.vertical, 10.0)
+    }
+    
+    private var floatingButton: some View {
+        GeometryReader {geo in
+            HStack(alignment: .bottom, spacing: 0.0) {
+                Spacer()
+                VStack(alignment: .trailing, spacing: 0.0) {
+                    Spacer()
+                    HStack(spacing: 0.0) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 15.0,
+                                   height: 15.0)
+                    }
+                    .frame(width: 48.0,
+                           height: 48.0)
+                    .foregroundColor(.white)
+                    .background(Circle()
+                        .fill(Color.blue_4708FA)
+                        .cornerRadius(.infinity))
+                    .onTapGesture {
+
+                    }
+                }
+                .padding(.trailing, 16.0)
+                .padding(.bottom, 16.0)
+            }
+        }
     }
 }
 

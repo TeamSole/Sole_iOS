@@ -8,20 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
-		A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
-		A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441777029A3B4F100FAE837 /* MyPageViewController.swift */; };
 		A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BC829A89BCB00B06132 /* FloatingPanel */; };
 		A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BCA29A89BDB00B06132 /* FloatingPanel */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
 		A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
-		A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */; };
-		A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */; };
 		A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
 		A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
-		A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
-		A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */; };
 		A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
@@ -140,6 +134,8 @@
 		A47EEA6F29C530F0006BA3DB /* CourseDetailPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */; };
 		A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
 		A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
+		A47EEA7729C60928006BA3DB /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7629C60928006BA3DB /* MyPageModel.swift */; };
+		A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7629C60928006BA3DB /* MyPageModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -178,12 +174,9 @@
 /* Begin PBXFileReference section */
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
-		A441777029A3B4F100FAE837 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
-		A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
-		A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewHeader.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		A4597BEC29AF7F0400B06132 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +235,7 @@
 		A47EEA6A29C50C7D006BA3DB /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		A47EEA6D29C530F0006BA3DB /* CourseDetailPopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailPopupModifier.swift; sourceTree = "<group>"; };
 		A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExistAccountModel.swift; sourceTree = "<group>"; };
+		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -315,10 +309,8 @@
 			children = (
 				A4597BE429AF128700B06132 /* MyPageSetting */,
 				A46B3B4B29C006440026D961 /* MyPageView.swift */,
-				A441777029A3B4F100FAE837 /* MyPageViewController.swift */,
-				A4597BDB29ADCCF100B06132 /* MyPageTableViewCell.swift */,
 				A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */,
-				A4597BE129ADDDE200B06132 /* MyPageTableViewHeader.swift */,
+				A47EEA7629C60928006BA3DB /* MyPageModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -835,6 +827,7 @@
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
+				A47EEA7729C60928006BA3DB /* MyPageModel.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
@@ -855,8 +848,6 @@
 				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
-				A4597BE229ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
-				A4597BDC29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
@@ -872,7 +863,6 @@
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46D713C29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
-				A441777129A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
@@ -906,6 +896,7 @@
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
+				A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
@@ -926,8 +917,6 @@
 				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
-				A4597BE329ADDDE200B06132 /* MyPageTableViewHeader.swift in Sources */,
-				A4597BDD29ADCCF100B06132 /* MyPageTableViewCell.swift in Sources */,
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
@@ -943,7 +932,6 @@
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46D713D29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
-				A441777229A3B4F100FAE837 /* MyPageViewController.swift in Sources */,
 				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,

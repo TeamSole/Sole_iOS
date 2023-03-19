@@ -13,4 +13,6 @@ struct Constant {
     
     static let token: String = "token"
     static let loginPlatform: String = "loginPlatform"
+    static let refreshToken: String = "refreshToken"
+    static let profileImage: String = "profileImage"
 }

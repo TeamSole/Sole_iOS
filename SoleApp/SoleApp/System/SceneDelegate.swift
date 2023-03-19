@@ -44,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-
+        APIClient.reissueToken()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

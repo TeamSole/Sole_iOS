@@ -104,9 +104,9 @@ final class HomeViewController: UIViewController {
     }
     
     @objc func moveToMyPage() {
-        let vc = MyPageViewController()
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = MyPageViewController()
+//        vc.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func moveToSearchVC() {

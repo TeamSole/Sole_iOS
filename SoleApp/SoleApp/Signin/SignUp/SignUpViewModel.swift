@@ -117,20 +117,26 @@ extension SignUpViewModel {
         let url = signUpUrl(platform: loginPlaform) else { return }
         
         let header: HTTPHeaders = K.Header.multiplatformHeader
-        let subModel = SignUpModel(accessToken: token)
+        model.accessToken = token
+        let subModel = model
         
         AF.upload(multipartFormData: { [weak self] multipart in
             let data = try? JSONEncoder().encode(subModel)
             multipart.append(data!, withName: "memberRequestDto")
-            if let image = self?.selectedImage?.jpegData(compressionQuality: 1.0) {
+            if let image = self?.selectedImage?.jpegData(compressionQuality: 0.1) {
                 multipart.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
             }
         }, to: url, method: .post, headers: header)
         .responseDecodable(of: SignUpModelResponse.self, completionHandler: { [weak self] response in
             switch response.result {
             case .success(let response):
-                if let token = response.data?.accessToken {
+                if let imageUrl = response.data?.profileImgUrl {
+                    Utility.save(key: Constant.profileImage, value: imageUrl)
+                }
+                if let token = response.data?.accessToken,
+                   let refreshToken = response.data?.refreshToken {
                     Utility.save(key: Constant.token, value: token)
+                    Utility.save(key: Constant.refreshToken, value: refreshToken)
                     Utility.save(key: Constant.loginPlatform, value: self?.loginPlaform ?? "")
                     AppDelegate.shared.mainViewModel.existToken = true
                     AppDelegate.shared.mainViewModel.canShowMain = true
