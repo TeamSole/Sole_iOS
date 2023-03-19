@@ -132,6 +132,14 @@
 		A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */; };
 		A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
 		A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
+		A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
+		A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
+		A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
+		A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
+		A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
+		A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
+		A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */; };
+		A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C8329913CF00014F458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C31C8229913CF00014F458 /* Assets.xcassets */; };
@@ -220,6 +228,10 @@
 		A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListView.swift; sourceTree = "<group>"; };
 		A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListModel.swift; sourceTree = "<group>"; };
 		A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListViewModel.swift; sourceTree = "<group>"; };
+		A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserView.swift; sourceTree = "<group>"; };
+		A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHistoryModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -473,11 +485,20 @@
 		A47EEA8829C7B0FE006BA3DB /* FollowingUserList */ = {
 			isa = PBXGroup;
 			children = (
+				A47EEA9229C7BE60006BA3DB /* FollowUser */,
 				A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */,
 				A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */,
 				A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */,
 			);
 			path = FollowingUserList;
+			sourceTree = "<group>";
+		};
+		A47EEA9229C7BE60006BA3DB /* FollowUser */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */,
+			);
+			path = FollowUser;
 			sourceTree = "<group>";
 		};
 		A4C31C6D29913CF00014F458 = {
@@ -560,6 +581,9 @@
 			children = (
 				A46B3B5929C070090026D961 /* Components */,
 				A4E052E729BE160C00FDB84B /* HistoryView.swift */,
+				A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */,
+				A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */,
+				A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -797,6 +821,7 @@
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
+				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */,
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
@@ -807,8 +832,10 @@
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */,
+				A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
+				A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
@@ -831,6 +858,7 @@
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
+				A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
@@ -859,6 +887,7 @@
 				A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
+				A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */,
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
@@ -869,8 +898,10 @@
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */,
+				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
+				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
@@ -893,6 +924,7 @@
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
+				A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,

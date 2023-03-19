@@ -55,6 +55,10 @@ extension K {
             return "api/follows/follow/\(memberId)"
         }
         
+        // MARK: Histroy
+        static let userProfileInHistory: String = "api/histories"
+        static let userHistory: String = "api/histories/courses"
+        
         // MARK: HOME
         static func couseScrap(courseId: Int) -> String {
             return "api/courses/\(courseId)/scrap"

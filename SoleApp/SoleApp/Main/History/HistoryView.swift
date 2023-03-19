@@ -9,18 +9,26 @@ import SwiftUI
 import Kingfisher
 
 struct HistoryView: View {
+    typealias History = HistoryModelResponse.DataModel
+    @StateObject var viewModel: HistoryViewModel = HistoryViewModel()
     @State private var isShowSelectTagView: Bool = false
     private let filterType: [String] = ["장소", "동행", "교통"]
     var body: some View {
-        VStack(spacing: 0.0) {
-            naviagationBar
-            ScrollView {
-                LazyVStack(spacing: 0.0) {
-                    profileSectionView
-                    thickSectionDivider
-                    courseHistoryListView
+        ZStack() {
+            VStack(spacing: 0.0) {
+                naviagationBar
+                ScrollView {
+                    LazyVStack(spacing: 0.0) {
+                        profileSectionView
+                        thickSectionDivider
+                        courseHistoryListView
+                    }
                 }
             }
+            floatingButton
+        }
+        .onAppear {
+            viewModel.getUserProfile()
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
@@ -41,34 +49,30 @@ extension HistoryView {
     
     private var profileSectionView: some View {
         HStack(alignment: .top, spacing: 0.0) {
-            KFImage(nil)
+            KFImage(URL(string: Utility.load(key: Constant.profileImage)))
                 .placeholder {
                     Image(uiImage: UIImage(named: "profile56") ?? UIImage())
                         .resizable()
                         .frame(width: 56.0,
                                height: 56.0)
                 }
+                .resizable()
                 .frame(width: 56.0,
                        height: 56.0)
+                .cornerRadius(.infinity)
             VStack(spacing: 0.0) {
-                Text("닉네임님의 발자국")
+                Text("\(viewModel.profileDescription.nickname ?? "-")님의 발자국")
                     .foregroundColor(.black)
                     .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text("지금까지 00일간 00곳의 장소를 방문하며, 이번달 총 00개의 코스를 기록했어요.")
+                Text("지금까지 \(viewModel.profileDescription.totalDate ?? 0)일간 \(viewModel.profileDescription.totalPlaces ?? 0)곳의 장소를 방문하며, 이번달 총 \(viewModel.profileDescription.totalCourses ?? 0)개의 코스를 기록했어요.")
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .lineLimit(nil)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     .padding(.vertical, 16.0)
-                Text("가장 많이 방문한 지역은 00이고 00 00 이동해서 00을 다녔어요.")
-                    .foregroundColor(.black)
-                    .font(.pretendard(.reguler, size: 14.0))
-                    .lineLimit(nil)
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
             }
             .frame(maxWidth: .infinity,
                    alignment: .topLeading)
@@ -119,17 +123,21 @@ extension HistoryView {
     private var courseHistoryListView: some View {
         LazyVStack(spacing: 20.0) {
             courseHistoryHeader
-            ForEach(0..<4) { index in
-                courseHistoryItem(image: nil, title: "그라운드시소 전시", locationInfo: "서울 종로구", tagList: ["맛집", "카페", "친구와"])
-                
+            if viewModel.apiRequestStatus == false &&
+                viewModel.histories.isEmpty {
+                emptyResultView
+            } else {
+                ForEach(0..<viewModel.histories.count, id: \.self) { index in
+                    courseHistoryItem(item: viewModel.histories[index])
+                }
             }
         }
         .padding(16.0)
     }
     
-    private func courseHistoryItem(image url: URL?, title: String, locationInfo: String, tagList: [String]) -> some View {
+    private func courseHistoryItem(item: History) -> some View {
         HStack(alignment: .top, spacing: 15.0) {
-            KFImage(url)
+            KFImage(URL(string: item.thumbnailImg ?? ""))
                 .placeholder {
                     Image(uiImage: UIImage(named: "profile56") ?? UIImage())
                         .resizable()
@@ -140,21 +148,21 @@ extension HistoryView {
                 .frame(width: 100.0,
                        height: 100.0)
             VStack(spacing: 0.0) {
-                Text(title)
+                Text(item.title ?? "")
                     .font(.pretendard(.bold, size: 14.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     .padding(.bottom, 7.0)
-                Text(locationInfo)
+                Text("\(item.address ?? "") \(item.duration ?? 0)시간 소요 \(item.distance ?? 0)km 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_999999)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     .padding(.bottom, 7.0)
                 HStack(spacing: 8.0) {
-                    ForEach(0..<tagList.count, id: \.self) { index in
-                        Text(tagList[index])
+                    ForEach(0..<["라면", "라면"].count, id: \.self) { index in
+                        Text(["라면", "라면"][index])
                             .font(.pretendard(.reguler, size: 9.0))
                             .foregroundColor(.black)
                             .padding(6.0)
@@ -166,6 +174,47 @@ extension HistoryView {
                        alignment: .leading)
             }
             
+        }
+    }
+    
+    private var emptyResultView: some View {
+        VStack(spacing: 17.0) {
+            Image("emptyResult")
+            Text("아직 추가한 장소가 없습니다.")
+                .font(.pretendard(.bold, size: 16.0))
+                .foregroundColor(.black)
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .center)
+        .padding(.top, 100.0)
+    }
+    
+    private var floatingButton: some View {
+        GeometryReader {geo in
+            HStack(alignment: .bottom, spacing: 0.0) {
+                Spacer()
+                VStack(alignment: .trailing, spacing: 0.0) {
+                    Spacer()
+                    HStack(spacing: 0.0) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 15.0,
+                                   height: 15.0)
+                    }
+                    .frame(width: 48.0,
+                           height: 48.0)
+                    .foregroundColor(.white)
+                    .background(Circle()
+                        .fill(Color.blue_4708FA)
+                        .cornerRadius(.infinity))
+                    .onTapGesture {
+
+                    }
+                }
+                .padding(.trailing, 16.0)
+                .padding(.bottom, 16.0)
+            }
         }
     }
     
