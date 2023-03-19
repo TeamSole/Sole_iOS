@@ -49,8 +49,12 @@ extension FollowingBoardView {
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .frame(maxWidth: .infinity,
                        alignment: .center)
-            Image("people_alt")
-                .padding(.trailing, 15.0)
+            NavigationLink(destination: {
+                FollowingUserListView()
+            }, label: {
+                Image("people_alt")
+            })
+            .padding(.trailing, 15.0)
         }
         .frame(height: 46.0)
     }
