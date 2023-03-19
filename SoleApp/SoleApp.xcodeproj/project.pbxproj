@@ -140,6 +140,8 @@
 		A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */; };
 		A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
 		A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
+		A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
+		A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C7E29913CF00014F458 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7D29913CF00014F458 /* LoginViewController.swift */; };
@@ -242,6 +244,7 @@
 		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
 		A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResonse.swift; sourceTree = "<group>"; };
+		A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderViewModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -374,6 +377,7 @@
 			children = (
 				A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */,
 				A46B3B6129C0A6230026D961 /* ScrapListView.swift */,
+				A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -828,6 +832,7 @@
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E72994B49A001FAED3 /* LoginButtonView.swift in Sources */,
+				A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A4760F0E29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,
@@ -899,6 +904,7 @@
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A46B46E82994B49A001FAED3 /* LoginButtonView.swift in Sources */,
+				A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A4760F0F29BC6C060080A2CD /* CollectionViewAutoLayout.swift in Sources */,

@@ -15,7 +15,10 @@ final class AccountSettingViewModel: ObservableObject {
     
     func getmyAccountInfo() {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.myAccountInfo)!
-        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
         AF.request(url, method: .get, headers: headers)
             .validate()
             .responseDecodable(of: MyPageResponse.self, completionHandler: { [weak self] response in
@@ -35,7 +38,10 @@ final class AccountSettingViewModel: ObservableObject {
     
     func withdrawal() {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.withdrawal)!
-        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
         AF.request(url, method: .delete, headers: headers)
             .validate()
             .responseDecodable(of: BaseResponse.self, completionHandler: { response in

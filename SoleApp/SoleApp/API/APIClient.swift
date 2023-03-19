@@ -57,7 +57,10 @@ final class APIClient {
               Utility.load(key: Constant.refreshToken).isEmpty == false else { return }
         apiReqeust = true
         let url: Alamofire.URLConvertible = URL(string:  K.baseUrl + K.Path.reissueToken)!
-        let headers: HTTPHeaders = K.Header.reissueHeader
+        let headers: HTTPHeaders = [
+            "Authorization": Utility.load(key: Constant.token),
+            "Refresh": Utility.load(key: Constant.refreshToken)
+        ]
         AF.request(url, method: .post, headers: headers)
             .validate()
             .responseDecodable(of: ReissueResponse.self, completionHandler: { response in
@@ -65,6 +68,8 @@ final class APIClient {
                 case .success(let response):
                     if let token = response.data?.accessToken,
                        let refreshToken = response.data?.refreshToken {
+                        Utility.delete(key: Constant.token)
+                        Utility.delete(key: Constant.refreshToken)
                         Utility.save(key: Constant.token, value: token)
                         Utility.save(key: Constant.refreshToken, value: refreshToken)
                     }

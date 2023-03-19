@@ -82,7 +82,7 @@ extension SignUpViewModel {
     func kakaoLogin(complete: @escaping () -> ()) {
         loginPlaform = "kakao"
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+            UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
                 if let error = error {
                     print(error)
                 }
@@ -91,13 +91,14 @@ extension SignUpViewModel {
 
                     //do something
                     if let token = oauthToken?.accessToken {
-                        self.token = token
+                        self?.token = token
+                        self?.showSignUpView = true
                         complete()
                     }
                 }
             }
         } else {
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+            UserApi.shared.loginWithKakaoAccount {[weak self] (oauthToken, error) in
                 if let error = error {
                     print(error)
                 }
@@ -106,7 +107,8 @@ extension SignUpViewModel {
                     
                     //do something
                     if let token = oauthToken?.accessToken {
-                        self.token = token
+                        self?.token = token
+                        self?.showSignUpView = true
                         complete()
                     }
                 }
@@ -178,7 +180,7 @@ private extension SignUpViewModel {
 
 extension SignUpViewModel: ASAuthorizationControllerDelegate {
     
-    private func performAppleSignIn() {
+    func performAppleSignIn() {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
@@ -202,7 +204,8 @@ extension SignUpViewModel: ASAuthorizationControllerDelegate {
                 print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
             
             token = String(decoding: appleIDCredential.identityToken ?? Data(), as: UTF8.self)
-            
+            loginPlaform = "apple"
+            showSignUpView = true
             default:
                 break
             }

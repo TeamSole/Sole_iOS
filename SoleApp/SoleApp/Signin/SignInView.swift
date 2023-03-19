@@ -58,14 +58,13 @@ extension SignInView {
         .contentShape(Rectangle())
         .onTapGesture {
             signUpViewModel.kakaoLogin {
-                showSignUpView = true
+//                showSignUpView = true
             }
         }
     }
     
     private var appleSigninView: some View {
         ZStack() {
-            
             Image("apple_icon")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
@@ -79,6 +78,10 @@ extension SignInView {
         .background(Color.black)
         .cornerRadius(4.0)
         .padding(.horizontal, 16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            signUpViewModel.performAppleSignIn()
+        }
     }
     
     private var addminInfoView: some View {
@@ -96,7 +99,7 @@ extension SignInView {
     private var navigateToSignUpView: some View {
         NavigationLink(destination:
                         SignUpAgreeTermsView(viewModel: signUpViewModel),
-                       isActive: $showSignUpView,
+                       isActive: $signUpViewModel.showSignUpView,
                        label: {
             EmptyView()
         })

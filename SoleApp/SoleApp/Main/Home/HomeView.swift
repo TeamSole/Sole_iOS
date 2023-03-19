@@ -26,7 +26,7 @@ struct HomeView: View {
             floatingButton
         }
         .onAppear {
-            APIClient.reissueToken()
+//            APIClient.reissueToken()
         }
     }
 }

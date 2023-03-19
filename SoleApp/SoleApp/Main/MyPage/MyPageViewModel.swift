@@ -54,7 +54,10 @@ final class MyPageViewModel: ObservableObject {
     
     func getmyAccountInfo() {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.myAccountInfo)!
-        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
         AF.request(url, method: .get, headers: headers)
             .validate()
             .responseDecodable(of: MyPageResponse.self, completionHandler: { [weak self] response in
@@ -70,7 +73,10 @@ final class MyPageViewModel: ObservableObject {
     
     func logout(complete: @escaping () -> ()) {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.logout)!
-        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
         AF.request(url, method: .patch, headers: headers)
             .validate()
             .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
