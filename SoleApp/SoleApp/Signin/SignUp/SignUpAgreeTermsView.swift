@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpAgreeTermsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: SignUpViewModel
+    @ObservedObject var viewModel: SignUpViewModel
     
     @State private var showSignUpUserInfoView: Bool = false
     var body: some View {
@@ -127,6 +127,24 @@ extension SignUpAgreeTermsView {
                       : "radio_button_unchecked")
                 .onTapGesture {
                     viewModel.isSelectedThirdTerm.toggle()
+                }
+                Text("위치정보 이용약관 동의 (선택)")
+                    .font(.pretendard(.reguler, size: 16.0))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                Image("arrow_right")
+                    .onTapGesture {
+                        UIApplication.shared.open(URL(string: "https://team-sole.notion.site/37661e4412d345b8a5c2ce5a609e120b")!)
+                    }
+            }
+            
+            HStack(spacing: 14.0) {
+                Image(viewModel.isSelectedForthTerm
+                      ? "check_circle"
+                      : "radio_button_unchecked")
+                .onTapGesture {
+                    viewModel.isSelectedForthTerm.toggle()
                 }
                 Text("마케팅 정보 제공 및 수신 동의 (선택)")
                     .font(.pretendard(.reguler, size: 16.0))

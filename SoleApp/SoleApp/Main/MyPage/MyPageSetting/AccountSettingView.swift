@@ -27,6 +27,9 @@ struct AccountSettingView: View {
             .padding(.horizontal, 16.0)
         }
         .navigationBarHidden(true)
+        .onLoaded {
+            
+        }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
                                             complete: {
             viewModel.withdrawal()

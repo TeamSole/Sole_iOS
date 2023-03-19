@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpCompleteView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @StateObject var viewModel: SignUpViewModel
+    @ObservedObject var viewModel: SignUpViewModel
     @State private var rotateDegree: Double = 10.0
     var body: some View {
         VStack(spacing: 0.0) {

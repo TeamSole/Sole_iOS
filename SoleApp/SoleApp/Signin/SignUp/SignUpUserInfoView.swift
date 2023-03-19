@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpUserInfoView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: SignUpViewModel
+    @ObservedObject var viewModel: SignUpViewModel
     @State private var nickName: String = ""
     @State private var showPhotoPicker: Bool = false
     @State private var showSignUpCompleteView: Bool = false

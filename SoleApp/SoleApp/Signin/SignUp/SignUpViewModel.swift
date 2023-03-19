@@ -17,6 +17,7 @@ final class SignUpViewModel: NSObject, ObservableObject {
     @Published var isSelectedFirstTerm: Bool = false
     @Published var isSelectedSecondTerm: Bool = false
     @Published var isSelectedThirdTerm: Bool = false
+    @Published var isSelectedForthTerm: Bool = false
     
     @Published var loginPlaform: String = ""
     @Published var isAvailableNickname: Bool? = nil
@@ -26,7 +27,7 @@ final class SignUpViewModel: NSObject, ObservableObject {
     @Published var showSignUpView: Bool = false
     
     var isSelectedAllTerms: Bool {
-        return isSelectedFirstTerm && isSelectedSecondTerm && isSelectedThirdTerm
+        return isSelectedFirstTerm && isSelectedSecondTerm && isSelectedThirdTerm && isSelectedForthTerm
     }
     
     var isValidCheckingTerms: Bool {
@@ -43,10 +44,12 @@ extension SignUpViewModel {
             isSelectedFirstTerm = false
             isSelectedSecondTerm = false
             isSelectedThirdTerm = false
+            isSelectedForthTerm = false
         } else {
             isSelectedFirstTerm = true
             isSelectedSecondTerm = true
             isSelectedThirdTerm = true
+            isSelectedForthTerm = true
         }
     }
     
@@ -152,7 +155,8 @@ extension SignUpViewModel {
     func setSignupData() {
         model.serviceAccepted = isSelectedFirstTerm
         model.infoAccepted = isSelectedSecondTerm
-        model.marketingAccepted = isSelectedThirdTerm
+        model.locationAccepted = isSelectedThirdTerm
+        model.marketingAccepted = isSelectedForthTerm
     }
 }
 

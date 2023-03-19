@@ -11,6 +11,7 @@ struct SignUpModel: Codable {
     var infoAccepted: Bool = false
     var marketingAccepted: Bool = false
     var serviceAccepted: Bool = false
+    var locationAccepted: Bool = false
     var nickname: String = ""
     var accessToken: String = ""
     var fcmToken: String = ""

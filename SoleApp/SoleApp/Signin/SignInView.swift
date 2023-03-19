@@ -10,7 +10,7 @@ import SwiftUI
 struct SignInView: View {
     @State private var showSignUpView: Bool = false
     
-    let signUpViewModel = SignUpViewModel()
+    @ObservedObject var signUpViewModel = SignUpViewModel()
     var body: some View {
         NavigationView {
             VStack(spacing: 0.0) {

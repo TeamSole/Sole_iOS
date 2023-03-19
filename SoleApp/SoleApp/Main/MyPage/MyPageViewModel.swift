@@ -67,4 +67,30 @@ final class MyPageViewModel: ObservableObject {
                 }
             })
     }
+    
+    func logout(complete: @escaping () -> ()) {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.logout)!
+        let headers: HTTPHeaders = K.Header.jsonHeaderWithToken
+        AF.request(url, method: .patch, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                        self?.resetToken()
+                        complete()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+       
+    }
+    
+    private func resetToken() {
+        Utility.delete(key: Constant.token)
+        Utility.delete(key: Constant.refreshToken)
+        Utility.delete(key: Constant.loginPlatform)
+        Utility.delete(key: Constant.profileImage)
+    }
 }

@@ -10,8 +10,10 @@ import Kingfisher
 import Introspect
 
 struct MyPageView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: MyPageViewModel = MyPageViewModel()
+    @ObservedObject var viewModel: MyPageViewModel = MyPageViewModel()
+    @State private var showPopup: Bool = false
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -25,6 +27,20 @@ struct MyPageView: View {
         .onLoaded {
             viewModel.getmyAccountInfo()
         }
+        .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .logout,
+                                            complete: {
+            viewModel.logout {
+                let window = UIApplication
+                            .shared
+                            .connectedScenes
+                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                            .first { $0.isKeyWindow }
+
+                        window?.rootViewController = UIHostingController(rootView: IntroView()
+                            .environmentObject(mainViewModel))
+                        window?.makeKeyAndVisible()
+            }
+        }))
         
     }
 }
@@ -112,6 +128,10 @@ extension MyPageView {
                 .font(.pretendard(.reguler, size: 12.0))
                 .underline()
                 .foregroundColor(.gray_999999)
+                .padding(.bottom)
+                .onTapGesture {
+                    showPopup = true
+                }
         }
     }
     

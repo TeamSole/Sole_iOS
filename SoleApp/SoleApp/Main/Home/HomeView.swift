@@ -17,6 +17,7 @@ struct HomeView: View {
                 navigationBar
                 ScrollView {
                     LazyVStack(spacing: 40.0) {
+                        bannerView
                         hotCourseSectionView
                         userTasteCourseSectionView
                     }
@@ -44,6 +45,7 @@ extension HomeView {
             .padding(.trailing, 11.0)
             NavigationLink(destination: {
                 MyPageView()
+                    .environmentObject(mainViewModel)
             }, label: {
                 if Utility.load(key: Constant.profileImage).isEmpty {
                     Image("profile24")
@@ -62,6 +64,16 @@ extension HomeView {
         }
         .frame(height: 50.0)
         .padding(.horizontal, 16.0)
+    }
+    
+    private var bannerView: some View {
+        VStack(spacing: 0.0) {
+            Image("banner")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity)
+//                .frame(height: 150.0)
+        }
     }
     
     private var hotCourseSectionView: some View {
@@ -238,5 +250,6 @@ extension HomeView {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(MainViewModel())
     }
 }

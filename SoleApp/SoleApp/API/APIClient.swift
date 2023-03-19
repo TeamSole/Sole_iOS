@@ -44,6 +44,7 @@ extension K {
         // MARK: MyPage
         static let myAccountInfo: String = "api/mypage"
         static let withdrawal: String = "api/mypage/quit"
+        static let logout: String = "api/members/logout"
     }
 }
 

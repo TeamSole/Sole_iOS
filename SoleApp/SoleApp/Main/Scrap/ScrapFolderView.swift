@@ -27,7 +27,7 @@ struct ScrapFolderView: View {
                             NavigationLink(destination: {
                                 ScrapListView()
                             }, label: {
-                                folderItem(image: nil, title: "기본폴더")
+                                folderItem(image: nil, title: "기본 폴더")
                             })
                            
                         }
