@@ -137,6 +137,7 @@ extension FollowingUserListView {
                 .cornerRadius(4.0)
                 .onTapGesture {
 //                    isFollowing.toggle()
+                    viewModel.follow(memberId: item.member?.memberId ?? 0)
                 }
             
                

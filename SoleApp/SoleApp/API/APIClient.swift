@@ -51,6 +51,9 @@ extension K {
         static let boardList: String = "api/follows"
         static let followList: String = "api/follows/followings"
         static let followerList: String = "api/follows/followers"
+        static func follow(memberId: Int) -> String {
+            return "api/follows/follow/\(memberId)"
+        }
         
         // MARK: HOME
         static func couseScrap(courseId: Int) -> String {

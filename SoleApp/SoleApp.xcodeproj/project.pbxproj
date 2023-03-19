@@ -88,16 +88,10 @@
 		A46B472629992BCD001FAED3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B472429992BCD001FAED3 /* UIControl.swift */; };
 		A46D713429B7D21E00944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713329B7D21E00944912 /* Kingfisher */; };
 		A46D713629B7D22700944912 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A46D713529B7D22700944912 /* Kingfisher */; };
-		A46D713C29B7F14600944912 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailViewController.swift */; };
-		A46D713D29B7F14600944912 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713B29B7F14600944912 /* CourseDetailViewController.swift */; };
 		A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
-		A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
-		A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */; };
-		A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */; };
-		A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */; };
 		A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
 		A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
 		A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
@@ -152,10 +146,6 @@
 		A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C4299F6075008C599D /* KakaoSDKCommon */; };
 		A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C6299F63A7008C599D /* KakaoSDKUser */; };
 		A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C8299F63AF008C599D /* KakaoSDKUser */; };
-		A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */; };
-		A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */; };
-		A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
-		A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */; };
 		A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
@@ -208,11 +198,8 @@
 		A46B472429992BCD001FAED3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		A46D712729B3143800944912 /* Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		A46D712829B3144300944912 /* Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Release.entitlements; sourceTree = "<group>"; };
-		A46D713B29B7F14600944912 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionView.swift; sourceTree = "<group>"; };
-		A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummarySectionView.swift; sourceTree = "<group>"; };
 		A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
@@ -241,8 +228,6 @@
 		A4C31C8729913CF00014F458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4C31C99299140200014F458 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C9B2991427D0014F458 /* Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
-		A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailSectionView.swift; sourceTree = "<group>"; };
-		A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A4E052E729BE160C00FDB84B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A4E052EA29BE170F00FDB84B /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A4E052ED29BF4C9600FDB84B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -434,7 +419,6 @@
 			isa = PBXGroup;
 			children = (
 				A4760F0329BC51300080A2CD /* Components */,
-				A46D713B29B7F14600944912 /* CourseDetailViewController.swift */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
 				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
 			);
@@ -463,10 +447,6 @@
 		A4760F0329BC51300080A2CD /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A4760F0429BC51C70080A2CD /* ProfileSectionView.swift */,
-				A4760F0729BC65850080A2CD /* CourseSummarySectionView.swift */,
-				A4E052E029BDA4F600FDB84B /* CourseDetailSectionView.swift */,
-				A4E052E329BDB50E00FDB84B /* CourseDetailTableViewCell.swift */,
 				A46B3B4829BF77CC0026D961 /* NaverMapView.swift */,
 				A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */,
 				A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */,
@@ -830,10 +810,8 @@
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
-				A4E052E129BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
-				A4760F0529BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A47EEA6E29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
 				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
@@ -841,7 +819,6 @@
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
 				A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
-				A4760F0829BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
 				A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */,
@@ -853,8 +830,6 @@
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
-				A46D713C29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
-				A4E052E429BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
@@ -897,10 +872,8 @@
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
-				A4E052E229BDA4F600FDB84B /* CourseDetailSectionView.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
-				A4760F0629BC51C70080A2CD /* ProfileSectionView.swift in Sources */,
 				A47EEA6F29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
 				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
@@ -908,7 +881,6 @@
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
-				A4760F0929BC65850080A2CD /* CourseSummarySectionView.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
@@ -920,8 +892,6 @@
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
-				A46D713D29B7F14600944912 /* CourseDetailViewController.swift in Sources */,
-				A4E052E529BDB50E00FDB84B /* CourseDetailTableViewCell.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
