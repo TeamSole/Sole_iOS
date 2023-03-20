@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum FolderPopupType {
-    case add, rename, remove
+    case add, rename, remove, removeScrap
     
     var title: String {
         switch self {
@@ -18,6 +18,8 @@ enum FolderPopupType {
             return "폴더명 수정"
         case .remove:
             return "폴더를 삭제하시겠습어요?"
+        case .removeScrap:
+            return "선택하신 코스를 삭제하시겠습어요?"
         }
     }
     
@@ -28,6 +30,8 @@ enum FolderPopupType {
         case .rename:
             return "수정하기"
         case .remove:
+            return "삭제하기"
+        case .removeScrap:
             return "삭제하기"
         }
     }

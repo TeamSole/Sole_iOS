@@ -16,10 +16,12 @@ final class ScrapListViewModel: ObservableObject {
 }
 
 extension ScrapListViewModel {
-    func getScraps(folderId: Int) {
+    func getScraps(isDefaultFolder: Bool, folderId: Int) {
         guard apiRequestStatus == false else { return }
         apiRequestStatus = true
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)")!
+        let url: URLConvertible = isDefaultFolder
+        ? URL(string: K.baseUrl + K.Path.folderList + "/default")!
+        : URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)")!
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": Utility.load(key: Constant.token)
@@ -37,6 +39,73 @@ extension ScrapListViewModel {
                 case .failure(let error):
                     print(error.localizedDescription)
                     self?.apiRequestStatus = false
+                }
+            })
+    }
+    
+    func renameFolder(folderId: Int, folderName: String, complete: @escaping () -> ()) {
+        guard folderName.isEmpty == false else { return }
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        let parameter = ScrapRenameFolderRequest(scrapFolderName: folderName)
+        AF.request(url, method: .patch, parameters: parameter, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                        complete()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func removeFolder(folderId: Int, complete: @escaping () -> ()) {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .delete, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                        complete()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func removeScraps(isDefaultFolder: Bool, folderId: Int, scraps: [Int], complete: @escaping () -> ()) {
+        guard scraps.isEmpty == false else { return }
+        let courseIds = scraps.map({ String($0) }).joined(separator: ", ")
+        let url: URLConvertible = isDefaultFolder
+        ? URL(string: K.baseUrl + K.Path.folderList + "/default/\(courseIds)")!
+        : URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)/\(courseIds)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                        self?.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
+                        complete()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             })
     }

@@ -13,7 +13,19 @@ struct ScrapListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
     @State private var isEditMode: Bool = false
+    @State private var showBottomPopup: Bool = false
+    @State private var showPopup: Bool = false
+    @State private var popupType: FolderPopupType = .rename
+    @State private var selectedScraps: [Int] = []
+    
     var folderId: Int
+    @State private var folderName: String
+    
+    
+    init(folderId: Int, folderName: String) {
+        self.folderId = folderId
+        self._folderName = State(initialValue: folderName)
+    }
 
     var body: some View {
         VStack(spacing: 0.0) {
@@ -32,8 +44,22 @@ struct ScrapListView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.getScraps(folderId: folderId)
+            viewModel.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
         }
+        .modifier(BottomSheetModifier(showFlag: $showBottomPopup,
+                                      edit: {
+            popupType = .rename
+            showPopup = true
+        },
+                                      remove:  {
+            popupType = .remove
+            showPopup = true
+        }))
+        .modifier(FolderPopupTextFieldModifier(isShowFlag: $showPopup,
+                                               folderPopupType: popupType,
+                                               complete: { foldername in
+            popupComplete(foldername: foldername)
+        }))
     }
 }
 
@@ -44,7 +70,7 @@ extension ScrapListView {
                 .onTapGesture {
                     presentationMode.wrappedValue.dismiss()
                 }
-            Text("폴더명")
+            Text(folderName)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -55,9 +81,14 @@ extension ScrapListView {
                     .font(.pretendard(.medium, size: 14.0))
                     .onTapGesture {
                         isEditMode = false
+                        selectedScraps = []
                     }
             } else {
                 Image("more-vertical")
+                    .isHidden(isDefaultFolder, remove: true)
+                    .onTapGesture {
+                        showBottomPopup = true
+                    }
             }
         }
         .frame(height: 48.0)
@@ -67,26 +98,31 @@ extension ScrapListView {
     private var listHeaderView: some View {
         HStack(spacing: 8.0) {
             if isEditMode {
-                Text("이동")
-                    .font(.pretendard(.medium, size: 12.0))
-                    .foregroundColor(.black)
-                
-                    .frame(width: 60.0,
-                           height: 24.0)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12.0)
-                            .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
-                    )
+//                Text("이동")
+//                    .font(.pretendard(.medium, size: 12.0))
+//                    .foregroundColor(.black)
+//
+//                    .frame(width: 60.0,
+//                           height: 24.0)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 12.0)
+//                            .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+//                    )
                 Text("삭제")
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)
-                
                     .frame(width: 60.0,
                            height: 24.0)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12.0)
-                            .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+                            .stroke(selectedScraps.isEmpty ? Color.gray_D3D4D5 : Color.blue_4708FA,
+                                    lineWidth: 1.0)
                     )
+                    .onTapGesture {
+                        guard selectedScraps.isEmpty == false else { return }
+                        popupType = .removeScrap
+                        showPopup = true
+                    }
                 
             } else {
                 HStack(spacing: 2.0) {
@@ -115,14 +151,13 @@ extension ScrapListView {
     private var scrapList: some View {
         VStack(spacing: 20.0) {
             ForEach(0..<viewModel.scraps.count, id: \.self) { index in
-                scrapItem(item: viewModel.scraps[index])
-                
+                scrapItem(item: viewModel.scraps[index], index: index)
             }
         }
         .padding(.horizontal, 16.0)
     }
     
-    private func scrapItem(item: Scrap) -> some View {
+    private func scrapItem(item: Scrap, index: Int) -> some View {
         HStack(alignment: .top, spacing: 15.0) {
             KFImage(URL(string: item.thumbnailImg ?? ""))
                 .placeholder {
@@ -161,7 +196,14 @@ extension ScrapListView {
                        alignment: .leading)
             }
             if isEditMode {
-                Image("radio_button_unchecked")
+                Image(selectedScraps.contains(item.courseId ?? 0) ? "check-circle" : "radio_button_unchecked")
+                    .onTapGesture {
+                        if selectedScraps.contains(item.courseId ?? 0) {
+                            selectedScraps = selectedScraps.filter({ $0 != item.courseId })
+                        } else {
+                            selectedScraps.append(item.courseId ?? 0)
+                        }
+                    }
             }
         }
     }
@@ -178,10 +220,37 @@ extension ScrapListView {
                alignment: .center)
         .padding(.top, 100.0)
     }
+    
+    private var isDefaultFolder: Bool {
+        return folderName == "기본 폴더"
+    }
+    
+    private func popupComplete(foldername: String) {
+        if popupType == .remove {
+            viewModel.removeFolder(folderId: folderId,
+                                   complete: {
+                presentationMode.wrappedValue.dismiss()
+            })
+        } else if popupType == .rename {
+            viewModel.renameFolder(folderId: folderId,
+                                   folderName: foldername,
+                                   complete: {
+                folderName = foldername
+            })
+        } else {
+            viewModel.removeScraps(isDefaultFolder: isDefaultFolder,
+                                   folderId: folderId,
+                                   scraps: selectedScraps,
+                                   complete: {
+                selectedScraps = []
+                isEditMode = false
+            })
+        }
+    }
 }
 
 struct ScrapListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrapListView(folderId: 0)
+        ScrapListView(folderId: 0, folderName: "폴더명")
     }
 }

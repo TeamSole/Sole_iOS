@@ -27,7 +27,8 @@ struct ScrapFolderView: View {
                             addFolderButtonView
                         } else {
                             NavigationLink(destination: {
-                                ScrapListView(folderId: viewModel.folders[index].scrapFolderId ?? 0)
+                                ScrapListView(folderId: viewModel.folders[index].scrapFolderId ?? 0,
+                                              folderName: viewModel.folders[index].scrapFolderName ?? "")
                             }, label: {
                                 folderItem(image: nil, title: viewModel.folders[index].scrapFolderName ?? "")
                             })
