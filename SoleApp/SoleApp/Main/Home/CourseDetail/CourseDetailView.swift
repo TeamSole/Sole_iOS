@@ -20,9 +20,7 @@ struct CourseDetailView: View {
     @State private var showPopup: Bool = false
     @State private var alertType: AlertType = .declare
     @State private var isFollowing: Bool = true
-    
-    private var titltInfo = ["너구리 라면집", "도쿄등심 롯데 캐슬 잠실점", "전시관"]
-    private var subtitleInfo = ["한식", "소고기구이", "전시"]
+
     var courseId: Int
     @State private var isScrapped: Bool
     init(courseId: Int, isScrapped: Bool) {
@@ -51,7 +49,9 @@ struct CourseDetailView: View {
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {
             if alertType == .remove {
-                presentationMode.wrappedValue.dismiss()
+                viewModel.removeCourse(courseId: courseId, complete: {
+                    presentationMode.wrappedValue.dismiss()
+                })
             }
         }))
     }
@@ -90,7 +90,7 @@ extension CourseDetailView {
     
     private var mapView: some View {
         VStack(spacing: 0.0) {
-            NaverMapView()
+            NaverMapView(places: $viewModel.courseDetail)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 300.0)
@@ -145,12 +145,12 @@ extension CourseDetailView {
                 )
                 .isHidden(viewModel.courseDetail.checkWriter == true)
                 .onTapGesture {
-                    // TODO: api 추가
                     if viewModel.courseDetail.isFollowing {
                         viewModel.courseDetail.followStatus = "FOLLOWER"
                     } else {
                         viewModel.courseDetail.followStatus = "FOLLOWING"
                     }
+                    viewModel.follow(memberId: viewModel.courseDetail.writer?.memberId ?? 0)
                 }
             
                

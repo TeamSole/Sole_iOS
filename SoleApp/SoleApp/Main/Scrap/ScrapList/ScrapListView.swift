@@ -151,7 +151,12 @@ extension ScrapListView {
     private var scrapList: some View {
         VStack(spacing: 20.0) {
             ForEach(0..<viewModel.scraps.count, id: \.self) { index in
-                scrapItem(item: viewModel.scraps[index], index: index)
+                NavigationLink(destination: {
+                    CourseDetailView(courseId: viewModel.scraps[index].courseId ?? 0,
+                                     isScrapped: viewModel.scraps[index].like ?? false)
+                }, label: {
+                    scrapItem(item: viewModel.scraps[index], index: index)
+                })
             }
         }
         .padding(.horizontal, 16.0)

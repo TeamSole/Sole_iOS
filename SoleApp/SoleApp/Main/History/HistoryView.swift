@@ -129,7 +129,13 @@ extension HistoryView {
                 emptyResultView
             } else {
                 ForEach(0..<viewModel.histories.count, id: \.self) { index in
-                    courseHistoryItem(item: viewModel.histories[index])
+                    NavigationLink (destination: {
+                        CourseDetailView(courseId: viewModel.histories[index].courseId ?? 0,
+                                         isScrapped: viewModel.histories[index].like ?? false)
+                    }, label: {
+                        courseHistoryItem(item: viewModel.histories[index])
+                    })
+                    
                 }
             }
         }
