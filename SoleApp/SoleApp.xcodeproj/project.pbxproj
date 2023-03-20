@@ -154,6 +154,12 @@
 		A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */; };
 		A47EEAB529C830AB006BA3DB /* ScrapRenameFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB429C830AB006BA3DB /* ScrapRenameFolderModel.swift */; };
 		A47EEAB629C830AC006BA3DB /* ScrapRenameFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB429C830AB006BA3DB /* ScrapRenameFolderModel.swift */; };
+		A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */; };
+		A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */; };
+		A47EEABB29C85762006BA3DB /* NaverSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */; };
+		A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */; };
+		A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
+		A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C8329913CF00014F458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C31C8229913CF00014F458 /* Assets.xcassets */; };
@@ -253,6 +259,9 @@
 		A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
 		A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetModifier.swift; sourceTree = "<group>"; };
 		A47EEAB429C830AB006BA3DB /* ScrapRenameFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRenameFolderModel.swift; sourceTree = "<group>"; };
+		A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
+		A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchModel.swift; sourceTree = "<group>"; };
+		A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -352,6 +361,7 @@
 				A46B3B5329C021710026D961 /* NotiSettingView.swift */,
 				A46B3B5629C04D940026D961 /* NotiListView.swift */,
 				A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */,
+				A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */,
 			);
 			path = MyPageSetting;
 			sourceTree = "<group>";
@@ -486,6 +496,8 @@
 				A46B3B4829BF77CC0026D961 /* NaverMapView.swift */,
 				A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */,
 				A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */,
+				A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */,
+				A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -867,6 +879,7 @@
 			files = (
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
+				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
@@ -882,6 +895,7 @@
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A47EEA7729C60928006BA3DB /* MyPageModel.swift in Sources */,
+				A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
 				A47EEA8A29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -912,6 +926,7 @@
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
+				A47EEABB29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
@@ -940,6 +955,7 @@
 			files = (
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
+				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
@@ -955,6 +971,7 @@
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */,
+				A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
 				A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -985,6 +1002,7 @@
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A46B4723299929C4001FAED3 /* UITextField.swift in Sources */,
+				A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,

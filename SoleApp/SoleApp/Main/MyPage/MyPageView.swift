@@ -58,6 +58,7 @@ extension MyPageView {
                 .frame(maxWidth: .infinity,
                        alignment: .center)
             Image("bell")
+                .isHidden(true)
         }
         .frame(height: 48.0)
         .padding(.horizontal, 16.0)
@@ -121,6 +122,13 @@ extension MyPageView {
         VStack(spacing: 0.0) {
             List(viewModel.myPageViewCellData, id: \.self) { item in
                 menuItem(leftTitle: item.leftTitle, rightTitle: item.rightTitle)
+                    .onTapGesture {
+                        if item == .terms {
+                            UIApplication.shared.open(URL(string: "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3")!)
+                        } else if item == .privacyPolicy {
+                            UIApplication.shared.open(URL(string: "https://team-sole.notion.site/8c353f0248ef4b838797863738c7b458")!)
+                        }
+                    }
                     .listRowInsets(EdgeInsets())
             }
             .listStyle(.plain)
@@ -148,6 +156,7 @@ extension MyPageView {
         }
         .frame(height: 53.0)
         .padding(.horizontal, 16.0)
+        .contentShape(Rectangle())
     }
 }
 

@@ -85,7 +85,7 @@ extension ScrapListView {
                     }
             } else {
                 Image("more-vertical")
-                    .isHidden(isDefaultFolder, remove: true)
+                    .isHidden(isDefaultFolder)
                     .onTapGesture {
                         showBottomPopup = true
                     }
@@ -196,7 +196,7 @@ extension ScrapListView {
                        alignment: .leading)
             }
             if isEditMode {
-                Image(selectedScraps.contains(item.courseId ?? 0) ? "check-circle" : "radio_button_unchecked")
+                Image(selectedScraps.contains(item.courseId ?? 0) ? "check_circle" : "radio_button_unchecked")
                     .onTapGesture {
                         if selectedScraps.contains(item.courseId ?? 0) {
                             selectedScraps = selectedScraps.filter({ $0 != item.courseId })

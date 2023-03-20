@@ -37,7 +37,7 @@ extension FollowingUserListViewModel {
     }
     
     func getFollowerList() {
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.followList)!
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.followerList)!
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": Utility.load(key: Constant.token)

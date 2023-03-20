@@ -19,6 +19,10 @@
 	<string>aaa0c1c1115d227126c32a83385a2763</string>
 	<key>NMFClientId</key>
 	<string>3o0mfuhlwv</string>
+	<key>NaverClientId</key>
+	<string>3asML4GAA0LNxoTb9EOp</string>
+	<key>NaverSecretId</key>
+	<string>lZC9tQpzpi</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Black.otf</string>

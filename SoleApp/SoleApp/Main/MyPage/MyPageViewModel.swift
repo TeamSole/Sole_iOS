@@ -9,24 +9,24 @@ import SwiftUI
 import Alamofire
 
 enum MyPageCell: CaseIterable {
-    case setPush
-    case notice
-    case faq
-    case inquiry
+//    case setPush
+//    case notice
+//    case faq
+//    case inquiry
     case terms
     case privacyPolicy
     case version
     
     var leftTitle: String {
         switch self {
-        case .setPush:
-            return "알림 설정"
-        case .notice:
-            return "공지사항"
-        case .faq:
-            return "FAQ"
-        case .inquiry:
-            return "문의하기"
+//        case .setPush:
+//            return "알림 설정"
+//        case .notice:
+//            return "공지사항"
+//        case .faq:
+//            return "FAQ"
+//        case .inquiry:
+//            return "문의하기"
         case .terms:
             return "이용약관"
         case .privacyPolicy:

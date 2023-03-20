@@ -18,13 +18,17 @@ struct FollowingUserListView: View {
             navigationBar
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    topCategoriesView(items: ["팔로워", "팔로윙"], selectedIndex: $selectedIndex)
+                    topCategoriesView(items: ["팔로워", "팔로잉"], selectedIndex: $selectedIndex)
                     followNFollowingListView
                 }
             }
             
         }
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.getFollowList()
+            viewModel.getFollowerList()
+        }
     }
 }
 
@@ -45,13 +49,25 @@ extension FollowingUserListView {
     private var followNFollowingListView: some View {
         LazyVStack(spacing: 0.0) {
             if selectedIndex == 0 {
-                ForEach(0..<viewModel.followerList.count, id: \.self) { index in
-                    profileItem(item: viewModel.followerList[index])
-                }
-            } else {
-                ForEach(0..<viewModel.followList.count, id: \.self) { index in
-                    profileItem(item: viewModel.followList[index])
-                }
+                followerListView
+            } else if selectedIndex == 1 {
+                followingListView
+            }
+        }
+    }
+    
+    private var followerListView: some View {
+        LazyVStack(spacing: 0.0) {
+            ForEach(0..<viewModel.followerList.count, id: \.self) { index in
+                profileItem(item: viewModel.followerList[index], index: index)
+            }
+        }
+    }
+    
+    private var followingListView: some View {
+        LazyVStack(spacing: 0.0) {
+            ForEach(0..<viewModel.followList.count, id: \.self) { index in
+                profileItem(item: viewModel.followList[index], index: index)
             }
         }
     }
@@ -88,7 +104,7 @@ extension FollowingUserListView {
     
     
     
-    private func profileItem(item: FollowItem) -> some View {
+    private func profileItem(item: FollowItem, index: Int) -> some View {
         HStack(alignment: .center, spacing: 0.0) {
             KFImage(URL(string: item.member?.profileImgUrl ?? ""))
                 .placeholder {
@@ -123,13 +139,13 @@ extension FollowingUserListView {
                 }
             }
             .padding(.leading)
-            Text(item.followStatus == "FOLLOW" ? "팔로잉" : "팔로우")
-                .foregroundColor(item.followStatus == "FOLLOW" ? .blue_4708FA : .white)
+            Text(item.followStatus == "FOLLOWING" ? "팔로잉" : "팔로우")
+                .foregroundColor(item.followStatus == "FOLLOWING" ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
                        height: 20.0,
                        alignment: .center)
-                .background(item.followStatus == "FOLLOW" ? Color.white : Color.blue_4708FA)
+                .background(item.followStatus == "FOLLOWING" ? Color.white : Color.blue_4708FA)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
                         .stroke(Color.blue_4708FA, lineWidth: 1.0)
@@ -137,6 +153,11 @@ extension FollowingUserListView {
                 .cornerRadius(4.0)
                 .onTapGesture {
 //                    isFollowing.toggle()
+                    if selectedIndex == 0 {
+                        viewModel.followerList[index].followStatus = viewModel.followerList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+                    } else {
+                        viewModel.followList[index].followStatus = viewModel.followList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+                    }
                     viewModel.follow(memberId: item.member?.memberId ?? 0)
                 }
             

@@ -10,6 +10,8 @@ import Alamofire
 
 struct K {
     static let baseUrl: String = Bundle.main.object(forInfoDictionaryKey: "Base Url") as! String
+    static let naverSearhUrl: String = "https://openapi.naver.com/v1/search/local.json"
+    
 }
 
 extension K {
@@ -22,14 +24,9 @@ extension K {
             "Content-Type" : "multipart/form-data"
         ]
         
-        static let reissueHeader: HTTPHeaders = [
-            "Authorization": Utility.load(key: Constant.token),
-            "Refresh": Utility.load(key: Constant.refreshToken)
-        ]
-        
-        static let jsonHeaderWithToken: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": Utility.load(key: Constant.token)
+        static let naverSearhHeader: HTTPHeaders = [
+            "X-Naver-Client-Id":  Bundle.main.object(forInfoDictionaryKey: "NaverClientId") as! String,
+            "X-Naver-Client-Secret": Bundle.main.object(forInfoDictionaryKey: "NaverSecretId") as! String
         ]
     }
 }

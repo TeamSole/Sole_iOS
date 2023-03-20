@@ -6,34 +6,60 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AccountSettingView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
-    @State private var nickName: String = "너구리"
-    @State private var introduceInfo: String = "ㅎㅎ"
+    @State private var nickName: String = ""
+    @State private var introduceInfo: String = ""
+    @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var showPopup: Bool = false
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
-            VStack(spacing: 0.0) {
-                profilImageView
-                customTextField(info: $nickName)
-                introduceTextEditorView
-                Spacer()
-                saveButton
-                secessionButton
+            ScrollView {
+                VStack(spacing: 0.0) {
+                    profilImageView
+                    userKeyView
+                    customTextField(info: $nickName)
+                    introduceTextEditorView
+                }
+                .padding(.horizontal, 16.0)
+                .onTapGesture {
+                    hideKeyboard()
+                }
             }
-            .padding(.horizontal, 16.0)
+            saveButton
+                .padding(.horizontal, 16.0)
+            secessionButton
+                .padding(.horizontal, 16.0)
         }
         .navigationBarHidden(true)
         .onLoaded {
-            
+            viewModel.getmyAccountInfo {
+                nickName = viewModel.accountInfo.nickname ?? ""
+                introduceInfo = viewModel.accountInfo.description ?? ""
+            }
         }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
                                             complete: {
             viewModel.withdrawal()
         }))
+        .ignoresSafeArea(.keyboard)
+        .sheet(isPresented: $isShowThumbnailPhotoPicker,
+               content: {
+            PhotoPicker(isPresented: $isShowThumbnailPhotoPicker, filter: .images, limit: 1) { result in
+                PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
+                    if let images = imagesOrNil {
+                        if let first = images.first {
+                            viewModel.profileImage = first
+                        }
+                    }
+                }
+            }
+        })
+        
     }
 }
 
@@ -58,13 +84,50 @@ extension AccountSettingView {
     
     private var profilImageView: some View {
         ZStack(alignment: .bottomTrailing) {
-            Image("profile56")
-                .resizable()
-                .frame(width: 100.0,
-                       height: 100.0)
+            if viewModel.profileImage == nil {
+                KFImage(URL(string: viewModel.accountInfo.profileImgUrl ?? ""))
+                    .placeholder {
+                        Image(uiImage: UIImage(named: "profile56") ?? UIImage())
+                            .resizable()
+                            .frame(width: 100.0,
+                                   height: 100.0)
+                    }
+                    .resizable()
+                    .frame(width: 100.0,
+                           height: 100.0)
+                    .cornerRadius(.infinity)
+            } else {
+                Image(uiImage: viewModel.profileImage ?? UIImage())
+                    .resizable()
+                    .frame(width: 100.0,
+                           height: 100.0)
+                    .cornerRadius(.infinity)
+            }
             Image("add_circle")
         }
         .padding(.vertical, 36.0)
+    }
+    
+    private var userKeyView: some View {
+        VStack(spacing: 0.0) {
+            HStack(spacing: 0.0) {
+                Text(viewModel.accountInfo.socialId ?? "")
+                    .font(.pretendard(.reguler, size: 16.0))
+                    .foregroundColor(.gray_999999)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                Image(viewModel.accountInfo.social == "APPLE"
+                      ? "appleComponent"
+                      : "kakaoComponent")
+                .padding(.trailing, 4.0)
+                Text(viewModel.accountInfo.social ?? "")
+                    .font(.pretendard(.reguler, size: 14.0))
+                    .foregroundColor(.black)
+            }
+            Color(UIColor.gray_D3D4D5)
+                .frame(height: 1.0)
+        }
+        .padding(.bottom, 45.0)
     }
     
     private func customTextField(info: Binding<String>) -> some View {
@@ -94,17 +157,30 @@ extension AccountSettingView {
                 .frame(maxWidth: .infinity,
                        alignment: .trailing)
         }
+        .frame(maxHeight: .infinity,
+               alignment: .top)
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     private var saveButton: some View {
         Button(action: {
-            // TODO: action 추가하기
+            guard isEditable else { return }
+            viewModel.changeMyInfo(nickname: nickName,
+                                   description: introduceInfo,
+                                   complete: {
+                viewModel.getmyAccountInfo {
+                    nickName = viewModel.accountInfo.nickname ?? ""
+                    introduceInfo = viewModel.accountInfo.description ?? ""
+                }
+            })
         }, label: {
             Text("변경사항 저장하기")
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 48.0)
-                .background(Color(UIColor.blue_4708FA))
+                .background(isEditable ? Color.blue_4708FA : Color.gray_D3D4D5)
                 .cornerRadius(8.0)
         })
         .padding(.bottom, 28.0)
@@ -120,6 +196,13 @@ extension AccountSettingView {
                 showPopup = true
             }
         
+    }
+    
+    private var isEditable: Bool {
+        return nickName.isEmpty == false &&
+        viewModel.accountInfo.nickname != nickName ||
+        viewModel.accountInfo.description != introduceInfo ||
+        viewModel.profileImage != nil
     }
 }
 

@@ -13,6 +13,7 @@ struct RegisterCouseView: View {
     @State private var courseDescription: String = ""
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowSubPhotoPicker: Bool = false
+    @State private var thumbnailImage: UIImage? = nil
     private let gridItem: [GridItem] = [
         GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
         GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
@@ -38,7 +39,7 @@ struct RegisterCouseView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-//                            viewModel.selectedImage = first
+                           thumbnailImage = first
                         }
                     }
                 }

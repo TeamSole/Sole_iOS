@@ -19,7 +19,7 @@ struct FollowingBoardView: View {
                         viewModel.boardList.isEmpty {
                         emptyResultView
                     } else {
-                        VStack(spacing: 0.0) {
+                        VStack(spacing: 16.0) {
                             ForEach(0..<viewModel.boardList.count, id: \.self) { index in
                                 courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
                                                index: index,
@@ -35,7 +35,7 @@ struct FollowingBoardView: View {
             }
             .frame(maxHeight: .infinity)
             .navigationBarHidden(true)
-            .onLoaded {
+            .onAppear {
                 viewModel.getFollowingBoardList()
             }
     }
@@ -73,8 +73,15 @@ extension FollowingBoardView {
         HStack(spacing: 0.0) {
             KFImage(url)
                 .resizable()
+                .placeholder {
+                    Image(uiImage: UIImage(named: "profile24") ?? UIImage())
+                        .resizable()
+                        .frame(width: 32.0,
+                               height: 32.0)
+                }
                 .frame(width: 32.0,
                        height: 32.0)
+                .cornerRadius(.infinity)
                 .padding(.trailing, 8.0)
             Text(userName)
                 .font(Font(UIFont.pretendardRegular(size: 14.0)))
