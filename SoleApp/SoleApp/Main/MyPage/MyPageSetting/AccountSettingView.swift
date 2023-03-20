@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct AccountSettingView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
     @State private var nickName: String = ""
@@ -44,7 +45,17 @@ struct AccountSettingView: View {
         }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
                                             complete: {
-            viewModel.withdrawal()
+            viewModel.withdrawal {
+                let window = UIApplication
+                            .shared
+                            .connectedScenes
+                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                            .first { $0.isKeyWindow }
+
+                        window?.rootViewController = UIHostingController(rootView: IntroView()
+                            .environmentObject(mainViewModel))
+                        window?.makeKeyAndVisible()
+            }
         }))
         .ignoresSafeArea(.keyboard)
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
@@ -111,7 +122,7 @@ extension AccountSettingView {
     private var userKeyView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text(viewModel.accountInfo.socialId ?? "")
+                Text("")
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.gray_999999)
                     .frame(maxWidth: .infinity,
@@ -124,8 +135,8 @@ extension AccountSettingView {
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }
-            Color(UIColor.gray_D3D4D5)
-                .frame(height: 1.0)
+//            Color(UIColor.gray_D3D4D5)
+//                .frame(height: 1.0)
         }
         .padding(.bottom, 45.0)
     }

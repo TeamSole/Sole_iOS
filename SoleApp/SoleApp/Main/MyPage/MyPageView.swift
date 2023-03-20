@@ -85,6 +85,7 @@ extension MyPageView {
                             .font(.pretendard(.reguler, size: 14.0))
                         NavigationLink(destination: {
                             AccountSettingView()
+                                .environmentObject(mainViewModel)
                         }, label: {
                             Image("edit-circle")
                         })

@@ -64,7 +64,7 @@ final class AccountSettingViewModel: ObservableObject {
         })
     }
     
-    func withdrawal() {
+    func withdrawal(complete: @escaping () -> ()) {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.withdrawal)!
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -80,8 +80,9 @@ final class AccountSettingViewModel: ObservableObject {
                         Utility.delete(key: Constant.refreshToken)
                         Utility.delete(key: Constant.loginPlatform)
                         Utility.delete(key: Constant.profileImage)
-                        AppDelegate.shared.mainViewModel.existToken = false
-                        AppDelegate.shared.mainViewModel.canShowMain = false
+                        complete()
+//                        AppDelegate.shared.mainViewModel.existToken = false
+//                        AppDelegate.shared.mainViewModel.canShowMain = false
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

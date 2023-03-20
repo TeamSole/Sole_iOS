@@ -23,8 +23,17 @@ struct SignUpCompleteView: View {
 //            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 
-                mainViewModel.existToken = true
-                mainViewModel.canShowMain = true
+//                mainViewModel.existToken = true
+//                mainViewModel.canShowMain = true
+                let window = UIApplication
+                            .shared
+                            .connectedScenes
+                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                            .first { $0.isKeyWindow }
+
+                        window?.rootViewController = UIHostingController(rootView: IntroView()
+                            .environmentObject(mainViewModel))
+                        window?.makeKeyAndVisible()
                 NavigationUtil.popToRootView()
             }
         }

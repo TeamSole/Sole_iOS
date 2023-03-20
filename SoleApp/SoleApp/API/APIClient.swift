@@ -63,6 +63,9 @@ extension K {
         static func couseScrap(courseId: Int) -> String {
             return "api/courses/\(courseId)/scrap"
         }
+        static func courseDeclare(courseId: Int) -> String {
+            return "api/courses/\(courseId)/declare"
+        }
         
         static let courseDetail: String = "api/courses/"
         

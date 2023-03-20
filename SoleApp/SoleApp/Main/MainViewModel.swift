@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 final class MainViewModel: ObservableObject {
     @Published var canShowMain = false
     @Published var existToken = false
+    
+    var toastMessageSubject = PassthroughSubject<(String, CGFloat), Never>()
 }

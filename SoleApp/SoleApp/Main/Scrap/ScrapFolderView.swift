@@ -73,7 +73,6 @@ extension ScrapFolderView {
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            
         }
     }
     
