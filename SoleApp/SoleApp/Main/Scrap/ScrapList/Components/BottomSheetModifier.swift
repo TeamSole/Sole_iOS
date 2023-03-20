@@ -18,6 +18,9 @@ struct BottomSheetModifier: ViewModifier {
             if showFlag {
                 Color.black.opacity(0.3)
                     .edgesIgnoringSafeArea(.top)
+                    .onTapGesture {
+                        showFlag = false
+                    }
                 VStack(spacing: 0.0) {
                     Spacer()
                         .onTapGesture {

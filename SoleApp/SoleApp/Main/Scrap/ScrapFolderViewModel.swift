@@ -47,7 +47,7 @@ extension ScrapFolderViewModel {
         ]
         AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: headers)
             .validate()
-            .responseDecodable(of: ScrapFolderResponseModel.self, completionHandler: { [weak self] response in
+            .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
                 switch response.result {
                 case .success(let response):
                     if response.success == true {

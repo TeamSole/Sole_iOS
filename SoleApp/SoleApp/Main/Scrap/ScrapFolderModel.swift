@@ -15,5 +15,6 @@ struct ScrapFolderResponseModel: Codable {
     struct DataModel: Codable {
         var scrapFolderId: Int?
         var scrapFolderName: String?
+        var scrapFolderImg: String?
     }
 }

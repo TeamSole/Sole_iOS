@@ -30,7 +30,7 @@ struct ScrapFolderView: View {
                                 ScrapListView(folderId: viewModel.folders[index].scrapFolderId ?? 0,
                                               folderName: viewModel.folders[index].scrapFolderName ?? "")
                             }, label: {
-                                folderItem(image: nil, title: viewModel.folders[index].scrapFolderName ?? "")
+                                folderItem(image: viewModel.folders[index].scrapFolderImg ?? "", title: viewModel.folders[index].scrapFolderName ?? "")
                             })
                            
                         }
@@ -60,9 +60,9 @@ extension ScrapFolderView {
         .frame(height: 48.0)
     }
     
-    private func folderItem(image url: URL?, title: String) -> some View {
+    private func folderItem(image url: String, title: String) -> some View {
         VStack(spacing: 8.0) {
-            KFImage(url)
+            KFImage(URL(string: url))
                 .placeholder {
                     Image(uiImage: UIImage(named: "folderImage") ?? UIImage())
                         .resizable()
