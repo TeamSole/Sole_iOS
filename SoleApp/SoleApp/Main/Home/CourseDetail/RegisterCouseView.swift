@@ -32,12 +32,18 @@ struct RegisterCouseView: View {
                 }
             }
         }
-//        .sheet(isPresented: $isShowThumbnailPhotoPicker,
-//               content: {
-//            PhotoPicker(isPresented: $isShowThumbnailPhotoPicker, filter: .images, limit: 1) { result in
-//                <#code#>
-//            }
-//        })
+        .sheet(isPresented: $isShowThumbnailPhotoPicker,
+               content: {
+            PhotoPicker(isPresented: $isShowThumbnailPhotoPicker, filter: .images, limit: 1) { result in
+                PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
+                    if let images = imagesOrNil {
+                        if let first = images.first {
+//                            viewModel.selectedImage = first
+                        }
+                    }
+                }
+            }
+        })
     }
 }
 

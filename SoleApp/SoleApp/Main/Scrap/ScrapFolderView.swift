@@ -9,6 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct ScrapFolderView: View {
+    @StateObject var viewModel: ScrapFolderViewModel = ScrapFolderViewModel()
+    @State private var showPopup: Bool = false
     private let gridItem: [GridItem] = [
         GridItem(.adaptive(minimum: 100.0), spacing: 16.0),
         GridItem(.adaptive(minimum: 100.0), spacing: 16.0)
@@ -20,14 +22,14 @@ struct ScrapFolderView: View {
             naviagationBar
             ScrollView {
                 LazyVGrid(columns: gridItem, spacing: 16.0) {
-                    ForEach(0..<5) { index in
-                        if index == 4 {
+                    ForEach(0..<viewModel.folders.count + 1, id: \.self) { index in
+                        if index == viewModel.folders.count {
                             addFolderButtonView
                         } else {
                             NavigationLink(destination: {
-                                ScrapListView()
+                                ScrapListView(folderId: viewModel.folders[index].scrapFolderId ?? 0)
                             }, label: {
-                                folderItem(image: nil, title: "기본 폴더")
+                                folderItem(image: nil, title: viewModel.folders[index].scrapFolderName ?? "")
                             })
                            
                         }
@@ -36,6 +38,14 @@ struct ScrapFolderView: View {
                 .padding(.horizontal, 16.0)
             }
         }
+        .onAppear {
+            viewModel.getFolders()
+        }
+        .modifier(FolderPopupTextFieldModifier(isShowFlag: $showPopup,
+                                               folderPopupType: .add,
+                                               complete: { foldername in
+            viewModel.addFolder(folderName: foldername)
+        }))
     }
 }
 
@@ -53,7 +63,7 @@ extension ScrapFolderView {
         VStack(spacing: 8.0) {
             KFImage(url)
                 .placeholder {
-                    Image(uiImage: UIImage(named: "profile56") ?? UIImage())
+                    Image(uiImage: UIImage(named: "folderImage") ?? UIImage())
                         .resizable()
                 }
                 .frame(height: gridItemHeight)
@@ -67,21 +77,27 @@ extension ScrapFolderView {
     }
     
     private var addFolderButtonView: some View {
-        VStack(spacing: 4.0) {
-            Text("폴더 추가")
-                .foregroundColor(.black)
-                .font(.pretendard(.reguler, size: 16.0))
-            Image("add_circle_blue")
-        }
-        .frame(height: gridItemHeight)
-        .frame(maxWidth: .infinity)
-        .overlay(Rectangle()
-            .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-            .foregroundColor(.gray_D3D4D5)
-        )
-        .contentShape(Rectangle())
-        .onTapGesture {
-            print(44)
+        VStack(spacing: 8.0) {
+            VStack(spacing: 4.0) {
+                Text("폴더 추가")
+                    .foregroundColor(.black)
+                    .font(.pretendard(.reguler, size: 16.0))
+                Image("add_circle_blue")
+            }
+            .frame(height: gridItemHeight)
+            .frame(maxWidth: .infinity,
+                   alignment: .top)
+            .overlay(Rectangle()
+                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                .foregroundColor(.gray_D3D4D5)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                showPopup = true
+            }
+            Text("폴더")
+                .foregroundColor(.clear)
+                .font(.pretendard(.bold, size: 16.0))
         }
         
     }

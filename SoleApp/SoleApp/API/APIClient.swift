@@ -55,6 +55,9 @@ extension K {
             return "api/follows/follow/\(memberId)"
         }
         
+        // MARK: Scrap
+        static let folderList: String = "api/scraps"
+        
         // MARK: Histroy
         static let userProfileInHistory: String = "api/histories"
         static let userHistory: String = "api/histories/courses"
