@@ -95,15 +95,13 @@ extension ScrapListViewModel {
             "Content-Type": "application/json",
             "Authorization": Utility.load(key: Constant.token)
         ]
-        AF.request(url, method: .get, headers: headers)
+        AF.request(url, method: .delete, headers: headers)
             .validate()
             .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
                 switch response.result {
-                case .success(let response):
-                    if response.success == true {
-                        self?.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
-                        complete()
-                    }
+                case .success:
+                    self?.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
+                    complete()
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

@@ -78,6 +78,7 @@ enum TransCategory: String {
     case PUBLIC_TRANSPORTATION = "PUBLIC_TRANSPORTATION "
 }
 
+
 //PlaceCategory
 // TASTY_PLACE : 맛집
 // CAFE : 카페

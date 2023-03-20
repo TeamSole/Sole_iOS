@@ -170,21 +170,33 @@ extension ScrapListView {
                 .frame(width: 100.0,
                        height: 100.0)
             VStack(spacing: 0.0) {
-                Text(item.title ?? "")
-                    .font(.pretendard(.bold, size: 14.0))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
-                    .padding(.bottom, 7.0)
-                Text("\(item.address ?? "") \(item.duration ?? 0)시간 소요 \(item.distance ?? 0)km 이동")
+                HStack(spacing: 0.0) {
+                    Text(item.title ?? "")
+                        .font(.pretendard(.bold, size: 14.0))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
+                        .padding(.bottom, 7.0)
+                    if isEditMode {
+                        Image(selectedScraps.contains(item.courseId ?? 0) ? "check_circle" : "radio_button_unchecked")
+                            .onTapGesture {
+                                if selectedScraps.contains(item.courseId ?? 0) {
+                                    selectedScraps = selectedScraps.filter({ $0 != item.courseId })
+                                } else {
+                                    selectedScraps.append(item.courseId ?? 0)
+                                }
+                            }
+                    }
+                }
+                Text("\(item.address ?? "")·\(item.duration ?? 0)시간 소요·\(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_999999)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     .padding(.bottom, 7.0)
                 HStack(spacing: 8.0) {
-                    ForEach(0..<["라면", "라면"].count, id: \.self) { index in
-                        Text(["라면", "라면"][index])
+                    ForEach(0..<item.cateogoryTitles.count, id: \.self) { index in
+                        Text(item.cateogoryTitles[index])
                             .font(.pretendard(.reguler, size: 9.0))
                             .foregroundColor(.black)
                             .padding(6.0)
@@ -194,16 +206,6 @@ extension ScrapListView {
                 }
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            }
-            if isEditMode {
-                Image(selectedScraps.contains(item.courseId ?? 0) ? "check_circle" : "radio_button_unchecked")
-                    .onTapGesture {
-                        if selectedScraps.contains(item.courseId ?? 0) {
-                            selectedScraps = selectedScraps.filter({ $0 != item.courseId })
-                        } else {
-                            selectedScraps.append(item.courseId ?? 0)
-                        }
-                    }
             }
         }
     }

@@ -42,7 +42,7 @@ extension HistoryViewModel {
     func getUserHistoies() {
         guard apiRequestStatus == false else { return }
         apiRequestStatus = true
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userProfileInHistory)!
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userHistory)!
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": Utility.load(key: Constant.token)
