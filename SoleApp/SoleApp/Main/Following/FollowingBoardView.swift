@@ -112,6 +112,7 @@ extension FollowingBoardView {
                 .padding(.bottom, 4.0)
             Text(description)
                 .font(Font(UIFont.pretendardRegular(size: 13.0)))
+                .lineSpacing(4.0)
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)

@@ -94,7 +94,7 @@ extension HomeView {
                 HStack(spacing: 8.0) {
                     ForEach(0..<5) { index in
                         NavigationLink(destination: {
-                            CourseDetailView()
+                            CourseDetailView(courseId: 5, isScrapped: true)
                         }, label: {
                             hotCourseSectionItem(image: nil, title: "따듯한 3월에 가기 좋은 삼정동", course: "전시코스")
                                 .cornerRadius(4.0)

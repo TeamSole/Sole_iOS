@@ -64,6 +64,8 @@ extension K {
             return "api/courses/\(courseId)/scrap"
         }
         
+        static let courseDetail: String = "api/courses/"
+        
     }
 }
 
