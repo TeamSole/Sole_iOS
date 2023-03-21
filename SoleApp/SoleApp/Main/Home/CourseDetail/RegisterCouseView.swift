@@ -9,11 +9,14 @@ import SwiftUI
 
 struct RegisterCouseView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
     @State private var courseTitle: String = ""
     @State private var courseDescription: String = ""
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowSubPhotoPicker: Bool = false
     @State private var thumbnailImage: UIImage? = nil
+    @State private var availableWidth: CGFloat = 10
+    @State private var selectedDate: Date = Date()
     private let gridItem: [GridItem] = [
         GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
         GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
@@ -33,6 +36,7 @@ struct RegisterCouseView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
                content: {
             PhotoPicker(isPresented: $isShowThumbnailPhotoPicker, filter: .images, limit: 1) { result in
@@ -88,7 +92,7 @@ extension RegisterCouseView {
     }
     
     private var courseTextFeildView: some View {
-        VStack(spacing: 0.0) {
+        VStack(spacing: 4.0) {
             TextField("코스 제목", text: $courseTitle)
             Color.gray_D3D4D5
                 .frame(height: 1.0)
@@ -100,10 +104,17 @@ extension RegisterCouseView {
     
     private var thumbnailImageView: some View {
         VStack(spacing: 0.0) {
-            Text("대표 사진 추가")
-                .foregroundColor(.black)
-                .font(.pretendard(.reguler, size: 14.0))
-            Image("add_circle")
+            if viewModel.thumbnailImage == nil {
+                Text("대표 사진 추가")
+                    .foregroundColor(.black)
+                    .font(.pretendard(.reguler, size: 14.0))
+                Image("add_circle")
+            } else {
+                Image(uiImage: viewModel.thumbnailImage ?? UIImage())
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .cornerRadius(12.0)
+            }
         }
         .frame(maxWidth: .infinity)
         .frame(height: 186.0)
@@ -111,7 +122,12 @@ extension RegisterCouseView {
             RoundedRectangle(cornerRadius: 12.0)
                 .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
         )
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isShowThumbnailPhotoPicker = true
+        }
         .padding(16.0)
+        .padding(.bottom, 20.0)
     }
     
     private var dateView: some View {
@@ -122,6 +138,8 @@ extension RegisterCouseView {
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
+                DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                    .frame(height: 14.0)
                 Image("arrow_right")
             }
             Color.gray_D3D4D5
@@ -129,11 +147,12 @@ extension RegisterCouseView {
         }
         .frame(maxWidth: .infinity,
                alignment: .leading)
-        .padding(.horizontal, 16.0)
+        .padding(16.0)
+        
     }
     
     private var tagView: some View {
-        VStack(spacing: 16.0) {
+        VStack(alignment: .leading, spacing: 0.0) {
             HStack(spacing: 0.0) {
                 Text("태그")
                     .foregroundColor(.black)
@@ -142,8 +161,32 @@ extension RegisterCouseView {
                            alignment: .leading)
                 Image("arrow_right")
             }
+            .padding(.bottom, 12.0)
+            Color.clear
+                .frame(height: 1.0)
+                .readSize { size in
+                    availableWidth = size.width
+                }
+            TagListView(availableWidth: availableWidth,
+                        data: ["라면", "라면"],
+                        spacing: 8.0,
+                        alignment: .leading,
+                        isExpandedUserTagListView: .constant(false),
+                        maxRows: .constant(0)) { item in
+                HStack(spacing: 0.0) {
+                    Text(item)
+                        .foregroundColor(.black)
+                        .font(.pretendard(.reguler, size: 11.0))
+                        .frame(height: 18.0)
+                        .padding(.horizontal, 8.0)
+                        .background(Color.gray_EDEDED)
+                        .cornerRadius(4.0)
+                }
+            }
+            
             Color.gray_D3D4D5
                 .frame(height: 1.0)
+                .padding(.top, 12.0)
         }
         .frame(maxWidth: .infinity,
                alignment: .leading)

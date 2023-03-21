@@ -225,7 +225,7 @@ extension HomeView {
                 VStack(alignment: .trailing, spacing: 0.0) {
                     Spacer()
                     NavigationLink(destination: {
-                        LocationSearchView()
+                        RegisterCouseView()
                     }, label: {
                         HStack(spacing: 0.0) {
                             Image(systemName: "plus")

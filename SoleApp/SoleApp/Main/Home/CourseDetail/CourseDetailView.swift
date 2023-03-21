@@ -52,6 +52,8 @@ struct CourseDetailView: View {
                 viewModel.removeCourse(courseId: courseId, complete: {
                     presentationMode.wrappedValue.dismiss()
                 })
+            } else if alertType == .declare {
+                viewModel.declareCourse(courseId: courseId)
             }
         }))
     }
@@ -328,7 +330,10 @@ extension CourseDetailView {
                                                    action: {
             
         })
-        let button2: ActionSheet.Button = .default(Text("삭제"))
+        let button2: ActionSheet.Button = .default(Text("삭제"), action: {
+            alertType = .remove
+            showPopup = true
+        })
         let button3: ActionSheet.Button = .cancel(Text("취소"))
         
         let title = Text("")
