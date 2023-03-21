@@ -25,5 +25,6 @@ struct FollowListModelResponse: Codable {
         var memberId: Int?
         var nickname: String?
         var profileImgUrl: String?
+        var socialId: String?
     }
 }

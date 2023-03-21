@@ -59,7 +59,12 @@ extension FollowingUserListView {
     private var followerListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(0..<viewModel.followerList.count, id: \.self) { index in
-                profileItem(item: viewModel.followerList[index], index: index)
+                NavigationLink(destination: {
+                    FollowUserView(socialId: viewModel.followerList[index].member?.socialId ?? "",
+                    memberId: viewModel.followerList[index].member?.memberId ?? 0)
+                }, label: {
+                    profileItem(item: viewModel.followerList[index], index: index)
+                })
             }
         }
     }
@@ -67,7 +72,12 @@ extension FollowingUserListView {
     private var followingListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(0..<viewModel.followList.count, id: \.self) { index in
-                profileItem(item: viewModel.followList[index], index: index)
+                NavigationLink(destination: {
+                    FollowUserView(socialId: viewModel.followList[index].member?.socialId ?? "",
+                    memberId: viewModel.followList[index].member?.memberId ?? 0)
+                }, label: {
+                    profileItem(item: viewModel.followList[index], index: index)
+                })
             }
         }
     }
