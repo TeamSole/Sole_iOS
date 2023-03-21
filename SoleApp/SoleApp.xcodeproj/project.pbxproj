@@ -180,6 +180,12 @@
 		A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
 		A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
 		A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
+		A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
+		A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
+		A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */; };
+		A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */; };
+		A47EEAE829CA2470006BA3DB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE729CA2470006BA3DB /* DateExtension.swift */; };
+		A47EEAE929CA2470006BA3DB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE729CA2470006BA3DB /* DateExtension.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C8329913CF00014F458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C31C8229913CF00014F458 /* Assets.xcassets */; };
@@ -292,6 +298,9 @@
 		A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		A47EEADB29C9F800006BA3DB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinutePickerModifier.swift; sourceTree = "<group>"; };
+		A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseModel.swift; sourceTree = "<group>"; };
+		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -449,6 +458,7 @@
 				A4E052EA29BE170F00FDB84B /* FontExtension.swift */,
 				A46B3B3629BF58010026D961 /* ColorExtension.swift */,
 				A46B3B3929BF5AB40026D961 /* ViewExtension.swift */,
+				A47EEAE729CA2470006BA3DB /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -500,6 +510,7 @@
 				A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */,
 				A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */,
 				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
+				A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */,
 			);
 			path = CourseDetail;
 			sourceTree = "<group>";
@@ -531,6 +542,7 @@
 				A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */,
 				A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */,
 				A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */,
+				A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -934,6 +946,7 @@
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A47EEAA029C7F2AF006BA3DB /* ScrapFolderModel.swift in Sources */,
 				A47EEAB529C830AB006BA3DB /* ScrapRenameFolderModel.swift in Sources */,
+				A47EEAE829CA2470006BA3DB /* DateExtension.swift in Sources */,
 				A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A47EEA7729C60928006BA3DB /* MyPageModel.swift in Sources */,
@@ -964,6 +977,7 @@
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
 				A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */,
+				A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
@@ -988,6 +1002,7 @@
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
 				A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
@@ -1020,6 +1035,7 @@
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A47EEAA129C7F2AF006BA3DB /* ScrapFolderModel.swift in Sources */,
 				A47EEAB629C830AC006BA3DB /* ScrapRenameFolderModel.swift in Sources */,
+				A47EEAE929CA2470006BA3DB /* DateExtension.swift in Sources */,
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */,
@@ -1050,6 +1066,7 @@
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A47EEACE29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
+				A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
@@ -1074,6 +1091,7 @@
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
+				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
 				A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,

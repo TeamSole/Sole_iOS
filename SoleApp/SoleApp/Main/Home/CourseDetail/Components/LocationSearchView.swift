@@ -7,13 +7,16 @@
 
 import SwiftUI
 import Alamofire
+import NMapsMap
 
 struct LocationSearchView: View {
     typealias SearchResult = NaverSearchModel.Item
+    typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var searchText: String = ""
     @State private var apiRequestStatus: Bool = false
     @State private var searchResults: [SearchResult] = []
+    let complete: (Course) -> ()
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -99,6 +102,17 @@ extension LocationSearchView {
             .padding(16.0)
             Divider()
         }
+        .onTapGesture {
+            let x = Double(Int(item.mapx ?? "0") ?? 0)
+            let y = Double(Int(item.mapy ?? "0") ?? 0)
+            
+            let gmt = NMGTm128(x: x, y: y)
+            
+            let course = Course(address: item.roadAddress ?? "", description: item.category ?? "", placeName: item.resultTitle, latitude: gmt.toLatLng().lat, longitude: gmt.toLatLng().lng )
+            
+            complete(course)
+            presentationMode.wrappedValue.dismiss()
+        }
     }
     
     private func search(searchText: String) {
@@ -129,6 +143,6 @@ extension LocationSearchView {
 
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchView()
+        LocationSearchView(complete: {_ in})
     }
 }

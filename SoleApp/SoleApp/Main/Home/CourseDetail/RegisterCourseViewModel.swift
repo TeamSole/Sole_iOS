@@ -9,4 +9,5 @@ import SwiftUI
 
 final class RegisterCourseViewModel: ObservableObject {
     @Published var thumbnailImage: UIImage? = nil
+    @Published var selectedImages: [[UIImage]] = [[]]
 }

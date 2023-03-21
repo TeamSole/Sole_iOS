@@ -30,11 +30,11 @@ extension HistoryModelResponse.DataModel {
     var cateogoryTitles: [String] {
         guard let categories = categories,
               categories.isEmpty == false else { return [] }
-        if categories.count < 4 {
+        if categories.count < 3 {
             return categories.map { Category(rawValue: $0)?.title ?? "" }
         } else {
             var data: [String] = []
-            for index in 0..<4 {
+            for index in 0..<3 {
                 data.append(Category(rawValue: categories[index])?.title ?? "")
             }
             return data

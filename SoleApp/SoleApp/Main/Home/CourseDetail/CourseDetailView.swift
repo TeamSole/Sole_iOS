@@ -170,6 +170,7 @@ extension CourseDetailView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("blackLove")
+                    .padding(.trailing, 4.0)
                 Text("\(viewModel.courseDetail.scrapCount ?? 0)")
                     .font(.pretendard(.reguler, size: 11.0))
                     .foregroundColor(.black)

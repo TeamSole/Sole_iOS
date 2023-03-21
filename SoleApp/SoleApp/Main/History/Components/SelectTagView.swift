@@ -20,6 +20,8 @@ struct SelectTagView: View {
     @State private var availableWidth: CGFloat = 10
     var selectType: selectType
     let complete: ([String], [String], [String]) -> ()
+    
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
