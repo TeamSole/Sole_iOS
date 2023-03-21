@@ -68,6 +68,8 @@ extension K {
         }
         static let courses: String = "api/courses"
         static let recommendCourse: String = "api/courses/recommend"
+        static let category: String = "api/courses/favCategory"
+        static let location: String = "api/courses/currentGps"
         
         static let courseDetail: String = "api/courses/"
         

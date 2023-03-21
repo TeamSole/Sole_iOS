@@ -33,7 +33,7 @@ struct HistoryView: View {
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(complete: {})
+            SelectTagView(selectType: .filter, complete: {_,_,_ in })
         })
     }
 }

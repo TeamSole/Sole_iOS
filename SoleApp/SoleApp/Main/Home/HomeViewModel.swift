@@ -12,10 +12,12 @@ import Alamofire
 final class HomeViewModel: NSObject, ObservableObject {
     typealias RecommendCourse = RecommendCourseModel.DataModel
     typealias Course = CourseModelResponse.DataModel
+    typealias Location = LocationModelResponse.CurrentGps
     var locationManager = CLLocationManager()
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var recommendCourses: [RecommendCourse] = []
     @Published var courses: [Course] = []
+    @Published var location: Location = Location()
     
     override init() {
         super.init()
@@ -68,14 +70,59 @@ extension HomeViewModel {
             })
     }
     
+    func setTaste(place: [String], with: [String], tras: [String]) {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.category)!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        let model = CategoryModelRequest(placeCategories: place, withCategories: with, transCategories: tras)
+        AF.request(url, method: .patch, parameters: model, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                        self?.getCourses()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func setLocation(lat: Double, lng: Double) {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.location)!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        let model = LocationModelRequest(latitude: lat, longitude: lng)
+        AF.request(url, method: .patch, parameters: model, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .responseDecodable(of: LocationModelResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true,
+                       let location = response.data?.currentGps {
+                        self?.location = location
+                        self?.getRecommendCourses()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
 }
 
 extension HomeViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-                    print("위도: \(location.coordinate.latitude)")
-                    print("경도: \(location.coordinate.longitude)")
-                }
+            print("위도: \(location.coordinate.latitude)")
+            print("경도: \(location.coordinate.longitude)")
+            setLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

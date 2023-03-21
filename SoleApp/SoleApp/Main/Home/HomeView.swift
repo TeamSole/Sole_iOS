@@ -14,6 +14,7 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel = HomeViewModel()
     @State private var availableWidth: CGFloat = 10
     @State private var isShowSelectTagView: Bool = false
+    @State private var isShowFirstSelectTagView: Bool = false
     
     var body: some View {
         ZStack() {
@@ -35,11 +36,23 @@ struct HomeView: View {
             viewModel.getCourses()
         }
         .onAppear {
-//            APIClient.reissueToken()
+            if mainViewModel.isFirstSignUp == true {
+                isShowFirstSelectTagView = true
+            }
         }
+        .fullScreenCover(isPresented: $isShowFirstSelectTagView,
+                         content: {
+            SelectTagView(selectType: .first, complete: { place, with, trans in
+                viewModel.setTaste(place: place, with: with, tras: trans)
+            })
+                .onDisappear {
+                    mainViewModel.isFirstSignUp = false
+                }
+        })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(complete: {})
+            SelectTagView(selectType: .add, complete: {place, with, trans in
+                viewModel.setTaste(place: place, with: with, tras: trans)})
         })
     }
 }
@@ -100,7 +113,7 @@ extension HomeView {
                 HStack(spacing: 0.0) {
                     Image("my_location")
                         .padding(4.0)
-                    Text("서울 종로구")
+                    Text(viewModel.location.address ?? "서울 마포구")
                         .font(.pretendard(.reguler, size: 12.0))
                 }
                 .onTapGesture {
@@ -122,7 +135,6 @@ extension HomeView {
                                                      title: viewModel.recommendCourses[index].courseName ?? "")
                                 .cornerRadius(4.0)
                             })
-                            
                         }
                     }
                 }

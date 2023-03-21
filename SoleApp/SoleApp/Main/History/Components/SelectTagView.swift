@@ -7,19 +7,30 @@
 
 import SwiftUI
 
+enum selectType {
+    case first, add, filter
+}
+
 struct SelectTagView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var selectedPlace: [String] = []
-    @State private var selectedWith: [String] = []
-    @State private var selectedTrans: [String] = []
-    
-    let complete: () -> ()
+    @State private var selectedPlace: [Category] = []
+    @State private var selectedWith: [Category] = []
+    @State private var selectedTrans: [Category] = []
+    @State private var availableWidth: CGFloat = 10
+    var selectType: selectType
+    let complete: ([String], [String], [String]) -> ()
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
+                .isHidden(selectType == .first, remove: true)
             ScrollView {
                 VStack(spacing: 0.0) {
-                    
+                    if selectType == .first {
+                        firstSelectTopBar
+                    }
+                    tagItems(title: "장소", categories: placeCategory, index: 0)
+                    tagItems(title: "동행", categories: withCategory, index: 1)
+                    tagItems(title: "교통", categories: transCategory, index: 2)
                 }
             }
             confirmButtonView
@@ -34,7 +45,7 @@ extension SelectTagView {
             HStack {
                 Text("취향")
                     .foregroundColor(.black)
-                    .font(.pretendard(.medium, size: 16.0))
+                    .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("closeBk")
@@ -50,16 +61,138 @@ extension SelectTagView {
         }
     }
     
+    private var firstSelectTopBar: some View {
+        VStack(spacing: 0.0) {
+            Text("건너뛰기")
+                .foregroundColor(.black)
+                .font(.pretendard(.reguler, size: 12.0))
+                .frame(maxWidth: .infinity,
+                       alignment: .trailing)
+                .padding(.trailing, 16.0)
+                .padding(.vertical, 35.0)
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            Text("내 취향 코스를 추천받기 위해\n선호하는 코스의 태그를 설정해주세요.")
+                .foregroundColor(.black)
+                .font(.pretendard(.bold, size: 16.0))
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity,
+                       alignment: .center)
+                .padding(.bottom, 50.0)
+            
+        }
+    }
+    
+    private func tagItems(title: String, categories: [Category], index: Int) -> some View {
+        VStack(alignment: .leading, spacing: 0.0) {
+                Text(title)
+                    .font(.pretendard(.bold, size: 14.0))
+                    .foregroundColor(.black)
+//                    .padding(.bottom, 12.0)
+                    .padding(.leading, 16.0)
+                Color.clear
+                    .frame(height: 1.0)
+                    .readSize { size in
+                        availableWidth = size.width
+                    }
+                TagListView(availableWidth: availableWidth,
+                            data: categories,
+                            spacing: 8.0,
+                            alignment: .leading,
+                            isExpandedUserTagListView: .constant(false),
+                            maxRows: .constant(0)) { item in
+                    HStack(spacing: 0.0) {
+                        Text(item.title)
+                            .foregroundColor(selectedArray(index: index).contains(item) ? .white : .black)
+                            .padding(.horizontal, 10.0)
+                            .font(.pretendard(.reguler, size: 11.0))
+                            .frame(height: 34.0)
+                            .padding(.horizontal, 8.0)
+                            .background(selectedArray(index: index).contains(item) ? Color.blue_4708FA : Color.white)
+                            .cornerRadius(17.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 17.0)
+                                    .stroke(Color.gray_EDEDED, lineWidth: 1.0)
+                            )
+                            .onTapGesture {
+                                if selectedArray(index: index).contains(item) {
+                                    if index == 0 {
+                                        selectedPlace = selectedPlace.filter({ $0 != item })
+                                    } else if index == 1 {
+                                        selectedWith = selectedWith.filter({ $0 != item })
+                                    } else {
+                                        selectedTrans = selectedTrans.filter({ $0 != item })
+                                    }
+                                    
+                                } else {
+                                    if index == 0 {
+                                        selectedPlace.append(item)
+                                    } else if index == 1 {
+                                        selectedWith.append(item)
+                                    } else {
+                                        selectedTrans.append(item)
+                                    }
+                                }
+                            }
+                    }
+                    
+    
+            }
+            .padding(16.0)
+        }
+        .padding(.vertical, 10.0)
+    }
+    
     private var confirmButtonView: some View {
         Text("적용하기")
             .foregroundColor(.white)
             .font(.pretendard(.bold, size: 16.0))
             .frame(maxWidth: .infinity)
             .frame(height: 48.0)
-            .background(Color.blue_4708FA.cornerRadius(8.0))
+            .background(isAdaptable
+                        ? Color.blue_4708FA.cornerRadius(8.0)
+                        : Color.gray_EDEDED.cornerRadius(8.0))
             .padding(16.0)
             .contentShape(Rectangle())
+            .onTapGesture {
+                guard isAdaptable else { return }
+                complete(selectedPlace.map({$0.rawValue}),
+                         selectedWith.map({$0.rawValue}),
+                         selectedTrans.map({$0.rawValue}))
+                presentationMode.wrappedValue.dismiss()
+            }
         
+    }
+    
+    private var isAdaptable: Bool {
+        return selectedPlace.isEmpty == false ||
+        selectedWith.isEmpty == false ||
+        selectedTrans.isEmpty == false
+    }
+}
+
+extension SelectTagView {
+    private func selectedArray(index: Int) -> [Category] {
+        if index == 0 {
+            return selectedPlace
+        } else if index == 1 {
+            return selectedWith
+        } else {
+            return selectedTrans
+        }
+    }
+    private var placeCategory: [Category] {
+        return [.TASTY_PLACE, .CAFE, .CULTURE_ART, .ACTIVITY, .HEALING, .NATURE, .NIGHT_VIEW, .HISTORY, .THEME_PARK]
+    }
+    
+    private var transCategory: [Category] {
+        return [.WALK, .BIKE, .CAR, .PUBLIC_TRANSPORTATION]
+        
+    }
+    
+    private var withCategory: [Category] {
+        return [.ALONE, .FRIEND, .COUPLE, .KID, .PET]
     }
 }
 
@@ -107,6 +240,6 @@ enum TransCategory: String {
 
 struct SelectTagView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectTagView(complete: {})
+        SelectTagView(selectType: .first, complete: {_,_,_ in })
     }
 }

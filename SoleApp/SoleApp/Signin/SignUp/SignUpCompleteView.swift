@@ -25,6 +25,7 @@ struct SignUpCompleteView: View {
                 
 //                mainViewModel.existToken = true
 //                mainViewModel.canShowMain = true
+                mainViewModel.isFirstSignUp = true
                 let window = UIApplication
                             .shared
                             .connectedScenes

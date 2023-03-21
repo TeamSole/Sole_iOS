@@ -143,8 +143,8 @@ extension SignUpViewModel {
                     Utility.save(key: Constant.token, value: token)
                     Utility.save(key: Constant.refreshToken, value: refreshToken)
                     Utility.save(key: Constant.loginPlatform, value: self?.loginPlaform ?? "")
-                    AppDelegate.shared.mainViewModel.existToken = true
-                    AppDelegate.shared.mainViewModel.canShowMain = true
+//                    AppDelegate.shared.mainViewModel.existToken = true
+//                    AppDelegate.shared.mainViewModel.canShowMain = true
                     complete?()
                 }
             case .failure(let error):
@@ -175,6 +175,7 @@ extension SignUpViewModel {
                             AppDelegate.shared.mainViewModel.existToken = true
                             AppDelegate.shared.mainViewModel.canShowMain = true
                         }
+                        
                     } else {
                         self?.showSignUpView = true
                     }

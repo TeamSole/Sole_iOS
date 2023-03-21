@@ -11,6 +11,7 @@ import Combine
 final class MainViewModel: ObservableObject {
     @Published var canShowMain = false
     @Published var existToken = false
+    @Published var isFirstSignUp = false
     
     var toastMessageSubject = PassthroughSubject<(String, CGFloat), Never>()
 }
