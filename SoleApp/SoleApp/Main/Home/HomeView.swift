@@ -230,7 +230,7 @@ extension HomeView {
                         .font(.pretendard(.bold, size: 16.0))
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                    Image(item.isScrapped ? "love" : "love_selected")
+                    Image(item.isScrapped ? "love_selected" : "love" )
                         .onTapGesture {
                             viewModel.courses[index].like?.toggle()
                             viewModel.scrap(courseId: item.courseId ?? 0)

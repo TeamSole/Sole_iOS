@@ -37,7 +37,9 @@ struct SelectTagView: View {
             confirmButtonView
         }
         .onLoaded {
-            getTaste()
+            if selectType == .add {
+                getTaste()
+            }
         }
         
     }

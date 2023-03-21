@@ -25,7 +25,7 @@ struct CourseDetailView: View {
     @State private var isScrapped: Bool
     init(courseId: Int, isScrapped: Bool) {
         self.courseId = courseId
-        self._isScrapped = .init(initialValue: isScrapped)
+        self._isScrapped = State(initialValue: isScrapped)
     }
     var body: some View {
         VStack(spacing: 0.0) {

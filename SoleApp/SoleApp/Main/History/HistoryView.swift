@@ -33,7 +33,13 @@ struct HistoryView: View {
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectType: .filter, complete: {_,_,_ in })
+            SelectTagView(selectType: .filter, complete: {place, with, trans in
+                if place.isEmpty && with.isEmpty && trans.isEmpty {
+                    viewModel.getUserHistoies()
+                } else {
+                    viewModel.getUserHistoiesWithParameter(place: place, with: with, tras: trans)
+                }
+            })
         })
     }
 }
