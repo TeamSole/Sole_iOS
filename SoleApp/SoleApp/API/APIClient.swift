@@ -66,6 +66,8 @@ extension K {
         static func courseDeclare(courseId: Int) -> String {
             return "api/courses/\(courseId)/declare"
         }
+        static let courses: String = "api/courses"
+        static let recommendCourse: String = "api/courses/recommend"
         
         static let courseDetail: String = "api/courses/"
         

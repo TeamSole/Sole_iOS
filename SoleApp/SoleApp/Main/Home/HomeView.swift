@@ -9,8 +9,12 @@ import SwiftUI
 import Kingfisher
 
 struct HomeView: View {
+    typealias Course = CourseModelResponse.DataModel
     @EnvironmentObject var mainViewModel: MainViewModel
+    @StateObject var viewModel: HomeViewModel = HomeViewModel()
     @State private var availableWidth: CGFloat = 10
+    @State private var isShowSelectTagView: Bool = false
+    
     var body: some View {
         ZStack() {
             VStack(spacing: 0.0) {
@@ -25,9 +29,18 @@ struct HomeView: View {
             }
             floatingButton
         }
+        .onLoaded {
+            viewModel.locationManager.requestLocation()
+            viewModel.getRecommendCourses()
+            viewModel.getCourses()
+        }
         .onAppear {
 //            APIClient.reissueToken()
         }
+        .sheet(isPresented: $isShowSelectTagView,
+               content: {
+            SelectTagView()
+        })
     }
 }
 
@@ -79,36 +92,48 @@ extension HomeView {
     private var hotCourseSectionView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text("내 주변 코스")
+                Text("내 주변 인기 코스")
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Image("my_location")
-                    .padding(4.0)
-                Text("서울 종로구")
-                    .font(.pretendard(.reguler, size: 12.0))
-            }
-            .padding(.horizontal, 16.0)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8.0) {
-                    ForEach(0..<5) { index in
-                        NavigationLink(destination: {
-                            CourseDetailView(courseId: 5, isScrapped: true)
-                        }, label: {
-                            hotCourseSectionItem(image: nil, title: "따듯한 3월에 가기 좋은 삼정동", course: "전시코스")
-                                .cornerRadius(4.0)
-                        })
-                        
-                    }
+                HStack(spacing: 0.0) {
+                    Image("my_location")
+                        .padding(4.0)
+                    Text("서울 종로구")
+                        .font(.pretendard(.reguler, size: 12.0))
+                }
+                .onTapGesture {
+                    viewModel.locationManager.requestLocation()
+                    
                 }
             }
-            .padding(.leading, 16.0)
-            .padding(.top, 16.0)
+            .padding(.horizontal, 16.0)
+            if viewModel.recommendCourses.isEmpty {
+                emptyRecommendResultView
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8.0) {
+                        ForEach(0..<viewModel.recommendCourses.count, id: \.self) { index in
+                            NavigationLink(destination: {
+                                CourseDetailView(courseId: viewModel.recommendCourses[index].courseId ?? 0, isScrapped: true)
+                            }, label: {
+                                hotCourseSectionItem(image: URL(string: viewModel.recommendCourses[index].thumbnailImg ?? ""),
+                                                     title: viewModel.recommendCourses[index].courseName ?? "")
+                                .cornerRadius(4.0)
+                            })
+                            
+                        }
+                    }
+                }
+                .padding(.leading, 16.0)
+                .padding(.top, 16.0)
+            }
+                
         }
     }
     
-    private func hotCourseSectionItem(image url: URL?, title: String, course: String) -> some View {
+    private func hotCourseSectionItem(image url: URL?, title: String) -> some View {
         ZStack(alignment: .bottomLeading) {
             KFImage(url)
                 .resizable()
@@ -117,11 +142,6 @@ extension HomeView {
                 
             VStack(spacing: 8.0) {
                 Text(title)
-                    .font(.pretendard(.bold, size: 15.0))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
-                Text(course)
                     .font(.pretendard(.bold, size: 15.0))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity,
@@ -145,47 +165,56 @@ extension HomeView {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text("취향 설정하기")
-                    .font(.pretendard(.reguler, size: 12.0))
-                    .padding(4.0)
-                Image("chevron-right")
+                HStack(spacing: 4.0) {
+                    Text("취향 설정하기")
+                        .font(.pretendard(.reguler, size: 12.0))
+                    Image("chevron-right")
+                }
+                .onTapGesture {
+                    isShowSelectTagView = true
+                }
                     
             }
             .padding(.bottom, 10.0)
-            Text("설정한 취향태그에 맞는 코스만 모았어요 :)")
-                .font(.pretendard(.reguler, size: 12.0))
-                .foregroundColor(.black)
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .padding(.bottom, 10.0)
-            
-            ForEach(0..<4) { index in
-                userTasteCourseItem(image: nil, title: "그라운드시소 전시 데이트 ", isScrapped: index % 2 == 0, locationInfo: "서울 종로구", userTagList: ["1", "2", "3", "4"])
+            if viewModel.courses.isEmpty {
+                emptyTasteView
+            } else {
+                Text("설정한 취향태그에 맞는 코스만 모았어요 :)")
+                    .font(.pretendard(.reguler, size: 12.0))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .padding(.bottom, 10.0)
+                
+                ForEach(0..<viewModel.courses.count, id: \.self) { index in
+                    userTasteCourseItem(item: viewModel.courses[index], index: index)
+                }
             }
         }
         .padding(.horizontal, 16.0)
     }
     
-    private func userTasteCourseItem(image url: URL?, title: String, isScrapped: Bool, locationInfo: String, userTagList: [String]) -> some View {
+    private func userTasteCourseItem(item: Course, index: Int) -> some View {
         VStack(alignment: .leading, spacing: 0.0) {
-            KFImage(url)
+            KFImage(URL(string: item.thumbnailImg ?? ""))
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
+                .cornerRadius(4.0)
                 .background(
                     RoundedCorners(color: .gray_EDEDED,
                                    tl: 0.0, tr: 0.0 ,bl: 0.0, br: 0.0)
                 )
             VStack(alignment: .leading, spacing: 0.0) {
                 HStack(spacing: 0.0) {
-                    Text(title)
+                    Text(item.title ?? "")
                         .foregroundColor(.black)
                         .font(.pretendard(.bold, size: 16.0))
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                    Image(isScrapped ? "love" : "love_selected")
+                    Image(item.isScrapped ? "love" : "love_selected")
                 }
-                Text(locationInfo)
+                Text("\(item.address ?? "")·\(item.duration ?? 0)시간 소요·\(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
                 Color.clear
@@ -194,7 +223,7 @@ extension HomeView {
                         availableWidth = size.width
                     }
                 TagListView(availableWidth: availableWidth,
-                            data: userTagList,
+                            data: item.cateogoryTitles,
                             spacing: 8.0,
                             alignment: .leading,
                             isExpandedUserTagListView: .constant(false),
@@ -250,6 +279,33 @@ extension HomeView {
             }
         }
     }
+    
+    private var emptyRecommendResultView: some View {
+        VStack(spacing: 17.0) {
+            Image("emptyRecommendResult")
+            Text("이 지역에 등록된 장소가 없습니다.")
+                .font(.pretendard(.bold, size: 16.0))
+                .foregroundColor(.black)
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .center)
+        .padding(.vertical, 50.0)
+    }
+    
+    private var emptyTasteView: some View {
+        VStack(spacing: 17.0) {
+            Image("emptyTasteResult")
+            Text("설정한 취향 태그가 없습니다.")
+                .font(.pretendard(.bold, size: 16.0))
+                .foregroundColor(.black)
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .center)
+        .padding(.vertical, 50.0)
+    }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
