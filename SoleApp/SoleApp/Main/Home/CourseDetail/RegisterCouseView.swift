@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct RegisterCouseView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -37,6 +38,11 @@ struct RegisterCouseView: View {
             }
         }
         .navigationBarHidden(true)
+        .introspectDatePicker(customize: { datePicker in
+            datePicker.backgroundColor = .white
+            datePicker.setValue(UIColor.clear, forKey: "tintColor")
+            datePicker.tintColor = .blue_4708FA
+        })
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
                content: {
             PhotoPicker(isPresented: $isShowThumbnailPhotoPicker, filter: .images, limit: 1) { result in
@@ -124,6 +130,7 @@ extension RegisterCouseView {
         )
         .contentShape(Rectangle())
         .onTapGesture {
+            hideKeyboard()
             isShowThumbnailPhotoPicker = true
         }
         .padding(16.0)
@@ -139,6 +146,11 @@ extension RegisterCouseView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                    .pickerStyle(.wheel)
+                    .labelsHidden()
+                    .background(Color.white)
+                    
+                    .environment(\.locale, Locale.init(identifier: "ko_KR"))
                     .frame(height: 14.0)
                 Image("arrow_right")
             }

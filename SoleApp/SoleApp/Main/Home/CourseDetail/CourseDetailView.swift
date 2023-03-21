@@ -185,7 +185,7 @@ extension CourseDetailView {
             Text(viewModel.courseDetail.startDate ?? "")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
-            Text("\(viewModel.courseDetail.duration ?? 0)시간 소요")
+            Text("\(viewModel.courseDetail.address ?? "")·\(viewModel.courseDetail.computedDuration)·\(viewModel.courseDetail.scaledDistance) 이동")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
             Color.clear
@@ -272,6 +272,12 @@ extension CourseDetailView {
                             .foregroundColor(.blue_4708FA)
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
+                            .onTapGesture {
+                                let query: String = "nmap://place?lat=\(item.latitude ?? 0.0)&lng=\(item.longitude ?? 0.0)&name=\(item.placeName ?? "")&appname=com.sole.ios.app"
+                                let encodedQuery: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+                                let url = URL(string: encodedQuery)!
+                                UIApplication.shared.open(url)
+                            }
                     }
                     .padding(.bottom, 15.0)
                     ScrollView(.horizontal, showsIndicators: false) {

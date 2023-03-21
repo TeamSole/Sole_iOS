@@ -9,7 +9,11 @@ import SwiftUI
 
 struct SelectTagView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var selectedPlace: [String] = []
+    @State private var selectedWith: [String] = []
+    @State private var selectedTrans: [String] = []
     
+    let complete: () -> ()
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -103,6 +107,6 @@ enum TransCategory: String {
 
 struct SelectTagView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectTagView()
+        SelectTagView(complete: {})
     }
 }

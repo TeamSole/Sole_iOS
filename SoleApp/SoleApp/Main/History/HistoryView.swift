@@ -33,7 +33,7 @@ struct HistoryView: View {
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView()
+            SelectTagView(complete: {})
         })
     }
 }
@@ -161,7 +161,7 @@ extension HistoryView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     .padding(.bottom, 7.0)
-                Text("\(item.address ?? "")·\(item.duration ?? 0)시간 소요·\(item.scaledDistance) 이동")
+                Text("\(item.address ?? "")·\(item.computedDuration)·\(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_999999)
                     .frame(maxWidth: .infinity,

@@ -66,7 +66,7 @@ struct NaverMapView: UIViewRepresentable {
 //        guard places.isEmpty == false else { return [] }
         var locations: [NMGLatLng] = []
         for index in 0..<(places.placeResponseDtos?.count ?? 0) {
-            locations.append(NMGLatLng(lat: places.placeResponseDtos?[index].longitude ?? 0.0, lng: places.placeResponseDtos?[index].latitude ?? 0.0))
+            locations.append(NMGLatLng(lat: places.placeResponseDtos?[index].latitude ?? 0.0, lng: places.placeResponseDtos?[index].longitude ?? 0.0))
         }
         return locations
     }

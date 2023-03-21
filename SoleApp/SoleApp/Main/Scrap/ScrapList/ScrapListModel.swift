@@ -43,4 +43,11 @@ extension ScrapListModelResponse.DataModel {
         guard let distance = distance else { return "" }
         return String(format: "%.2fkm", distance)
     }
+    
+    var computedDuration: String {
+        guard let duration = duration else { return "" }
+        return duration / 60 == 0
+        ? String(format: "%d분 소요", duration%60)
+        : String(format: "%d시간 %d분 소요", duration/60, duration%60)
+    }
 }

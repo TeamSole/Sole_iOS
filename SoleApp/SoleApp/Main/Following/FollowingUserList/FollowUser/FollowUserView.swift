@@ -191,7 +191,7 @@ extension FollowUserView {
                             }
                         }
                 }
-                Text("\(item.address ?? "")·\(item.duration ?? 0)시간 소요·\(item.scaledDistance) 이동")
+                Text("\(item.address ?? "")·\(item.computedDuration)·\(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
                 Color.clear
