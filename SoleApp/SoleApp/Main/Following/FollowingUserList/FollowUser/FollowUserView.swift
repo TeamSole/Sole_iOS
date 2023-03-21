@@ -179,9 +179,8 @@ extension FollowUserView {
                         .font(.pretendard(.bold, size: 16.0))
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
-                    Image(item.isScrapped ? "love" : "love_selected")
+                    Image(item.isScrapped ? "love_selected" : "love")
                         .onTapGesture {
-                            
                             if index == -1 {
                                 viewModel.popularCourse?.like?.toggle()
                                 viewModel.scrap(courseId: viewModel.popularCourse?.courseId ?? 0)
@@ -191,7 +190,7 @@ extension FollowUserView {
                             }
                         }
                 }
-                Text("\(item.address ?? "")·\(item.computedDuration)·\(item.scaledDistance) 이동")
+                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
                 Color.clear

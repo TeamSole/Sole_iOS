@@ -21,13 +21,18 @@ struct FollowingBoardView: View {
                     } else {
                         VStack(spacing: 16.0) {
                             ForEach(0..<viewModel.boardList.count, id: \.self) { index in
-                                courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
-                                               index: index,
-                                               image: viewModel.boardList[index].profileImg,
-                                               image: viewModel.boardList[index].thumbnailImg,
-                                               userName: viewModel.boardList[index].nickname ?? "",
-                                               title: viewModel.boardList[index].title ?? "",
-                                               description: viewModel.boardList[index].description ?? "")
+                                NavigationLink(destination: {
+                                    CourseDetailView(courseId: viewModel.boardList[index].courseId ?? 0,
+                                                     isScrapped: viewModel.boardList[index].like == true)
+                                }, label: {
+                                    courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
+                                                   index: index,
+                                                   image: viewModel.boardList[index].profileImg,
+                                                   image: viewModel.boardList[index].thumbnailImg,
+                                                   userName: viewModel.boardList[index].nickname ?? "",
+                                                   title: viewModel.boardList[index].title ?? "",
+                                                   description: viewModel.boardList[index].description ?? "")
+                                })
                             }
                         }
                     } 
@@ -104,7 +109,7 @@ extension FollowingBoardView {
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
-                .padding(.bottom, 8.0)
+                .padding(.bottom, 10.0)
             Text(courseName)
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .foregroundColor(.black)
@@ -115,11 +120,14 @@ extension FollowingBoardView {
                 .font(Font(UIFont.pretendardRegular(size: 13.0)))
                 .lineSpacing(4.0)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .lineLimit(nil)
             
         }
+        .frame(maxWidth: .infinity,
+               alignment: .leading)
     }
     
     

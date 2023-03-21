@@ -185,7 +185,7 @@ extension CourseDetailView {
             Text(viewModel.courseDetail.startDate ?? "")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
-            Text("\(viewModel.courseDetail.address ?? "")·\(viewModel.courseDetail.computedDuration)·\(viewModel.courseDetail.scaledDistance) 이동")
+            Text("\(viewModel.courseDetail.address ?? "") · \(viewModel.courseDetail.computedDuration) · \(viewModel.courseDetail.scaledDistance) 이동")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
             Color.clear

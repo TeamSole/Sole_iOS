@@ -20,8 +20,6 @@
 		A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
-		A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BEC29AF7F0400B06132 /* SearchViewController.swift */; };
-		A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BEC29AF7F0400B06132 /* SearchViewController.swift */; };
 		A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
 		A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
 		A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3929BF5AB40026D961 /* ViewExtension.swift */; };
@@ -180,6 +178,8 @@
 		A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */; };
 		A47EEADC29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
 		A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
+		A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
+		A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
 		A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7929913CF00014F458 /* AppDelegate.swift */; };
 		A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C31C7B29913CF00014F458 /* SceneDelegate.swift */; };
 		A4C31C8329913CF00014F458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C31C8229913CF00014F458 /* Assets.xcassets */; };
@@ -213,7 +213,6 @@
 		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
-		A4597BEC29AF7F0400B06132 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A46B3B3629BF58010026D961 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A46B3B3929BF5AB40026D961 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A46B3B3C29BF5B010026D961 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
@@ -292,6 +291,7 @@
 		A47EEAD529C9AE07006BA3DB /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		A47EEADB29C9F800006BA3DB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C7929913CF00014F458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C31C7B29913CF00014F458 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -399,8 +399,8 @@
 		A4597BEB29AF7EF100B06132 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A4597BEC29AF7F0400B06132 /* SearchViewController.swift */,
 				A46B3B4229BF624E0026D961 /* CourseSearchView.swift */,
+				A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -922,7 +922,6 @@
 				A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
-				A4597BED29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
@@ -984,6 +983,7 @@
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A47EEAA429C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
+				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
@@ -1008,7 +1008,6 @@
 				A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
-				A4597BEE29AF7F0400B06132 /* SearchViewController.swift in Sources */,
 				A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
@@ -1070,6 +1069,7 @@
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
+				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
