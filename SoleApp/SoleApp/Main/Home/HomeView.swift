@@ -187,7 +187,13 @@ extension HomeView {
                     .padding(.bottom, 10.0)
                 
                 ForEach(0..<viewModel.courses.count, id: \.self) { index in
-                    userTasteCourseItem(item: viewModel.courses[index], index: index)
+                    NavigationLink(destination: {
+                        CourseDetailView(courseId: viewModel.courses[index].courseId ?? 0,
+                                         isScrapped: viewModel.courses[index].isScrapped)
+                    }, label: {
+                        userTasteCourseItem(item: viewModel.courses[index], index: index)
+                    })
+                    
                 }
             }
         }
@@ -213,6 +219,9 @@ extension HomeView {
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                     Image(item.isScrapped ? "love" : "love_selected")
+                        .onTapGesture {
+                            
+                        }
                 }
                 Text("\(item.address ?? "")·\(item.duration ?? 0)시간 소요·\(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))

@@ -94,6 +94,7 @@ extension FollowingBoardView {
                     viewModel.scrap(courseId: courseId)
                 }
         }
+        .padding(.horizontal, 3.0)
         .frame(height: 52.0)
     }
     
