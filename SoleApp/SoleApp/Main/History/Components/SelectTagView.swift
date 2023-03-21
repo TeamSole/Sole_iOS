@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 enum selectType {
     case first, add, filter
@@ -34,6 +35,9 @@ struct SelectTagView: View {
                 }
             }
             confirmButtonView
+        }
+        .onLoaded {
+            getTaste()
         }
         
     }
@@ -150,13 +154,10 @@ extension SelectTagView {
             .font(.pretendard(.bold, size: 16.0))
             .frame(maxWidth: .infinity)
             .frame(height: 48.0)
-            .background(isAdaptable
-                        ? Color.blue_4708FA.cornerRadius(8.0)
-                        : Color.gray_EDEDED.cornerRadius(8.0))
+            .background(Color.blue_4708FA.cornerRadius(8.0))
             .padding(16.0)
             .contentShape(Rectangle())
             .onTapGesture {
-                guard isAdaptable else { return }
                 complete(selectedPlace.map({$0.rawValue}),
                          selectedWith.map({$0.rawValue}),
                          selectedTrans.map({$0.rawValue}))
@@ -165,10 +166,27 @@ extension SelectTagView {
         
     }
     
-    private var isAdaptable: Bool {
-        return selectedPlace.isEmpty == false ||
-        selectedWith.isEmpty == false ||
-        selectedTrans.isEmpty == false
+    func getTaste() {
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.category)!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: CategoryModelResponse.self, completionHandler: { response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true,
+                       let data = response.data {
+                        selectedPlace = data.placeCategories.map({ Category(rawValue: $0) ?? .CAFE })
+                        selectedWith = data.withCategories.map({ Category(rawValue: $0) ?? .ALONE })
+                        selectedTrans = data.transCategories.map({ Category(rawValue: $0) ?? .WALK })
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
     }
 }
 

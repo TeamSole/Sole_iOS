@@ -232,7 +232,8 @@ extension HomeView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love" : "love_selected")
                         .onTapGesture {
-                            
+                            viewModel.courses[index].like?.toggle()
+                            viewModel.scrap(courseId: item.courseId ?? 0)
                         }
                 }
                 Text("\(item.address ?? "")·\(item.computedDuration)·\(item.scaledDistance) 이동")

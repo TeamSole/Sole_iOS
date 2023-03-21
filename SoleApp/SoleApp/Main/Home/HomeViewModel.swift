@@ -114,6 +114,27 @@ extension HomeViewModel {
             })
     }
     
+    func scrap(courseId: Int) {
+        guard courseId != 0 else { return }
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.couseScrap(courseId: courseId))!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .post, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true {
+                       
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
 }
 
 extension HomeViewModel: CLLocationManagerDelegate {
