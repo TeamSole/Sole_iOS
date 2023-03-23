@@ -209,21 +209,22 @@ extension HistoryView {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0.0) {
                     Spacer()
-                    HStack(spacing: 0.0) {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 15.0,
-                                   height: 15.0)
-                    }
-                    .frame(width: 48.0,
-                           height: 48.0)
-                    .foregroundColor(.white)
-                    .background(Circle()
-                        .fill(Color.blue_4708FA)
-                        .cornerRadius(.infinity))
-                    .onTapGesture {
-
-                    }
+                    NavigationLink(destination: {
+                        RegisterCouseView()
+                    }, label: {
+                        HStack(spacing: 0.0) {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 15.0,
+                                       height: 15.0)
+                        }
+                        .frame(width: 48.0,
+                               height: 48.0)
+                        .foregroundColor(.white)
+                        .background(Circle()
+                            .fill(Color.blue_4708FA)
+                            .cornerRadius(.infinity))
+                    })
                 }
                 .padding(.trailing, 16.0)
                 .padding(.bottom, 16.0)

@@ -11,7 +11,6 @@ struct RegisterCourseModelRequest: Codable {
     var title: String
     var date: String
     var description: String
-    var distance: Double
     var placeCategories: [String]
     var transCategories: [String]
     var withCategories: [String]

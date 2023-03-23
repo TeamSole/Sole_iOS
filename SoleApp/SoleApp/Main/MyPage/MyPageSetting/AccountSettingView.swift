@@ -117,6 +117,9 @@ extension AccountSettingView {
             Image("add_circle")
         }
         .padding(.vertical, 36.0)
+        .onTapGesture {
+            isShowThumbnailPhotoPicker = true
+        }
     }
     
     private var userKeyView: some View {

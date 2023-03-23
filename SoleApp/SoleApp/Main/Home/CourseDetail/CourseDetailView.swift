@@ -347,7 +347,7 @@ extension CourseDetailView {
         
         return ActionSheet(title: title,
                            message: nil,
-                           buttons: [button1, button2, button3])
+                           buttons: [button2, button3])
     }
 }
 

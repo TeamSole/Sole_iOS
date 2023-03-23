@@ -85,7 +85,7 @@ enum Category: String {
         case .CULTURE_ART:
             return "🖼️ 문화·예술"
         case .ACTIVITY:
-            return "🪂 액티피티"
+            return "🪂 액티비티"
         case .HEALING:
             return "😌 힐링"
         case .NATURE:

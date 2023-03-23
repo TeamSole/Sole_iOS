@@ -150,6 +150,7 @@ extension SelectTagView {
             .padding(16.0)
         }
         .padding(.vertical, 10.0)
+        .padding(.horizontal, 16.0)
     }
     
     private var confirmButtonView: some View {
@@ -262,6 +263,7 @@ enum TransCategory: String {
 
 struct SelectTagView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectTagView(selectType: .first, complete: {_,_,_ in })
+        SelectTagView(selectType: .add, complete: {_,_,_ in })
+            .previewDevice("iphone11")
     }
 }

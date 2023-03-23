@@ -10,6 +10,7 @@ import Introspect
 
 struct RegisterCouseView: View {
     typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
+    typealias FullCourse = RegisterCourseModelRequest
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
     @State private var courseTitle: String = ""
@@ -50,6 +51,9 @@ struct RegisterCouseView: View {
                     courseThumbnailSectionView
                     thickSectionDivider
                     courseSubLocationSectionView
+                }
+                .onTapGesture {
+                    hideKeyboard()
                 }
             }
         }
@@ -417,9 +421,32 @@ extension RegisterCouseView {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 40.0)
-        .background(Color.blue_4708FA)
+        .background(isValid ? Color.blue_4708FA : Color.gray_EDEDED)
         .cornerRadius(8.0)
         .padding(16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            hideKeyboard()
+            let fullCourse = FullCourse(title: courseTitle,
+                                        date: selectedDate.toString(format: "yyyy-MM-dd"),
+                                        description: courseDescription,
+                                        placeCategories: selectedPlace,
+                                        transCategories: selectedTrans,
+                                        withCategories: selectedWith,
+                                        placeRequestDtos: courses)
+            viewModel.uploadCourse(fullCourse: fullCourse) {
+                guard isValid else { return }
+                print("성공")
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+    
+    private var isValid: Bool {
+        return courseTitle.isEmpty == false &&
+        courseDescription.isEmpty == false &&
+        viewModel.thumbnailImage != nil &&
+        courses.first?.placeName.isEmpty == false
     }
     
 }
