@@ -1,18 +1,19 @@
 //
-//  RegisterCouseView.swift
-//  SoleApp
+//  CourseEditView.swift
+//  Release
 //
-//  Created by SUN on 2023/03/14.
+//  Created by SUN on 2023/03/23.
 //
 
 import SwiftUI
-import Introspect
+import Kingfisher
 
-struct RegisterCouseView: View {
-    typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
-    typealias FullCourse = RegisterCourseModelRequest
+struct CourseEditView: View {
+    typealias Course = EditCourseModelRequest.PlaceUpdateRequestDtos
+    typealias FullCourse = EditCourseModelRequest
+    typealias CourseDetail = CourseDetailModelResponse.DataModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
+    @StateObject var viewModel: CourseEditViewModel = CourseEditViewModel()
     @State private var courseTitle: String = ""
     @State private var courseDescription: String = ""
     
@@ -31,18 +32,16 @@ struct RegisterCouseView: View {
     @State private var selectedWith: [String] = []
     @State private var selectedTrans: [String] = []
     
-    @State private var courses: [Course] = [Course(), Course()]
+    @State private var courses: [Course] = []
+    @State private var fullCourse: FullCourse = FullCourse()
+//    @State private var
 //    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
-   
-    private let gridItem: [GridItem] = [
-        GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
-        GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
-        GridItem(.adaptive(minimum: 50.0), spacing: 8.0),
-        GridItem(.adaptive(minimum: 50.0), spacing: 8.0)
-    ]
-    
-    private let gridItemHeight: CGFloat = (UIScreen.main.bounds.width - 56) / 4
+    @State private var courseDetail: CourseDetail
+    @State private var courseId: Int = 0
+    init(courseDetail: CourseDetail) {
+        self._courseDetail = State(initialValue: courseDetail)
+    }
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -63,6 +62,28 @@ struct RegisterCouseView: View {
             datePicker.setValue(UIColor.clear, forKey: "tintColor")
             datePicker.tintColor = .blue_4708FA
         })
+        .onLoaded {
+            fullCourse.title = courseDetail.title ?? ""
+            fullCourse.description = courseDetail.description ?? ""
+            fullCourse.startDate = courseDetail.startDate ?? ""
+            fullCourse.placeCategories = courseDetail.categories?.filter({ placeCategory.contains(Category(rawValue: $0) ?? .CAFE ) }) ?? []
+            fullCourse.transCategories = courseDetail.categories?.filter({ transCategory.contains(Category(rawValue: $0) ?? .WALK) }) ?? []
+            fullCourse.withCategories = courseDetail.categories?.filter({ withCategory.contains(Category(rawValue: $0) ?? .ALONE) }) ?? []
+            courseId = courseDetail.courseId ?? 0
+            selectedDate = Date(courseDetail.startDate ?? "", format: "yyyy-MM-dd") ?? Date()
+            for index in 0..<(courseDetail.placeResponseDtos?.count ?? 0) {
+                let course = Course(address: courseDetail.placeResponseDtos?[index].address ?? "",
+                                    description: courseDetail.placeResponseDtos?[index].description ?? "",
+                                    duration: courseDetail.placeResponseDtos?[index].duration ?? 0,
+                                    placeId: courseDetail.placeResponseDtos?[index].placeId ?? 0,
+                                    placeName: courseDetail.placeResponseDtos?[index].placeName ?? "",
+                                    latitude: courseDetail.placeResponseDtos?[index].latitude ?? 0.0,
+                                    longitude: courseDetail.placeResponseDtos?[index].longitude ?? 0.0,
+                                    placeImgUrls: courseDetail.placeResponseDtos?[index].placeImgUrls ?? [])
+                courses.append(course)
+            }
+            
+        }
         .modifier(HourMinutePickerModifier(isShowFlag: $isShowHourMinutePicker,
                                            complete: { hour, minute in
             courses[selectIndex].duration = (hour * 60) + minute
@@ -81,7 +102,7 @@ struct RegisterCouseView: View {
         })
         .sheet(isPresented: $isShowSubPhotoPicker,
                content: {
-            PhotoPicker(isPresented: $isShowSubPhotoPicker, filter: .images, limit: 4) { result in
+            PhotoPicker(isPresented: $isShowSubPhotoPicker, filter: .images, limit: 4 - (courses[selectIndex].placeImgUrls.count) - viewModel.selectedImages[selectIndex].count) { result in
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         viewModel.selectedImages[selectIndex] = images
@@ -92,21 +113,33 @@ struct RegisterCouseView: View {
         .sheet(isPresented: $isShowSelectTagView,
                content: {
             SelectTagView(selectType: .filter, complete: {place, with, trans in
-                selectedPlace = place
-                selectedWith = with
-                selectedTrans = trans
+                fullCourse.placeCategories = place
+                fullCourse.withCategories = with
+                fullCourse.transCategories = trans
             })
         })
         .sheet(isPresented: $isShowLocationSearchView,
                content: {
             LocationSearchView { course in
-                courses[selectIndex] = course
+                let courseObject = Course(address: course.address,
+                                          description: course.description,
+                                          placeId: selectIndex >= fullCourse.placeUpdateRequestDtos.count ? nil : fullCourse.placeUpdateRequestDtos[selectIndex].placeId ?? 0,
+                                          placeName: course.placeName,
+                                          latitude: course.latitude,
+                                          longitude: course.longitude,
+                                          placeImgUrls: selectIndex >= fullCourse.placeUpdateRequestDtos.count ? [] : fullCourse.placeUpdateRequestDtos[selectIndex].placeImgUrls
+                )
+//                if selectIndex >= fullCourse.placeUpdateRequestDtos.count {
+//                    courses.append(courseObject)
+//                } else {
+                    courses[selectIndex] = courseObject
+//                }
             }
         })
     }
 }
 
-extension RegisterCouseView {
+extension CourseEditView {
     private var navigationBar: some View {
         ZStack {
             Image("arrow_back")
@@ -158,7 +191,7 @@ extension RegisterCouseView {
     
     private var courseTextFeildView: some View {
         VStack(spacing: 4.0) {
-            TextField("코스 제목", text: $courseTitle)
+            TextField("코스 제목", text: $fullCourse.title)
             Color.gray_D3D4D5
                 .frame(height: 1.0)
         }
@@ -170,10 +203,11 @@ extension RegisterCouseView {
     private var thumbnailImageView: some View {
         VStack(spacing: 0.0) {
             if viewModel.thumbnailImage == nil {
-                Text("대표 사진 추가")
-                    .foregroundColor(.black)
-                    .font(.pretendard(.reguler, size: 14.0))
-                Image("add_circle")
+                KFImage(URL(string: courseDetail.thumbnailUrl ?? ""))
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 186.0)
+                    .cornerRadius(12.0)
             } else {
                 Image(uiImage: viewModel.thumbnailImage ?? UIImage())
                     .resizable()
@@ -245,7 +279,7 @@ extension RegisterCouseView {
                     availableWidth = size.width
                 }
             TagListView(availableWidth: availableWidth,
-                        data: selectedPlace + selectedWith + selectedTrans,
+                        data: fullCourse.placeCategories + fullCourse.withCategories + fullCourse.transCategories,
                         spacing: 8.0,
                         alignment: .leading,
                         isExpandedUserTagListView: .constant(false),
@@ -277,7 +311,7 @@ extension RegisterCouseView {
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            TextEditor(text: $courseDescription)
+            TextEditor(text: $fullCourse.description)
                 .frame(height: 86.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
@@ -349,18 +383,42 @@ extension RegisterCouseView {
         HStack(spacing: 0.0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0) {
+                    ForEach(0..<(courses[index].placeImgUrls.count), id: \.self) { index2 in
+                        ZStack(alignment: .topTrailing) {
+                            KFImage(URL(string: courses[index].placeImgUrls[index2]))
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80.0,
+                                       height: 80.0)
+                                .cornerRadius(4.0)
+                            Image("closeBlack")
+                                .padding(4.0)
+                                .onTapGesture {
+                                    courses[index].placeImgUrls.remove(at: index2)
+                                }
+                        }
+                       
+                    }
+                    
                     ForEach(0..<viewModel.selectedImages[index].count, id: \.self) { index2 in
-                        Image(uiImage: viewModel.selectedImages[index][index2])
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80.0,
-                                   height: 80.0)
-                            .cornerRadius(4.0)
+                        ZStack(alignment: .topTrailing) {
+                            Image(uiImage: viewModel.selectedImages[index][index2])
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80.0,
+                                       height: 80.0)
+                                .cornerRadius(4.0)
+                            Image("closeBlack")
+                                .padding(4.0)
+                                .onTapGesture {
+                                    viewModel.selectedImages[index].remove(at: index2)
+                                }
+                        }
                     }
                     addSubImageView(index: index)
                         .frame(width: 80.0,
                                height: 80.0)
-                        .isHidden(viewModel.selectedImages[index].count == 4, remove: true)
+                        .isHidden(viewModel.selectedImages[index].count + (courses[index].placeImgUrls.count ) > 3, remove: true)
                 }
                 
             }
@@ -408,7 +466,7 @@ extension RegisterCouseView {
         .contentShape(Rectangle())
         .isHidden(courses.count > 3, remove: true)
         .onTapGesture {
-            viewModel.selectedImages.append([])
+//            viewModel.selectedImages.append([])
             courses.append(Course())
         }
     }
@@ -427,14 +485,9 @@ extension RegisterCouseView {
         .contentShape(Rectangle())
         .onTapGesture {
             hideKeyboard()
-            let fullCourse = FullCourse(title: courseTitle,
-                                        date: selectedDate.toString(format: "yyyy-MM-dd"),
-                                        description: courseDescription,
-                                        placeCategories: selectedPlace,
-                                        transCategories: selectedTrans,
-                                        withCategories: selectedWith,
-                                        placeRequestDtos: courses)
-            viewModel.uploadCourse(fullCourse: fullCourse) {
+            fullCourse.startDate = selectedDate.toString(format: "yyyy-MM-dd")
+            fullCourse.placeUpdateRequestDtos = courses
+            viewModel.updateCourse(fullCourse: fullCourse, courseId: courseId) {
                 guard isValid else { return }
                 print("성공")
                 presentationMode.wrappedValue.dismiss()
@@ -443,16 +496,28 @@ extension RegisterCouseView {
     }
     
     private var isValid: Bool {
-        return courseTitle.isEmpty == false &&
-        courseDescription.isEmpty == false &&
-        viewModel.thumbnailImage != nil &&
+        return fullCourse.title.isEmpty == false &&
+        fullCourse.description.isEmpty == false &&
+//        viewModel.thumbnailImage != nil &&
         courses.first?.placeName.isEmpty == false
     }
     
+    private var placeCategory: [Category] {
+        return [.TASTY_PLACE, .CAFE, .CULTURE_ART, .ACTIVITY, .HEALING, .NATURE, .NIGHT_VIEW, .HISTORY, .THEME_PARK]
+    }
+    
+    private var transCategory: [Category] {
+        return [.WALK, .BIKE, .CAR, .PUBLIC_TRANSPORTATION]
+        
+    }
+    
+    private var withCategory: [Category] {
+        return [.ALONE, .FRIEND, .COUPLE, .KID, .PET]
+    }
 }
 
-struct RegisterCouseView_Previews: PreviewProvider {
+struct CourseEditView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCouseView()
+        CourseEditView(courseDetail: CourseDetailModelResponse.DataModel())
     }
 }

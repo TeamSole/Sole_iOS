@@ -20,7 +20,7 @@ struct CourseDetailModelResponse: Codable {
         var distance: Double?
         var duration: Int?
         var like: Bool?
-        var thumbnailImg: String?
+        var thumbnailUrl: String?
         var title: String?
         var followStatus: String?
         var follower: Int?
@@ -47,6 +47,7 @@ struct CourseDetailModelResponse: Codable {
         var placeName: String?
         var latitude: Double?
         var longitude: Double?
+        var duration: Int?
     }
 }
 

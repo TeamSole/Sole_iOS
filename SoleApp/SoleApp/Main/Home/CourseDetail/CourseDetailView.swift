@@ -20,6 +20,7 @@ struct CourseDetailView: View {
     @State private var showPopup: Bool = false
     @State private var alertType: AlertType = .declare
     @State private var isFollowing: Bool = true
+    @State private var showCourseEditView: Bool = false
 
     var courseId: Int
     @State private var isScrapped: Bool
@@ -40,6 +41,7 @@ struct CourseDetailView: View {
                     courseDetailSectionView
                 }
             }
+            navigateToCourseEditView
         }
         .navigationBarHidden(true)
         .onAppear {
@@ -224,7 +226,7 @@ extension CourseDetailView {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Image("arrow_up")
+                Image("arrow_down")
                     .rotationEffect(isExpanded ? .degrees(180) : .degrees(0))
                     .onTapGesture {
                         withAnimation {
@@ -337,7 +339,7 @@ extension CourseDetailView {
     func getActionSheet() -> ActionSheet {
         let button1: ActionSheet.Button = .default(Text("수정"),
                                                    action: {
-            
+            showCourseEditView = true
         })
         let button2: ActionSheet.Button = .default(Text("삭제"), action: {
             alertType = .remove
@@ -349,7 +351,19 @@ extension CourseDetailView {
         
         return ActionSheet(title: title,
                            message: nil,
-                           buttons: [button2, button3])
+                           buttons: [button1, button2, button3])
+    }
+    
+    private var navigateToCourseEditView: some View {
+        NavigationLink(isActive: $showCourseEditView,
+                       destination: {
+            CourseEditView(courseDetail: viewModel.courseDetail)
+        }, label: {
+            EmptyView()
+        })
+//        NavigationLink(destination: ,
+//                       isActive: ,
+//                       label: { })
     }
 }
 

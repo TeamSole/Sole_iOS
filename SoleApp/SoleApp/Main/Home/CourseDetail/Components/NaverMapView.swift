@@ -19,7 +19,7 @@ struct NaverMapView: UIViewRepresentable {
         let mapView = NMFNaverMapView()
         mapView.mapView.positionMode = .direction
         mapView.mapView.zoomLevel = 15
-        mapView .mapView.addCameraDelegate(delegate: context.coordinator)
+//        mapView .mapView.addCameraDelegate(delegate: context.coordinator)
         return mapView
     }
     
@@ -43,22 +43,22 @@ struct NaverMapView: UIViewRepresentable {
        
     }
     
-    class Coordinator: NSObject, NMFMapViewCameraDelegate {
-        typealias Place = CourseDetailModelResponse.DataModel
-       
-//        @Binding var places: Place
-//            init(_ places: Binding<Place>) {
-//                self._places = places
+//    class Coordinator: NSObject, NMFMapViewCameraDelegate {
+//        typealias Place = CourseDetailModelResponse.DataModel
+//
+////        @Binding var places: Place
+////            init(_ places: Binding<Place>) {
+////                self._places = places
+////            }
+//
+//            func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
+//                print("카메라 변경 - reason: \(reason)")
 //            }
-            
-            func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
-                print("카메라 변경 - reason: \(reason)")
-            }
-
-            func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-                print("카메라 변경 - reason: \(reason)")
-            }
-        }
+//
+//            func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
+//                print("카메라 변경 - reason: \(reason)")
+//            }
+//        }
     
     typealias UIViewType = NMFNaverMapView
     

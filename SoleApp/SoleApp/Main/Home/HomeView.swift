@@ -30,15 +30,13 @@ struct HomeView: View {
             }
             floatingButton
         }
-        .onLoaded {
-            viewModel.locationManager.requestLocation()
-            viewModel.getRecommendCourses()
-            viewModel.getCourses()
-        }
         .onAppear {
             if mainViewModel.isFirstSignUp == true {
                 isShowFirstSelectTagView = true
             }
+            viewModel.locationManager.requestLocation()
+            viewModel.getRecommendCourses()
+            viewModel.getCourses()
         }
         .fullScreenCover(isPresented: $isShowFirstSelectTagView,
                          content: {

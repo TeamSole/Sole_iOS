@@ -20,6 +20,12 @@
 		A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
+		A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
+		A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
+		A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
+		A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
+		A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
+		A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
 		A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
 		A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
 		A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3929BF5AB40026D961 /* ViewExtension.swift */; };
@@ -219,6 +225,9 @@
 		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		A4655BD629CC9EF5001E67DF /* CourseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditView.swift; sourceTree = "<group>"; };
+		A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditViewModel.swift; sourceTree = "<group>"; };
+		A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditModel.swift; sourceTree = "<group>"; };
 		A46B3B3629BF58010026D961 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A46B3B3929BF5AB40026D961 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A46B3B3C29BF5B010026D961 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
@@ -414,6 +423,26 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		A4655BD429CC9ECB001E67DF /* CourseRegister */ = {
+			isa = PBXGroup;
+			children = (
+				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
+				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
+				A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */,
+			);
+			path = CourseRegister;
+			sourceTree = "<group>";
+		};
+		A4655BD529CC9EE2001E67DF /* CourseEdit */ = {
+			isa = PBXGroup;
+			children = (
+				A4655BD629CC9EF5001E67DF /* CourseEditView.swift */,
+				A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */,
+				A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */,
+			);
+			path = CourseEdit;
+			sourceTree = "<group>";
+		};
 		A46B3B5929C070090026D961 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,11 +535,8 @@
 			children = (
 				A4760F0329BC51300080A2CD /* Components */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
-				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
 				A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */,
 				A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */,
-				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
-				A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */,
 			);
 			path = CourseDetail;
 			sourceTree = "<group>";
@@ -679,6 +705,8 @@
 		A4D983CF299F661C008C599D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A4655BD529CC9EE2001E67DF /* CourseEdit */,
+				A4655BD429CC9ECB001E67DF /* CourseRegister */,
 				A46D713A29B7F12C00944912 /* CourseDetail */,
 				A4597BEB29AF7EF100B06132 /* Search */,
 				A4597BCC29A89D8800B06132 /* Component */,
@@ -940,6 +968,7 @@
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
+				A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */,
@@ -964,6 +993,7 @@
 				A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
+				A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A47EEA6E29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
@@ -985,6 +1015,7 @@
 				A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
+				A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */,
 				A47EEAD329C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */,
 				A46B4722299929C4001FAED3 /* UITextField.swift in Sources */,
 				A47EEAD629C9AE07006BA3DB /* CourseModel.swift in Sources */,
@@ -1030,6 +1061,7 @@
 				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
+				A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */,
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
@@ -1039,6 +1071,7 @@
 				A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */,
 				A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */,
 				A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */,
+				A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */,
 				A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
 				A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
@@ -1051,6 +1084,7 @@
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
+				A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
