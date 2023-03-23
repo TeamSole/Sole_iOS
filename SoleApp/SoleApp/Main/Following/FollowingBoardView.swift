@@ -84,6 +84,7 @@ extension FollowingBoardView {
                         .frame(width: 32.0,
                                height: 32.0)
                 }
+                .scaledToFill()
                 .frame(width: 32.0,
                        height: 32.0)
                 .cornerRadius(.infinity)
@@ -109,6 +110,7 @@ extension FollowingBoardView {
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
+                .scaledToFit()
                 .padding(.bottom, 10.0)
             Text(courseName)
                 .font(Font(UIFont.pretendardBold(size: 16.0)))

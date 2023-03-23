@@ -66,6 +66,7 @@ extension HistoryView {
                 .resizable()
                 .frame(width: 56.0,
                        height: 56.0)
+                .scaledToFill()
                 .cornerRadius(.infinity)
             VStack(spacing: 0.0) {
                 Text("\(viewModel.profileDescription.nickname ?? "-")님의 발자국")
@@ -195,6 +196,7 @@ extension HistoryView {
                 .resizable()
                 .frame(width: 100.0,
                        height: 100.0)
+                .scaledToFill()
             VStack(spacing: 0.0) {
                 Text(item.title ?? "")
                     .font(.pretendard(.bold, size: 14.0))

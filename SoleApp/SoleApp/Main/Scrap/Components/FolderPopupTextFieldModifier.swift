@@ -17,9 +17,9 @@ enum FolderPopupType {
         case .rename:
             return "폴더명 수정"
         case .remove:
-            return "폴더를 삭제하시겠습어요?"
+            return "폴더를 삭제하시겠어요?"
         case .removeScrap:
-            return "선택하신 코스를 삭제하시겠습어요?"
+            return "선택하신 코스를 삭제하시겠어요?"
         }
     }
     
@@ -99,8 +99,9 @@ struct FolderPopupTextFieldModifier: ViewModifier {
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
                 .padding(.vertical, 30.0)
-            TextField(" 폴더명", text: $textFieldInput)
+            TextField("폴더명", text: $textFieldInput)
                 .frame(height: 44.0)
+                .padding(.horizontal, 12.0)
                 .border(Color.gray_D3D4D5, width: 1.0)
                 .padding(.horizontal, 12.0)
             HStack(spacing: 7.0) {
@@ -111,6 +112,7 @@ struct FolderPopupTextFieldModifier: ViewModifier {
                     .frame(height: 48.0)
                     .background(RoundedRectangle(cornerRadius: 8.0).foregroundColor(.gray_D3D4D5))
                     .onTapGesture {
+                        textFieldInput = ""
                         isShowFlag = false
                     }
                 Text(folderPopupType.confirmTitle)
@@ -123,6 +125,7 @@ struct FolderPopupTextFieldModifier: ViewModifier {
                         guard textFieldInput.isEmpty == false else { return }
                         isShowFlag = false
                         complete(textFieldInput)
+                        textFieldInput = ""
                     }
             }
             .frame(maxWidth: .infinity)

@@ -22,7 +22,7 @@ struct AccountSettingView: View {
             ScrollView {
                 VStack(spacing: 0.0) {
                     profilImageView
-                    userKeyView
+//                    userKeyView
                     customTextField(info: $nickName)
                     introduceTextEditorView
                 }
@@ -104,6 +104,7 @@ extension AccountSettingView {
                                    height: 100.0)
                     }
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 100.0,
                            height: 100.0)
                     .cornerRadius(.infinity)
@@ -146,8 +147,19 @@ extension AccountSettingView {
     
     private func customTextField(info: Binding<String>) -> some View {
         VStack(spacing: 0.0) {
-            TextField("", text: info)
-                .padding(.bottom, 2.0)
+            HStack(spacing: 0.0) {
+                TextField("", text: info)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                Image(viewModel.accountInfo.social == "APPLE"
+                      ? "appleComponent"
+                      : "kakaoComponent")
+                .padding(.trailing, 4.0)
+                Text(viewModel.accountInfo.social ?? "")
+                    .font(.pretendard(.reguler, size: 14.0))
+                    .foregroundColor(.black)
+            }
+            .padding(.bottom, 4.0)
             Color(UIColor.gray_D3D4D5)
                 .frame(height: 1.0)
         }

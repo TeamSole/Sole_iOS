@@ -81,6 +81,7 @@ extension CourseSearchView {
         VStack(alignment: .leading, spacing: 0.0) {
             KFImage(URL(string: item.thumbnailImg ?? ""))
                 .resizable()
+                .scaledToFill()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
                 .cornerRadius(4.0)

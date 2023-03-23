@@ -81,6 +81,7 @@ extension HomeView {
                             Image(uiImage: UIImage(named: "profile24") ?? UIImage())
                         }
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 24.0,
                                height: 24.0)
                         .cornerRadius(.infinity)
@@ -216,6 +217,7 @@ extension HomeView {
         VStack(alignment: .leading, spacing: 0.0) {
             KFImage(URL(string: item.thumbnailImg ?? ""))
                 .resizable()
+                .scaledToFill()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
                 .cornerRadius(4.0)

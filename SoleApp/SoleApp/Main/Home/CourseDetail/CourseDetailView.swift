@@ -108,6 +108,7 @@ extension CourseDetailView {
                                height: 40.0)
                 }
                 .resizable()
+                .scaledToFill()
                 .frame(width: 40.0,
                        height: 40.0)
                 .cornerRadius(.infinity)
@@ -291,6 +292,7 @@ extension CourseDetailView {
                                                    height: 140.0)
                                     }
                                     .resizable()
+                                    .scaledToFill()
                                     .frame(width: 140.0,
                                            height: 140.0)
                                     .cornerRadius(8.0)
