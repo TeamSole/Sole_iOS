@@ -18,6 +18,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var recommendCourses: [RecommendCourse] = []
     @Published var courses: [Course] = []
     @Published var location: Location = Location()
+    @Published var callingRequest: Bool = false
     
     override init() {
         super.init()
@@ -69,6 +70,36 @@ extension HomeViewModel {
                 }
             })
     }
+    
+    func getNextCourses() {
+        guard courses.last?.finalPage == false,
+        callingRequest == false else { return }
+        callingRequest = true
+        
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.courses + "?courseId=\(courses.last?.courseId ?? 0)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: CourseModelResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true,
+                       let data = response.data {
+                        self?.courses += data
+                    }
+                    self?.callingRequest = false
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.callingRequest = false
+                }
+            })
+    }
+    
+    
+    
     
     func setTaste(place: [String], with: [String], tras: [String]) {
         let url: URLConvertible = URL(string: K.baseUrl + K.Path.category)!

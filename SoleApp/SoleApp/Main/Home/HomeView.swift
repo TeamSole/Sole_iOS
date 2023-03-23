@@ -206,6 +206,7 @@ extension HomeView {
                     })
                     
                 }
+                addNextPageButton
             }
         }
         .padding(.horizontal, 16.0)
@@ -265,7 +266,10 @@ extension HomeView {
             }
             .padding(16.0)
         }
-        .border(Color.gray_EDEDED, width:  1.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12.0)
+                .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+        )
         .cornerRadius(12.0)
         .padding(.vertical, 10.0)
     }
@@ -327,6 +331,29 @@ extension HomeView {
                maxHeight: .infinity,
                alignment: .center)
         .padding(.vertical, 50.0)
+    }
+    
+    private var addNextPageButton: some View {
+        HStack(spacing: 0.0) {
+            if viewModel.callingRequest {
+                ProgressView()
+            } else {
+                Text("더보기 +")
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 40.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8.0)
+                .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+        )
+        .padding(.vertical, 16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            guard viewModel.callingRequest == false else { return }
+            viewModel.getNextCourses()
+        }
+        .isHidden(viewModel.courses.last?.finalPage == true, remove: true)
     }
     
 }

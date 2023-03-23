@@ -20,6 +20,7 @@ struct CourseModelResponse: Codable {
         var duration: Int?
         var like: Bool?
         var thumbnailImg: String?
+        var finalPage: Bool? = false
         var title: String?
     }
 }

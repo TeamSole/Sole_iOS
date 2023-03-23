@@ -473,7 +473,7 @@ extension CourseEditView {
     
     private var registerCourseButtonView: some View {
         VStack() {
-            Text("코스 업로드")
+            Text("코스 수정하기")
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.white)
         }
