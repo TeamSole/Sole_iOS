@@ -73,13 +73,48 @@ extension HistoryView {
                     .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text("지금까지 \(viewModel.profileDescription.totalDate ?? 0)일간 \(viewModel.profileDescription.totalPlaces ?? 0)곳의 장소를 방문하며, 이번달 총 \(viewModel.profileDescription.totalCourses ?? 0)개의 코스를 기록했어요.")
-                    .foregroundColor(.black)
-                    .font(.pretendard(.reguler, size: 14.0))
-                    .lineLimit(nil)
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
-                    .padding(.vertical, 16.0)
+                HStack(spacing: 0.0) {
+                    Text("지금까지 ")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.black)
+                    + Text("\(viewModel.profileDescription.totalDate ?? 0)")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.blue_4708FA)
+                    + Text("일간 ")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.black)
+                    + Text("\(viewModel.profileDescription.totalPlaces ?? 0)")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.blue_4708FA)
+                    + Text("곳의 장소를 방문하며, ")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.black)
+                }
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
+                .padding(.top, 16.0)
+                HStack(spacing: 0.0) {
+                    Text("이번달 총 ")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.black)
+                    + Text("\(viewModel.profileDescription.totalCourses ?? 0)")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.blue_4708FA)
+                    + Text("개의 코스를 기록했어요.")
+                        .font(.pretendard(.reguler, size: 14.0))
+                        .foregroundColor(.black)
+                }
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
+                .padding(.bottom, 16.0)
+//                Text("지금까지 \(viewModel.profileDescription.totalDate ?? 0)일간 \(viewModel.profileDescription.totalPlaces ?? 0)곳의 장소를 방문하며, 이번달 총 \(viewModel.profileDescription.totalCourses ?? 0)개의 코스를 기록했어요.")
+//                    .foregroundColor(.black)
+//                    .font(.pretendard(.reguler, size: 14.0))
+//                    .lineLimit(nil)
+//                    .frame(maxWidth: .infinity,
+//                           alignment: .leading)
+//                    .padding(.vertical, 16.0)
+                    
             }
             .frame(maxWidth: .infinity,
                    alignment: .topLeading)

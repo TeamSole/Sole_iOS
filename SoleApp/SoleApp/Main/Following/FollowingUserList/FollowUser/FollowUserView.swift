@@ -193,6 +193,7 @@ extension FollowUserView {
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
+                    .padding(.vertical, 2.0)
                 Color.clear
                     .frame(height: 1.0)
                     .readSize { size in

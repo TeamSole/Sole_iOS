@@ -31,7 +31,7 @@ struct RegisterCouseView: View {
     @State private var selectedWith: [String] = []
     @State private var selectedTrans: [String] = []
     
-    @State private var courses: [Course] = [Course()]
+    @State private var courses: [Course] = [Course(), Course()]
 //    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
    

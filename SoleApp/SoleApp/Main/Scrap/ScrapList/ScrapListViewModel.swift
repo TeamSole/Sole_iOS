@@ -87,7 +87,7 @@ extension ScrapListViewModel {
     
     func removeScraps(isDefaultFolder: Bool, folderId: Int, scraps: [Int], complete: @escaping () -> ()) {
         guard scraps.isEmpty == false else { return }
-        let courseIds = scraps.map({ String($0) }).joined(separator: ", ")
+        let courseIds = scraps.map({ String($0) }).joined(separator: ",")
         let url: URLConvertible = isDefaultFolder
         ? URL(string: K.baseUrl + K.Path.folderList + "/default/\(courseIds)")!
         : URL(string: K.baseUrl + K.Path.folderList + "/\(folderId)/\(courseIds)")!

@@ -24,7 +24,7 @@ struct MyPageView: View {
             $0.isScrollEnabled = false
         }
         .navigationBarHidden(true)
-        .onLoaded {
+        .onAppear {
             viewModel.getmyAccountInfo()
         }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .logout,

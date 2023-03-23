@@ -11,7 +11,7 @@ import Alamofire
 final class RegisterCourseViewModel: ObservableObject {
     typealias FullCourse = RegisterCourseModelRequest
     @Published var thumbnailImage: UIImage? = nil
-    @Published var selectedImages: [[UIImage]] = [[]]
+    @Published var selectedImages: [[UIImage]] = [[], []]
 }
 
 extension RegisterCourseViewModel {
