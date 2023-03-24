@@ -178,6 +178,15 @@ extension CourseEditView {
                 .padding(16.0)
             ForEach(0..<courses.count, id: \.self) { index in
                 VStack(spacing: 0.0) {
+                    Image("close")
+                        .frame(maxWidth: .infinity,
+                               alignment: .trailing)
+                        .padding(16.0)
+                        .isHidden(courses.count < 3, remove: true)
+                        .onTapGesture {
+                            courses.remove(at: index)
+                            viewModel.selectedImages.remove(at: index)
+                        }
                     locationTextFieldView(index: index)
                     takenTimeView(index: index)
                     subImageGridView(index: index)
@@ -464,7 +473,7 @@ extension CourseEditView {
         )
         .padding(16.0)
         .contentShape(Rectangle())
-        .isHidden(courses.count > 3, remove: true)
+        .isHidden(courses.count > 4, remove: true)
         .onTapGesture {
 //            viewModel.selectedImages.append([])
             courses.append(Course())
