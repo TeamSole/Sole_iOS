@@ -21,6 +21,7 @@ struct HistoryModelResponse: Codable {
         var distance: Double?
         var duration: Int?
         var like: Bool?
+        var finalPage: Bool? = false
         var thumbnailImg: String?
         var title: String?
     }

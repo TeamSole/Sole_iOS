@@ -184,6 +184,29 @@ extension CourseSearchView {
         }
         
     }
+    
+    private var addNextPageButton: some View {
+        HStack(spacing: 0.0) {
+            if viewModel.callingRequest {
+                ProgressView()
+            } else {
+                Text("더보기 +")
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 40.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8.0)
+                .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+        )
+        .padding(.vertical, 16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            guard viewModel.callingRequest == false else { return }
+            viewModel.getNextCourses(keyword: searchText)
+        }
+        .isHidden(viewModel.courses.last?.finalPage == true, remove: true)
+    }
 }
 
 struct CourseSearchView_Previews: PreviewProvider {

@@ -15,6 +15,8 @@ final class FollowUserViewModel: ObservableObject {
     @Published var userDetail: UserDetail = UserDetail()
     @Published var popularCourse: Course? = nil
     @Published var recentCourses: [Course]? = []
+    @Published var callingRequest: Bool = false
+    
 }
 
 extension FollowUserViewModel {
@@ -37,6 +39,33 @@ extension FollowUserViewModel {
                         self?.recentCourses = data.recentCourses
                     }
                 case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func getNextUserDetail(socialId: String) {
+        guard socialId.isEmpty == false,
+              recentCourses?.last?.finalPage == false,
+              callingRequest == false else { return }
+        callingRequest = true
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.boardList + "/\(socialId)?courseId=\(recentCourses?.last?.courseId ?? 0)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: FollowUserModelResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success(let response):
+                    if response.success == true,
+                       let data = response.data?.recentCourses {
+                        self?.recentCourses! += data
+                    }
+                    self?.callingRequest = false
+                case .failure(let error):
+                    self?.callingRequest = false
                     print(error.localizedDescription)
                 }
             })

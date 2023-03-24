@@ -13,6 +13,9 @@ struct HistoryView: View {
     @StateObject var viewModel: HistoryViewModel = HistoryViewModel()
     @State private var isShowSelectTagView: Bool = false
     private let filterType: [String] = ["장소", "동행", "교통"]
+    @State private var placeCategories: [String] = []
+    @State private var transCategories: [String] = []
+    @State private var withCategories: [String] = []
     var body: some View {
         ZStack() {
             VStack(spacing: 0.0) {
@@ -34,7 +37,10 @@ struct HistoryView: View {
         .sheet(isPresented: $isShowSelectTagView,
                content: {
             SelectTagView(selectType: .filter, complete: {place, with, trans in
-                if place.isEmpty && with.isEmpty && trans.isEmpty {
+                placeCategories = place
+                transCategories = trans
+                withCategories = with
+                if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
                     viewModel.getUserHistoies()
                 } else {
                     viewModel.getUserHistoiesWithParameter(place: place, with: with, tras: trans)
@@ -179,6 +185,7 @@ extension HistoryView {
                     })
                     
                 }
+                addNextPageButton
             }
         }
         .padding(16.0)
@@ -268,6 +275,34 @@ extension HistoryView {
             }
         }
     }
+    
+    private var addNextPageButton: some View {
+        HStack(spacing: 0.0) {
+            if viewModel.apiRequestStatus {
+                ProgressView()
+            } else {
+                Text("더보기 +")
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 40.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8.0)
+                .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+        )
+        .padding(.vertical, 16.0)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            guard viewModel.apiRequestStatus == false else { return }
+            if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
+                viewModel.getNextUserHistoies()
+            } else {
+                viewModel.getNextUserHistoiesWithParameter(place: placeCategories, with: withCategories, tras: transCategories)
+            }
+        }
+        .isHidden(viewModel.histories.last?.finalPage == true, remove: true)
+    }
+    
     
 }
 
