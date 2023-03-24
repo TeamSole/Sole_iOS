@@ -61,12 +61,10 @@ struct ScrapListView: View {
                                                complete: { foldername in
             popupComplete(foldername: foldername)
         }))
-        .modifier(MoveScrapsPopupModifier(isShowFlag: $showMoveScrapPopup,
+        .modifier(MoveScrapsPopupModifier(isShowFlag: $showMoveScrapPopup, scraps: selectedScraps,
                                           complete: { moveToFolderId in
-            viewModel.moveScraps(folderId: moveToFolderId, scraps: selectedScraps) {
-                selectedScraps = []
-                isEditMode = false
-            }
+            selectedScraps = []
+            isEditMode = false
         }))
     }
 }

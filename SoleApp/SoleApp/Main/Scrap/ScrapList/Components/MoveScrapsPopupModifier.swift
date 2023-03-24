@@ -13,7 +13,9 @@ struct MoveScrapsPopupModifier: ViewModifier {
     typealias Folders = [ScrapFolderResponseModel.DataModel]
     typealias Folder = ScrapFolderResponseModel.DataModel
     @State private var folderList: Folders = []
+    @State private var errorMessage: String = ""
     @Binding var isShowFlag: Bool
+    var scraps: [Int]
     let complete: (Int) -> ()
     func body(content: Content) -> some View {
         ZStack() {
@@ -44,17 +46,23 @@ struct MoveScrapsPopupModifier: ViewModifier {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         guard let folderId = folderList[index].scrapFolderId else { return }
-                        complete(folderId)
-                        isShowFlag = false
+                        moveScraps(folderId: folderId, scraps: scraps) {
+                            complete(folderId)
+                            isShowFlag = false
+                        }
                     }
             }
             .frame(height: 200.0)
             .listStyle(.plain)
             HStack(spacing: 7.0) {
-               
+               Text(errorMessage)
+                    .foregroundColor(.red_FF717D)
+                    .font(.pretendard(.medium, size: 13.0))
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
             }
             .frame(maxWidth: .infinity)
-            .padding(12.0)
+            .padding(13.0)
         }
         .background(Color.white)
         .frame(width: 300.0)
@@ -103,12 +111,39 @@ struct MoveScrapsPopupModifier: ViewModifier {
             })
     }
     
+    func moveScraps(folderId: Int, scraps: [Int], complete: @escaping () -> ()) {
+        guard scraps.isEmpty == false else { return }
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.folderList + "/default/\(folderId)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        let parameter = ["courseIds": scraps]
+        AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { response in
+                switch response.result {
+                case .success:
+                    complete()
+                case .failure(let error):
+                    guard let data = response.data else {
+                        print(error.localizedDescription)
+                        return }
+                    let jsonData = try? JSONDecoder().decode(BaseResponse.self, from: data)
+                    if jsonData?.code == "S001" {
+                        errorMessage = jsonData?.message ?? ""
+                    }
+                    
+                }
+            })
+    }
+    
 }
 
 struct MoveScrapsPopupModifier_Previews: PreviewProvider {
     static var previews: some View {
         Color.red
-            .modifier(MoveScrapsPopupModifier(isShowFlag: .constant(true), complete: { _ in }))
+            .modifier(MoveScrapsPopupModifier(isShowFlag: .constant(true), scraps: [], complete: { _ in }))
         
     }
 }
