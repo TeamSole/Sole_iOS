@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Combine
 
 struct AccountSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
@@ -177,6 +178,7 @@ extension AccountSettingView {
                 .frame(height: 84.0)
                 .cornerRadius(4.0)
                 .border(Color(UIColor.gray_D3D4D5), width: 1.0)
+                .onReceive(Just(introduceInfo)) { _ in limitText(50) }
             Text(String(format: "%d/50", introduceInfo.count))
                 .font(Font(UIFont.pretendardRegular(size: 10.0)))
                 .foregroundColor(Color(UIColor.gray_D3D4D5))
@@ -229,6 +231,12 @@ extension AccountSettingView {
         viewModel.accountInfo.nickname != nickName ||
         viewModel.accountInfo.description != introduceInfo ||
         viewModel.profileImage != nil
+    }
+    
+    func limitText(_ upper: Int) {
+        if introduceInfo.count > upper {
+            introduceInfo = String(introduceInfo.prefix(upper))
+        }
     }
 }
 
