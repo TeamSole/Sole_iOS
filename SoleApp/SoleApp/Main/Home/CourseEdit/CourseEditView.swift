@@ -494,10 +494,10 @@ extension CourseEditView {
         .contentShape(Rectangle())
         .onTapGesture {
             hideKeyboard()
+            guard isValid else { return }
             fullCourse.startDate = selectedDate.toString(format: "yyyy-MM-dd")
             fullCourse.placeUpdateRequestDtos = courses
             viewModel.updateCourse(fullCourse: fullCourse, courseId: courseId) {
-                guard isValid else { return }
                 print("성공")
                 presentationMode.wrappedValue.dismiss()
             }
