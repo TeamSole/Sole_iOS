@@ -37,7 +37,7 @@ extension ScrapListViewModel {
                     }
                     self?.apiRequestStatus = false
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                     self?.apiRequestStatus = false
                 }
             })
@@ -101,6 +101,27 @@ extension ScrapListViewModel {
                 switch response.result {
                 case .success:
                     self?.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
+                    complete()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func moveScraps(folderId: Int, scraps: [Int], complete: @escaping () -> ()) {
+        guard scraps.isEmpty == false else { return }
+        let url: URLConvertible = URL(string: K.baseUrl + K.Path.folderList + "/default/\(folderId)")!
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token)
+        ]
+        let parameter = ["courseIds": scraps]
+        AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .responseDecodable(of: BaseResponse.self, completionHandler: { [weak self] response in
+                switch response.result {
+                case .success:
+                    self?.getScraps(isDefaultFolder: true, folderId: folderId)
                     complete()
                 case .failure(let error):
                     print(error.localizedDescription)

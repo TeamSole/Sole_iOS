@@ -15,6 +15,7 @@ struct ScrapListView: View {
     @State private var isEditMode: Bool = false
     @State private var showBottomPopup: Bool = false
     @State private var showPopup: Bool = false
+    @State private var showMoveScrapPopup: Bool = false
     @State private var popupType: FolderPopupType = .rename
     @State private var selectedScraps: [Int] = []
     
@@ -60,6 +61,13 @@ struct ScrapListView: View {
                                                complete: { foldername in
             popupComplete(foldername: foldername)
         }))
+        .modifier(MoveScrapsPopupModifier(isShowFlag: $showMoveScrapPopup,
+                                          complete: { moveToFolderId in
+            viewModel.moveScraps(folderId: moveToFolderId, scraps: selectedScraps) {
+                selectedScraps = []
+                isEditMode = false
+            }
+        }))
     }
 }
 
@@ -98,16 +106,22 @@ extension ScrapListView {
     private var listHeaderView: some View {
         HStack(spacing: 8.0) {
             if isEditMode {
-//                Text("이동")
-//                    .font(.pretendard(.medium, size: 12.0))
-//                    .foregroundColor(.black)
-//
-//                    .frame(width: 60.0,
-//                           height: 24.0)
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 12.0)
-//                            .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
-//                    )
+                Text("이동")
+                    .font(.pretendard(.medium, size: 12.0))
+                    .foregroundColor(.black)
+
+                    .frame(width: 60.0,
+                           height: 24.0)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12.0)
+                            .stroke(selectedScraps.isEmpty ? Color.gray_D3D4D5 : Color.blue_4708FA,
+                                    lineWidth: 1.0)
+                    )
+                    .isHidden(isDefaultFolder == false, remove: true)
+                    .onTapGesture {
+                        guard selectedScraps.isEmpty == false else { return }
+                        showMoveScrapPopup = true
+                    }
                 Text("삭제")
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)

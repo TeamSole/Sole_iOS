@@ -12,8 +12,8 @@ struct ScrapFolderView: View {
     @StateObject var viewModel: ScrapFolderViewModel = ScrapFolderViewModel()
     @State private var showPopup: Bool = false
     private let gridItem: [GridItem] = [
-        GridItem(.adaptive(minimum: 100.0), spacing: 16.0),
-        GridItem(.adaptive(minimum: 100.0), spacing: 16.0)
+        GridItem(.flexible(minimum: 100.0, maximum: (UIScreen.main.bounds.width - 48) / 2), spacing: 16.0),
+        GridItem(.flexible(minimum: 100.0, maximum: (UIScreen.main.bounds.width - 48) / 2), spacing: 16.0)
     ]
     
     private let gridItemHeight: CGFloat = (UIScreen.main.bounds.width - 48) / 2
@@ -67,7 +67,11 @@ extension ScrapFolderView {
                     Image(uiImage: UIImage(named: "folderImage") ?? UIImage())
                         .resizable()
                 }
-                .frame(height: gridItemHeight)
+                .resizable()
+                .frame(width: gridItemHeight,
+                       height: gridItemHeight)
+                .scaledToFill()
+            
             Text(title)
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
