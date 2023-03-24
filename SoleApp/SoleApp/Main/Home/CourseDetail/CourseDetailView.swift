@@ -269,6 +269,7 @@ extension CourseDetailView {
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                         .padding(.bottom, 9.0)
+                        .isHidden(item.address?.isEmpty == true, remove: true)
                     HStack(spacing: 4.0) {
                         Image("info")
                         Text("상세정보")

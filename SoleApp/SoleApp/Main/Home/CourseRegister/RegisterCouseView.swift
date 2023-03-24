@@ -95,6 +95,10 @@ struct RegisterCouseView: View {
                 courses[selectIndex] = course
             }
         })
+        .onDisappear {
+            viewModel.thumbnailImage = nil
+            viewModel.selectedImages = [[],[]]
+        }
     }
 }
 
@@ -418,6 +422,7 @@ extension RegisterCouseView {
         .padding(16.0)
         .contentShape(Rectangle())
         .onTapGesture {
+            guard isValid else { return }
             hideKeyboard()
             let fullCourse = FullCourse(title: courseTitle,
                                         date: selectedDate.toString(format: "yyyy-MM-dd"),
@@ -427,7 +432,6 @@ extension RegisterCouseView {
                                         withCategories: selectedWith,
                                         placeRequestDtos: courses)
             viewModel.uploadCourse(fullCourse: fullCourse) {
-                guard isValid else { return }
                 print("성공")
                 presentationMode.wrappedValue.dismiss()
             }

@@ -168,6 +168,7 @@ extension FollowUserView {
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
+                .scaledToFill()
                 .background(
                     RoundedCorners(color: .gray_EDEDED,
                                    tl: 0.0, tr: 0.0 ,bl: 0.0, br: 0.0)

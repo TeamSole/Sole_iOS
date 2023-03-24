@@ -37,10 +37,10 @@ struct CourseEditView: View {
 //    @State private var
 //    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
-    @State private var courseDetail: CourseDetail
+    var courseDetail: CourseDetail
     @State private var courseId: Int = 0
     init(courseDetail: CourseDetail) {
-        self._courseDetail = State(initialValue: courseDetail)
+        self.courseDetail = courseDetail
     }
     var body: some View {
         VStack(spacing: 0.0) {
@@ -123,11 +123,11 @@ struct CourseEditView: View {
             LocationSearchView { course in
                 let courseObject = Course(address: course.address,
                                           description: course.description,
-                                          placeId: selectIndex >= fullCourse.placeUpdateRequestDtos.count ? nil : fullCourse.placeUpdateRequestDtos[selectIndex].placeId ?? 0,
+                                          placeId: selectIndex >= courses.count ? nil : courses[selectIndex].placeId ?? 0,
                                           placeName: course.placeName,
                                           latitude: course.latitude,
                                           longitude: course.longitude,
-                                          placeImgUrls: selectIndex >= fullCourse.placeUpdateRequestDtos.count ? [] : fullCourse.placeUpdateRequestDtos[selectIndex].placeImgUrls
+                                          placeImgUrls: selectIndex >= courses.count ? [] : courses[selectIndex].placeImgUrls
                 )
 //                if selectIndex >= fullCourse.placeUpdateRequestDtos.count {
 //                    courses.append(courseObject)
