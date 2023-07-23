@@ -666,6 +666,7 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A4C8DD572A6BAB4D000F4D62 /* Network */,
 				A47EEA6429C45B88006BA3DB /* Util */,
 				A47EEA5229C1EB7B006BA3DB /* Intro */,
 				A4597BD329A9A1A200B06132 /* API */,
@@ -681,6 +682,13 @@
 				A4C31C9B2991427D0014F458 /* Info-dev.plist */,
 			);
 			path = SoleApp;
+			sourceTree = "<group>";
+		};
+		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		A4D983CA299F64CD008C599D /* System */ = {
