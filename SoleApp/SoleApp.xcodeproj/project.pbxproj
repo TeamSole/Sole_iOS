@@ -58,8 +58,6 @@
 		A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */; };
 		A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
 		A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
-		A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DB299295B4001FAED3 /* SnapKit */; };
-		A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46B46DE299295CB001FAED3 /* SnapKit */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
 		A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
 		A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E92994B769001FAED3 /* UIColor.swift */; };
@@ -98,8 +96,6 @@
 		A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D713F29B8C74400944912 /* FollowingBoardView.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
-		A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
-		A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */; };
 		A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
 		A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
 		A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */; };
@@ -265,7 +261,6 @@
 		A46D712829B3144300944912 /* Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Release.entitlements; sourceTree = "<group>"; };
 		A46D713F29B8C74400944912 /* FollowingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardView.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
 		A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
@@ -337,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */,
-				A46B46DC299295B4001FAED3 /* SnapKit in Frameworks */,
 				A46D713429B7D21E00944912 /* Kingfisher in Frameworks */,
 				A4D983C1299F603C008C599D /* KakaoSDKCommon in Frameworks */,
 				A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */,
@@ -352,7 +346,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */,
-				A46B46DF299295CB001FAED3 /* SnapKit in Frameworks */,
 				A46D713629B7D22700944912 /* Kingfisher in Frameworks */,
 				A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */,
 				A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */,
@@ -390,7 +383,6 @@
 		A4597BCC29A89D8800B06132 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				A4760F1029BC6CCA0080A2CD /* TagListCollectionViewCell.swift */,
 				A46B3B3C29BF5B010026D961 /* TagListView.swift */,
 			);
 			path = Component;
@@ -763,7 +755,6 @@
 			);
 			name = Release;
 			packageProductDependencies = (
-				A46B46DB299295B4001FAED3 /* SnapKit */,
 				A4D983BE299F603C008C599D /* KakaoSDKAuth */,
 				A4D983C0299F603C008C599D /* KakaoSDKCommon */,
 				A4D983C8299F63AF008C599D /* KakaoSDKUser */,
@@ -791,7 +782,6 @@
 			);
 			name = Dev;
 			packageProductDependencies = (
-				A46B46DE299295CB001FAED3 /* SnapKit */,
 				A4D983C2299F6075008C599D /* KakaoSDKAuth */,
 				A4D983C4299F6075008C599D /* KakaoSDKCommon */,
 				A4D983C6299F63A7008C599D /* KakaoSDKUser */,
@@ -828,7 +818,6 @@
 			);
 			mainGroup = A4C31C6D29913CF00014F458;
 			packageReferences = (
-				A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -1053,7 +1042,6 @@
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA729C7FB25006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A4760F1129BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 				A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1146,7 +1134,6 @@
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA829C7FB26006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A4760F1229BC6CCA0080A2CD /* TagListCollectionViewCell.swift in Sources */,
 				A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1470,14 +1457,6 @@
 				minimumVersion = 0.2.3;
 			};
 		};
-		A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1516,16 +1495,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A46B3B4E29C01C120026D961 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
-		};
-		A46B46DB299295B4001FAED3 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		A46B46DE299295CB001FAED3 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A46B46DA299295B4001FAED3 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 		A46D713329B7D21E00944912 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
