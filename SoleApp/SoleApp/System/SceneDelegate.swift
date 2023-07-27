@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let mainViewModel = AppDelegate.shared.mainViewModel
-        window?.rootViewController = UIHostingController(rootView: IntroView().environmentObject(mainViewModel)) // MainTabbarViewController()//UINavigationController(rootViewController: LoginViewController())//
+        window?.rootViewController = UIHostingController(rootView: IntroView().environmentObject(mainViewModel))
         window?.backgroundColor = .white
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
