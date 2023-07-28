@@ -204,6 +204,8 @@
 		A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C4299F6075008C599D /* KakaoSDKCommon */; };
 		A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C6299F63A7008C599D /* KakaoSDKUser */; };
 		A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C8299F63AF008C599D /* KakaoSDKUser */; };
+		A4DCECEC2A73F78900FA2226 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A4DCECEB2A73F78900FA2226 /* ComposableArchitecture */; };
+		A4DCECEE2A73F7B700FA2226 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A4DCECED2A73F7B700FA2226 /* ComposableArchitecture */; };
 		A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
@@ -337,6 +339,7 @@
 				A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */,
 				A46B3B5029C01C120026D961 /* Introspect in Frameworks */,
 				A4D983BF299F603C008C599D /* KakaoSDKAuth in Frameworks */,
+				A4DCECEC2A73F78900FA2226 /* ComposableArchitecture in Frameworks */,
 				FE01069E35B1A1072368E401 /* Pods_Release.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +354,7 @@
 				A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */,
 				A46B3B5229C01C260026D961 /* Introspect in Frameworks */,
 				A4D983C3299F6075008C599D /* KakaoSDKAuth in Frameworks */,
+				A4DCECEE2A73F7B700FA2226 /* ComposableArchitecture in Frameworks */,
 				9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +765,7 @@
 				A4597BC829A89BCB00B06132 /* FloatingPanel */,
 				A46D713329B7D21E00944912 /* Kingfisher */,
 				A46B3B4F29C01C120026D961 /* Introspect */,
+				A4DCECEB2A73F78900FA2226 /* ComposableArchitecture */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C7629913CF00014F458 /* Release.app */;
@@ -788,6 +793,7 @@
 				A4597BCA29A89BDB00B06132 /* FloatingPanel */,
 				A46D713529B7D22700944912 /* Kingfisher */,
 				A46B3B5129C01C260026D961 /* Introspect */,
+				A4DCECED2A73F7B700FA2226 /* ComposableArchitecture */,
 			);
 			productName = SoleApp;
 			productReference = A4C31C99299140200014F458 /* Dev.app */;
@@ -822,6 +828,7 @@
 				A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A46B3B4E29C01C120026D961 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				A4DCECEA2A73F78900FA2226 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = A4C31C7729913CF00014F458 /* Products */;
 			projectDirPath = "";
@@ -1473,6 +1480,14 @@
 				kind = branch;
 			};
 		};
+		A4DCECEA2A73F78900FA2226 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1535,6 +1550,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		A4DCECEB2A73F78900FA2226 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4DCECEA2A73F78900FA2226 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		A4DCECED2A73F7B700FA2226 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4DCECEA2A73F78900FA2226 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
