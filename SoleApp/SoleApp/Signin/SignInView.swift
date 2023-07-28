@@ -46,7 +46,7 @@ extension SignInView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(.leading, 16.0)
-            Text("Kakao로 계속하기")
+            Text(StringConstant.signInWithKakao)
                 .font(.pretendard(.medium, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -69,7 +69,7 @@ extension SignInView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(.leading, 16.0)
-            Text("Apple로 계속하기")
+            Text(StringConstant.signInWithApple)
                 .font(.pretendard(.medium, size: 16.0))
                 .foregroundColor(.white)
         }
@@ -86,10 +86,10 @@ extension SignInView {
     
     private var addminInfoView: some View {
         VStack(spacing: 4.0) {
-            Text("개인정보처리방침")
+            Text(StringConstant.privacyPolicy)
                 .font(.pretendard(.reguler, size: 10.0))
                 .foregroundColor(.gray_999999)
-            Text("회원 정보 문의: team.sole12@gmail.com")
+            Text(StringConstant.helpCenterMail)
                 .font(.pretendard(.reguler, size: 10.0))
                 .foregroundColor(.gray_999999)
         }

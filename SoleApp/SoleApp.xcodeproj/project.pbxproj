@@ -206,6 +206,10 @@
 		A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = A4D983C8299F63AF008C599D /* KakaoSDKUser */; };
 		A4DCECEC2A73F78900FA2226 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A4DCECEB2A73F78900FA2226 /* ComposableArchitecture */; };
 		A4DCECEE2A73F7B700FA2226 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A4DCECED2A73F7B700FA2226 /* ComposableArchitecture */; };
+		A4DCECF02A73F88600FA2226 /* SignInFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */; };
+		A4DCECF12A73F88600FA2226 /* SignInFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */; };
+		A4DCECF32A73F8CF00FA2226 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */; };
+		A4DCECF42A73F8CF00FA2226 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */; };
 		A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
@@ -318,6 +322,8 @@
 		A4C31C8729913CF00014F458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4C31C99299140200014F458 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C31C9B2991427D0014F458 /* Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
+		A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInFeature.swift; sourceTree = "<group>"; };
+		A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 		A4E052E729BE160C00FDB84B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A4E052EA29BE170F00FDB84B /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A4E052ED29BF4C9600FDB84B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -496,6 +502,7 @@
 			children = (
 				A46B46EC29966584001FAED3 /* SignUp */,
 				A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */,
+				A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -555,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				A4712C9629A1DF2000CE1A59 /* Constant.swift */,
+				A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1019,6 +1027,8 @@
 				A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
+				A4DCECF32A73F8CF00FA2226 /* StringConstant.swift in Sources */,
+				A4DCECF02A73F88600FA2226 /* SignInFeature.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
 				A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */,
@@ -1111,6 +1121,8 @@
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
+				A4DCECF42A73F8CF00FA2226 /* StringConstant.swift in Sources */,
+				A4DCECF12A73F88600FA2226 /* SignInFeature.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
