@@ -11,28 +11,28 @@ extension Color {
     
     static let mainBlackColor = Color.black_151515
     
-    static let blue_4708FA = Color(hex: "4708FA")
-    static let blue_0996F6 = Color(hex: "0996F6")
+    static let blue_4708FA = Color("blue_4708FA")
+    static let blue_0996F6 = Color("blue_0996F6")
     
-    static let yellow_FBE520 = Color(hex: "FBE520")
-    static let yellow_E9FF4B = Color(hex: "E9FF4B")
+    static let yellow_FBE520 = Color("yellow_FBE520")
+    static let yellow_E9FF4B = Color("yellow_E9FF4B")
 
     
-    static let gray_D6D6D6 = Color(hex: "D6D6D6")
-    static let gray_EDEDED = Color(hex: "EDEDED")
-    static let gray_F2F2F2 = Color(hex: "F2F2F2")
-    static let gray_D3D4D5 = Color(hex: "D3D4D5")
-    static let gray_999999 = Color(hex: "999999")
-    static let gray_404040 = Color(hex: "404040")
-    static let gray_383838 = Color(hex: "383838")
+    static let gray_D6D6D6 = Color("gray_D6D6D6")
+    static let gray_EDEDED = Color("gray_EDEDED")
+    static let gray_F2F2F2 = Color("gray_F2F2F2")
+    static let gray_D3D4D5 = Color("gray_D3D4D5")
+    static let gray_999999 = Color("gray_999999")
+    static let gray_404040 = Color("gray_404040")
+    static let gray_383838 = Color("gray_383838")
     
-    static let green_8BDEB5 = Color(hex: "8BDEB5")
+    static let green_8BDEB5 = Color("green_8BDEB5")
 
     
-    static let black_151515 = Color(hex: "151515")
+    static let black_151515 = Color("black_151515")
     
     
-    static let red_FF717D = Color(hex: "FF717D")
+    static let red_FF717D = Color("red_FF717D")
 
     
     
