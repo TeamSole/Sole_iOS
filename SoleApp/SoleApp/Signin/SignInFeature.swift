@@ -13,11 +13,17 @@ struct SignInFeature: ReducerProtocol {
     }
     
     enum Action: Equatable {
-        
+        case didTapSignWithKakao
+        case didTapSignWithApple
     }
     
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        
+        switch action {
+        case .didTapSignWithApple:
+            return .none
+        case .didTapSignWithKakao:
+            return .none
+        }
     }
 }
  
