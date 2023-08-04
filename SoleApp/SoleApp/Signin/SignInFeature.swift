@@ -7,7 +7,7 @@
 
 import ComposableArchitecture
 
-struct SignInFeature: ReducerProtocol {
+struct SignInFeature: Reducer {
     struct State: Equatable {
         
     }
@@ -17,7 +17,7 @@ struct SignInFeature: ReducerProtocol {
         case didTapSignWithApple
     }
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .didTapSignWithApple:
             return .none

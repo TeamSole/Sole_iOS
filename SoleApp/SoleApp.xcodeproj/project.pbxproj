@@ -12,8 +12,6 @@
 		A42D27162A768A8C003B11E5 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27142A768A8C003B11E5 /* AppFeature.swift */; };
 		A42D27182A768C47003B11E5 /* SignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27172A768C47003B11E5 /* SignInClient.swift */; };
 		A42D27192A768C47003B11E5 /* SignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27172A768C47003B11E5 /* SignInClient.swift */; };
-		A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BC829A89BCB00B06132 /* FloatingPanel */; };
-		A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A4597BCA29A89BDB00B06132 /* FloatingPanel */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -348,7 +346,6 @@
 				A4D983C9299F63AF008C599D /* KakaoSDKUser in Frameworks */,
 				A46D713429B7D21E00944912 /* Kingfisher in Frameworks */,
 				A4D983C1299F603C008C599D /* KakaoSDKCommon in Frameworks */,
-				A4597BC929A89BCB00B06132 /* FloatingPanel in Frameworks */,
 				A46B3B5029C01C120026D961 /* Introspect in Frameworks */,
 				A4D983BF299F603C008C599D /* KakaoSDKAuth in Frameworks */,
 				A4DCECEC2A73F78900FA2226 /* ComposableArchitecture in Frameworks */,
@@ -363,7 +360,6 @@
 				A4D983C7299F63A7008C599D /* KakaoSDKUser in Frameworks */,
 				A46D713629B7D22700944912 /* Kingfisher in Frameworks */,
 				A4D983C5299F6075008C599D /* KakaoSDKCommon in Frameworks */,
-				A4597BCB29A89BDB00B06132 /* FloatingPanel in Frameworks */,
 				A46B3B5229C01C260026D961 /* Introspect in Frameworks */,
 				A4D983C3299F6075008C599D /* KakaoSDKAuth in Frameworks */,
 				A4DCECEE2A73F7B700FA2226 /* ComposableArchitecture in Frameworks */,
@@ -778,7 +774,6 @@
 				A4D983BE299F603C008C599D /* KakaoSDKAuth */,
 				A4D983C0299F603C008C599D /* KakaoSDKCommon */,
 				A4D983C8299F63AF008C599D /* KakaoSDKUser */,
-				A4597BC829A89BCB00B06132 /* FloatingPanel */,
 				A46D713329B7D21E00944912 /* Kingfisher */,
 				A46B3B4F29C01C120026D961 /* Introspect */,
 				A4DCECEB2A73F78900FA2226 /* ComposableArchitecture */,
@@ -806,7 +801,6 @@
 				A4D983C2299F6075008C599D /* KakaoSDKAuth */,
 				A4D983C4299F6075008C599D /* KakaoSDKCommon */,
 				A4D983C6299F63A7008C599D /* KakaoSDKUser */,
-				A4597BCA29A89BDB00B06132 /* FloatingPanel */,
 				A46D713529B7D22700944912 /* Kingfisher */,
 				A46B3B5129C01C260026D961 /* Introspect */,
 				A4DCECED2A73F7B700FA2226 /* ComposableArchitecture */,
@@ -841,7 +835,6 @@
 			mainGroup = A4C31C6D29913CF00014F458;
 			packageReferences = (
 				A4D983BD299F603C008C599D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-				A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				A46D713229B7D21E00944912 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A46B3B4E29C01C120026D961 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				A4DCECEA2A73F78900FA2226 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
@@ -1472,14 +1465,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scenee/FloatingPanel#swift-package-manager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		A46B3B4E29C01C120026D961 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -1509,22 +1494,12 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A4597BC829A89BCB00B06132 /* FloatingPanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
-			productName = FloatingPanel;
-		};
-		A4597BCA29A89BDB00B06132 /* FloatingPanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4597BC729A89BCB00B06132 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
-			productName = FloatingPanel;
-		};
 		A46B3B4F29C01C120026D961 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46B3B4E29C01C120026D961 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
