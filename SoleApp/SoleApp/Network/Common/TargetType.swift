@@ -20,7 +20,7 @@ extension TargetType {
 
     // URLRequestConvertible 구현
     func asURLRequest() throws -> URLRequest {
-        let url = try baseURL.asURL()
+        guard let url =  URL(string: baseURL) else { throw AFError.invalidURL(url: baseURL) }
         var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
         urlRequest.headers = headers
 
@@ -32,8 +32,14 @@ extension TargetType {
             components?.queryItems = queryParams
             urlRequest.url = components?.url
         case .body(let request):
-            let params = request?.toDictionary() ?? [:]
-            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+            let parameters = request?.toDictionary() ?? [:]
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            } catch {
+                debugPrint("Error: ParameterEncodingError - \(error.localizedDescription)")
+                debugPrint("--------------------------------\n\(parameters)\n--------------------------------")
+                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+            }
         }
 
         return urlRequest

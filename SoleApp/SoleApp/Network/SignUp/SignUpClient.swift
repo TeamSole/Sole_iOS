@@ -10,16 +10,15 @@ import ComposableArchitecture
 import Alamofire
 
 struct SignUpClient {
-    var checkAleadyMember: (CheckExistAccountRequest, String) async throws -> (SignUpModelResponse)
+    var checkAleadyMember: @Sendable (CheckExistAccountRequest, String) async throws -> (SignUpModelResponse)
 }
 
 extension SignUpClient: DependencyKey {
     static var liveValue = SignUpClient { parameter, platform in
-        
-        let task = API.session.request(SignUpTarget.checkAleardyMember(parameter, platform))
-            .validate()
-            .serializingDecodable(SignUpModelResponse.self)
-        return try await task.value
+        let request = API.makeDataRequest(SignUpTarget.checkAleardyMember(parameter, platform))
+        let data = try await request.validate().serializingData().value
+            
+        return try await API.responseDecodeToJson(data: data, response: SignUpModelResponse.self)
     }
 }
 
