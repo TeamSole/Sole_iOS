@@ -18,8 +18,13 @@ extension SignUpClient: DependencyKey {
         let request = API.makeDataRequest(SignUpTarget.checkAleardyMember(parameter, platform))
         let data = try await request.validate().serializingData().value
             
-        return try await API.responseDecodeToJson(data: data, response: SignUpModelResponse.self)
+        return try API.responseDecodeToJson(data: data, response: SignUpModelResponse.self)
     }
 }
 
-
+extension DependencyValues {
+    var signUpClient: SignUpClient {
+        get { self[SignUpClient.self] }
+        set { self[SignUpClient.self] = newValue }
+    }
+}

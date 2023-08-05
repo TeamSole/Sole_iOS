@@ -18,7 +18,7 @@ struct SignUpModel: Codable {
 }
 
 
-struct SignUpModelResponse: Codable {
+struct SignUpModelResponse: Codable, Sendable, Equatable {
     let data: DataClass?
     let status: Int
     let success: Bool
