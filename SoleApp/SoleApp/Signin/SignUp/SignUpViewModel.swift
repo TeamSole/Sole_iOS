@@ -79,37 +79,31 @@ extension SignUpViewModel {
             }
     }
     
-    func kakaoLogin(complete: @escaping () -> ()) {
-        loginPlaform = "kakao"
+    static func kakaoLogin() async -> String? {
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-
-                    //do something
-                    if let token = oauthToken?.accessToken {
-                        self?.token = token
-                        self?.checkExistAccount()
-                        complete()
+            return await withCheckedContinuation { coutinuation in
+                UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+                    if let error = error {
+                        debugPrint(error)
+                        coutinuation.resume(returning: nil)
+                    }
+                    else {
+                        debugPrint("loginWithKakaoTalk() success.")
+                        coutinuation.resume(returning: oauthToken?.accessToken)
                     }
                 }
             }
+           
         } else {
-            UserApi.shared.loginWithKakaoAccount {[weak self] (oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoAccount() success.")
-                    
-                    //do something
-                    if let token = oauthToken?.accessToken {
-                        self?.token = token
-                        self?.checkExistAccount()
-                        complete()
+            return await withCheckedContinuation { coutinuation in
+                UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                    if let error = error {
+                        debugPrint(error)
+                        coutinuation.resume(returning: nil)
+                    }
+                    else {
+                        debugPrint("loginWithKakaoTalk() success.")
+                        coutinuation.resume(returning: oauthToken?.accessToken)
                     }
                 }
             }
