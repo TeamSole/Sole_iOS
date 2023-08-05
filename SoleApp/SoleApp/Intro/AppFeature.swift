@@ -7,8 +7,22 @@
 
 import ComposableArchitecture
 
-//struct AppFeature: ReducerProtocol {
-//    enum State: Equatable {
-//        
-//    }
-//}
+struct AppFeature: Reducer {
+    enum State: Equatable {
+        case signUp
+        case main
+    }
+    
+    enum Action: Equatable {
+        
+    }
+    
+    var body: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+                
+            }
+        }
+        
+    }
+}

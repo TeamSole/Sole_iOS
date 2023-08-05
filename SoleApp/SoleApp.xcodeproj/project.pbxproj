@@ -212,6 +212,10 @@
 		A4DCECF12A73F88600FA2226 /* SignInFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */; };
 		A4DCECF32A73F8CF00FA2226 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */; };
 		A4DCECF42A73F8CF00FA2226 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */; };
+		A4DDA6B92A7DE90800017C49 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DDA6B82A7DE90800017C49 /* API.swift */; };
+		A4DDA6BA2A7DE90800017C49 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DDA6B82A7DE90800017C49 /* API.swift */; };
+		A4DDA6BC2A7DE93C00017C49 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DDA6BB2A7DE93C00017C49 /* APIEventLogger.swift */; };
+		A4DDA6BD2A7DE93C00017C49 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DDA6BB2A7DE93C00017C49 /* APIEventLogger.swift */; };
 		A4E052E829BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052E929BE160C00FDB84B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052E729BE160C00FDB84B /* HistoryView.swift */; };
 		A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052EA29BE170F00FDB84B /* FontExtension.swift */; };
@@ -328,6 +332,8 @@
 		A4C31C9B2991427D0014F458 /* Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
 		A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInFeature.swift; sourceTree = "<group>"; };
 		A4DCECF22A73F8CF00FA2226 /* StringConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
+		A4DDA6B82A7DE90800017C49 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A4DDA6BB2A7DE93C00017C49 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		A4E052E729BE160C00FDB84B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A4E052EA29BE170F00FDB84B /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A4E052ED29BF4C9600FDB84B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -695,6 +701,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A4DDA6B72A7D2D7B00017C49 /* Common */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -738,6 +745,15 @@
 				A47EEADB29C9F800006BA3DB /* LocationModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		A4DDA6B72A7D2D7B00017C49 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A4DDA6B82A7DE90800017C49 /* API.swift */,
+				A4DDA6BB2A7DE93C00017C49 /* APIEventLogger.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A4E052E629BE15EA00FDB84B /* History */ = {
@@ -989,6 +1005,7 @@
 				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */,
+				A4DDA6BC2A7DE93C00017C49 /* APIEventLogger.swift in Sources */,
 				A4E052EE29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A47EEAA029C7F2AF006BA3DB /* ScrapFolderModel.swift in Sources */,
 				A47EEAB529C830AB006BA3DB /* ScrapRenameFolderModel.swift in Sources */,
@@ -1008,6 +1025,7 @@
 				A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
+				A4DDA6B92A7DE90800017C49 /* API.swift in Sources */,
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
@@ -1085,6 +1103,7 @@
 				A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */,
+				A4DDA6BD2A7DE93C00017C49 /* APIEventLogger.swift in Sources */,
 				A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */,
 				A47EEAA129C7F2AF006BA3DB /* ScrapFolderModel.swift in Sources */,
 				A47EEAB629C830AC006BA3DB /* ScrapRenameFolderModel.swift in Sources */,
@@ -1104,6 +1123,7 @@
 				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */,
+				A4DDA6BA2A7DE90800017C49 /* API.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,

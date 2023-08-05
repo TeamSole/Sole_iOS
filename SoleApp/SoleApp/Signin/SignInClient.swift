@@ -6,9 +6,8 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 final class SignInClient {
-    static let shared = SignInClient()
-    
     
 }
