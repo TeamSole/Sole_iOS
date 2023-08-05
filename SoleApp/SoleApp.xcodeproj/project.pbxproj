@@ -10,8 +10,6 @@
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
 		A42D27152A768A8C003B11E5 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27142A768A8C003B11E5 /* AppFeature.swift */; };
 		A42D27162A768A8C003B11E5 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27142A768A8C003B11E5 /* AppFeature.swift */; };
-		A42D27182A768C47003B11E5 /* SignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27172A768C47003B11E5 /* SignInClient.swift */; };
-		A42D27192A768C47003B11E5 /* SignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27172A768C47003B11E5 /* SignInClient.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -237,7 +235,6 @@
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		A42D27142A768A8C003B11E5 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
-		A42D27172A768C47003B11E5 /* SignInClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInClient.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
@@ -520,7 +517,6 @@
 				A46B46EC29966584001FAED3 /* SignUp */,
 				A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */,
 				A4DCECEF2A73F88600FA2226 /* SignInFeature.swift */,
-				A42D27172A768C47003B11E5 /* SignInClient.swift */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -1058,7 +1054,6 @@
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
-				A42D27182A768C47003B11E5 /* SignInClient.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
 				A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
@@ -1159,7 +1154,6 @@
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */,
 				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
-				A42D27192A768C47003B11E5 /* SignInClient.swift in Sources */,
 				A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
