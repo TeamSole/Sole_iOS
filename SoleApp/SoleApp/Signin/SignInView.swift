@@ -57,9 +57,7 @@ extension SignInView {
         .padding(.horizontal, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            signUpViewModel.kakaoLogin {
-//                showSignUpView = true
-            }
+            
         }
     }
     

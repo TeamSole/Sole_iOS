@@ -13,6 +13,7 @@ struct SignInFeature: Reducer {
     }
     
     enum Action: Equatable {
+        case checkAleadyMember(String?)
         case checkAleadyMemberResponse(TaskResult<SignUpModelResponse>)
         case didTapSignWithKakao
         case didTapSignWithApple
@@ -22,12 +23,20 @@ struct SignInFeature: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case .checkAleadyMember(let token):
+            guard let token = token else { return .none }
+            return .none
         case .checkAleadyMemberResponse(let result):
             return .none
         case .didTapSignWithApple:
+            
             return .none
         case .didTapSignWithKakao:
-            return .none
+            return .run { send in
+                await send(.checkAleadyMember(
+                    await signUpClient.signInKakao()
+                ))
+            }
         }
     }
 }

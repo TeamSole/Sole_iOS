@@ -25,7 +25,7 @@ struct SignUpModelResponse: Codable, Sendable, Equatable {
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct DataClass: Codable, Equatable {
     let accessToken: String?
     let check: Bool?
     let memberId: Int?
