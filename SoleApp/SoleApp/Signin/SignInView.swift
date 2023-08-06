@@ -6,18 +6,22 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SignInView: View {
+    let store: StoreOf<SignInFeature>
+
     @State private var showSignUpView: Bool = false
-    
-    @ObservedObject var signUpViewModel = SignUpViewModel()
+   
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0.0) {
-                logoView
-                SignInButtonsView
-                addminInfoView
-                navigateToSignUpView
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationView {
+                VStack(spacing: 0.0) {
+                    logoView
+                    SignInButtonsView(viewStore: viewStore)
+                    addminInfoView
+                    navigateToSignUpView
+                }
             }
         }
     }
@@ -32,15 +36,15 @@ extension SignInView {
                maxHeight: .infinity)
     }
     
-    private var SignInButtonsView: some View {
+    private func SignInButtonsView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
         VStack(spacing: 8.0) {
-            kakaoSigninView
-            appleSigninView
+            kakaoSigninView(viewStore: viewStore)
+            appleSigninView(viewStore: viewStore)
         }
         .padding(.bottom, 48.0)
     }
     
-    private var kakaoSigninView: some View {
+    private func kakaoSigninView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
         ZStack() {
             Image("kakao_icon")
                 .frame(maxWidth: .infinity,
@@ -57,11 +61,11 @@ extension SignInView {
         .padding(.horizontal, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            
+            viewStore.send(.didTapSignWithKakao)
         }
     }
     
-    private var appleSigninView: some View {
+    private func appleSigninView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
         ZStack() {
             Image("apple_icon")
                 .frame(maxWidth: .infinity,
@@ -78,7 +82,7 @@ extension SignInView {
         .padding(.horizontal, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            signUpViewModel.performAppleSignIn()
+            
         }
     }
     
@@ -96,8 +100,8 @@ extension SignInView {
     
     private var navigateToSignUpView: some View {
         NavigationLink(destination:
-                        SignUpAgreeTermsView(viewModel: signUpViewModel),
-                       isActive: $signUpViewModel.showSignUpView,
+                        SignUpAgreeTermsView(viewModel: .init()),
+                       isActive: $showSignUpView,
                        label: {
             EmptyView()
         })
@@ -107,6 +111,7 @@ extension SignInView {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(store: Store(initialState: SignInFeature.State(),
+                                  reducer: { SignInFeature() }))
     }
 }

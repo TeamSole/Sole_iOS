@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct IntroView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
@@ -25,7 +26,7 @@ struct IntroView: View {
                 }
             } else {
                 VStack() {
-                    SignInView()
+                    SignInView(store: Store(initialState: SignInFeature.State(), reducer: { SignInFeature() }))
                 }
                 
             }
