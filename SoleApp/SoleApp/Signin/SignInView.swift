@@ -20,7 +20,7 @@ struct SignInView: View {
                     logoView
                     SignInButtonsView(viewStore: viewStore)
                     addminInfoView
-                    navigateToSignUpView
+                    navigateToSignUpView(viewStore: viewStore)
                 }
             }
         }
@@ -98,10 +98,10 @@ extension SignInView {
         .padding(.bottom, 16.0)
     }
     
-    private var navigateToSignUpView: some View {
+    private func navigateToSignUpView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
         NavigationLink(destination:
                         SignUpAgreeTermsView(viewModel: .init()),
-                       isActive: $showSignUpView,
+                       isActive: .constant(viewStore.isShowSignUpView),
                        label: {
             EmptyView()
         })
