@@ -17,8 +17,10 @@ struct SignInFeature: Reducer {
         case checkAleadyMemberResponse(TaskResult<SignUpModelResponse>)
         case didTapSignWithKakao
         case didTapSignWithApple
+        case setPresentedFlag
         case showSignUpView
         case showHome
+       
     }
     
     @Dependency(\.signUpClient) var signUpClient
@@ -65,8 +67,14 @@ struct SignInFeature: Reducer {
                     await signUpClient.signInKakao()
                 ))
             }
+            
+        case .setPresentedFlag:
+            state.isShowSignUpView = false
+            return .none
+            
         case .showHome:
             return .none
+            
         case .showSignUpView:
             state.isShowSignUpView = true
             return .none

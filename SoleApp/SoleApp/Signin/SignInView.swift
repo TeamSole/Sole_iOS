@@ -105,7 +105,9 @@ extension SignInView {
                        label: {
             EmptyView()
         })
-        .isDetailLink(false)
+        .onDisappear {
+            viewStore.send(.setPresentedFlag)
+        }
     }
 }
 
