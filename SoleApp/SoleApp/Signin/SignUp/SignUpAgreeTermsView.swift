@@ -43,7 +43,7 @@ extension SignUpAgreeTermsView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    
+                    viewStore.send(.didTappedBackButton)
                 }
             Text("회원가입")
                 .foregroundColor(.black)

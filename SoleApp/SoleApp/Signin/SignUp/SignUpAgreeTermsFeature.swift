@@ -13,10 +13,19 @@ struct SignUpAgreeTermsFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case didTappedBackButton
     }
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        
+    @Dependency(\.dismiss) var dismiss
+    
+    var body: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .didTappedBackButton:
+                return .run { _ in
+                    await dismiss()
+                }
+            }
+        }
     }
 }
