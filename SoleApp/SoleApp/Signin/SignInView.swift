@@ -99,15 +99,19 @@ extension SignInView {
     }
     
     private func navigateToSignUpView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
-        NavigationLink(destination:
-                        SignUpAgreeTermsView(viewModel: .init()),
-                       isActive: .constant(viewStore.isShowSignUpView),
+        NavigationLink(destination: IfLetStore(self.store.scope(state: \.optionalSignUpAgreeTerms, action: SignInFeature.Action.optionalSignUpAgreeTerms), then: { store in
+            SignUpAgreeTermsView(viewModel: .init(),
+                                 store: store,
+                                 viewStore: ViewStore(store, observe: { $0 }))
+        })
+                       ,
+                       isActive: viewStore.binding(get: \.isShowSignUpView, send: SignInFeature.Action.setNavigaiton(isActive: )),
                        label: {
             EmptyView()
         })
-        .onDisappear {
-            viewStore.send(.setPresentedFlag)
-        }
+//        .onDisappear {
+//            viewStore.send(.setPresentedFlag)
+//        }
     }
 }
 

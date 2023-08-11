@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SignUpAgreeTermsView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel: SignUpViewModel
+    private let store: StoreOf<SignUpAgreeTermsFeature>
+    @ObservedObject var viewStore: ViewStoreOf<SignUpAgreeTermsFeature>
     
     @State private var showSignUpUserInfoView: Bool = false
+    
+    init(viewModel: SignUpViewModel,
+         store: StoreOf<SignUpAgreeTermsFeature>,
+         viewStore: ViewStoreOf<SignUpAgreeTermsFeature>) {
+        self.viewModel = viewModel
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -32,7 +43,7 @@ extension SignUpAgreeTermsView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    
                 }
             Text("회원가입")
                 .foregroundColor(.black)
