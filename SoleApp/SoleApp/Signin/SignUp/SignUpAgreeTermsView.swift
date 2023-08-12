@@ -207,6 +207,8 @@ extension SignUpAgreeTermsView {
 
 struct SignUpFirstStepView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpAgreeTermsView(viewModel: .init())
+        SignUpAgreeTermsView(viewModel: .init(),
+                             store: Store(initialState: SignUpAgreeTermsFeature.State(), reducer: { SignUpAgreeTermsFeature()})
+        ,viewStore: ViewStore(Store(initialState: SignUpAgreeTermsFeature.State(), reducer: { SignUpAgreeTermsFeature()}), observe: { $0 }))
     }
 }

@@ -10,6 +10,7 @@ import ComposableArchitecture
 struct SignInFeature: Reducer {
     struct State: Equatable {
         var isShowSignUpView: Bool = false
+        var platform: String = ""
         var optionalSignUpAgreeTerms: SignUpAgreeTermsFeature.State?
     }
     
@@ -17,7 +18,7 @@ struct SignInFeature: Reducer {
         case checkAleadyMember(String?)
         case checkAleadyMemberResponse(TaskResult<SignUpModelResponse>)
         case didTapSignWithKakao
-        case didTapSignWithApple
+        case didTapSignWithApple(token: String?)
         case optionalSignUpAgreeTerms(SignUpAgreeTermsFeature.Action)
         case setNavigaiton(isActive: Bool)
         case showSignUpView
@@ -33,8 +34,7 @@ struct SignInFeature: Reducer {
             case .checkAleadyMember(let token):
                 guard let token = token else { return .none }
                 let parameter = CheckExistAccountRequest(accessToken: token)
-                let platform = "kakao"
-                return .run { send in
+                return .run { [platform = state.platform] send in
                     await send(.checkAleadyMemberResponse(
                         await TaskResult {
                             try await signUpClient.checkAleadyMember(parameter, platform)
@@ -62,10 +62,12 @@ struct SignInFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
-            case .didTapSignWithApple:
-                return .none
+            case .didTapSignWithApple(let token):
+                state.platform = "apple"
+                return .send(.checkAleadyMember(token))
                 
             case .didTapSignWithKakao:
+                state.platform = "kakao"
                 return .run { send in
                     await send(.checkAleadyMember(
                         await signUpClient.signInKakao()

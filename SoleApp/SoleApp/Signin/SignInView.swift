@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import AuthenticationServices
 
 struct SignInView: View {
     let store: StoreOf<SignInFeature>
@@ -67,23 +68,50 @@ extension SignInView {
     
     private func appleSigninView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
         ZStack() {
-            Image("apple_icon")
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .padding(.leading, 16.0)
-            Text(StringConstant.signInWithApple)
-                .font(.pretendard(.medium, size: 16.0))
-                .foregroundColor(.white)
+            SignInWithAppleButton { request in
+                request.requestedScopes = [.fullName, .email]
+            } onCompletion: { result in
+                switch result {
+                case .success(let authResults):
+                    print("Apple Login Successful")
+                    switch authResults.credential{
+                    case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                        // 계정 정보 가져오기
+                        let UserIdentifier = appleIDCredential.user
+                        let fullName = appleIDCredential.fullName
+                        let name =  (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
+                        let email = appleIDCredential.email
+                        let IdentityToken = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8)
+                        viewStore.send(.didTapSignWithApple(token: IdentityToken))
+                        
+                    default:
+                        break
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    print("error")
+                }
+            }
+            .overlay(
+                ZStack {
+                    Image("apple_icon")
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
+                        .padding(.leading, 16.0)
+                    Text(StringConstant.signInWithApple)
+                        .font(.pretendard(.medium, size: 16.0))
+                        .foregroundColor(.white)
+                }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 48.0)
+                    .background(Color.black)
+                    .allowsHitTesting(false))
         }
         .frame(maxWidth: .infinity)
         .frame(height: 48.0)
-        .background(Color.black)
         .cornerRadius(4.0)
         .padding(.horizontal, 16.0)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            
-        }
+        
     }
     
     private var addminInfoView: some View {
