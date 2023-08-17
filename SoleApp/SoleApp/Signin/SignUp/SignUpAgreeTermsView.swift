@@ -15,10 +15,8 @@ struct SignUpAgreeTermsView: View {
     
     @State private var showSignUpUserInfoView: Bool = false
     
-    init(viewModel: SignUpViewModel,
-         store: StoreOf<SignUpAgreeTermsFeature>,
-         viewStore: ViewStoreOf<SignUpAgreeTermsFeature>) {
-        self.viewModel = viewModel
+    init(store: StoreOf<SignUpAgreeTermsFeature>) {
+        self.viewModel = .init()
         self.store = store
         self.viewStore = ViewStore(store, observe: { $0 })
     }
@@ -207,8 +205,6 @@ extension SignUpAgreeTermsView {
 
 struct SignUpFirstStepView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpAgreeTermsView(viewModel: .init(),
-                             store: Store(initialState: SignUpAgreeTermsFeature.State(), reducer: { SignUpAgreeTermsFeature()})
-        ,viewStore: ViewStore(Store(initialState: SignUpAgreeTermsFeature.State(), reducer: { SignUpAgreeTermsFeature()}), observe: { $0 }))
+        SignUpAgreeTermsView(store: Store(initialState: SignUpAgreeTermsFeature.State(), reducer: { SignUpAgreeTermsFeature()}))
     }
 }

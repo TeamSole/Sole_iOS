@@ -22,9 +22,7 @@ struct SignUpAgreeTermsFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .didTappedBackButton:
-                return .run { _ in
-                    await dismiss()
-                }
+                return .run { _ in await self.dismiss() }
             }
         }
     }

@@ -10,18 +10,23 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct SignInView: View {
-    let store: StoreOf<SignInFeature>
-
+    
     @State private var showSignUpView: Bool = false
-   
+    private let store: StoreOf<SignInFeature>
+    @ObservedObject var viewStore: ViewStoreOf<SignInFeature>
+    
+    init(store: StoreOf<SignInFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             NavigationView {
                 VStack(spacing: 0.0) {
                     logoView
-                    SignInButtonsView(viewStore: viewStore)
+                    SignInButtonsView()
                     addminInfoView
-                    navigateToSignUpView(viewStore: viewStore)
+                    navigateToSignUpView()
                 }
             }
         }
@@ -37,15 +42,15 @@ extension SignInView {
                maxHeight: .infinity)
     }
     
-    private func SignInButtonsView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
+    private func SignInButtonsView() -> some View {
         VStack(spacing: 8.0) {
-            kakaoSigninView(viewStore: viewStore)
-            appleSigninView(viewStore: viewStore)
+            kakaoSigninView()
+            appleSigninView()
         }
         .padding(.bottom, 48.0)
     }
     
-    private func kakaoSigninView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
+    private func kakaoSigninView() -> some View {
         ZStack() {
             Image("kakao_icon")
                 .frame(maxWidth: .infinity,
@@ -66,7 +71,7 @@ extension SignInView {
         }
     }
     
-    private func appleSigninView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
+    private func appleSigninView() -> some View {
         ZStack() {
             SignInWithAppleButton { request in
                 request.requestedScopes = [.fullName, .email]
@@ -126,17 +131,27 @@ extension SignInView {
         .padding(.bottom, 16.0)
     }
     
-    private func navigateToSignUpView(viewStore: ViewStore<SignInFeature.State, SignInFeature.Action>) -> some View {
-        NavigationLink(destination: IfLetStore(self.store.scope(state: \.optionalSignUpAgreeTerms, action: SignInFeature.Action.optionalSignUpAgreeTerms), then: { store in
-            SignUpAgreeTermsView(viewModel: .init(),
-                                 store: store,
-                                 viewStore: ViewStore(store, observe: { $0 }))
-        })
-                       ,
-                       isActive: viewStore.binding(get: \.isShowSignUpView, send: SignInFeature.Action.setNavigaiton(isActive: )),
-                       label: {
+    private func navigateToSignUpView() -> some View {
+        NavigationLinkStore(store.scope(state: \.$optionalSignUpAgreeTerms, action: SignInFeature.Action.optionalSignUpAgreeTerms),
+                            onTap: {
+            viewStore.send(.setNavigaiton(isActive: true))
+        },
+                            destination: { SignUpAgreeTermsView(store: $0) },
+                            label: {
             EmptyView()
         })
+//        NavigationLink(destination: IfLetStore(self.store.scope(state: \.optionalSignUpAgreeTerms,
+//                                                                action: SignInFeature.Action.optionalSignUpAgreeTerms),
+//                                               then: { store in
+//            SignUpAgreeTermsView(viewModel: .init(),
+//                                 store: store,
+//                                 viewStore: ViewStore(store, observe: { $0 }))
+//        })
+//                       ,
+//                       isActive: viewStore.binding(get: \.isShowSignUpView, send: SignInFeature.Action.setNavigaiton(isActive: )),
+//                       label: {
+//            EmptyView()
+//        })
 //        .onDisappear {
 //            viewStore.send(.setPresentedFlag)
 //        }

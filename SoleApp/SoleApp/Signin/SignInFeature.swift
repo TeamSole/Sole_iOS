@@ -11,7 +11,7 @@ struct SignInFeature: Reducer {
     struct State: Equatable {
         var isShowSignUpView: Bool = false
         var platform: String = ""
-        var optionalSignUpAgreeTerms: SignUpAgreeTermsFeature.State?
+        @PresentationState var optionalSignUpAgreeTerms: SignUpAgreeTermsFeature.State?
     }
     
     enum Action: Equatable {
@@ -19,7 +19,7 @@ struct SignInFeature: Reducer {
         case checkAleadyMemberResponse(TaskResult<SignUpModelResponse>)
         case didTapSignWithKakao
         case didTapSignWithApple(token: String?)
-        case optionalSignUpAgreeTerms(SignUpAgreeTermsFeature.Action)
+        case optionalSignUpAgreeTerms(PresentationAction<SignUpAgreeTermsFeature.Action>)
         case setNavigaiton(isActive: Bool)
         case showSignUpView
         case showHome
@@ -94,7 +94,7 @@ struct SignInFeature: Reducer {
                 return .send(.setNavigaiton(isActive: true))
             }
         }
-        .ifLet(\.optionalSignUpAgreeTerms, action: /Action.optionalSignUpAgreeTerms) {
+        .ifLet(\.$optionalSignUpAgreeTerms, action: /Action.optionalSignUpAgreeTerms) {
             SignUpAgreeTermsFeature()
         }
     }
