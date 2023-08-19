@@ -186,7 +186,7 @@ extension SignUpAgreeTermsView {
         NavigationLinkStore(store.scope(state: \.$signUpUserInfo, action: SignUpAgreeTermsFeature.Action.signUpUserInfo), onTap: {
             viewStore.send(.didTappedContinueButton)
         }, destination: { store in
-            SignUpUserInfoView(viewModel: .init())
+            SignUpUserInfoView(store: store)
         }, label: {
             continueButton
         })

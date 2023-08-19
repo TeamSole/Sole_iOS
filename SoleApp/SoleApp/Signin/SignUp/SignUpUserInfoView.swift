@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SignUpUserInfoView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -14,6 +15,14 @@ struct SignUpUserInfoView: View {
     @State private var showPhotoPicker: Bool = false
     @State private var showSignUpCompleteView: Bool = false
 
+    private let store: StoreOf<SignUpUserInfoFeature>
+    @ObservedObject var viewStore: ViewStoreOf<SignUpUserInfoFeature>
+    
+    init(store: StoreOf<SignUpUserInfoFeature>) {
+        self.viewModel = .init()
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
    
     var body: some View {
         VStack(spacing: 0.0) {
@@ -53,7 +62,7 @@ extension SignUpUserInfoView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedBackButton)
                 }
             Text("회원가입")
                 .foregroundColor(.black)
@@ -187,6 +196,7 @@ extension SignUpUserInfoView {
 
 struct SignUpUserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpUserInfoView(viewModel: .init())
+        SignUpUserInfoView(store: Store(initialState: SignUpUserInfoFeature.State(model: SignUpModel()),
+                                          reducer: { SignUpUserInfoFeature() }))
     }
 }

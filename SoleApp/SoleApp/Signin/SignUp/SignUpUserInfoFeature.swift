@@ -17,13 +17,16 @@ struct SignUpUserInfoFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case didTappedBackButton
     }
+    
+    @Dependency(\.dismiss) var dismiss
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-                
+            case .didTappedBackButton:
+                return .run(operation: { _ in await dismiss() })
             }
         }
     }
