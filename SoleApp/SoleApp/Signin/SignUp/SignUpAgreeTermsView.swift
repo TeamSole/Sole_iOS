@@ -73,11 +73,11 @@ extension SignUpAgreeTermsView {
     private var allCheckBoxView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 14.0) {
-                Image(viewModel.isSelectedAllTerms
+                Image(viewStore.isSelectedAllTerms
                       ? "check_circle"
                       : "radio_button_unchecked")
                     .onTapGesture {
-                        viewModel.didTapCheckAllTerms()
+                        viewStore.send(.didTappedAllTermAgree)
                     }
                 Text(StringConstant.agreeAllTerms)
                     .font(.pretendard(.bold, size: 16.0))
@@ -95,11 +95,11 @@ extension SignUpAgreeTermsView {
     private var checkTermsView: some View {
         VStack(spacing: 16.0) {
             HStack(spacing: 14.0) {
-                Image(viewModel.isSelectedFirstTerm
+                Image(viewStore.isSelectedFirstTerm
                       ? "check_circle"
                       : "radio_button_unchecked")
                 .onTapGesture {
-                    viewModel.isSelectedFirstTerm.toggle()
+                    viewStore.send(.didTappedFirstTerm)
                 }
                 Text(StringConstant.terms1ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
@@ -113,11 +113,11 @@ extension SignUpAgreeTermsView {
             }
             
             HStack(spacing: 14.0) {
-                Image(viewModel.isSelectedSecondTerm
+                Image(viewStore.isSelectedSecondTerm
                       ? "check_circle"
                       : "radio_button_unchecked")
                 .onTapGesture {
-                    viewModel.isSelectedSecondTerm.toggle()
+                    viewStore.send(.didTappedSecondTerm)
                 }
                 Text(StringConstant.terms2ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
@@ -131,11 +131,11 @@ extension SignUpAgreeTermsView {
             }
             
             HStack(spacing: 14.0) {
-                Image(viewModel.isSelectedThirdTerm
+                Image(viewStore.isSelectedThirdTerm
                       ? "check_circle"
                       : "radio_button_unchecked")
                 .onTapGesture {
-                    viewModel.isSelectedThirdTerm.toggle()
+                    viewStore.send(.didTappedThirdTerm)
                 }
                 Text(StringConstant.terms3ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
@@ -149,11 +149,11 @@ extension SignUpAgreeTermsView {
             }
             
             HStack(spacing: 14.0) {
-                Image(viewModel.isSelectedForthTerm
+                Image(viewStore.isSelectedForthTerm
                       ? "check_circle"
                       : "radio_button_unchecked")
                 .onTapGesture {
-                    viewModel.isSelectedForthTerm.toggle()
+                    viewStore.send(.didTappedForthTerm)
                 }
                 Text(StringConstant.terms4ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
