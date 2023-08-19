@@ -43,7 +43,7 @@ extension SignUpAgreeTermsView {
                 .onTapGesture {
                     viewStore.send(.didTappedBackButton)
                 }
-            Text("회원가입")
+            Text(StringConstant.signUp)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -55,13 +55,13 @@ extension SignUpAgreeTermsView {
     
     private var descriptionView: some View {
         VStack(spacing: 0.0) {
-            Text("안녕하세요.\n지도 위의 발자국, SOLE입니다.")
+            Text(StringConstant.helloWeAreSole)
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(.vertical, 36.0)
-            Text("회원가입을 위해 약관에 동의해주세요.")
+            Text(StringConstant.pleaseAgreeOfTermsForSignUp)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
@@ -79,7 +79,7 @@ extension SignUpAgreeTermsView {
                     .onTapGesture {
                         viewModel.didTapCheckAllTerms()
                     }
-                Text("약관 전체 동의")
+                Text(StringConstant.agreeAllTerms)
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -101,7 +101,7 @@ extension SignUpAgreeTermsView {
                 .onTapGesture {
                     viewModel.isSelectedFirstTerm.toggle()
                 }
-                Text("서비스 이용약관 동의 (필수)")
+                Text(StringConstant.terms1ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -119,7 +119,7 @@ extension SignUpAgreeTermsView {
                 .onTapGesture {
                     viewModel.isSelectedSecondTerm.toggle()
                 }
-                Text("개인정보 처리방침 동의 (필수)")
+                Text(StringConstant.terms2ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -137,7 +137,7 @@ extension SignUpAgreeTermsView {
                 .onTapGesture {
                     viewModel.isSelectedThirdTerm.toggle()
                 }
-                Text("위치정보 이용약관 동의 (선택)")
+                Text(StringConstant.terms3ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -155,7 +155,7 @@ extension SignUpAgreeTermsView {
                 .onTapGesture {
                     viewModel.isSelectedForthTerm.toggle()
                 }
-                Text("마케팅 정보 제공 및 수신 동의 (선택)")
+                Text(StringConstant.terms4ForSignUp)
                     .font(.pretendard(.reguler, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -172,7 +172,7 @@ extension SignUpAgreeTermsView {
     }
     
     private var continueButton: some View {
-        Text("동의하고 계속하기")
+        Text(StringConstant.continueAfterAgree)
             .foregroundColor(.white)
             .font(.pretendard(.medium, size: 16.0))
             .frame(maxWidth: .infinity,
