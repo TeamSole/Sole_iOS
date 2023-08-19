@@ -50,6 +50,7 @@ struct SignUpAgreeTermsFeature: Reducer {
                 
             case .didTappedContinueButton:
                 guard state.isValidCheckingTerms == true else { return .none }
+                setSignupData()
                 state.signUpUserInfo = SignUpUserInfoFeature.State(model: state.model)
                 return .none
                 
@@ -88,6 +89,13 @@ struct SignUpAgreeTermsFeature: Reducer {
                     state.isSelectedThirdTerm = true
                     state.isSelectedForthTerm = true
                 }
+            }
+            
+            func setSignupData() {
+                state.model.serviceAccepted = state.isSelectedFirstTerm
+                state.model.infoAccepted = state.isSelectedSecondTerm
+                state.model.locationAccepted = state.isSelectedThirdTerm
+                state.model.marketingAccepted = state.isSelectedForthTerm
             }
         }
         .ifLet(\.$signUpUserInfo, action: /Action.signUpUserInfo) {

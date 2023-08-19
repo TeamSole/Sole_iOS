@@ -8,6 +8,7 @@
 import Foundation
 
 struct SignUpModel: Codable, Equatable {
+    
     var infoAccepted: Bool = false
     var marketingAccepted: Bool = false
     var serviceAccepted: Bool = false
