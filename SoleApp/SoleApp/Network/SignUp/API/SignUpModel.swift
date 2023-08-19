@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignUpModel: Codable {
+struct SignUpModel: Codable, Equatable {
     var infoAccepted: Bool = false
     var marketingAccepted: Bool = false
     var serviceAccepted: Bool = false
@@ -15,6 +15,7 @@ struct SignUpModel: Codable {
     var nickname: String = ""
     var accessToken: String = ""
     var fcmToken: String = ""
+    var platform: String = ""
 }
 
 

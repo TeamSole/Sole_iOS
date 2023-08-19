@@ -9,7 +9,11 @@ import ComposableArchitecture
 
 struct SignUpUserInfoFeature: Reducer {
     struct State: Equatable {
+        var model: SignUpModel
         
+        init(model: SignUpModel) {
+            self.model = model
+        }
     }
     
     enum Action: Equatable {

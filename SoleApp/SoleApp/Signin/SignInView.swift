@@ -10,8 +10,6 @@ import ComposableArchitecture
 import AuthenticationServices
 
 struct SignInView: View {
-    
-    @State private var showSignUpView: Bool = false
     private let store: StoreOf<SignInFeature>
     @ObservedObject var viewStore: ViewStoreOf<SignInFeature>
     

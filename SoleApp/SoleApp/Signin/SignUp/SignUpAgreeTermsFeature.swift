@@ -9,6 +9,7 @@ import ComposableArchitecture
 
 struct SignUpAgreeTermsFeature: Reducer {
     struct State: Equatable {
+        var model: SignUpModel
         var isSelectedAllTerms: Bool {
             return isSelectedFirstTerm && isSelectedSecondTerm && isSelectedThirdTerm && isSelectedForthTerm
         }
@@ -20,6 +21,10 @@ struct SignUpAgreeTermsFeature: Reducer {
         @PresentationState var signUpUserInfo: SignUpUserInfoFeature.State?
         var isValidCheckingTerms: Bool {
             return isSelectedFirstTerm && isSelectedSecondTerm
+        }
+        
+        init(model: SignUpModel) {
+            self.model = model
         }
     }
     
@@ -45,7 +50,7 @@ struct SignUpAgreeTermsFeature: Reducer {
                 
             case .didTappedContinueButton:
                 guard state.isValidCheckingTerms == true else { return .none }
-                state.signUpUserInfo = SignUpUserInfoFeature.State()
+                state.signUpUserInfo = SignUpUserInfoFeature.State(model: state.model)
                 return .none
                 
             case .didTappedFirstTerm:
