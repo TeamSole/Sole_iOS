@@ -12,20 +12,26 @@ struct SignUpAgreeTermsFeature: Reducer {
         var isSelectedAllTerms: Bool {
             return isSelectedFirstTerm && isSelectedSecondTerm && isSelectedThirdTerm && isSelectedForthTerm
         }
+        
         var isSelectedFirstTerm: Bool = false
         var isSelectedSecondTerm: Bool = false
         var isSelectedThirdTerm: Bool = false
         var isSelectedForthTerm: Bool = false
-        
+        @PresentationState var signUpUserInfo: SignUpUserInfoFeature.State?
+        var isValidCheckingTerms: Bool {
+            return isSelectedFirstTerm && isSelectedSecondTerm
+        }
     }
     
     enum Action: Equatable {
         case didTappedAllTermAgree
+        case didTappedContinueButton
         case didTappedFirstTerm
         case didTappedSecondTerm
         case didTappedThirdTerm
         case didTappedForthTerm
         case didTappedBackButton
+        case signUpUserInfo(PresentationAction<SignUpUserInfoFeature.Action>)
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -35,6 +41,11 @@ struct SignUpAgreeTermsFeature: Reducer {
             switch action {
             case .didTappedAllTermAgree:
                 didTapCheckAllTerms()
+                return .none
+                
+            case .didTappedContinueButton:
+                guard state.isValidCheckingTerms == true else { return .none }
+                state.signUpUserInfo = SignUpUserInfoFeature.State()
                 return .none
                 
             case .didTappedFirstTerm:
@@ -55,6 +66,9 @@ struct SignUpAgreeTermsFeature: Reducer {
                 
             case .didTappedBackButton:
                 return .run { _ in await self.dismiss() }
+                
+            case .signUpUserInfo:
+                return .none
             }
             
             func didTapCheckAllTerms() {
@@ -70,6 +84,9 @@ struct SignUpAgreeTermsFeature: Reducer {
                     state.isSelectedForthTerm = true
                 }
             }
+        }
+        .ifLet(\.$signUpUserInfo, action: /Action.signUpUserInfo) {
+            SignUpUserInfoFeature()
         }
     }
     

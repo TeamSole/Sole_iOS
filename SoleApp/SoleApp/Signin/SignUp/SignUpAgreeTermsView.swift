@@ -9,14 +9,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpAgreeTermsView: View {
-    @ObservedObject var viewModel: SignUpViewModel
     private let store: StoreOf<SignUpAgreeTermsFeature>
     @ObservedObject var viewStore: ViewStoreOf<SignUpAgreeTermsFeature>
     
-    @State private var showSignUpUserInfoView: Bool = false
-    
     init(store: StoreOf<SignUpAgreeTermsFeature>) {
-        self.viewModel = .init()
         self.store = store
         self.viewStore = ViewStore(store, observe: { $0 })
     }
@@ -27,7 +23,6 @@ struct SignUpAgreeTermsView: View {
             descriptionView
             allCheckBoxView
             checkTermsView
-            continueButton
             navigateToSignUpUserInfoView
         }
         .navigationBarHidden(true)
@@ -178,28 +173,23 @@ extension SignUpAgreeTermsView {
             .frame(maxWidth: .infinity,
                    alignment: .center)
             .frame(height: 48.0)
-            .background(viewModel.isValidCheckingTerms
+            .background(viewStore.isValidCheckingTerms
                         ? Color.blue_4708FA
                         : Color.gray_D3D4D5)
             .cornerRadius(8.0)
             .padding(.horizontal, 16.0)
             .padding(.bottom, 40.0)
             .contentShape(Rectangle())
-            .onTapGesture {
-                guard viewModel.isValidCheckingTerms else { return }
-                viewModel.setSignupData()
-                showSignUpUserInfoView = true
-            }
     }
     
     private var navigateToSignUpUserInfoView: some View {
-        NavigationLink(destination:
-                        SignUpUserInfoView(viewModel: viewModel),
-                       isActive: $showSignUpUserInfoView,
-                       label: {
-            EmptyView()
+        NavigationLinkStore(store.scope(state: \.$signUpUserInfo, action: SignUpAgreeTermsFeature.Action.signUpUserInfo), onTap: {
+            viewStore.send(.didTappedContinueButton)
+        }, destination: { store in
+            SignUpUserInfoView(viewModel: .init())
+        }, label: {
+            continueButton
         })
-        .isDetailLink(false)
     }
 }
 
