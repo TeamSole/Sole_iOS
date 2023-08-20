@@ -64,7 +64,7 @@ extension SignUpUserInfoView {
                 .onTapGesture {
                     viewStore.send(.didTappedBackButton)
                 }
-            Text("회원가입")
+            Text(StringConstant.signUp)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -101,7 +101,7 @@ extension SignUpUserInfoView {
     private var nickNameTextFieldView: some View {
         VStack(spacing: 0.0) {
             HStack() {
-                TextField("닉네임을 입력해주세요. (최대 10자)",
+                TextField(StringConstant.pleasetypeNicknameMaxLength18,
                           text: $nickName,
                           onEditingChanged: { isEditing in
                     if isEditing {
@@ -131,7 +131,7 @@ extension SignUpUserInfoView {
     }
     
     private var continueButton: some View {
-        Text("시작하기")
+        Text(StringConstant.start)
             .foregroundColor(.white)
             .font(.pretendard(.medium, size: 16.0))
             .frame(maxWidth: .infinity,
@@ -171,13 +171,13 @@ extension SignUpUserInfoView {
         if viewModel.isAvailableNickname == nil {
             return ""
         } else if viewModel.isAvailableNickname == true {
-            return "사용 가능한 닉네임입니다."
+            return StringConstant.usableNickname
         } else if viewModel.isAvailableNickname == false && nickName.isEmpty {
-            return "닉네임을 입력해 주세요."
+            return StringConstant.pleaseTypeNickname
         } else if viewModel.isAvailableNickname == false && nickName.count > 10 {
-            return "닉네임은 최대 10자까지 작성이 가능해요."
+            return StringConstant.maxLength10ForNicknameInput
         } else if viewModel.isAvailableNickname == false {
-            return "이 닉네임은 이미 다른 사람이 사용하고 있어요."
+            return StringConstant.alreadyExistNickname
         } else {
             return ""
         }
