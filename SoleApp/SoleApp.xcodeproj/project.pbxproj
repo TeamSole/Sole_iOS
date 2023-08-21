@@ -194,6 +194,8 @@
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
 		A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
+		A49D04F82A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */; };
+		A49D04F92A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */; };
 		A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D8A2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */; };
@@ -333,6 +335,7 @@
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
+		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
 		A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTarget.swift; sourceTree = "<group>"; };
 		A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsFeature.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -539,6 +542,7 @@
 				A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */,
 				A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */,
 				A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */,
+				A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1069,6 +1073,7 @@
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
 				A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
+				A49D04F82A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A47EEA6E29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
@@ -1172,6 +1177,7 @@
 				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
+				A49D04F92A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A47EEA6F29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,

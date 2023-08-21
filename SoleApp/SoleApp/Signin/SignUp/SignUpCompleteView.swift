@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SignUpCompleteView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @ObservedObject var viewModel: SignUpViewModel
     @State private var rotateDegree: Double = 10.0
+    
+    private let store: StoreOf<SignUpCompleteFeature>
+    @ObservedObject var viewStore: ViewStoreOf<SignUpCompleteFeature>
+    
+    init(store: StoreOf<SignUpCompleteFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+   
     var body: some View {
         VStack(spacing: 0.0) {
             completeDescriptionView
@@ -96,6 +105,6 @@ struct NavigationUtil {
 
 struct SignUpCompleteView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpCompleteView(viewModel: .init())
+        SignUpCompleteView(store: Store(initialState: SignUpCompleteFeature.State(), reducer: { SignUpCompleteFeature() }))
     }
 }

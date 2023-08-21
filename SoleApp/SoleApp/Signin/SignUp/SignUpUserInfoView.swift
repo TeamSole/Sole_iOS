@@ -9,9 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpUserInfoView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel: SignUpViewModel
-    @State private var nickName: String = ""
     @State private var showPhotoPicker: Bool = false
     @State private var showSignUpCompleteView: Bool = false
 
@@ -139,7 +137,6 @@ extension SignUpUserInfoView {
             .contentShape(Rectangle())
             .onTapGesture {
                 guard viewModel.isAvailableNickname == true else { return }
-                viewModel.model.nickname = nickName
                 viewModel.signUp {
                     showSignUpCompleteView = true
                 }
@@ -149,7 +146,7 @@ extension SignUpUserInfoView {
     
     private var navigateToSignUpSignUpCompleteView: some View {
         NavigationLink(destination:
-                        SignUpCompleteView(viewModel: viewModel)
+                        SignUpCompleteView(store: Store(initialState: SignUpCompleteFeature.State(), reducer: { SignUpCompleteFeature() }))
             .environmentObject(AppDelegate.shared.mainViewModel),
                        isActive: $showSignUpCompleteView,
                        label: {
