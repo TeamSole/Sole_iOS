@@ -27,25 +27,7 @@ struct SignUpCompleteView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-//            withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
-//                rotateDegree = rotateDegree == 10 ? -10 : 10
-//            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                
-//                mainViewModel.existToken = true
-//                mainViewModel.canShowMain = true
-                mainViewModel.isFirstSignUp = true
-                let window = UIApplication
-                            .shared
-                            .connectedScenes
-                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                            .first { $0.isKeyWindow }
-
-                        window?.rootViewController = UIHostingController(rootView: IntroView()
-                            .environmentObject(mainViewModel))
-                        window?.makeKeyAndVisible()
-                NavigationUtil.popToRootView()
-            }
+            viewStore.send(.viewAppear)
         }
     }
 }

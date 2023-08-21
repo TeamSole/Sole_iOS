@@ -14,12 +14,20 @@ struct SignUpCompleteFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case moveMain
+        case viewAppear
     }
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case .moveMain:
+            return .none
             
+        case .viewAppear:
+            return .run { send in
+                try await Task.sleep(nanoseconds: 3_000_000_000)
+                await send(.moveMain)
+            }
         }
     }
 }
