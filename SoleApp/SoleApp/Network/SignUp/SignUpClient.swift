@@ -12,6 +12,7 @@ import KakaoSDKUser
 
 struct SignUpClient {
     var checkAleadyMember: @Sendable (CheckExistAccountRequest, String) async throws -> (SignUpModelResponse)
+    var checkValidationForNickname: @Sendable (CheckValidationForNicknameRequest) async throws -> (Bool)
     var signInKakao: @Sendable () async -> (String?)
 }
 
@@ -23,7 +24,14 @@ extension SignUpClient: DependencyKey {
             
             return try API.responseDecodeToJson(data: data, response: SignUpModelResponse.self)
             
-        }, signInKakao: {
+        },
+        checkValidationForNickname: { parameter in
+            let request = API.makeDataRequest(SignUpTarget.checkValidationForNickname(parameter))
+            let data = try await request.validate().serializingData().value
+            let isAleadyExist = String(decoding: data, as: UTF8.self)
+            return (isAleadyExist == "false")
+        },
+        signInKakao: {
             return await SignUpViewModel.kakaoLogin()
         })
 }

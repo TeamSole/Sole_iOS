@@ -34,10 +34,6 @@ struct SignUpUserInfoView: View {
         }
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
-        .onAppear {
-            viewModel.isAvailableNickname = nil
-            viewModel.selectedImage = nil
-        }
         .sheet(isPresented: $showPhotoPicker,
                content: {
             PhotoPicker(isPresented: $showPhotoPicker,
@@ -102,23 +98,20 @@ extension SignUpUserInfoView {
         VStack(spacing: 0.0) {
             HStack() {
                 TextField(StringConstant.pleasetypeNicknameMaxLength18,
-                          text: $nickName,
-                          onEditingChanged: { isEditing in
-                    if isEditing {
-                        viewModel.isAvailableNickname = nil
-                    }
-                }, onCommit: {
-                    viewModel.isValidNickName(name: nickName)
+                          text: viewStore.binding(get: \.nicknameInput,
+                                                  send: SignUpUserInfoFeature.Action.nicknameInputChanged)
+                , onCommit: {
+                    viewStore.send(.didTappedDoneButton)
                 })
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-                Image(validImageName())
+                Image(viewStore.validImageName)
             }
             Color.gray_D3D4D5
                 .frame(height: 1.0)
                 .padding(.vertical, 8.0)
-            Text(messageForNickName())
-                .foregroundColor(viewModel.isAvailableNickname == true
+            Text(viewStore.nicknameValidMessage)
+                .foregroundColor(viewStore.isAvailableNickname == true
                                  ? .green_8BDEB5
                                  : .red_FF717D)
                 .font(.pretendard(.reguler, size: 13.0))
@@ -167,31 +160,9 @@ extension SignUpUserInfoView {
 }
 
 extension SignUpUserInfoView {
-    func messageForNickName() -> String {
-        if viewModel.isAvailableNickname == nil {
-            return ""
-        } else if viewModel.isAvailableNickname == true {
-            return StringConstant.usableNickname
-        } else if viewModel.isAvailableNickname == false && nickName.isEmpty {
-            return StringConstant.pleaseTypeNickname
-        } else if viewModel.isAvailableNickname == false && nickName.count > 10 {
-            return StringConstant.maxLength10ForNicknameInput
-        } else if viewModel.isAvailableNickname == false {
-            return StringConstant.alreadyExistNickname
-        } else {
-            return ""
-        }
-    }
     
-    func validImageName() -> String {
-        if viewModel.isAvailableNickname == true {
-            return "24px_valid"
-        } else if viewModel.isAvailableNickname == false {
-            return "24px_invalid"
-        } else {
-            return ""
-        }
-    }
+    
+   
 }
 
 struct SignUpUserInfoView_Previews: PreviewProvider {

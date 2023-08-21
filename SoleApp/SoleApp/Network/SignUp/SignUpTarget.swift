@@ -10,6 +10,7 @@ import Alamofire
 
 enum SignUpTarget {
     case checkAleardyMember(CheckExistAccountRequest, String)
+    case checkValidationForNickname(CheckValidationForNicknameRequest)
 }
 
 extension SignUpTarget: TargetType {
@@ -25,6 +26,9 @@ extension SignUpTarget: TargetType {
         switch self {
         case .checkAleardyMember(_, let platform):
             return K.Path.checkExistAccount + "\(platform)"
+            
+        case .checkValidationForNickname:
+            return K.Path.validCheckForNickName
         }
     }
     
@@ -35,6 +39,9 @@ extension SignUpTarget: TargetType {
     var parameters: RequestParams {
         switch self {
         case .checkAleardyMember(let parameter, _):
+            return .body(parameter)
+            
+        case .checkValidationForNickname(let parameter):
             return .body(parameter)
         }
     }

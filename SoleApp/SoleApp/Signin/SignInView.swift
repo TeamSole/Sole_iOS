@@ -27,6 +27,7 @@ struct SignInView: View {
                     navigateToSignUpView()
                 }
             }
+            .navigationViewStyle(.stack)
         }
     }
 }
