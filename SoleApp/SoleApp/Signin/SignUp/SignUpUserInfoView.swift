@@ -42,7 +42,7 @@ struct SignUpUserInfoView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: results) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-                            viewModel.selectedImage = first
+                            viewStore.send(.selectProfileImage(first))
                         }
                     }
                 }
@@ -72,13 +72,13 @@ extension SignUpUserInfoView {
     
     private var profileImageView: some View {
         ZStack(alignment: .bottomTrailing) {
-            if viewModel.selectedImage == nil {
+            if viewStore.selectedImage == nil {
                 Image("profile56")
                     .resizable()
                     .frame(width: 120.0,
                            height: 120.0)
             } else {
-                Image(uiImage: viewModel.selectedImage!)
+                Image(uiImage: viewStore.selectedImage!)
                     .resizable()
                     .frame(width: 120.0,
                            height: 120.0)
@@ -130,7 +130,7 @@ extension SignUpUserInfoView {
             .frame(maxWidth: .infinity,
                    alignment: .center)
             .frame(height: 48.0)
-            .background(viewModel.isAvailableNickname == true
+            .background(viewStore.isAvailableNickname == true
                         ? Color.blue_4708FA
                         : Color.gray_D3D4D5)
             .cornerRadius(8.0)

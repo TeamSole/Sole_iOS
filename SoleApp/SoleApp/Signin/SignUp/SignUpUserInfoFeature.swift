@@ -6,13 +6,15 @@
 //
 
 import ComposableArchitecture
+import UIKit
 
 struct SignUpUserInfoFeature: Reducer {
     struct State: Equatable {
         var model: SignUpModel
         var nicknameInput: String = ""
-        var isAvailableNickname: Bool? = nil
         var nicknameValidMessage: String = ""
+        var isAvailableNickname: Bool? = nil
+        var selectedImage: UIImage? = nil
         var validImageName: String {
             if isAvailableNickname == true {
                 return "24px_valid"
@@ -34,6 +36,7 @@ struct SignUpUserInfoFeature: Reducer {
         case didTappedBackButton
         case didTappedDoneButton
         case nicknameInputChanged(String)
+        case selectProfileImage(UIImage)
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -77,6 +80,10 @@ struct SignUpUserInfoFeature: Reducer {
             case .nicknameInputChanged(let nickname):
                 state.isAvailableNickname = nil
                 state.nicknameInput = nickname
+                return .none
+                
+            case .selectProfileImage(let image):
+                state.selectedImage = image
                 return .none
             }
             
