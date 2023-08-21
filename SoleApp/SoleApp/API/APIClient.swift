@@ -34,6 +34,9 @@ extension K {
 extension K {
     struct Path {
         static let validCheckForNickName: String = "api/members/nickname"
+        static func signUp(platform: String) -> String {
+            return "api/members/\(platform)/signup"
+        }
         static let signUpApple: String = "api/members/apple/signup"
         static let signUpKakao: String = "api/members/kakao/signup"
         static let reissueToken: String = "api/members/reissue"

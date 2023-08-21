@@ -27,7 +27,6 @@ struct SignUpUserInfoView: View {
             navigationBar
             profileImageView
             nickNameTextFieldView
-            continueButton
             navigateToSignUpSignUpCompleteView
         }
         .navigationBarHidden(true)
@@ -134,25 +133,25 @@ extension SignUpUserInfoView {
             .cornerRadius(8.0)
             .padding(.horizontal, 16.0)
             .padding(.bottom, 40.0)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                guard viewModel.isAvailableNickname == true else { return }
-                viewModel.signUp {
-                    showSignUpCompleteView = true
-                }
-                
-            }
     }
     
     private var navigateToSignUpSignUpCompleteView: some View {
-        NavigationLink(destination:
-                        SignUpCompleteView(store: Store(initialState: SignUpCompleteFeature.State(), reducer: { SignUpCompleteFeature() }))
-            .environmentObject(AppDelegate.shared.mainViewModel),
-                       isActive: $showSignUpCompleteView,
-                       label: {
-            EmptyView()
+        NavigationLinkStore(store.scope(state: \.$signUpComplete, action: SignUpUserInfoFeature.Action.signUpComplete),
+                            onTap: {
+            viewStore.send(.didTappedContinueButton)
+        }, destination: { store in
+            SignUpCompleteView(store: store)
+        }, label: {
+            continueButton
         })
-        .isDetailLink(false)
+//        NavigationLink(destination:
+//                        SignUpCompleteView(store: Store(initialState: SignUpCompleteFeature.State(), reducer: { SignUpCompleteFeature() }))
+//            .environmentObject(AppDelegate.shared.mainViewModel),
+//                       isActive: $showSignUpCompleteView,
+//                       label: {
+//            EmptyView()
+//        })
+//        .isDetailLink(false)
     }
 }
 

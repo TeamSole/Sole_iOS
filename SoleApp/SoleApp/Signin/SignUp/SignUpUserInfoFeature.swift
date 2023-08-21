@@ -15,6 +15,7 @@ struct SignUpUserInfoFeature: Reducer {
         var nicknameValidMessage: String = ""
         var isAvailableNickname: Bool? = nil
         var selectedImage: UIImage? = nil
+        @PresentationState var signUpComplete: SignUpCompleteFeature.State?
         var validImageName: String {
             if isAvailableNickname == true {
                 return "24px_valid"
@@ -34,9 +35,12 @@ struct SignUpUserInfoFeature: Reducer {
     enum Action: Equatable {
         case checkValidationForNicknameResponse(TaskResult<Bool>)
         case didTappedBackButton
+        case didTappedContinueButton
         case didTappedDoneButton
         case nicknameInputChanged(String)
         case selectProfileImage(UIImage)
+        case signUpComplete(PresentationAction<SignUpCompleteFeature.Action>)
+        case signUpResponse(TaskResult<SignUpModelResponse>)
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -57,6 +61,12 @@ struct SignUpUserInfoFeature: Reducer {
                 
             case .didTappedBackButton:
                 return .run(operation: { _ in await dismiss() })
+                
+            case .didTappedContinueButton:
+                guard state.isAvailableNickname == true else { return .none }
+                state.model.nickname = state.nicknameInput
+                
+                return .none
                 
             case .didTappedDoneButton:
                 guard state.nicknameInput.isEmpty == false else {
@@ -85,6 +95,26 @@ struct SignUpUserInfoFeature: Reducer {
             case .selectProfileImage(let image):
                 state.selectedImage = image
                 return .none
+                
+            case .signUpComplete:
+                return .none
+                
+            case .signUpResponse(.success(let response)):
+                if let imageUrl = response.data?.profileImgUrl {
+                    Utility.save(key: Constant.profileImage, value: imageUrl)
+                }
+                if let token = response.data?.accessToken,
+                   let refreshToken = response.data?.refreshToken {
+                    Utility.save(key: Constant.token, value: token)
+                    Utility.save(key: Constant.refreshToken, value: refreshToken)
+                    Utility.save(key: Constant.loginPlatform, value: state.model.platform)
+                    state.signUpComplete = SignUpCompleteFeature.State()
+                }
+                return .none
+                
+            case .signUpResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
             }
             
             
@@ -103,6 +133,9 @@ struct SignUpUserInfoFeature: Reducer {
                     state.nicknameValidMessage = ""
                 }
             }
+        }
+        .ifLet(\.$signUpComplete, action: /Action.signUpComplete) {
+            SignUpCompleteFeature()
         }
     }
 }
