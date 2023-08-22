@@ -610,13 +610,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A47EEA5229C1EB7B006BA3DB /* Intro */ = {
+		A47EEA5229C1EB7B006BA3DB /* App */ = {
 			isa = PBXGroup;
 			children = (
 				A47EEA6A29C50C7D006BA3DB /* AppView.swift */,
 				A42D27142A768A8C003B11E5 /* AppFeature.swift */,
 			);
-			path = Intro;
+			path = App;
 			sourceTree = "<group>";
 		};
 		A47EEA6429C45B88006BA3DB /* Util */ = {
@@ -713,7 +713,7 @@
 			children = (
 				A4C8DD572A6BAB4D000F4D62 /* Network */,
 				A47EEA6429C45B88006BA3DB /* Util */,
-				A47EEA5229C1EB7B006BA3DB /* Intro */,
+				A47EEA5229C1EB7B006BA3DB /* App */,
 				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
 				A4D983CB299F64E3008C599D /* Main */,
