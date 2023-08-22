@@ -9,9 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpCompleteView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
-    @State private var rotateDegree: Double = 10.0
-    
     private let store: StoreOf<SignUpCompleteFeature>
     @ObservedObject var viewStore: ViewStoreOf<SignUpCompleteFeature>
     
@@ -60,29 +57,6 @@ extension SignUpCompleteView {
         .frame(maxWidth: .infinity,
                maxHeight: .infinity)
     }
-}
-
-struct NavigationUtil {
-  static func popToRootView() {
-    findNavigationController(viewController: UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController)?
-      .popToRootViewController(animated: true)
-  }
-
-  static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {
-    guard let viewController = viewController else {
-      return nil
-    }
-
-    if let navigationController = viewController as? UINavigationController {
-      return navigationController
-    }
-
-    for childViewController in viewController.children {
-      return findNavigationController(viewController: childViewController)
-    }
-
-    return nil
-  }
 }
 
 struct SignUpCompleteView_Previews: PreviewProvider {
