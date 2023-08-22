@@ -6,13 +6,22 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
 
 struct MainTabbarView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @State private var selectedIndex: Int = 0
-    init() {
+    
+    private let store: StoreOf<MainFeature>
+    @ObservedObject var viewStore: ViewStoreOf<MainFeature>
+    
+    init(store: StoreOf<MainFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
         UITabBar.appearance().backgroundColor = .white
     }
+    
     var body: some View {
         NavigationView {
             TabView(selection: $selectedIndex) {
@@ -49,6 +58,6 @@ struct MainTabbarView: View {
 
 struct MainTabbarView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabbarView()
+        MainTabbarView(store: Store(initialState: MainFeature.State(), reducer: { MainFeature() }))
     }
 }

@@ -21,7 +21,7 @@ struct IntroView: View {
                        maxHeight: .infinity)
             } else if mainViewModel.canShowMain && mainViewModel.existToken {
                 VStack() {
-                    MainTabbarView()
+                    MainTabbarView(store: Store(initialState: MainFeature.State(), reducer: { MainFeature() }))
                         .environmentObject(mainViewModel)
                 }
             } else {
