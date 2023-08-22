@@ -11,44 +11,35 @@ import ComposableArchitecture
 struct AppView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @State private var checkToken = true
+    let store: StoreOf<AppFeature>
+    
+    init(store: StoreOf<AppFeature>) {
+        self.store = store
+    }
+    
     var body: some View {
-        VStack() {
-            if checkToken {
-                VStack() {
-                    Image("sole_splash")
+        SwitchStore(self.store) { state in
+            switch state {
+            case .signIn:
+                CaseLet(/AppFeature.State.signIn, action: AppFeature.Action.signIn) {
+                    SignInView(store: $0)
                 }
-                .frame(maxWidth: .infinity,
-                       maxHeight: .infinity)
-            } else if mainViewModel.canShowMain && mainViewModel.existToken {
-                VStack() {
-                    MainTabbarView(store: Store(initialState: MainFeature.State(), reducer: { MainFeature() }))
-                        .environmentObject(mainViewModel)
-                }
-            } else {
-                VStack() {
-                    SignInView(store: Store(initialState: SignInFeature.State(), reducer: { SignInFeature() }))
+            case .main:
+                CaseLet(/AppFeature.State.main, action: AppFeature.Action.main) {
+                    MainTabbarView(store: $0)
                 }
                 
+            case .loading:
+                CaseLet(/AppFeature.State.loading, action: AppFeature.Action.loading) {
+                    IntroView(store: $0)
+                }
             }
         }
-        .onAppear {
-            if Utility.load(key: Constant.token).isEmpty {
-                self.mainViewModel.canShowMain = false
-                self.mainViewModel.existToken = false
-                checkToken = false
-                
-            } else {
-                self.mainViewModel.canShowMain = true
-                self.mainViewModel.existToken = true
-                checkToken = false
-            }
-        }
-        
     }
 }
 
 struct IntroView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        AppView(store: Store(initialState: AppFeature.State(), reducer: { AppFeature() }))
     }
 }

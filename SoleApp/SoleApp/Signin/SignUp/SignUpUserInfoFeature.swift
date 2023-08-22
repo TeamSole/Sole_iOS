@@ -66,7 +66,13 @@ struct SignUpUserInfoFeature: Reducer {
                 guard state.isAvailableNickname == true else { return .none }
                 state.model.nickname = state.nicknameInput
                 
-                return .none
+                return .run { [model = state.model, image = state.selectedImage] send in
+                    await send(.signUpResponse(
+                        TaskResult {
+                            try await signUpClient.signUp(model, image)
+                        }
+                    ))
+                }
                 
             case .didTappedDoneButton:
                 guard state.nicknameInput.isEmpty == false else {

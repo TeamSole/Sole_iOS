@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 import Combine
+import ComposableArchitecture
 
 struct AccountSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
@@ -53,7 +54,7 @@ struct AccountSettingView: View {
                             .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
                             .first { $0.isKeyWindow }
 
-                        window?.rootViewController = UIHostingController(rootView: AppView()
+                        window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(), reducer: { AppFeature() }))
                             .environmentObject(mainViewModel))
                         window?.makeKeyAndVisible()
             }

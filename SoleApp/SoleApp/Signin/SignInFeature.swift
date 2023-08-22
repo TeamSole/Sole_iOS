@@ -19,10 +19,10 @@ struct SignInFeature: Reducer {
         case checkAleadyMemberResponse(TaskResult<SignUpModelResponse>)
         case didTapSignWithKakao
         case didTapSignWithApple(token: String?)
+        case moveMain
         case optionalSignUpAgreeTerms(PresentationAction<SignUpAgreeTermsFeature.Action>)
         case setNavigaiton(isActive: Bool)
         case showSignUpView
-        case showHome
        
     }
     
@@ -33,6 +33,7 @@ struct SignInFeature: Reducer {
             switch action {
             case .checkAleadyMember(let token):
                 guard let token = token else { return .none }
+                state.model.accessToken = token
                 let parameter = CheckExistAccountRequest(accessToken: token)
                 return .run { [platform = state.model.platform] send in
                     await send(.checkAleadyMemberResponse(
@@ -52,8 +53,7 @@ struct SignInFeature: Reducer {
                         Utility.save(key: Constant.refreshToken, value: refreshToken)
                         Utility.save(key: Constant.loginPlatform, value: response.data?.social ?? "")
                     }
-                    // TODO: switch store로 연경해야함
-                    return .none
+                    return .send(.moveMain)
                 } else {
                     return .send(.showSignUpView)
                 }
@@ -73,6 +73,8 @@ struct SignInFeature: Reducer {
                         await signUpClient.signInKakao()
                     ))
                 }
+            case .moveMain:
+                return .none
                 
             case .optionalSignUpAgreeTerms:
                 return .none
@@ -85,9 +87,6 @@ struct SignInFeature: Reducer {
             case .setNavigaiton(isActive: true):
                 state.isShowSignUpView = true
                 state.optionalSignUpAgreeTerms = SignUpAgreeTermsFeature.State(model: state.model)
-                return .none
-                
-            case .showHome:
                 return .none
                 
             case .showSignUpView:
