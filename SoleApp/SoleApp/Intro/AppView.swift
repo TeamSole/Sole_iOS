@@ -1,5 +1,5 @@
 //
-//  IntroView.swift
+//  AppView.swift
 //  SoleApp
 //
 //  Created by SUN on 2023/03/18.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct IntroView: View {
+struct AppView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @State private var checkToken = true
     var body: some View {
@@ -49,6 +49,6 @@ struct IntroView: View {
 
 struct IntroView_Previews: PreviewProvider {
     static var previews: some View {
-        IntroView()
+        AppView()
     }
 }

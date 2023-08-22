@@ -110,8 +110,8 @@
 		A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
 		A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
-		A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
-		A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* IntroView.swift */; };
+		A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* AppView.swift */; };
+		A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* AppView.swift */; };
 		A47EEA6E29C530F0006BA3DB /* BasePopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */; };
 		A47EEA6F29C530F0006BA3DB /* BasePopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */; };
 		A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
@@ -295,7 +295,7 @@
 		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		A47EEA6A29C50C7D006BA3DB /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		A47EEA6A29C50C7D006BA3DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupModifier.swift; sourceTree = "<group>"; };
 		A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExistAccountModel.swift; sourceTree = "<group>"; };
 		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
@@ -613,7 +613,7 @@
 		A47EEA5229C1EB7B006BA3DB /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				A47EEA6A29C50C7D006BA3DB /* IntroView.swift */,
+				A47EEA6A29C50C7D006BA3DB /* AppView.swift */,
 				A42D27142A768A8C003B11E5 /* AppFeature.swift */,
 			);
 			path = Intro;
@@ -1120,7 +1120,7 @@
 				A47EEAA429C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
-				A47EEA6B29C50C7D006BA3DB /* IntroView.swift in Sources */,
+				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
@@ -1225,7 +1225,7 @@
 				A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
-				A47EEA6C29C50C7D006BA3DB /* IntroView.swift in Sources */,
+				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,

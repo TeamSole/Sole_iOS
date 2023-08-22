@@ -36,7 +36,7 @@ struct MyPageView: View {
                             .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
                             .first { $0.isKeyWindow }
 
-                        window?.rootViewController = UIHostingController(rootView: IntroView()
+                        window?.rootViewController = UIHostingController(rootView: AppView()
                             .environmentObject(mainViewModel))
                         window?.makeKeyAndVisible()
             }
