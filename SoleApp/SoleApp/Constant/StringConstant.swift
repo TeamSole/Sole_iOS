@@ -13,11 +13,15 @@ struct StringConstant {
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
     // MARK: C
+    static let completeSignUp: String = "회원가입 완료!"
     static let continueAfterAgree: String = "동의하고 계속하기"
     
     // MARK: H
     static let helloWeAreSole: String = "안녕하세요.\n지도 위의 발자국, SOLE입니다."
     static let helpCenterMail: String = "회원 정보 문의: team.sole12@gmail.com"
+    
+    // MARK: L
+    static let letsUseAppWithSole: String = "쏠과 함께 지도 위에 나만의 발자국을 남겨봐요 :)"
     
     // MARK: M
     static let maxLength10ForNicknameInput: String = "닉네임은 최대 10자까지 작성이 가능해요."
