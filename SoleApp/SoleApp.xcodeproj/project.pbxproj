@@ -198,6 +198,10 @@
 		A49D04F92A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */; };
 		A49D04FB2A94EBBD00274C8D /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04FA2A94EBBD00274C8D /* MainFeature.swift */; };
 		A49D04FC2A94EBBD00274C8D /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04FA2A94EBBD00274C8D /* MainFeature.swift */; };
+		A49D04FF2A94F04100274C8D /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04FE2A94F04100274C8D /* IntroView.swift */; };
+		A49D05002A94F04100274C8D /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04FE2A94F04100274C8D /* IntroView.swift */; };
+		A49D05022A94F04E00274C8D /* IntroFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05012A94F04E00274C8D /* IntroFeature.swift */; };
+		A49D05032A94F04E00274C8D /* IntroFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05012A94F04E00274C8D /* IntroFeature.swift */; };
 		A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D8A2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */; };
@@ -339,6 +343,8 @@
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
 		A49D04FA2A94EBBD00274C8D /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
+		A49D04FE2A94F04100274C8D /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		A49D05012A94F04E00274C8D /* IntroFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFeature.swift; sourceTree = "<group>"; };
 		A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTarget.swift; sourceTree = "<group>"; };
 		A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsFeature.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -677,6 +683,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A49D04FD2A94F02900274C8D /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				A49D04FE2A94F04100274C8D /* IntroView.swift */,
+				A49D05012A94F04E00274C8D /* IntroFeature.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		A4BE4D7B2A7E1FCC005AF201 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +731,7 @@
 				A47EEA5229C1EB7B006BA3DB /* App */,
 				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
+				A49D04FD2A94F02900274C8D /* Intro */,
 				A4D983CB299F64E3008C599D /* Main */,
 				A46B46E42994B44E001FAED3 /* Signin */,
 				A4D983CA299F64CD008C599D /* System */,
@@ -1035,6 +1051,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A47EEAD029C99A86006BA3DB /* HomeViewModel.swift in Sources */,
+				A49D05022A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
@@ -1120,6 +1137,7 @@
 				A47EEAA429C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
+				A49D04FF2A94F04100274C8D /* IntroView.swift in Sources */,
 				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
@@ -1140,6 +1158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A47EEAD129C99A86006BA3DB /* HomeViewModel.swift in Sources */,
+				A49D05032A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
@@ -1225,6 +1244,7 @@
 				A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
 				A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
+				A49D05002A94F04100274C8D /* IntroView.swift in Sources */,
 				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
