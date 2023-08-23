@@ -26,7 +26,7 @@ struct MainTabbarView: View {
         NavigationView {
             TabView(selection: viewStore.binding(get: \.selectedTab,
                                                  send: MainFeature.Action.selectTab)) {
-                HomeView()
+                HomeView(store: self.store.scope(state: \.home, action: MainFeature.Action.home))
                     .environmentObject(mainViewModel)
                     .tabItem {
                         viewStore.selectedTab == .HOME ? Image("home_tap_selected") : Image("home_tap")

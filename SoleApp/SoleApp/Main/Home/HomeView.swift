@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct HomeView: View {
     typealias Course = CourseModelResponse.DataModel
@@ -15,6 +16,14 @@ struct HomeView: View {
     @State private var availableWidth: CGFloat = 10
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowFirstSelectTagView: Bool = false
+    
+    private let store: StoreOf<HomeFeature>
+    @ObservedObject var viewStore: ViewStoreOf<HomeFeature>
+    
+    init(store: StoreOf<HomeFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
     
     var body: some View {
         ZStack() {
@@ -360,7 +369,7 @@ extension HomeView {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(store: Store(initialState: HomeFeature.State(), reducer: { HomeFeature() }))
             .environmentObject(MainViewModel())
     }
 }

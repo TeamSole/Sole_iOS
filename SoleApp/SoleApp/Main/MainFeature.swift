@@ -16,10 +16,12 @@ enum Tab {
 
 struct MainFeature: Reducer {
     struct State: Equatable {
+        var home: HomeFeature.State = .init()
         var selectedTab: Tab = .HOME
     }
     
     enum Action: Equatable {
+        case home(HomeFeature.Action)
         case selectTab(Tab)
     }
     
