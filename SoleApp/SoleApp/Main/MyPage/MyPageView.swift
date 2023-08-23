@@ -15,6 +15,15 @@ struct MyPageView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel: MyPageViewModel = MyPageViewModel()
     @State private var showPopup: Bool = false
+    
+    private let store: StoreOf<MyPageFeature>
+    @ObservedObject var viewStore: ViewStoreOf<MyPageFeature>
+    
+    init(store: StoreOf<MyPageFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -164,6 +173,6 @@ extension MyPageView {
 
 struct MyPageView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPageView()
+        MyPageView(store: Store(initialState: MyPageFeature.State(), reducer: { MyPageFeature() }))
     }
 }

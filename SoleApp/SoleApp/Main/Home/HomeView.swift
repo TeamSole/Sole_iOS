@@ -77,7 +77,7 @@ extension HomeView {
             })
             .padding(.trailing, 11.0)
             NavigationLink(destination: {
-                MyPageView()
+                MyPageView(store: Store(initialState: MyPageFeature.State(), reducer: { MyPageFeature() }))
                     .environmentObject(mainViewModel)
             }, label: {
                 if Utility.load(key: Constant.profileImage).isEmpty {
