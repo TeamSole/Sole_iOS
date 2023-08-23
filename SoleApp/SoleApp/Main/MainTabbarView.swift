@@ -32,28 +32,29 @@ struct MainTabbarView: View {
                         viewStore.selectedTab == .HOME ? Image("home_tap_selected") : Image("home_tap")
                         Text(StringConstant.tabHome)
                     }
-                    .tag(Tab.HOME)
+                    .tag(MainFeature.Tab.HOME)
                 HistoryView()
                     .tabItem {
                         viewStore.selectedTab == .HISTORY ? Image("history_tap_selected") : Image("history_tap")
                         Text(StringConstant.tabHistory)
                     }
-                    .tag(Tab.HISTORY)
+                    .tag(MainFeature.Tab.HISTORY)
                 FollowingBoardView()
                     .tabItem {
                         viewStore.selectedTab == .FOLLOWING ? Image("following_tap_selected") : Image("following_tap")
                         Text(StringConstant.tabFollowing)
                     }
-                    .tag(Tab.FOLLOWING)
+                    .tag(MainFeature.Tab.FOLLOWING)
                 ScrapFolderView()
                     .tabItem {
                         viewStore.selectedTab == .SCRAP ? Image("scrap_tap_selected") : Image("scrap_tap")
                         Text(StringConstant.tabScrap)
                     }
-                    .tag(Tab.SCRAP)
+                    .tag(MainFeature.Tab.SCRAP)
             }
             .accentColor(Color(UIColor.blue_4708FA))
         }
+        .navigationViewStyle(.stack)
     }
 }
 

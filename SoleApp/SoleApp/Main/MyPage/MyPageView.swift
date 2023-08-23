@@ -60,7 +60,7 @@ extension MyPageView {
         HStack {
             Image("arrow_back")
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTapDismissButton)
                 }
             Text("마이페이지")
                 .foregroundColor(.black)

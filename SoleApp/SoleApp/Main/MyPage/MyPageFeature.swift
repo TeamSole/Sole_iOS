@@ -13,13 +13,17 @@ struct MyPageFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case didTapDismissButton
     }
     
+    @Dependency(\.dismiss) var dismiss
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-                
+            case .didTapDismissButton:
+                return .run { send in
+                    await dismiss()
+                }
             }
         }
     }
