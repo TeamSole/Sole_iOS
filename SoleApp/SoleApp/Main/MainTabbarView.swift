@@ -24,32 +24,33 @@ struct MainTabbarView: View {
     
     var body: some View {
         NavigationView {
-            TabView(selection: $selectedIndex) {
+            TabView(selection: viewStore.binding(get: \.selectedTab,
+                                                 send: MainFeature.Action.selectTab)) {
                 HomeView()
                     .environmentObject(mainViewModel)
                     .tabItem {
-                        selectedIndex == 0 ? Image("home_tap_selected") : Image("home_tap")
+                        viewStore.selectedTab == .HOME ? Image("home_tap_selected") : Image("home_tap")
                         Text(StringConstant.tabHome)
                     }
-                    .tag(0)
+                    .tag(Tab.HOME)
                 HistoryView()
                     .tabItem {
-                        selectedIndex == 1 ? Image("history_tap_selected") : Image("history_tap")
+                        viewStore.selectedTab == .HISTORY ? Image("history_tap_selected") : Image("history_tap")
                         Text(StringConstant.tabHistory)
                     }
-                    .tag(1)
+                    .tag(Tab.HISTORY)
                 FollowingBoardView()
                     .tabItem {
-                        selectedIndex == 2 ? Image("following_tap_selected") : Image("following_tap")
+                        viewStore.selectedTab == .FOLLOWING ? Image("following_tap_selected") : Image("following_tap")
                         Text(StringConstant.tabFollowing)
                     }
-                    .tag(2)
+                    .tag(Tab.FOLLOWING)
                 ScrapFolderView()
                     .tabItem {
-                        selectedIndex == 3 ? Image("scrap_tap_selected") : Image("scrap_tap")
+                        viewStore.selectedTab == .SCRAP ? Image("scrap_tap_selected") : Image("scrap_tap")
                         Text(StringConstant.tabScrap)
                     }
-                    .tag(3)
+                    .tag(Tab.SCRAP)
             }
             .accentColor(Color(UIColor.blue_4708FA))
         }
@@ -59,5 +60,6 @@ struct MainTabbarView: View {
 struct MainTabbarView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabbarView(store: Store(initialState: MainFeature.State(), reducer: { MainFeature() }))
+            .environmentObject(MainViewModel())
     }
 }

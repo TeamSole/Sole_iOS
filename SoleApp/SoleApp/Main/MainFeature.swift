@@ -20,13 +20,15 @@ struct MainFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case selectTab(Tab)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-                
+            case .selectTab(let tab):
+                state.selectedTab = tab
+                return .none
             }
         }
     }
