@@ -41,6 +41,11 @@ struct StringConstant {
     static let start: String = "시작하기"
     
     // MARK: T
+    static let tabFollowing: String = "팔로잉"
+    static let tabHistory: String = "나의 기록"
+    static let tabHome: String = "홈"
+    static let tabScrap: String = "스크랩"
+
     static let terms1ForSignUp: String = "서비스 이용약관 동의 (필수)"
     static let terms2ForSignUp: String = "개인정보 처리방침 동의 (필수)"
     static let terms3ForSignUp: String = "위치정보 이용약관 동의 (선택)"

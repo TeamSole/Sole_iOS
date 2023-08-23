@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+// TODO: 파일 삭제
 final class MainViewModel: ObservableObject {
     @Published var canShowMain = false
     @Published var existToken = false

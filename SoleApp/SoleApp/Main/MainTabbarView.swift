@@ -29,25 +29,25 @@ struct MainTabbarView: View {
                     .environmentObject(mainViewModel)
                     .tabItem {
                         selectedIndex == 0 ? Image("home_tap_selected") : Image("home_tap")
-                        Text("홈")
+                        Text(StringConstant.tabHome)
                     }
                     .tag(0)
                 HistoryView()
                     .tabItem {
                         selectedIndex == 1 ? Image("history_tap_selected") : Image("history_tap")
-                        Text("나의 기록")
+                        Text(StringConstant.tabHistory)
                     }
                     .tag(1)
                 FollowingBoardView()
                     .tabItem {
                         selectedIndex == 2 ? Image("following_tap_selected") : Image("following_tap")
-                        Text("팔로잉")
+                        Text(StringConstant.tabFollowing)
                     }
                     .tag(2)
                 ScrapFolderView()
                     .tabItem {
                         selectedIndex == 3 ? Image("scrap_tap_selected") : Image("scrap_tap")
-                        Text("스크랩")
+                        Text(StringConstant.tabScrap)
                     }
                     .tag(3)
             }

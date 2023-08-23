@@ -7,9 +7,16 @@
 
 import ComposableArchitecture
 
+enum Tab {
+    case HOME
+    case HISTORY
+    case FOLLOWING
+    case SCRAP
+}
+
 struct MainFeature: Reducer {
     struct State: Equatable {
-        
+        var selectedTab: Tab = .HOME
     }
     
     enum Action: Equatable {
