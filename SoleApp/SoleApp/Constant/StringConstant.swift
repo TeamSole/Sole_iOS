@@ -13,18 +13,28 @@ struct StringConstant {
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
     // MARK: C
+    static let collectYourTastyCourses: String = "설정한 취향태그에 맞는 코스만 모았어요 :)"
     static let completeSignUp: String = "회원가입 완료!"
     static let continueAfterAgree: String = "동의하고 계속하기"
+    
+    // MARK: E
+    static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
+    static let emptyTastyTags: String = "설정한 취향 태그가 없습니다."
     
     // MARK: H
     static let helloWeAreSole: String = "안녕하세요.\n지도 위의 발자국, SOLE입니다."
     static let helpCenterMail: String = "회원 정보 문의: team.sole12@gmail.com"
+    
     
     // MARK: L
     static let letsUseAppWithSole: String = "쏠과 함께 지도 위에 나만의 발자국을 남겨봐요 :)"
     
     // MARK: M
     static let maxLength10ForNicknameInput: String = "닉네임은 최대 10자까지 작성이 가능해요."
+    static let moreWithPlus: String = "더보기 +"
+    static let move: String = "이동"
+    static let myNearPopularCourse: String = "내 주변 인기 코스"
+    static let myTastyCourse: String = "내 취향 코스"
     
     // MARK: P
     static let pleaseAgreeOfTermsForSignUp: String = "회원가입을 위해 약관에 동의해주세요."
@@ -33,7 +43,7 @@ struct StringConstant {
     static let privacyPolicy: String = "개인정보처리방침"
     
     // MARK: S
-   
+    static let setMyTasty: String = "취향 설정하기"
     static let signInWithKakao: String = "Kakao로 계속하기"
     static let signInWithApple: String = "Apple로 계속하기"
     

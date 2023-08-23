@@ -113,7 +113,7 @@ extension HomeView {
     private var hotCourseSectionView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text("내 주변 인기 코스")
+                Text(StringConstant.myNearPopularCourse)
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -180,13 +180,13 @@ extension HomeView {
     private var userTasteCourseSectionView: some View {
         LazyVStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text("내 취향 코스")
+                Text(StringConstant.myTastyCourse)
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 4.0) {
-                    Text("취향 설정하기")
+                    Text(StringConstant.setMyTasty)
                         .font(.pretendard(.reguler, size: 12.0))
                     Image("chevron-right")
                 }
@@ -199,7 +199,7 @@ extension HomeView {
             if viewModel.courses.isEmpty {
                 emptyTasteView
             } else {
-                Text("설정한 취향태그에 맞는 코스만 모았어요 :)")
+                Text(StringConstant.collectYourTastyCourses)
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -246,7 +246,7 @@ extension HomeView {
                             viewModel.scrap(courseId: item.courseId ?? 0)
                         }
                 }
-                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
+                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
                     .padding(.vertical, 4.0)
@@ -319,7 +319,7 @@ extension HomeView {
     private var emptyRecommendResultView: some View {
         VStack(spacing: 17.0) {
             Image("emptyRecommendResult")
-            Text("이 지역에 등록된 장소가 없습니다.")
+            Text(StringConstant.emptyResultInSelectedLocation)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -332,7 +332,7 @@ extension HomeView {
     private var emptyTasteView: some View {
         VStack(spacing: 17.0) {
             Image("emptyTasteResult")
-            Text("설정한 취향 태그가 없습니다.")
+            Text(StringConstant.emptyTastyTags)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -347,7 +347,7 @@ extension HomeView {
             if viewModel.callingRequest {
                 ProgressView()
             } else {
-                Text("더보기 +")
+                Text(StringConstant.moreWithPlus)
             }
         }
         .frame(maxWidth: .infinity)
