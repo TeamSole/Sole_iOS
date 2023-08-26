@@ -206,6 +206,14 @@
 		A49D05062A96453800274C8D /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05042A96453800274C8D /* HomeFeature.swift */; };
 		A49D05082A96524200274C8D /* MyPageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05072A96524200274C8D /* MyPageFeature.swift */; };
 		A49D05092A96524200274C8D /* MyPageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05072A96524200274C8D /* MyPageFeature.swift */; };
+		A49D050D2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D050C2A9A21F000274C8D /* CommonAuthenticationCredential.swift */; };
+		A49D050E2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D050C2A9A21F000274C8D /* CommonAuthenticationCredential.swift */; };
+		A49D05102A9A238400274C8D /* CommonAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D050F2A9A238400274C8D /* CommonAuthenticator.swift */; };
+		A49D05112A9A238400274C8D /* CommonAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D050F2A9A238400274C8D /* CommonAuthenticator.swift */; };
+		A49D05132A9A2C3500274C8D /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05122A9A2C3500274C8D /* RefreshModel.swift */; };
+		A49D05142A9A2C3500274C8D /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05122A9A2C3500274C8D /* RefreshModel.swift */; };
+		A49D05162A9A2C7E00274C8D /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05152A9A2C7E00274C8D /* APIResponse.swift */; };
+		A49D05172A9A2C7E00274C8D /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D05152A9A2C7E00274C8D /* APIResponse.swift */; };
 		A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */; };
 		A4BE4D8A2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */; };
@@ -351,6 +359,10 @@
 		A49D05012A94F04E00274C8D /* IntroFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFeature.swift; sourceTree = "<group>"; };
 		A49D05042A96453800274C8D /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
 		A49D05072A96524200274C8D /* MyPageFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFeature.swift; sourceTree = "<group>"; };
+		A49D050C2A9A21F000274C8D /* CommonAuthenticationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAuthenticationCredential.swift; sourceTree = "<group>"; };
+		A49D050F2A9A238400274C8D /* CommonAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAuthenticator.swift; sourceTree = "<group>"; };
+		A49D05122A9A2C3500274C8D /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
+		A49D05152A9A2C7E00274C8D /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTarget.swift; sourceTree = "<group>"; };
 		A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsFeature.swift; sourceTree = "<group>"; };
 		A4C31C7629913CF00014F458 /* Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Release.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -699,6 +711,16 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		A49D050B2A9A21AB00274C8D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A49D050C2A9A21F000274C8D /* CommonAuthenticationCredential.swift */,
+				A49D050F2A9A238400274C8D /* CommonAuthenticator.swift */,
+				A49D05122A9A2C3500274C8D /* RefreshModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		A4BE4D7B2A7E1FCC005AF201 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -755,6 +777,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A49D050B2A9A21AB00274C8D /* Auth */,
 				A4DDA6C12A7DF28C00017C49 /* SignUp */,
 				A4DDA6B72A7D2D7B00017C49 /* Common */,
 			);
@@ -810,6 +833,7 @@
 				A4DDA6B82A7DE90800017C49 /* API.swift */,
 				A4DDA6BB2A7DE93C00017C49 /* APIEventLogger.swift */,
 				A4DDA6BE2A7DEA2600017C49 /* TargetType.swift */,
+				A49D05152A9A2C7E00274C8D /* APIResponse.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1058,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49D05102A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
 				A47EEAD029C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05022A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
@@ -1088,6 +1113,7 @@
 				A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
 				A42D27152A768A8C003B11E5 /* AppFeature.swift in Sources */,
 				A47EEA8A29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
+				A49D05162A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
@@ -1120,6 +1146,7 @@
 				A4BE4D8A2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
+				A49D05132A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
@@ -1131,6 +1158,7 @@
 				A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
 				A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
+				A49D050D2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */,
 				A47EEAD329C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */,
@@ -1167,6 +1195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49D05112A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
 				A47EEAD129C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05032A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
@@ -1197,6 +1226,7 @@
 				A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */,
 				A42D27162A768A8C003B11E5 /* AppFeature.swift in Sources */,
 				A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
+				A49D05172A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -1229,6 +1259,7 @@
 				A4BE4D8B2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */,
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
+				A49D05142A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A47EEACE29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
@@ -1240,6 +1271,7 @@
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
 				A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */,
+				A49D050E2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A47EEAD429C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */,

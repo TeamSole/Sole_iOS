@@ -16,10 +16,24 @@ class API {
         return Session(configuration: configuration, eventMonitors: [apiLogger])
     }()
     
-    static func makeDataRequest(_ convertible: URLRequestConvertible, interceptor: RequestInterceptor? = nil) -> DataRequest {
-        let request = session.request(convertible, interceptor: interceptor)
-        debugPrint(request.cURLDescription())
-        return request
+    static func makeDataRequest(_ convertible: URLRequestConvertible, isNeedInterceptor: Bool = false) -> DataRequest {
+        if isNeedInterceptor == true {
+            let authenticator = CommonAuthenticator()
+            let credential = CommonAuthenticationCredential(accessToken: Utility.load(key: Constant.token),
+                                                            refreshToken: Utility.load(key: Constant.refreshToken),
+                                                            expiredAt: Date(timeIntervalSinceNow: 60 * 1440))
+            
+            let authenticationInterceptor = AuthenticationInterceptor(authenticator: authenticator,
+                                                                      credential: credential)
+            let request = session.request(convertible, interceptor: authenticationInterceptor)
+            debugPrint(request.cURLDescription())
+            return request
+        } else {
+            let request = session.request(convertible, interceptor: nil)
+            debugPrint(request.cURLDescription())
+            return request
+        }
+       
     }
     
     static func responseDecodeToJson<Response: Codable>(data: Data, response: Response.Type) throws -> Response {
