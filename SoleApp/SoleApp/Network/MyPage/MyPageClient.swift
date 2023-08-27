@@ -27,6 +27,12 @@ extension MyPageClient: DependencyKey {
             return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         }
     )
-    
-    
 }
+
+extension DependencyValues {
+    var myPageClient: MyPageClient {
+        get { self[MyPageClient.self] }
+        set { self[MyPageClient.self] = newValue }
+    }
+}
+

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol APIResponse: Codable {
+protocol APIResponse: Codable, Equatable {
     var status: Int { get }
     var success: Bool { get }
     var message: String? { get }

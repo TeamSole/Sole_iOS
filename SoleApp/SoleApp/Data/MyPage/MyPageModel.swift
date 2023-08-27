@@ -14,7 +14,7 @@ struct MyPageResponse: APIResponse {
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var description: String? = ""
         var follower: Int?
         var following: Int?
