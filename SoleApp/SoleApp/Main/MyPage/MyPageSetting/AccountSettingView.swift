@@ -75,7 +75,7 @@ struct AccountSettingView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-                            viewModel.profileImage = first
+                            viewStore.send(.selectProfileImage(first))
                         }
                     }
                 }

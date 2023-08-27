@@ -6,14 +6,16 @@
 //
 
 import ComposableArchitecture
+import UIKit
 
 struct AccountSettingFeature: Reducer {
     struct State: Equatable {
-        
+        var selectedImage: UIImage? = nil
     }
     
     enum Action: Equatable {
         case didTappedDismissButton
+        case selectProfileImage(UIImage)
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -25,6 +27,10 @@ struct AccountSettingFeature: Reducer {
                 return .run { send in
                     await dismiss()
                 }
+                
+            case .selectProfileImage(let image):
+                state.selectedImage = image
+                return .none
             }
         }
     }
