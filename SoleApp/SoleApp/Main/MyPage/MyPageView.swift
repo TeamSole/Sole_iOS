@@ -39,17 +39,7 @@ struct MyPageView: View {
         }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .logout,
                                             complete: {
-            viewModel.logout {
-                let window = UIApplication
-                            .shared
-                            .connectedScenes
-                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                            .first { $0.isKeyWindow }
-
-                window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(), reducer: { AppFeature() }))
-                            .environmentObject(mainViewModel))
-                        window?.makeKeyAndVisible()
-            }
+            viewStore.send(.didTappedLogOutButton)
         }))
         
     }
@@ -60,7 +50,7 @@ extension MyPageView {
         HStack {
             Image("arrow_back")
                 .onTapGesture {
-                    viewStore.send(.didTapDismissButton)
+                    viewStore.send(.didTappedDismissButton)
                 }
             Text(StringConstant.myPage)
                 .foregroundColor(.black)

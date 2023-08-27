@@ -34,9 +34,9 @@ struct AppFeature: Reducer {
                 state = .main(MainFeature.State())
                 return .none
                 
-//            case .main(.signOutButtonTapped):
-//                state = .signIn(SignInFeature.State())
-//                return .none
+            case .main(.home(.myPage(.presented(.moveSignIn)))):
+                state = .signIn(SignInFeature.State())
+                return .none
                 
             case .loading(.moveToHome):
                 state = .main(MainFeature.State())

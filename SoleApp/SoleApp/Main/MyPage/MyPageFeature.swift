@@ -15,7 +15,10 @@ struct MyPageFeature: Reducer {
     
     enum Action: Equatable {
         case accountInfoResponse(TaskResult<MyPageResponse>)
-        case didTapDismissButton
+        case didTappedDismissButton
+        case didTappedLogOutButton
+        case logOutResponse(TaskResult<BaseResponse>)
+        case moveSignIn
         case viewWillAppear
     }
     
@@ -34,10 +37,34 @@ struct MyPageFeature: Reducer {
                 debugPrint(error)
                 return .none
                 
-            case .didTapDismissButton:
+            case .didTappedDismissButton:
                 return .run { send in
                     await dismiss()
                 }
+                
+            case .didTappedLogOutButton:
+                return .run { send in
+                    await send(.logOutResponse(
+                        TaskResult {
+                            try await myPageClient.logOut()
+                        }
+                    ))
+                }
+                
+            case .logOutResponse(.success(let response)):
+                if response.success == true {
+                    resetAccountInfo()
+                    return .send(.moveSignIn).animation(.default)
+                } else {
+                    return .none
+                }
+                
+            case .logOutResponse(.failure(let error)):
+                debugPrint(error)
+                return .none
+                
+            case .moveSignIn:
+                return .none
                 
             case .viewWillAppear:
                 return .run { send in
@@ -47,6 +74,13 @@ struct MyPageFeature: Reducer {
                         }
                     ))
                 }
+            }
+            
+            func resetAccountInfo() {
+                Utility.delete(key: Constant.token)
+                Utility.delete(key: Constant.refreshToken)
+                Utility.delete(key: Constant.loginPlatform)
+                Utility.delete(key: Constant.profileImage)
             }
         }
     }
