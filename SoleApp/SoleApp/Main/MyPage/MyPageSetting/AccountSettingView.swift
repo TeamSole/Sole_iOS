@@ -33,7 +33,7 @@ struct AccountSettingView: View {
                 VStack(spacing: 0.0) {
                     profilImageView
 //                    userKeyView
-                    customTextField(info: $nickName)
+                    customTextField()
                     introduceTextEditorView
                 }
                 .padding(.horizontal, 16.0)
@@ -146,10 +146,11 @@ extension AccountSettingView {
         .padding(.bottom, 45.0)
     }
     
-    private func customTextField(info: Binding<String>) -> some View {
+    private func customTextField() -> some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                TextField("", text: info)
+                TextField("", text: viewStore.binding(get: \.nicknameInput,
+                                                      send: AccountSettingFeature.Action.changedNicknameInput))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image(viewStore.accountInfo.social == "APPLE"
@@ -174,12 +175,13 @@ extension AccountSettingView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(.bottom, 8.0)
-            TextEditor(text: $introduceInfo)
+            TextEditor(text: viewStore.binding(get: \.descriptionInput,
+                                               send: AccountSettingFeature.Action.changedDescriptionInput))
                 .frame(height: 84.0)
                 .cornerRadius(4.0)
                 .border(Color(UIColor.gray_D3D4D5), width: 1.0)
-                .onReceive(Just(introduceInfo)) { _ in limitText(50) }
-            Text(String(format: "%d/50", introduceInfo.count))
+//                .onReceive(Just(introduceInfo)) { _ in limitText(50) }
+            Text(String(format: "%d/50", viewStore.descriptionInput.count))
                 .font(Font(UIFont.pretendardRegular(size: 10.0)))
                 .foregroundColor(Color(UIColor.gray_D3D4D5))
                 .frame(maxWidth: .infinity,

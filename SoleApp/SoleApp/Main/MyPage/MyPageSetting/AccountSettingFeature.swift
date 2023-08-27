@@ -12,14 +12,20 @@ struct AccountSettingFeature: Reducer {
     struct State: Equatable {
         typealias AccountInfo = MyPageResponse.DataModel
         var accountInfo: AccountInfo
+        var nicknameInput: String
+        var descriptionInput: String
         var selectedImage: UIImage? = nil
         
         init(accountInfo: AccountInfo) {
             self.accountInfo = accountInfo
+            self.nicknameInput = accountInfo.nickname ?? ""
+            self.descriptionInput = accountInfo.description ?? ""
         }
     }
     
     enum Action: Equatable {
+        case changedDescriptionInput(String)
+        case changedNicknameInput(String)
         case didTappedDismissButton
         case selectProfileImage(UIImage)
     }
@@ -29,6 +35,16 @@ struct AccountSettingFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .changedDescriptionInput(let description):
+                if description.count <= 50 {
+                    state.descriptionInput = description
+                }
+                return .none
+                
+            case .changedNicknameInput(let nickname):
+                state.nicknameInput = nickname
+                return .none
+                
             case .didTappedDismissButton:
                 return .run { send in
                     await dismiss()
