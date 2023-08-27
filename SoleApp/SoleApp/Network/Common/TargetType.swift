@@ -23,6 +23,7 @@ extension TargetType {
         guard let url =  URL(string: baseURL) else { throw AFError.invalidURL(url: baseURL) }
         var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
         urlRequest.headers = headers
+        urlRequest.setValue(Utility.load(key: Constant.token), forHTTPHeaderField: "Authorization")
 
         switch parameters {
         case .query(let request):

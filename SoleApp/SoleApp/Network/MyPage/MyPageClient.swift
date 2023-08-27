@@ -7,9 +7,11 @@
 
 import ComposableArchitecture
 import Alamofire
+import UIKit
 
 struct MyPageClient {
     var getAccountInfo: () async throws -> (MyPageResponse)
+    var editAccountInfo: (EditAccountModelRequest, UIImage?) async throws -> (EditAccountModelResponse)
     var logOut: () async throws -> (BaseResponse)
 }
 
@@ -20,6 +22,24 @@ extension MyPageClient: DependencyKey {
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: MyPageResponse.self)
             
+        },
+        editAccountInfo: { parameter, image in
+            
+            let url = K.baseUrl + K.Path.myAccountInfo
+            let header: HTTPHeaders = K.Header.multiplatformHeader
+            
+            let data = try await API.session.upload(multipartFormData: { multipart in
+                let data = try? JSONEncoder().encode(parameter)
+                multipart.append(data!, withName: "mypageRequestDto")
+                if let image = image?.jpegData(compressionQuality: 0.1) {
+                    multipart.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
+                }
+            }, to: url, method: .post, headers: header)
+            .validate()
+            .serializingData()
+            .value
+            
+            return try API.responseDecodeToJson(data: data, response: EditAccountModelResponse.self)
         },
         logOut: {
             let request = API.makeDataRequest(MyPageTarget.logOut)

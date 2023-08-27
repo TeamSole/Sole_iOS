@@ -476,7 +476,6 @@
 				A46B3B5329C021710026D961 /* NotiSettingView.swift */,
 				A46B3B5629C04D940026D961 /* NotiListView.swift */,
 				A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */,
-				A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */,
 				A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */,
 			);
 			path = MyPageSetting;
@@ -733,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				A47EEA7629C60928006BA3DB /* MyPageModel.swift */,
+				A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
