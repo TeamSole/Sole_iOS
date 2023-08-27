@@ -11,6 +11,7 @@ struct MyPageFeature: Reducer {
     struct State: Equatable {
         typealias AccountInfo = MyPageResponse.DataModel
         var accountInfo: AccountInfo = .init()
+        var myPageViewCellData = MyPageCellData.allCases
     }
     
     enum Action: Equatable {

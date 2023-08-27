@@ -12,8 +12,6 @@ import ComposableArchitecture
 
 struct MyPageView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var viewModel: MyPageViewModel = MyPageViewModel()
     @State private var showPopup: Bool = false
     
     private let store: StoreOf<MyPageFeature>
@@ -123,7 +121,7 @@ extension MyPageView {
     
     private var menuList: some View {
         VStack(spacing: 0.0) {
-            List(viewModel.myPageViewCellData, id: \.self) { item in
+            List(viewStore.myPageViewCellData, id: \.self) { item in
                 menuItem(leftTitle: item.leftTitle, rightTitle: item.rightTitle)
                     .onTapGesture {
                         if item == .terms {

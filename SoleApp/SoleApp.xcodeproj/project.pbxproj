@@ -14,8 +14,6 @@
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
 		A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
-		A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
-		A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */; };
 		A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE529AF12E100B06132 /* AccountSettingView.swift */; };
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
@@ -194,6 +192,8 @@
 		A481DFA22A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */; };
 		A481DFA42A9AE75200AC7BF6 /* MyPageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */; };
 		A481DFA52A9AE75200AC7BF6 /* MyPageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */; };
+		A481DFA72A9B331900AC7BF6 /* MyPageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */; };
+		A481DFA82A9B331900AC7BF6 /* MyPageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */; };
 		A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
@@ -267,7 +267,6 @@
 		A42D27142A768A8C003B11E5 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
-		A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		A4655BD629CC9EF5001E67DF /* CourseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditView.swift; sourceTree = "<group>"; };
@@ -357,6 +356,7 @@
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTarget.swift; sourceTree = "<group>"; };
 		A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageClient.swift; sourceTree = "<group>"; };
+		A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCellData.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 				A4597BE429AF128700B06132 /* MyPageSetting */,
 				A46B3B4B29C006440026D961 /* MyPageView.swift */,
 				A49D05072A96524200274C8D /* MyPageFeature.swift */,
-				A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */,
+				A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1165,8 +1165,8 @@
 				A49D04F82A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
 				A47EEA5729C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
 				A47EEA6E29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
+				A481DFA72A9B331900AC7BF6 /* MyPageCellData.swift in Sources */,
 				A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */,
-				A4597BDF29ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */,
 				A46B472529992BCD001FAED3 /* UIControl.swift in Sources */,
 				A4DDA6BF2A7DEA2600017C49 /* TargetType.swift in Sources */,
@@ -1280,9 +1280,9 @@
 				A49D04F92A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
 				A46B3B5529C021710026D961 /* NotiSettingView.swift in Sources */,
 				A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */,
+				A481DFA82A9B331900AC7BF6 /* MyPageCellData.swift in Sources */,
 				A47EEA6F29C530F0006BA3DB /* BasePopupModifier.swift in Sources */,
 				A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */,
-				A4597BE029ADCD8B00B06132 /* MyPageViewModel.swift in Sources */,
 				A47EEA8729C7A568006BA3DB /* FollowBoardModel.swift in Sources */,
 				A4DDA6C02A7DEA2600017C49 /* TargetType.swift in Sources */,
 				A49D04FC2A94EBBD00274C8D /* MainFeature.swift in Sources */,
