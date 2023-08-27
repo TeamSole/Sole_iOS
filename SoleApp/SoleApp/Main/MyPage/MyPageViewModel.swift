@@ -28,11 +28,11 @@ enum MyPageCell: CaseIterable {
 //        case .inquiry:
 //            return "문의하기"
         case .terms:
-            return "이용약관"
+            return StringConstant.termsForUse
         case .privacyPolicy:
-            return "개인정보 처리방침"
+            return StringConstant.privacyPolicy
         case .version:
-            return "버전"
+            return StringConstant.version
         }
     }
     

@@ -62,7 +62,7 @@ extension MyPageView {
                 .onTapGesture {
                     viewStore.send(.didTapDismissButton)
                 }
-            Text("마이페이지")
+            Text(StringConstant.myPage)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -103,14 +103,16 @@ extension MyPageView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                     HStack(spacing: 7.0) {
-                        Text(String(format: "팔로워 %d",
+                        Text(String(format: "%@ %d",
+                                    StringConstant.follower,
                                     viewStore.accountInfo.follower ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
                         Color.black
                             .frame(width: 1.0,
                                    height: 11.0)
-                        Text(String(format: "팔로잉 %d",
+                        Text(String(format: "%@ %d",
+                                    StringConstant.following,
                                     viewStore.accountInfo.following ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
@@ -135,15 +137,15 @@ extension MyPageView {
                 menuItem(leftTitle: item.leftTitle, rightTitle: item.rightTitle)
                     .onTapGesture {
                         if item == .terms {
-                            UIApplication.shared.open(URL(string: "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3")!)
+                            Utility.openUrlWithSafari(url: K.getTermsUrl())
                         } else if item == .privacyPolicy {
-                            UIApplication.shared.open(URL(string: "https://team-sole.notion.site/8c353f0248ef4b838797863738c7b458")!)
+                            Utility.openUrlWithSafari(url: K.getPrivacyPolicyUrl())
                         }
                     }
                     .listRowInsets(EdgeInsets())
             }
             .listStyle(.plain)
-            Text("로그아웃")
+            Text(StringConstant.logOut)
                 .font(.pretendard(.reguler, size: 12.0))
                 .underline()
                 .foregroundColor(.gray_999999)

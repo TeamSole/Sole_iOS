@@ -15,6 +15,15 @@ struct K {
 }
 
 extension K {
+    static func getPrivacyPolicyUrl() -> String {
+        "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3"
+    }
+    static func getTermsUrl() -> String {
+        "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3"
+    }
+}
+
+extension K {
     struct Header {
         static let jsonHeader: HTTPHeaders = [
             "Content-Type": "application/json"
