@@ -14,10 +14,19 @@ struct AccountSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
+    
     @State private var nickName: String = ""
     @State private var introduceInfo: String = ""
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var showPopup: Bool = false
+    
+    private let store: StoreOf<AccountSettingFeature>
+    @ObservedObject var viewStore: ViewStoreOf<AccountSettingFeature>
+    
+    init(store: StoreOf<AccountSettingFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -243,6 +252,6 @@ extension AccountSettingView {
 
 struct AccountSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountSettingView()
+        AccountSettingView(store: Store(initialState: AccountSettingFeature.State(), reducer: { AccountSettingFeature() }))
     }
 }

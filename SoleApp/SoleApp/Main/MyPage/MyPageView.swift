@@ -11,7 +11,6 @@ import Introspect
 import ComposableArchitecture
 
 struct MyPageView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var showPopup: Bool = false
     
     private let store: StoreOf<MyPageFeature>
@@ -82,8 +81,7 @@ extension MyPageView {
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 14.0))
                         NavigationLink(destination: {
-                            AccountSettingView()
-                                .environmentObject(mainViewModel)
+                            AccountSettingView(store: Store(initialState: AccountSettingFeature.State(), reducer: { AccountSettingFeature() }))
                         }, label: {
                             Image("edit-circle")
                         })

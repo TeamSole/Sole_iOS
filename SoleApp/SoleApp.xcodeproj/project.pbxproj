@@ -194,6 +194,8 @@
 		A481DFA52A9AE75200AC7BF6 /* MyPageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */; };
 		A481DFA72A9B331900AC7BF6 /* MyPageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */; };
 		A481DFA82A9B331900AC7BF6 /* MyPageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */; };
+		A481DFAA2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */; };
+		A481DFAB2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */; };
 		A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
@@ -357,6 +359,7 @@
 		A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTarget.swift; sourceTree = "<group>"; };
 		A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageClient.swift; sourceTree = "<group>"; };
 		A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCellData.swift; sourceTree = "<group>"; };
+		A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingFeature.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
@@ -474,6 +477,7 @@
 				A46B3B5629C04D940026D961 /* NotiListView.swift */,
 				A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */,
 				A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */,
+				A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */,
 			);
 			path = MyPageSetting;
 			sourceTree = "<group>";
@@ -1202,6 +1206,7 @@
 				A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
 				A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
+				A481DFAA2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C7C29913CF00014F458 /* SceneDelegate.swift in Sources */,
 				A47EEAA429C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
@@ -1317,6 +1322,7 @@
 				A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
 				A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
+				A481DFAB2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
 				A4C31C91299140200014F458 /* SceneDelegate.swift in Sources */,
 				A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */,
