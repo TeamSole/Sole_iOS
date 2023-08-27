@@ -79,7 +79,7 @@ extension MyPageView {
                     HStack() {
                         Text(viewStore.accountInfo.nickname ?? "-")
                             .foregroundColor(.black)
-                            .font(.pretendard(.reguler, size: 14.0))
+                            .font(.pretendard(.medium, size: 16.0))
                         NavigationLinkStore(self.store.scope(state: \.$accountSetting, action: MyPageFeature.Action.accountSetting),
                                             onTap: { viewStore.send(.didTappedAccountSettingButton) },
                                             destination: {   AccountSettingView(store: $0) },
