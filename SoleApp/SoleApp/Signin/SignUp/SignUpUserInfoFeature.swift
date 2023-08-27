@@ -14,6 +14,7 @@ struct SignUpUserInfoFeature: Reducer {
         var nicknameInput: String = ""
         var nicknameValidMessage: String = ""
         var isAvailableNickname: Bool? = nil
+        var isBusyAPI: Bool = false
         var selectedImage: UIImage? = nil
         @PresentationState var signUpComplete: SignUpCompleteFeature.State?
         var validImageName: String {
@@ -50,12 +51,13 @@ struct SignUpUserInfoFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .checkValidationForNicknameResponse(.success(let isValid)):
-                debugPrint(isValid)
+                state.isBusyAPI = false
                 state.isAvailableNickname = isValid
                 messageForNickName()
                 return .none
                 
             case .checkValidationForNicknameResponse(.failure(let error)):
+                state.isBusyAPI = false
                 debugPrint(error)
                 return .none
                 
@@ -63,7 +65,9 @@ struct SignUpUserInfoFeature: Reducer {
                 return .run(operation: { _ in await dismiss() })
                 
             case .didTappedContinueButton:
-                guard state.isAvailableNickname == true else { return .none }
+                guard state.isAvailableNickname == true,
+                      state.isBusyAPI == false else { return .none }
+                state.isBusyAPI = true
                 state.model.nickname = state.nicknameInput
                 
                 return .run { [model = state.model, image = state.selectedImage] send in
