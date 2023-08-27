@@ -439,7 +439,6 @@
 				A46B3B4B29C006440026D961 /* MyPageView.swift */,
 				A49D05072A96524200274C8D /* MyPageFeature.swift */,
 				A4597BDE29ADCD8B00B06132 /* MyPageViewModel.swift */,
-				A47EEA7629C60928006BA3DB /* MyPageModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -702,6 +701,40 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A481DF9B2A9AE39A00AC7BF6 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A481DF9D2A9AE3DD00AC7BF6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A481DF9E2A9AE3F300AC7BF6 /* MyPage */,
+				A481DF9F2A9AE52000AC7BF6 /* SignUp */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A481DF9E2A9AE3F300AC7BF6 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEA7629C60928006BA3DB /* MyPageModel.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A481DF9F2A9AE52000AC7BF6 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				A4597BD729A9C1C200B06132 /* SignUpModel.swift */,
+				A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */,
+				A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		A49D04FD2A94F02900274C8D /* Intro */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,16 +752,6 @@
 				A49D05122A9A2C3500274C8D /* RefreshModel.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		A4BE4D7B2A7E1FCC005AF201 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				A4597BD729A9C1C200B06132 /* SignUpModel.swift */,
-				A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */,
-				A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		A4C31C6D29913CF00014F458 = {
@@ -755,6 +778,7 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A481DF9D2A9AE3DD00AC7BF6 /* Data */,
 				A4C8DD572A6BAB4D000F4D62 /* Network */,
 				A47EEA6429C45B88006BA3DB /* Util */,
 				A47EEA5229C1EB7B006BA3DB /* App */,
@@ -777,6 +801,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
 				A49D050B2A9A21AB00274C8D /* Auth */,
 				A4DDA6C12A7DF28C00017C49 /* SignUp */,
 				A4DDA6B72A7D2D7B00017C49 /* Common */,
@@ -841,7 +866,6 @@
 		A4DDA6C12A7DF28C00017C49 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				A4BE4D7B2A7E1FCC005AF201 /* API */,
 				A4DDA6C22A7DF2BD00017C49 /* SignUpClient.swift */,
 				A4BE4D7C2A7E22BF005AF201 /* SignUpTarget.swift */,
 			);

@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct MyPageResponse: Codable {
+struct MyPageResponse: APIResponse {
+    var message: String
+    var code: String
     let data: DataModel?
     let status: Int
     let success: Bool

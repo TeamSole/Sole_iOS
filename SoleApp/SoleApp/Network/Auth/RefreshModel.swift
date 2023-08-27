@@ -14,7 +14,7 @@ struct RefreshModel: APIResponse {
     }
     var status: Int
     var success: Bool
-    var message: String
-    var code: String
+    var message: String?
+    var code: String?
     var data: DataInfo?
 }

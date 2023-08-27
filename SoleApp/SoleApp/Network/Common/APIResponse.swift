@@ -10,6 +10,6 @@ import Foundation
 protocol APIResponse: Codable {
     var status: Int { get }
     var success: Bool { get }
-    var message: String { get }
-    var code: String { get }
+    var message: String? { get }
+    var code: String? { get }
 }
