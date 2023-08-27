@@ -196,7 +196,7 @@ extension AccountSettingView {
     
     private var saveButton: some View {
         Button(action: {
-            guard isEditable else { return }
+//            guard isEditable else { return }
             viewModel.changeMyInfo(nickname: nickName,
                                    description: introduceInfo,
                                    complete: {
@@ -210,7 +210,7 @@ extension AccountSettingView {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 48.0)
-                .background(isEditable ? Color.blue_4708FA : Color.gray_D3D4D5)
+                .background(viewStore.isSavable ? Color.blue_4708FA : Color.gray_D3D4D5)
                 .cornerRadius(8.0)
         })
         .padding(.bottom, 28.0)
@@ -226,13 +226,6 @@ extension AccountSettingView {
                 showPopup = true
             }
         
-    }
-    
-    private var isEditable: Bool {
-        return nickName.isEmpty == false &&
-        viewModel.accountInfo.nickname != nickName ||
-        viewModel.accountInfo.description != introduceInfo ||
-        viewModel.profileImage != nil
     }
     
     func limitText(_ upper: Int) {

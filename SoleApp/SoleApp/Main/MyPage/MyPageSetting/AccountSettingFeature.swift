@@ -14,12 +14,22 @@ struct AccountSettingFeature: Reducer {
         var accountInfo: AccountInfo
         var nicknameInput: String
         var descriptionInput: String
+        var dummyDescription: String
         var selectedImage: UIImage? = nil
+        
+        var isSavable: Bool {
+            return nicknameInput.isEmpty == false && (
+            accountInfo.nickname != nicknameInput ||
+            dummyDescription != descriptionInput ||
+            selectedImage != nil)
+        }
+
         
         init(accountInfo: AccountInfo) {
             self.accountInfo = accountInfo
             self.nicknameInput = accountInfo.nickname ?? ""
             self.descriptionInput = accountInfo.description ?? ""
+            self.dummyDescription = accountInfo.description ?? ""
         }
     }
     
