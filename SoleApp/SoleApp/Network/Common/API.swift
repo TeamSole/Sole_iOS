@@ -16,7 +16,7 @@ class API {
         return Session(configuration: configuration, eventMonitors: [apiLogger])
     }()
     
-    static func makeDataRequest(_ convertible: URLRequestConvertible, isNeedInterceptor: Bool = false) -> DataRequest {
+    static func makeDataRequest(_ convertible: URLRequestConvertible, isNeedInterceptor: Bool = true) -> DataRequest {
         if isNeedInterceptor == true {
             let authenticator = CommonAuthenticator()
             let credential = CommonAuthenticationCredential(accessToken: Utility.load(key: Constant.token),

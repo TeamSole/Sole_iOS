@@ -21,14 +21,14 @@ struct SignUpClient {
 extension SignUpClient: DependencyKey {
     static var liveValue = SignUpClient(
         checkAleadyMember: { parameter, platform in
-            let request = API.makeDataRequest(SignUpTarget.checkAleardyMember(parameter, platform))
+            let request = API.makeDataRequest(SignUpTarget.checkAleardyMember(parameter, platform), isNeedInterceptor: false)
             let data = try await request.validate().serializingData().value
             
             return try API.responseDecodeToJson(data: data, response: SignUpModelResponse.self)
             
         },
         checkValidationForNickname: { parameter in
-            let request = API.makeDataRequest(SignUpTarget.checkValidationForNickname(parameter))
+            let request = API.makeDataRequest(SignUpTarget.checkValidationForNickname(parameter), isNeedInterceptor: false)
             let data = try await request.validate().serializingData().value
             let isAleadyExist = String(decoding: data, as: UTF8.self)
             return (isAleadyExist == "false")
@@ -40,7 +40,7 @@ extension SignUpClient: DependencyKey {
             
             let url = K.baseUrl + K.Path.signUp(platform: parameter.platform)
             let header: HTTPHeaders = K.Header.multiplatformHeader
-            let data = try await AF.upload(multipartFormData: { multipart in
+            let data = try await API.session.upload(multipartFormData: { multipart in
                 let data = try? JSONEncoder().encode(parameter)
                 multipart.append(data!, withName: "memberRequestDto")
                 if let image = image?.jpegData(compressionQuality: 0.1) {
