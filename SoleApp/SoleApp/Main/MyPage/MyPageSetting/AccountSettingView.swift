@@ -92,7 +92,7 @@ extension AccountSettingView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
             Text(StringConstant.myPage)
                 .foregroundColor(.black)

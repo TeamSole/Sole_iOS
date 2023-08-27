@@ -13,13 +13,18 @@ struct AccountSettingFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case didTappedDismissButton
     }
+    
+    @Dependency(\.dismiss) var dismiss
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-                
+            case .didTappedDismissButton:
+                return .run { send in
+                    await dismiss()
+                }
             }
         }
     }
