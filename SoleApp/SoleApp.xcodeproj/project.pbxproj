@@ -192,6 +192,8 @@
 		A47EEAE929CA2470006BA3DB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE729CA2470006BA3DB /* DateExtension.swift */; };
 		A481DFA12A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */; };
 		A481DFA22A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */; };
+		A481DFA42A9AE75200AC7BF6 /* MyPageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */; };
+		A481DFA52A9AE75200AC7BF6 /* MyPageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */; };
 		A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
@@ -354,6 +356,7 @@
 		A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTarget.swift; sourceTree = "<group>"; };
+		A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageClient.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
@@ -708,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				A481DFA02A9AE5AC00AC7BF6 /* MyPageTarget.swift */,
+				A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1141,6 +1145,7 @@
 				A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
 				A42D27152A768A8C003B11E5 /* AppFeature.swift in Sources */,
 				A47EEA8A29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
+				A481DFA42A9AE75200AC7BF6 /* MyPageClient.swift in Sources */,
 				A49D05162A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -1255,6 +1260,7 @@
 				A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */,
 				A42D27162A768A8C003B11E5 /* AppFeature.swift in Sources */,
 				A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */,
+				A481DFA52A9AE75200AC7BF6 /* MyPageClient.swift in Sources */,
 				A49D05172A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,

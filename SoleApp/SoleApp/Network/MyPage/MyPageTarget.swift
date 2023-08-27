@@ -10,7 +10,7 @@ import Alamofire
 
 enum MyPageTarget {
     case accountInfo
-    case signOut
+    case logOut
 }
 
 extension MyPageTarget: TargetType {
@@ -23,7 +23,7 @@ extension MyPageTarget: TargetType {
         case .accountInfo:
             return .get
             
-        case .signOut:
+        case .logOut:
             return .patch
         }
     }
@@ -33,7 +33,7 @@ extension MyPageTarget: TargetType {
         case .accountInfo:
             return K.Path.myAccountInfo
             
-        case .signOut:
+        case .logOut:
             return K.Path.logout
         }
     }
