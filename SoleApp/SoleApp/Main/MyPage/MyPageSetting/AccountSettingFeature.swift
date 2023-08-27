@@ -15,6 +15,7 @@ struct AccountSettingFeature: Reducer {
         var nicknameInput: String
         var descriptionInput: String
         var dummyDescription: String
+        var isBusyAPI: Bool = false
         var selectedImage: UIImage? = nil
         
         var isSavable: Bool {
@@ -37,6 +38,7 @@ struct AccountSettingFeature: Reducer {
         case changedDescriptionInput(String)
         case changedNicknameInput(String)
         case didTappedDismissButton
+        case didTappedSaveButton
         case selectProfileImage(UIImage)
     }
     
@@ -59,6 +61,12 @@ struct AccountSettingFeature: Reducer {
                 return .run { send in
                     await dismiss()
                 }
+                
+            case .didTappedSaveButton:
+                guard state.isSavable == true,
+                      state.isBusyAPI == false else { return .none }
+                state.isBusyAPI = true
+                return .none
                 
             case .selectProfileImage(let image):
                 state.selectedImage = image

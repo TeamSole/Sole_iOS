@@ -196,15 +196,16 @@ extension AccountSettingView {
     
     private var saveButton: some View {
         Button(action: {
+            viewStore.send(.didTappedSaveButton)
 //            guard isEditable else { return }
-            viewModel.changeMyInfo(nickname: nickName,
-                                   description: introduceInfo,
-                                   complete: {
-                viewModel.getmyAccountInfo {
-                    nickName = viewModel.accountInfo.nickname ?? ""
-                    introduceInfo = viewModel.accountInfo.description ?? ""
-                }
-            })
+//            viewModel.changeMyInfo(nickname: nickName,
+//                                   description: introduceInfo,
+//                                   complete: {
+//                viewModel.getmyAccountInfo {
+//                    nickName = viewModel.accountInfo.nickname ?? ""
+//                    introduceInfo = viewModel.accountInfo.description ?? ""
+//                }
+//            })
         }, label: {
             Text(StringConstant.saveChangedInfo)
                 .foregroundColor(.white)
