@@ -47,12 +47,6 @@ struct AccountSettingView: View {
                 .padding(.horizontal, 16.0)
         }
         .navigationBarHidden(true)
-        .onLoaded {
-            viewModel.getmyAccountInfo {
-                nickName = viewModel.accountInfo.nickname ?? ""
-                introduceInfo = viewModel.accountInfo.description ?? ""
-            }
-        }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
                                             complete: {
             viewModel.withdrawal {
@@ -106,7 +100,7 @@ extension AccountSettingView {
     private var profilImageView: some View {
         ZStack(alignment: .bottomTrailing) {
             if viewModel.profileImage == nil {
-                KFImage(URL(string: viewModel.accountInfo.profileImgUrl ?? ""))
+                KFImage(URL(string: viewStore.accountInfo.profileImgUrl ?? ""))
                     .placeholder {
                         Image(uiImage: UIImage(named: "profile56") ?? UIImage())
                             .resizable()
@@ -136,7 +130,7 @@ extension AccountSettingView {
     private var userKeyView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Image(viewModel.accountInfo.social == "APPLE"
+                Image(viewStore.accountInfo.social == "APPLE"
                       ? "appleComponent"
                       : "kakaoComponent")
                 .padding(.trailing, 4.0)
@@ -158,7 +152,7 @@ extension AccountSettingView {
                 TextField("", text: info)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Image(viewModel.accountInfo.social == "APPLE"
+                Image(viewStore.accountInfo.social == "APPLE"
                       ? "appleComponent"
                       : "kakaoComponent")
                 .padding(.trailing, 4.0)
