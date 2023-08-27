@@ -26,20 +26,15 @@ extension TargetType {
 
         switch parameters {
         case .query(let request):
-            let params = request?.toDictionary() ?? [:]
-            let queryParams = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            let params = request?.toParameter()
+            let queryParams = params?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
             components?.queryItems = queryParams
             urlRequest.url = components?.url
         case .body(let request):
-            let parameters = request?.toDictionary() ?? [:]
-            do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            } catch {
-                debugPrint("Error: ParameterEncodingError - \(error.localizedDescription)")
-                debugPrint("--------------------------------\n\(parameters)\n--------------------------------")
-                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
-            }
+            guard let request = request else { break }
+            let parameter = request.toParameter()
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameter)
         }
 
         return urlRequest
@@ -52,10 +47,14 @@ enum RequestParams {
 }
 
 extension Encodable {
-    func toDictionary() -> [String: Any] {
-        guard let data = try? JSONEncoder().encode(self),
-              let jsonData = try? JSONSerialization.jsonObject(with: data),
-              let dictionaryData = jsonData as? [String: Any] else { return [:] }
-        return dictionaryData
+    func toParameter() -> Parameters {
+        do {
+            guard let data = try? JSONEncoder().encode(self),
+                  let parameter = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? Parameters else { return Parameters() }
+            return parameter
+        } catch(let error) {
+            debugPrint(String(format: "[Codable encodeJsonError: %@]", error.localizedDescription))
+            return Parameters()
+        }
     }
 }

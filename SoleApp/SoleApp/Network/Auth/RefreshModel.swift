@@ -8,7 +8,7 @@
 import Foundation
 
 struct RefreshModel: APIResponse {
-    struct DataInfo: Codable {
+    struct DataInfo: Codable, Equatable {
         let accessToken: String
         let refreshToken: String
     }

@@ -16,7 +16,7 @@ struct MyPageClient {
 extension MyPageClient: DependencyKey {
     static var liveValue: MyPageClient = MyPageClient (
         getAccountInfo: {
-            let request = API.makeDataRequest(MyPageTarget.accountInfo)
+            let request = API.makeDataRequest(MyPageTarget.accountInfo, isNeedInterceptor: false)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: MyPageResponse.self)
             

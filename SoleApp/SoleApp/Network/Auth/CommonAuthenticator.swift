@@ -19,13 +19,20 @@ final class CommonAuthenticator: Authenticator {
     
     func refresh(_ credential: CommonAuthenticationCredential, for session: Alamofire.Session, completion: @escaping (Result<CommonAuthenticationCredential, Error>) -> Void) {
         let url: String = K.baseUrl + K.Path.reissueToken
-        API.session.request(url)
+        let header: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": Utility.load(key: Constant.token),
+            "Refresh": Utility.load(key: Constant.refreshToken)
+        ]
+        API.session.request(url, method: .post, encoding: URLEncoding.default, headers: header)
             .validate()
             .responseDecodable(of: RefreshModel.self) { result in
                 switch result.result {
                 case .success(let response):
                     if let token = response.data?.accessToken,
                        let refreshToken = response.data?.refreshToken {
+                        debugPrint("===========================")
+                        debugPrint("==========REFRESH==========")
                         Utility.save(key: Constant.token, value: token)
                         Utility.save(key: Constant.refreshToken, value: refreshToken)
                         completion(.success(Credential(accessToken: token,

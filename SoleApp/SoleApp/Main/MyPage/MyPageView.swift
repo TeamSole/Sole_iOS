@@ -35,7 +35,7 @@ struct MyPageView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.getmyAccountInfo()
+            viewStore.send(.viewWillAppear)
         }
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .logout,
                                             complete: {
@@ -77,7 +77,7 @@ extension MyPageView {
     private var profileView: some View {
         VStack(spacing: 0.0) {
             HStack(alignment: .center, spacing: 0.0) {
-                KFImage(URL(string: viewModel.accountInfo.profileImgUrl ?? ""))
+                KFImage(URL(string: viewStore.accountInfo.profileImgUrl ?? ""))
                     .placeholder {
                         Image(uiImage: UIImage(named: "profile56") ?? UIImage())
                             .resizable()
@@ -90,7 +90,7 @@ extension MyPageView {
                     .cornerRadius(.infinity)
                 VStack(spacing: 3.0) {
                     HStack() {
-                        Text(viewModel.accountInfo.nickname ?? "-")
+                        Text(viewStore.accountInfo.nickname ?? "-")
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 14.0))
                         NavigationLink(destination: {
@@ -104,14 +104,14 @@ extension MyPageView {
                            alignment: .leading)
                     HStack(spacing: 7.0) {
                         Text(String(format: "팔로워 %d",
-                                    viewModel.accountInfo.follower ?? 0))
+                                    viewStore.accountInfo.follower ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
                         Color.black
                             .frame(width: 1.0,
                                    height: 11.0)
                         Text(String(format: "팔로잉 %d",
-                                    viewModel.accountInfo.following ?? 0))
+                                    viewStore.accountInfo.following ?? 0))
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 12.0))
                             .frame(maxWidth: .infinity,
