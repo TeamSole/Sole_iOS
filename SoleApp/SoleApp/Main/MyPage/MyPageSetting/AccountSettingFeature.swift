@@ -10,7 +10,13 @@ import UIKit
 
 struct AccountSettingFeature: Reducer {
     struct State: Equatable {
+        typealias AccountInfo = MyPageResponse.DataModel
+        var accountInfo: AccountInfo
         var selectedImage: UIImage? = nil
+        
+        init(accountInfo: AccountInfo) {
+            self.accountInfo = accountInfo
+        }
     }
     
     enum Action: Equatable {

@@ -12,7 +12,6 @@ import ComposableArchitecture
 
 struct AccountSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
     
     @State private var nickName: String = ""
@@ -249,6 +248,6 @@ extension AccountSettingView {
 
 struct AccountSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountSettingView(store: Store(initialState: AccountSettingFeature.State(), reducer: { AccountSettingFeature() }))
+        AccountSettingView(store: Store(initialState: AccountSettingFeature.State(accountInfo: .init()), reducer: { AccountSettingFeature() }))
     }
 }

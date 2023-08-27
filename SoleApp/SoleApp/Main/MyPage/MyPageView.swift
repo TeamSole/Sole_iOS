@@ -80,11 +80,10 @@ extension MyPageView {
                         Text(viewStore.accountInfo.nickname ?? "-")
                             .foregroundColor(.black)
                             .font(.pretendard(.reguler, size: 14.0))
-                        NavigationLink(destination: {
-                            AccountSettingView(store: Store(initialState: AccountSettingFeature.State(), reducer: { AccountSettingFeature() }))
-                        }, label: {
-                            Image("edit-circle")
-                        })
+                        NavigationLinkStore(self.store.scope(state: \.$accountSetting, action: MyPageFeature.Action.accountSetting),
+                                            onTap: { viewStore.send(.didTappedAccountSettingButton) },
+                                            destination: {   AccountSettingView(store: $0) },
+                                            label: { Image("edit-circle") })
                     }
                     .frame(maxWidth: .infinity,
                            alignment: .leading)

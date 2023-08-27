@@ -11,11 +11,14 @@ struct MyPageFeature: Reducer {
     struct State: Equatable {
         typealias AccountInfo = MyPageResponse.DataModel
         var accountInfo: AccountInfo = .init()
+        @PresentationState var accountSetting: AccountSettingFeature.State?
         var myPageViewCellData = MyPageCellData.allCases
     }
     
     enum Action: Equatable {
         case accountInfoResponse(TaskResult<MyPageResponse>)
+        case accountSetting(PresentationAction<AccountSettingFeature.Action>)
+        case didTappedAccountSettingButton
         case didTappedDismissButton
         case didTappedLogOutButton
         case logOutResponse(TaskResult<BaseResponse>)
@@ -36,6 +39,13 @@ struct MyPageFeature: Reducer {
                 
             case .accountInfoResponse(.failure(let error)):
                 debugPrint(error)
+                return .none
+                
+            case .accountSetting:
+                return .none
+                
+            case .didTappedAccountSettingButton:
+                state.accountSetting = AccountSettingFeature.State(accountInfo: state.accountInfo)
                 return .none
                 
             case .didTappedDismissButton:
@@ -83,6 +93,9 @@ struct MyPageFeature: Reducer {
                 Utility.delete(key: Constant.loginPlatform)
                 Utility.delete(key: Constant.profileImage)
             }
+        }
+        .ifLet(\.$accountSetting, action: /Action.accountSetting) {
+            AccountSettingFeature()
         }
     }
 }
