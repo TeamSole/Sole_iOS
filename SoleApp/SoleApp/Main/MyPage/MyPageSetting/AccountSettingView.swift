@@ -94,7 +94,7 @@ extension AccountSettingView {
                 .onTapGesture {
                     presentationMode.wrappedValue.dismiss()
                 }
-            Text("마이페이지")
+            Text(StringConstant.myPage)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -137,11 +137,6 @@ extension AccountSettingView {
     private var userKeyView: some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text("")
-                    .font(.pretendard(.reguler, size: 16.0))
-                    .foregroundColor(.gray_999999)
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
                 Image(viewModel.accountInfo.social == "APPLE"
                       ? "appleComponent"
                       : "kakaoComponent")
@@ -150,6 +145,8 @@ extension AccountSettingView {
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }
+            .frame(maxWidth: .infinity,
+                   alignment: .trailing)
 //            Color(UIColor.gray_D3D4D5)
 //                .frame(height: 1.0)
         }
@@ -179,7 +176,7 @@ extension AccountSettingView {
     
     private var introduceTextEditorView: some View {
         VStack(spacing: 0.0) {
-            Text("한 줄 소개")
+            Text(StringConstant.introduceShortComment)
                 .font(Font(UIFont.pretendardMedium(size: 14.0)))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
@@ -214,7 +211,7 @@ extension AccountSettingView {
                 }
             })
         }, label: {
-            Text("변경사항 저장하기")
+            Text(StringConstant.saveChangedInfo)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 48.0)
@@ -225,7 +222,7 @@ extension AccountSettingView {
     }
     
     private var secessionButton: some View {
-        Text("탈퇴하기")
+        Text(StringConstant.withdrawl)
             .foregroundColor(Color(UIColor.gray_999999))
             .font(Font(UIFont.pretendardRegular(size: 12.0)))
             .underline()

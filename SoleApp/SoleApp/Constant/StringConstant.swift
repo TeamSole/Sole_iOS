@@ -29,7 +29,8 @@ struct StringConstant {
     static let helloWeAreSole: String = "안녕하세요.\n지도 위의 발자국, SOLE입니다."
     static let helpCenterMail: String = "회원 정보 문의: team.sole12@gmail.com"
     
-    
+    // MARK: I
+    static let introduceShortComment: String = "한 줄 소개"
     // MARK: L
     static let logOut: String = "로그아웃"
     static let letsUseAppWithSole: String = "쏠과 함께 지도 위에 나만의 발자국을 남겨봐요 :)"
@@ -49,6 +50,7 @@ struct StringConstant {
     static let privacyPolicy: String = "개인정보 처리방침"
     
     // MARK: S
+    static let saveChangedInfo: String = "변경사항 저장하기"
     static let setMyTasty: String = "취향 설정하기"
     static let signInWithKakao: String = "Kakao로 계속하기"
     static let signInWithApple: String = "Apple로 계속하기"
@@ -72,5 +74,8 @@ struct StringConstant {
     
     // MARK: V
     static let version: String = "버전"
+    
+    // MARK: W
+    static let withdrawl: String = "회원탈퇴"
    
 }
