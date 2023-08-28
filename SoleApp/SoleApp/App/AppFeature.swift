@@ -38,6 +38,10 @@ struct AppFeature: Reducer {
                 state = .signIn(SignInFeature.State())
                 return .none
                 
+            case .main(.home(.myPage(.presented(.accountSetting(.presented(.moveSignIn)))))):
+                state = .signIn(SignInFeature.State())
+                return .none
+                
             case .loading(.moveToHome):
                 state = .main(MainFeature.State())
                 return .none

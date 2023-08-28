@@ -12,12 +12,14 @@ struct EditAccountModelRequest: Codable {
     var nickname: String = ""
 }
 
-struct EditAccountModelResponse: Codable {
+struct EditAccountModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: DataModel?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var description: String?
         var follower: Int?
         var following: Int?

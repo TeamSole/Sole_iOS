@@ -39,6 +39,8 @@ struct AccountSettingFeature: Reducer {
         case changedNicknameInput(String)
         case didTappedDismissButton
         case didTappedSaveButton
+        case editAccountInfoResponse(TaskResult<EditAccountModelResponse>)
+        case moveSignIn
         case selectProfileImage(UIImage)
     }
     
@@ -68,9 +70,30 @@ struct AccountSettingFeature: Reducer {
                 state.isBusyAPI = true
                 return .none
                 
+            case .editAccountInfoResponse(.success(let response)):
+                if response.success == true {
+                    return .send(.moveSignIn)
+                }
+                return .none
+                
+            case .editAccountInfoResponse(.failure(let error)):
+                debugPrint(error)
+                return .none
+                
+            case .moveSignIn:
+                resetAccountInfo()
+                return .none
+                
             case .selectProfileImage(let image):
                 state.selectedImage = image
                 return .none
+            }
+            
+            func resetAccountInfo() {
+                Utility.delete(key: Constant.token)
+                Utility.delete(key: Constant.refreshToken)
+                Utility.delete(key: Constant.loginPlatform)
+                Utility.delete(key: Constant.profileImage)
             }
         }
     }

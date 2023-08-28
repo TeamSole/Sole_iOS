@@ -13,6 +13,7 @@ struct MyPageClient {
     var getAccountInfo: () async throws -> (MyPageResponse)
     var editAccountInfo: (EditAccountModelRequest, UIImage?) async throws -> (EditAccountModelResponse)
     var logOut: () async throws -> (BaseResponse)
+    var withdrawal: () async throws -> (BaseResponse)
 }
 
 extension MyPageClient: DependencyKey {
@@ -43,6 +44,11 @@ extension MyPageClient: DependencyKey {
         },
         logOut: {
             let request = API.makeDataRequest(MyPageTarget.logOut)
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
+        },
+        withdrawal: {
+            let request = API.makeDataRequest(MyPageTarget.withdrawal)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         }

@@ -11,6 +11,7 @@ import Alamofire
 enum MyPageTarget {
     case accountInfo
     case logOut
+    case withdrawal
 }
 
 extension MyPageTarget: TargetType {
@@ -25,6 +26,9 @@ extension MyPageTarget: TargetType {
             
         case .logOut:
             return .patch
+            
+        case .withdrawal:
+            return .delete
         }
     }
     
@@ -35,13 +39,14 @@ extension MyPageTarget: TargetType {
             
         case .logOut:
             return K.Path.logout
+            
+        case .withdrawal:
+            return K.Path.withdrawal
         }
     }
     
     var headers: Alamofire.HTTPHeaders {
         return [
-//            "Content-Type": "application/json",
-            "Authorization": Utility.load(key: Constant.token)
         ]
     }
     
