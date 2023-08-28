@@ -27,7 +27,8 @@ extension MyPageClient: DependencyKey {
         editAccountInfo: { parameter, image in
             
             let url = K.baseUrl + K.Path.myAccountInfo
-            let header: HTTPHeaders = K.Header.multiplatformHeader
+            var header: HTTPHeaders = K.Header.multiplatformHeader
+            header.add(name: "Authorization", value: Utility.load(key: Constant.token))
             
             let data = try await API.session.upload(multipartFormData: { multipart in
                 let data = try? JSONEncoder().encode(parameter)
@@ -35,7 +36,7 @@ extension MyPageClient: DependencyKey {
                 if let image = image?.jpegData(compressionQuality: 0.1) {
                     multipart.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
                 }
-            }, to: url, method: .post, headers: header)
+            }, to: url, method: .put, headers: header)
             .validate()
             .serializingData()
             .value

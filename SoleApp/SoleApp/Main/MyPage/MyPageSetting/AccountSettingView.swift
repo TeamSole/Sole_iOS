@@ -12,7 +12,6 @@ import ComposableArchitecture
 
 struct AccountSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @StateObject var viewModel: AccountSettingViewModel = AccountSettingViewModel()
     
     @State private var nickName: String = ""
     @State private var introduceInfo: String = ""
@@ -49,17 +48,7 @@ struct AccountSettingView: View {
         .navigationBarHidden(true)
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: .withdrawal,
                                             complete: {
-            viewModel.withdrawal {
-                let window = UIApplication
-                            .shared
-                            .connectedScenes
-                            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                            .first { $0.isKeyWindow }
-
-                        window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(), reducer: { AppFeature() }))
-                            .environmentObject(mainViewModel))
-                        window?.makeKeyAndVisible()
-            }
+            viewStore.send(.didTappedWithdrawalButton)
         }))
         .ignoresSafeArea(.keyboard)
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
@@ -99,7 +88,7 @@ extension AccountSettingView {
     
     private var profilImageView: some View {
         ZStack(alignment: .bottomTrailing) {
-            if viewModel.profileImage == nil {
+            if viewStore.selectedImage == nil {
                 KFImage(URL(string: viewStore.accountInfo.profileImgUrl ?? ""))
                     .placeholder {
                         Image(uiImage: UIImage(named: "profile56") ?? UIImage())
@@ -113,7 +102,7 @@ extension AccountSettingView {
                            height: 100.0)
                     .cornerRadius(.infinity)
             } else {
-                Image(uiImage: viewModel.profileImage ?? UIImage())
+                Image(uiImage: viewStore.selectedImage ?? UIImage())
                     .resizable()
                     .frame(width: 100.0,
                            height: 100.0)
@@ -134,7 +123,7 @@ extension AccountSettingView {
                       ? "appleComponent"
                       : "kakaoComponent")
                 .padding(.trailing, 4.0)
-                Text(viewModel.accountInfo.social ?? "")
+                Text(viewStore.accountInfo.social ?? "")
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }
@@ -157,7 +146,7 @@ extension AccountSettingView {
                       ? "appleComponent"
                       : "kakaoComponent")
                 .padding(.trailing, 4.0)
-                Text(viewModel.accountInfo.social ?? "")
+                Text(viewStore.accountInfo.social ?? "")
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }

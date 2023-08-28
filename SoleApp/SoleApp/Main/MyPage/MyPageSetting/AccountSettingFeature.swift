@@ -39,12 +39,15 @@ struct AccountSettingFeature: Reducer {
         case changedNicknameInput(String)
         case didTappedDismissButton
         case didTappedSaveButton
+        case didTappedWithdrawalButton
         case editAccountInfoResponse(TaskResult<EditAccountModelResponse>)
         case moveSignIn
         case selectProfileImage(UIImage)
+        case withdrawalResponse(TaskResult<BaseResponse>)
     }
     
     @Dependency(\.dismiss) var dismiss
+    @Dependency(\.myPageClient) var myPageClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -68,15 +71,36 @@ struct AccountSettingFeature: Reducer {
                 guard state.isSavable == true,
                       state.isBusyAPI == false else { return .none }
                 state.isBusyAPI = true
-                return .none
+                let parameter = EditAccountModelRequest(description: state.descriptionInput, nickname: state.nicknameInput)
+                return .run { [image = state.selectedImage] send in
+                    await send(.editAccountInfoResponse(
+                        TaskResult {
+                            try await myPageClient.editAccountInfo(parameter, image)
+                        }
+                    ))
+                }
+                
+            case .didTappedWithdrawalButton:
+                return .run { send in
+                    await send(.withdrawalResponse(
+                        TaskResult {
+                            try await myPageClient.withdrawal()
+                        }
+                    ))
+                }
                 
             case .editAccountInfoResponse(.success(let response)):
+                state.isBusyAPI = false
                 if response.success == true {
-                    return .send(.moveSignIn)
+                    if let imageUrl = response.data?.profileImgUrl {
+                        Utility.save(key: Constant.profileImage, value: imageUrl)
+                        state.selectedImage = nil
+                    }
                 }
                 return .none
                 
             case .editAccountInfoResponse(.failure(let error)):
+                state.isBusyAPI = false
                 debugPrint(error)
                 return .none
                 
@@ -86,6 +110,16 @@ struct AccountSettingFeature: Reducer {
                 
             case .selectProfileImage(let image):
                 state.selectedImage = image
+                return .none
+                
+            case .withdrawalResponse(.success(let response)):
+                if response.success == true {
+                    return .send(.moveSignIn)
+                }
+                return .none
+                
+            case .withdrawalResponse(.failure(let error)):
+                debugPrint(error)
                 return .none
             }
             
