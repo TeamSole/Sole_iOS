@@ -95,25 +95,6 @@ extension HomeView {
                         .cornerRadius(.infinity)
                 }
             })
-//            NavigationLink(destination: {
-//                MyPageView(store: Store(initialState: MyPageFeature.State(), reducer: { MyPageFeature() }))
-//                    .environmentObject(mainViewModel)
-//            }, label: {
-//                if Utility.load(key: Constant.profileImage).isEmpty {
-//                    Image("profile24")
-//                } else {
-//                    KFImage(URL(string: Utility.load(key: Constant.profileImage)))
-//                        .placeholder {
-//                            Image(uiImage: UIImage(named: "profile24") ?? UIImage())
-//                        }
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(width: 24.0,
-//                               height: 24.0)
-//                        .cornerRadius(.infinity)
-//                }
-//                
-//            })
         }
         .frame(height: 50.0)
         .padding(.horizontal, 16.0)

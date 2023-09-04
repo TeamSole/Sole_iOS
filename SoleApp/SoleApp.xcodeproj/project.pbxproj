@@ -441,6 +441,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A4261E742AA6221A00F9786A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */,
+				A47EEAD529C9AE07006BA3DB /* CourseModel.swift */,
+				A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */,
+				A47EEADB29C9F800006BA3DB /* LocationModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +824,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A4261E742AA6221A00F9786A /* Home */,
 				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
 				A49D050B2A9A21AB00274C8D /* Auth */,
 				A4DDA6C12A7DF28C00017C49 /* SignUp */,
@@ -856,10 +868,6 @@
 				A4E052ED29BF4C9600FDB84B /* HomeView.swift */,
 				A49D05042A96453800274C8D /* HomeFeature.swift */,
 				A47EEACF29C99A86006BA3DB /* HomeViewModel.swift */,
-				A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */,
-				A47EEAD529C9AE07006BA3DB /* CourseModel.swift */,
-				A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */,
-				A47EEADB29C9F800006BA3DB /* LocationModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
