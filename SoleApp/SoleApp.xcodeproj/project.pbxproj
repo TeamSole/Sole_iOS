@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
+		A4261E782AA6286400F9786A /* HomeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4261E772AA6286400F9786A /* HomeTarget.swift */; };
+		A4261E792AA6286400F9786A /* HomeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4261E772AA6286400F9786A /* HomeTarget.swift */; };
 		A42D27152A768A8C003B11E5 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27142A768A8C003B11E5 /* AppFeature.swift */; };
 		A42D27162A768A8C003B11E5 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D27142A768A8C003B11E5 /* AppFeature.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
@@ -266,6 +268,7 @@
 /* Begin PBXFileReference section */
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		A4261E772AA6286400F9786A /* HomeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTarget.swift; sourceTree = "<group>"; };
 		A42D27142A768A8C003B11E5 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -448,6 +451,14 @@
 				A47EEAD529C9AE07006BA3DB /* CourseModel.swift */,
 				A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */,
 				A47EEADB29C9F800006BA3DB /* LocationModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A4261E762AA6284C00F9786A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A4261E772AA6286400F9786A /* HomeTarget.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -733,6 +744,7 @@
 		A481DF9D2A9AE3DD00AC7BF6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A4261E742AA6221A00F9786A /* Home */,
 				A481DF9E2A9AE3F300AC7BF6 /* MyPage */,
 				A481DF9F2A9AE52000AC7BF6 /* SignUp */,
 			);
@@ -824,7 +836,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A4261E742AA6221A00F9786A /* Home */,
+				A4261E762AA6284C00F9786A /* Home */,
 				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
 				A49D050B2A9A21AB00274C8D /* Auth */,
 				A4DDA6C12A7DF28C00017C49 /* SignUp */,
@@ -1129,6 +1141,7 @@
 				A49D05102A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
 				A47EEAD029C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05022A94F04E00274C8D /* IntroFeature.swift in Sources */,
+				A4261E782AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
@@ -1245,6 +1258,7 @@
 				A49D05112A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
 				A47EEAD129C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05032A94F04E00274C8D /* IntroFeature.swift in Sources */,
+				A4261E792AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,

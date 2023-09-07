@@ -47,7 +47,6 @@ extension MyPageTarget: TargetType {
     
     var headers: Alamofire.HTTPHeaders {
         return [
-//            "Content-Type": "application/json",
             "Authorization": Utility.load(key: Constant.token)
         ]
     }
