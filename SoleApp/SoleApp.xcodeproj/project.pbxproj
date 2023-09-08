@@ -463,6 +463,27 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		A42E42AC2AAAEF02003D242E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEA5229C1EB7B006BA3DB /* App */,
+				A49D04FD2A94F02900274C8D /* Intro */,
+				A4D983CB299F64E3008C599D /* Main */,
+				A46B46E42994B44E001FAED3 /* Signin */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A42E42AD2AAAEF57003D242E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4C31C8229913CF00014F458 /* Assets.xcassets */,
+				A4C31C8729913CF00014F458 /* Info.plist */,
+				A4C31C9B2991427D0014F458 /* Info-dev.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +796,7 @@
 			children = (
 				A49D04FE2A94F04100274C8D /* IntroView.swift */,
 				A49D05012A94F04E00274C8D /* IntroFeature.swift */,
+				A4C31C8429913CF00014F458 /* LaunchScreen.storyboard */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -813,22 +835,16 @@
 		A4C31C7829913CF00014F458 /* SoleApp */ = {
 			isa = PBXGroup;
 			children = (
-				A481DF9D2A9AE3DD00AC7BF6 /* Data */,
-				A4C8DD572A6BAB4D000F4D62 /* Network */,
-				A47EEA6429C45B88006BA3DB /* Util */,
-				A47EEA5229C1EB7B006BA3DB /* App */,
 				A4597BD329A9A1A200B06132 /* API */,
 				A4712C9529A1DEDD00CE1A59 /* Constant */,
-				A49D04FD2A94F02900274C8D /* Intro */,
-				A4D983CB299F64E3008C599D /* Main */,
-				A46B46E42994B44E001FAED3 /* Signin */,
-				A4D983CA299F64CD008C599D /* System */,
-				A46B46F029966F2B001FAED3 /* Font */,
+				A481DF9D2A9AE3DD00AC7BF6 /* Data */,
 				A46B46E02993125C001FAED3 /* Extension */,
-				A4C31C8229913CF00014F458 /* Assets.xcassets */,
-				A4C31C8429913CF00014F458 /* LaunchScreen.storyboard */,
-				A4C31C8729913CF00014F458 /* Info.plist */,
-				A4C31C9B2991427D0014F458 /* Info-dev.plist */,
+				A46B46F029966F2B001FAED3 /* Font */,
+				A4C8DD572A6BAB4D000F4D62 /* Network */,
+				A42E42AC2AAAEF02003D242E /* Presentation */,
+				A42E42AD2AAAEF57003D242E /* Resources */,
+				A4D983CA299F64CD008C599D /* System */,
+				A47EEA6429C45B88006BA3DB /* Util */,
 			);
 			path = SoleApp;
 			sourceTree = "<group>";

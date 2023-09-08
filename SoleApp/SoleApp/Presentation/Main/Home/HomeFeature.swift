@@ -15,6 +15,7 @@ struct HomeFeature: Reducer {
     enum Action: Equatable {
         case didTapMyPageButton
         case myPage(PresentationAction<MyPageFeature.Action>)
+        
     }
     
     var body: some Reducer<State, Action> {
