@@ -1543,7 +1543,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3AQ2WDVH35;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SoleApp/Info.plist;
+				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SOLE 쏠";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1577,7 +1577,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3AQ2WDVH35;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SoleApp/Info.plist;
+				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SOLE 쏠";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1612,7 +1612,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3AQ2WDVH35;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SoleApp/Info-dev.plist";
+				INFOPLIST_FILE = "SoleApp/Resources/Info-dev.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SOLE-DEV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1649,7 +1649,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3AQ2WDVH35;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SoleApp/Info-dev.plist";
+				INFOPLIST_FILE = "SoleApp/Resources/Info-dev.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SOLE-DEV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

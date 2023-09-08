@@ -39,13 +39,13 @@ struct HomeView: View {
             }
             floatingButton
         }
-        .onAppear {
+        .onLoaded {
             if mainViewModel.isFirstSignUp == true {
                 isShowFirstSelectTagView = true
             }
             viewModel.locationManager.requestLocation()
             viewModel.getRecommendCourses()
-            viewModel.getCourses()
+            viewStore.send(.viewDidLoad)
         }
         .fullScreenCover(isPresented: $isShowFirstSelectTagView,
                          content: {
@@ -196,7 +196,7 @@ extension HomeView {
                     
             }
             .padding(.bottom, 10.0)
-            if viewModel.courses.isEmpty {
+            if viewStore.courses.isEmpty {
                 emptyTasteView
             } else {
                 Text(StringConstant.collectYourTastyCourses)
@@ -206,12 +206,12 @@ extension HomeView {
                            alignment: .leading)
                     .padding(.bottom, 10.0)
                 
-                ForEach(0..<viewModel.courses.count, id: \.self) { index in
+                ForEach(0..<viewStore.courses.count, id: \.self) { index in
                     NavigationLink(destination: {
-                        CourseDetailView(courseId: viewModel.courses[index].courseId ?? 0,
-                                         isScrapped: viewModel.courses[index].isScrapped)
+                        CourseDetailView(courseId: viewStore.courses[index].courseId ?? 0,
+                                         isScrapped: viewStore.courses[index].isScrapped)
                     }, label: {
-                        userTasteCourseItem(item: viewModel.courses[index], index: index)
+                        userTasteCourseItem(item: viewStore.courses[index], index: index)
                     })
                     
                 }
