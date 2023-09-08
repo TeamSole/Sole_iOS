@@ -45,25 +45,6 @@ private struct SizePreferenceKey: PreferenceKey {
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }
 
-struct ViewDidLoadModifier: ViewModifier {
-    @State private var didLoad = false
-    private let action: (() -> Void)?
-
-    init(perform action: (() -> Void)? = nil) {
-        self.action = action
-    }
-
-    func body(content: Content) -> some View {
-        content.onAppear {
-            if self.didLoad == false {
-                self.didLoad = true
-                self.action?()
-            }
-        }
-    }
-}
-
-
 struct RoundedCorners: View {
     var color: Color = .blue
     var tl: CGFloat = 0.0
