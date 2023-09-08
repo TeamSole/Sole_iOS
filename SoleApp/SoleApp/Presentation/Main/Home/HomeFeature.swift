@@ -15,6 +15,7 @@ struct HomeFeature: Reducer {
     enum Action: Equatable {
         case didTapMyPageButton
         case myPage(PresentationAction<MyPageFeature.Action>)
+        case viewDidLoad
         
     }
     
@@ -26,6 +27,9 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .myPage:
+                return .none
+                
+            case .viewDidLoad:
                 return .none
             }
             
