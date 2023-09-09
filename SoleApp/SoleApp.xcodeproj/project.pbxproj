@@ -16,6 +16,10 @@
 		A42E42B12AAAF11B003D242E /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42AF2AAAEFF8003D242E /* ViewDidLoadModifier.swift */; };
 		A42E42B32AAAF1BC003D242E /* HomeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B22AAAF1BC003D242E /* HomeClient.swift */; };
 		A42E42B42AAAF1BC003D242E /* HomeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B22AAAF1BC003D242E /* HomeClient.swift */; };
+		A42E42B72AAB0F88003D242E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B62AAB0F88003D242E /* LocationManager.swift */; };
+		A42E42B82AAB0F88003D242E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B62AAB0F88003D242E /* LocationManager.swift */; };
+		A42E42BA2AAB216C003D242E /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B92AAB216C003D242E /* LocationClient.swift */; };
+		A42E42BB2AAB216C003D242E /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B92AAB216C003D242E /* LocationClient.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -276,6 +280,8 @@
 		A42D27142A768A8C003B11E5 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		A42E42AF2AAAEFF8003D242E /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		A42E42B22AAAF1BC003D242E /* HomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClient.swift; sourceTree = "<group>"; };
+		A42E42B62AAB0F88003D242E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A42E42B92AAB216C003D242E /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -498,6 +504,15 @@
 				A42E42AF2AAAEFF8003D242E /* ViewDidLoadModifier.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A42E42B52AAB0F68003D242E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				A42E42B62AAB0F88003D242E /* LocationManager.swift */,
+				A42E42B92AAB216C003D242E /* LocationClient.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
@@ -856,6 +871,7 @@
 				A481DF9D2A9AE3DD00AC7BF6 /* Data */,
 				A46B46E02993125C001FAED3 /* Extension */,
 				A46B46F029966F2B001FAED3 /* Font */,
+				A42E42B52AAB0F68003D242E /* Location */,
 				A4C8DD572A6BAB4D000F4D62 /* Network */,
 				A42E42AC2AAAEF02003D242E /* Presentation */,
 				A42E42AD2AAAEF57003D242E /* Resources */,
@@ -1244,6 +1260,7 @@
 				A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3A29BF5AB40026D961 /* ViewExtension.swift in Sources */,
 				A46B470D29967086001FAED3 /* UIFont.swift in Sources */,
+				A42E42B72AAB0F88003D242E /* LocationManager.swift in Sources */,
 				A4DCECF32A73F8CF00FA2226 /* StringConstant.swift in Sources */,
 				A4DCECF02A73F88600FA2226 /* SignInFeature.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
@@ -1272,6 +1289,7 @@
 				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
+				A42E42BA2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
@@ -1363,6 +1381,7 @@
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
 				A46B3B3B29BF5AB40026D961 /* ViewExtension.swift in Sources */,
+				A42E42B82AAB0F88003D242E /* LocationManager.swift in Sources */,
 				A4DCECF42A73F8CF00FA2226 /* StringConstant.swift in Sources */,
 				A4DCECF12A73F88600FA2226 /* SignInFeature.swift in Sources */,
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
@@ -1391,6 +1410,7 @@
 				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
+				A42E42BB2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import CoreLocation
 
 struct HomeFeature: Reducer {
     typealias RecommendCourse = RecommendCourseModel.DataModel
@@ -20,13 +21,17 @@ struct HomeFeature: Reducer {
         case didTapMyPageButton
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
+        case getLocation
+        case getLocationResponse(TaskResult<CLLocationCoordinate2D>)
         case getRecommendedCourses
+        case getRecommendedCoursesResponse(TaskResult<RecommendCourseModel>)
         case myPage(PresentationAction<MyPageFeature.Action>)
         case viewDidLoad
         
     }
     
     @Dependency(\.homeClient) var homeClient
+    @Dependency(\.locationClient) var locationClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -55,14 +60,57 @@ struct HomeFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .getLocation:
+                return .run { send in
+                    // 원래는 locationClient에서 위치 정보를 호출해야하나
+                    // 테스트 용도로 run에서 호출해봄
+                    
+//                        let locationManager = LocationManager()
+//                        let info = try await locationManager.updateLocation()
+                    // 여기 아래로 호출 안됨
+//                    print("------------")
+//                    print(info)
+                        await send(.getLocationResponse(
+                            TaskResult { try await locationClient.updateLocation() }
+                        ))
+                    
+                }
+                
+            case .getLocationResponse(.success(let location)):
+                debugPrint(location)
+                print("--------------------")
+                return .none
+                
+            case .getLocationResponse(.failure(let error)):
+                debugPrint(error)
+                return .none
+                
             case .getRecommendedCourses:
+                return .none
+//                return .run { send in
+//                    await send(.getRecommendedCoursesResponse(
+//                        TaskResult { try await homeClient.getCourses() }
+//                    ))
+//                }
+                
+            case .getRecommendedCoursesResponse(.success(let response)):
+                if response.success == true,
+                   let data = response.data {
+                    state.recommendCourses = data
+                } else {
+                    debugPrint(response.message ?? "")
+                }
+                return .none
+                
+            case .getRecommendedCoursesResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
                 return .none
                 
             case .myPage:
                 return .none
                 
             case .viewDidLoad:
-                return .merge([.send(.getCourses), .send(.getRecommendedCourses)])
+                return .merge([.send(.getCourses), .send(.getLocation)])
             }
             
         }
@@ -70,4 +118,13 @@ struct HomeFeature: Reducer {
             MyPageFeature()
         }
     }
+}
+
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs == rhs
+    }
+    
+    
 }

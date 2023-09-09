@@ -11,7 +11,7 @@ import Alamofire
 enum HomeTarget {
     case getCourses
     case getNextCourses
-    case getRecommendCourses
+    case getRecommendedCourses
 }
 
 extension HomeTarget: TargetType {
@@ -27,7 +27,7 @@ extension HomeTarget: TargetType {
         switch self {
         case .getCourses, .getNextCourses:
             return K.Path.courses
-        case .getRecommendCourses:
+        case .getRecommendedCourses:
             return K.Path.recommendCourse
         }
     }
@@ -42,7 +42,7 @@ extension HomeTarget: TargetType {
         switch self {
         case .getCourses, .getNextCourses:
             return .body(nil)
-        case .getRecommendCourses:
+        case .getRecommendedCourses:
             return .body(nil)
         }
     }

@@ -43,7 +43,7 @@ struct HomeView: View {
             if mainViewModel.isFirstSignUp == true {
                 isShowFirstSelectTagView = true
             }
-            viewModel.locationManager.requestLocation()
+//            viewModel.locationManager.requestLocation()
             viewModel.getRecommendCourses()
             viewStore.send(.viewDidLoad)
         }
@@ -121,12 +121,19 @@ extension HomeView {
                 HStack(spacing: 0.0) {
                     Image("my_location")
                         .padding(4.0)
+                        .onTapGesture {
+                            viewStore.send(.getLocation)
+                            // 잘됨
+//                            Task {
+//                                let locationManager = LocationManager()
+//                                // 위치정보 반환
+//                                let info = try await locationManager.updateLocation()
+//                                print(info)
+//                                
+//                            }
+                        }
                     Text(viewModel.location.address ?? "서울 마포구")
                         .font(.pretendard(.reguler, size: 12.0))
-                }
-                .onTapGesture {
-                    viewModel.locationManager.requestLocation()
-                    
                 }
             }
             .padding(.horizontal, 16.0)

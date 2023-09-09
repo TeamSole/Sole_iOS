@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct HomeClient {
     var getCourses: () async throws -> (CourseModelResponse)
     var getNextCourses: () async throws -> (CourseModelResponse)
+    var getRecommendedCourses: () async throws -> (RecommendCourseModel)
 }
 
 extension HomeClient: DependencyKey {
@@ -24,6 +25,11 @@ extension HomeClient: DependencyKey {
             let request = API.makeDataRequest(HomeTarget.getCourses)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: CourseModelResponse.self)
+        },
+        getRecommendedCourses: {
+            let request = API.makeDataRequest(HomeTarget.getRecommendedCourses)
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: RecommendCourseModel.self)
         }
     )
 }

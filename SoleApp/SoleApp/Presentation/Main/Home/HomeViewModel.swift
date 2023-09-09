@@ -13,18 +13,13 @@ final class HomeViewModel: NSObject, ObservableObject {
     typealias RecommendCourse = RecommendCourseModel.DataModel
     typealias Course = CourseModelResponse.DataModel
     typealias Location = LocationModelResponse.CurrentGps
-    var locationManager = CLLocationManager()
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var recommendCourses: [RecommendCourse] = []
     @Published var courses: [Course] = []
     @Published var location: Location = Location()
     @Published var callingRequest: Bool = false
     
-    override init() {
-        super.init()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
+
     
 }
 
@@ -168,45 +163,45 @@ extension HomeViewModel {
     
 }
 
-extension HomeViewModel: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            print("위도: \(location.coordinate.latitude)")
-            print("경도: \(location.coordinate.longitude)")
-            setLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-    }
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedWhenInUse:
-            authorizationStatus = .authorizedWhenInUse
-            locationManager.requestLocation()
-            break
-            
-        case .restricted:
-            authorizationStatus = .restricted
-            manager.requestWhenInUseAuthorization()
-            break
-            
-        case .denied:
-            authorizationStatus = .denied
-            manager.requestWhenInUseAuthorization()
-            break
-            
-        case .notDetermined:
-            authorizationStatus = .notDetermined
-            manager.requestWhenInUseAuthorization()
-            break
-            
-        default:
-            break
-        }
-    }
-}
+//extension HomeViewModel: CLLocationManagerDelegate {
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first {
+//            print("위도: \(location.coordinate.latitude)")
+//            print("경도: \(location.coordinate.longitude)")
+//            setLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
+//        }
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        
+//    }
+//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+//        switch manager.authorizationStatus {
+//        case .authorizedWhenInUse:
+//            authorizationStatus = .authorizedWhenInUse
+//            locationManager.requestLocation()
+//            break
+//            
+//        case .restricted:
+//            authorizationStatus = .restricted
+//            manager.requestWhenInUseAuthorization()
+//            break
+//            
+//        case .denied:
+//            authorizationStatus = .denied
+//            manager.requestWhenInUseAuthorization()
+//            break
+//            
+//        case .notDetermined:
+//            authorizationStatus = .notDetermined
+//            manager.requestWhenInUseAuthorization()
+//            break
+//            
+//        default:
+//            break
+//        }
+//    }
+//}
 
 //func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
 //    switch manager.authorizationStatus {
