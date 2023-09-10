@@ -14,6 +14,7 @@ struct HomeFeature: Reducer {
     struct State: Equatable {
         @PresentationState var myPage: MyPageFeature.State?
         var courses: [Course] = []
+        var isCalledGetNextCoursesApi: Bool = false
         var recommendCourses: [RecommendCourse] = []
     }
     
@@ -21,6 +22,8 @@ struct HomeFeature: Reducer {
         case didTapMyPageButton
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
+        case getNextCourses
+        case getNextCoursesResponse(TaskResult<CourseModelResponse>)
         case getLocation
         case getLocationResponse(TaskResult<CLLocationCoordinate2D>)
         case getRecommendedCourses
@@ -57,6 +60,32 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .getCoursesResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
+                
+            case .getNextCourses:
+                guard state.isCalledGetNextCoursesApi == false,
+                      state.courses.last?.finalPage == false else { return .none }
+                state.isCalledGetNextCoursesApi = true
+                return .run { [courseId = state.courses.last?.courseId] send in
+                    let parameter = CourseModelRequest(courseId: courseId)
+                    await send(.getNextCoursesResponse(
+                        TaskResult { try await homeClient.getNextCourses(parameter) }
+                    ))
+                }
+                
+            case .getNextCoursesResponse(.success(let response)):
+                state.isCalledGetNextCoursesApi = false
+                if response.success == true,
+                   let data = response.data {
+                    state.courses += data
+                } else {
+                    debugPrint(response.message ?? "")
+                }
+                return .none
+                
+            case .getNextCoursesResponse(.failure(let error)):
+                state.isCalledGetNextCoursesApi = false
                 debugPrint(error.localizedDescription)
                 return .none
                 

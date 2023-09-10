@@ -10,7 +10,7 @@ import Alamofire
 
 enum HomeTarget {
     case getCourses
-    case getNextCourses
+    case getNextCourses(CourseModelRequest)
     case getRecommendedCourses
 }
 
@@ -40,8 +40,12 @@ extension HomeTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .getCourses, .getNextCourses:
+        case .getCourses:
             return .body(nil)
+            
+        case .getNextCourses(let parameter):
+            return .query(parameter)
+            
         case .getRecommendedCourses:
             return .body(nil)
         }

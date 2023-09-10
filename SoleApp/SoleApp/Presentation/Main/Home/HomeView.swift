@@ -351,7 +351,7 @@ extension HomeView {
     
     private var addNextPageButton: some View {
         HStack(spacing: 0.0) {
-            if viewModel.callingRequest {
+            if viewStore.isCalledGetNextCoursesApi == true {
                 ProgressView()
             } else {
                 Text(StringConstant.moreWithPlus)
@@ -366,10 +366,9 @@ extension HomeView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard viewModel.callingRequest == false else { return }
-            viewModel.getNextCourses()
+            viewStore.send(.getNextCourses)
         }
-        .isHidden(viewModel.courses.last?.finalPage == true, remove: true)
+        .isHidden(viewStore.courses.last?.finalPage == true, remove: true)
     }
     
 }
