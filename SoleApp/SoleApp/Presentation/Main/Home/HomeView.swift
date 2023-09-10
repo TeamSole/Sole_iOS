@@ -50,7 +50,7 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $isShowFirstSelectTagView,
                          content: {
             SelectTagView(selectType: .first, complete: { place, with, trans in
-                viewModel.setTaste(place: place, with: with, tras: trans)
+                viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
                 .onDisappear {
                     mainViewModel.isFirstSignUp = false
@@ -59,7 +59,8 @@ struct HomeView: View {
         .sheet(isPresented: $isShowSelectTagView,
                content: {
             SelectTagView(selectType: .add, complete: {place, with, trans in
-                viewModel.setTaste(place: place, with: with, tras: trans)})
+                viewStore.send(.setTasty(place: place, with: with, tras: trans))
+            })
         })
     }
 }

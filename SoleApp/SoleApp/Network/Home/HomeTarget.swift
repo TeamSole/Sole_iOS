@@ -12,6 +12,7 @@ enum HomeTarget {
     case getCourses
     case getNextCourses(CourseModelRequest)
     case getRecommendedCourses
+    case setTasty(CategoryModelRequest)
 }
 
 extension HomeTarget: TargetType {
@@ -20,7 +21,13 @@ extension HomeTarget: TargetType {
     }
     
     var method: Alamofire.HTTPMethod {
-        return .get
+        switch self {
+        case .getCourses, .getRecommendedCourses, .getNextCourses:
+            return .get
+            
+        case .setTasty:
+            return .patch
+        }
     }
     
     var path: String {
@@ -29,6 +36,9 @@ extension HomeTarget: TargetType {
             return K.Path.courses
         case .getRecommendedCourses:
             return K.Path.recommendCourse
+            
+        case .setTasty:
+            return K.Path.category
         }
     }
     
@@ -48,6 +58,9 @@ extension HomeTarget: TargetType {
             
         case .getRecommendedCourses:
             return .body(nil)
+            
+        case .setTasty(let parameter):
+            return .body(parameter)
         }
     }
     

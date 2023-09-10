@@ -29,6 +29,8 @@ struct HomeFeature: Reducer {
         case getRecommendedCourses
         case getRecommendedCoursesResponse(TaskResult<RecommendCourseModel>)
         case myPage(PresentationAction<MyPageFeature.Action>)
+        case setTasty(place: [String], with: [String], tras: [String])
+        case setTastyResponse(TaskResult<BaseResponse>)
         case viewDidLoad
         
     }
@@ -136,6 +138,25 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .myPage:
+                return .none
+                
+            case .setTasty(let placeCategory, let withCategory, let transCategory):
+                
+                return .run { send in
+                    let parameter = CategoryModelRequest(placeCategories: placeCategory,
+                                                         withCategories: withCategory,
+                                                         transCategories: transCategory)
+                    await send(.setTastyResponse(
+                        TaskResult { try await homeClient.setTasty(parameter) }
+                    ))
+                }
+                
+            case .setTastyResponse(.success(let response)):
+                debugPrint(response)
+                return .none
+                
+            case .setTastyResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
                 return .none
                 
             case .viewDidLoad:
