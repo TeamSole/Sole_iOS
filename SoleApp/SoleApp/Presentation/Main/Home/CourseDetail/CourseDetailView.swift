@@ -121,13 +121,13 @@ extension CourseDetailView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 7.0) {
-                    Text("팔로워 \(viewModel.courseDetail.follower ?? 0)")
+                    Text("\(StringConstant.follower) \(viewModel.courseDetail.follower ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                     Color.black
                         .frame(width: 1.0,
                                height: 11.0)
-                    Text("팔로잉 \(viewModel.courseDetail.following ?? 0)")
+                    Text("\(StringConstant.following) \(viewModel.courseDetail.following ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                         .frame(maxWidth: .infinity,
@@ -136,7 +136,7 @@ extension CourseDetailView {
                 }
             }
             .padding(.leading)
-            Text(viewModel.courseDetail.isFollowing ? "팔로잉" : "팔로우")
+            Text(viewModel.courseDetail.isFollowing ? StringConstant.following : StringConstant.follow)
                 .foregroundColor(viewModel.courseDetail.isFollowing ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
@@ -221,7 +221,7 @@ extension CourseDetailView {
     private var courseDetailSectionView: some View {
         VStack(spacing: 0.0) {
             HStack(alignment: .center, spacing: 0.0) {
-                Text("코스 상세보기")
+                Text(StringConstant.watchCourseDetail)
                     .font(.pretendard(.bold, size: 14.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
@@ -272,7 +272,7 @@ extension CourseDetailView {
                         .isHidden(item.address?.isEmpty == true, remove: true)
                     HStack(spacing: 4.0) {
                         Image("info")
-                        Text("상세정보")
+                        Text(StringConstant.moreInformation)
                             .font(.pretendard(.reguler, size: 12.0))
                             .foregroundColor(.blue_4708FA)
                             .frame(maxWidth: .infinity,
@@ -338,15 +338,15 @@ extension CourseDetailView {
     }
     
     func getActionSheet() -> ActionSheet {
-        let button1: ActionSheet.Button = .default(Text("수정"),
+        let button1: ActionSheet.Button = .default(Text(StringConstant.fix),
                                                    action: {
             showCourseEditView = true
         })
-        let button2: ActionSheet.Button = .default(Text("삭제"), action: {
+        let button2: ActionSheet.Button = .default(Text(StringConstant.delete), action: {
             alertType = .remove
             showPopup = true
         })
-        let button3: ActionSheet.Button = .cancel(Text("취소"))
+        let button3: ActionSheet.Button = .cancel(Text(StringConstant.cancel))
         
         let title = Text("")
         

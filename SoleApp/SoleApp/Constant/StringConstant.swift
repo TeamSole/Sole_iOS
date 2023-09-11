@@ -13,15 +13,21 @@ struct StringConstant {
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
     // MARK: C
+    static let cancel: String = "취소"
     static let collectYourTastyCourses: String = "설정한 취향태그에 맞는 코스만 모았어요 :)"
     static let completeSignUp: String = "회원가입 완료!"
     static let continueAfterAgree: String = "동의하고 계속하기"
+    
+    // MARK: D
+    static let delete: String = "삭제"
     
     // MARK: E
     static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
     static let emptyTastyTags: String = "설정한 취향 태그가 없습니다."
     
     // MARK: F
+    static let fix: String = "수정"
+    static let follow: String = "팔로우"
     static let follower: String = "팔로워"
     static let following: String = "팔로잉"
     
@@ -37,6 +43,7 @@ struct StringConstant {
     
     // MARK: M
     static let maxLength10ForNicknameInput: String = "닉네임은 최대 10자까지 작성이 가능해요."
+    static let moreInformation: String = "상세정보"
     static let moreWithPlus: String = "더보기 +"
     static let move: String = "이동"
     static let myNearPopularCourse: String = "내 주변 인기 코스"
@@ -76,6 +83,7 @@ struct StringConstant {
     static let version: String = "버전"
     
     // MARK: W
+    static let watchCourseDetail: String = "코스 상세보기"
     static let withdrawl: String = "회원탈퇴"
    
 }
