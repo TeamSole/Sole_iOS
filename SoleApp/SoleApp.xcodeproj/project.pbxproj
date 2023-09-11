@@ -20,6 +20,8 @@
 		A42E42B82AAB0F88003D242E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B62AAB0F88003D242E /* LocationManager.swift */; };
 		A42E42BA2AAB216C003D242E /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B92AAB216C003D242E /* LocationClient.swift */; };
 		A42E42BB2AAB216C003D242E /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42B92AAB216C003D242E /* LocationClient.swift */; };
+		A42E42BE2AADBB66003D242E /* ScrapTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42BD2AADBB66003D242E /* ScrapTarget.swift */; };
+		A42E42BF2AADBB66003D242E /* ScrapTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42BD2AADBB66003D242E /* ScrapTarget.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -282,6 +284,7 @@
 		A42E42B22AAAF1BC003D242E /* HomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClient.swift; sourceTree = "<group>"; };
 		A42E42B62AAB0F88003D242E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A42E42B92AAB216C003D242E /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		A42E42BD2AADBB66003D242E /* ScrapTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTarget.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -513,6 +516,14 @@
 				A42E42B92AAB216C003D242E /* LocationClient.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		A42E42BC2AADBB4B003D242E /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				A42E42BD2AADBB66003D242E /* ScrapTarget.swift */,
+			);
+			path = Scrap;
 			sourceTree = "<group>";
 		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
@@ -887,6 +898,7 @@
 				A4261E762AA6284C00F9786A /* Home */,
 				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
 				A49D050B2A9A21AB00274C8D /* Auth */,
+				A42E42BC2AADBB4B003D242E /* Scrap */,
 				A4DDA6C12A7DF28C00017C49 /* SignUp */,
 				A4DDA6B72A7D2D7B00017C49 /* Common */,
 			);
@@ -1286,6 +1298,7 @@
 				A481DFA12A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A49D04FF2A94F04100274C8D /* IntroView.swift in Sources */,
+				A42E42BE2AADBB66003D242E /* ScrapTarget.swift in Sources */,
 				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
@@ -1407,6 +1420,7 @@
 				A481DFA22A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A49D05002A94F04100274C8D /* IntroView.swift in Sources */,
+				A42E42BF2AADBB66003D242E /* ScrapTarget.swift in Sources */,
 				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,

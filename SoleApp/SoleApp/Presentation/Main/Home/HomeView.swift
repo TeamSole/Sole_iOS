@@ -250,8 +250,7 @@ extension HomeView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love" )
                         .onTapGesture {
-                            viewModel.courses[index].like?.toggle()
-                            viewModel.scrap(courseId: item.courseId ?? 0)
+                            viewStore.send(.scrap(courseId: item.courseId ?? 0, index: index))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")

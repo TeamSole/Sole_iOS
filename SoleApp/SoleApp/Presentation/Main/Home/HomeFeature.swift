@@ -29,6 +29,8 @@ struct HomeFeature: Reducer {
         case getRecommendedCourses
         case getRecommendedCoursesResponse(TaskResult<RecommendCourseModel>)
         case myPage(PresentationAction<MyPageFeature.Action>)
+        case scrap(courseId: Int, index: Int)
+        case scrapResponse(TaskResult<BaseResponse>)
         case setTasty(place: [String], with: [String], tras: [String])
         case setTastyResponse(TaskResult<BaseResponse>)
         case viewDidLoad
@@ -138,6 +140,23 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .myPage:
+                return .none
+                
+            case .scrap(let courseId, let index):
+                state.courses[index].like?.toggle()
+                
+                return .run { send in
+                    await send(.setTastyResponse(
+                        TaskResult { try await homeClient.scrap(courseId) }
+                    ))
+                }
+                
+            case .scrapResponse(.success(let response)):
+                debugPrint(response)
+                return .none
+                
+            case .scrapResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
                 return .none
                 
             case .setTasty(let placeCategory, let withCategory, let transCategory):
