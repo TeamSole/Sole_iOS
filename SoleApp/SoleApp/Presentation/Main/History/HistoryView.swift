@@ -40,8 +40,10 @@ struct HistoryView: View {
             }
             floatingButton
         }
+        .onLoaded {
+            viewStore.send(.viewDidLoad)
+        }
         .onAppear {
-            viewModel.getUserProfile()
             viewModel.getUserHistoies()
         }
         .sheet(isPresented: $isShowSelectTagView,
@@ -85,7 +87,7 @@ extension HistoryView {
                 .scaledToFill()
                 .cornerRadius(.infinity)
             VStack(spacing: 0.0) {
-                Text("\(viewModel.profileDescription.nickname ?? "-")님의 발자국")
+                Text("\(viewStore.userHistoryDescription.nickname ?? "-")님의 발자국")
                     .foregroundColor(.black)
                     .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
@@ -94,13 +96,13 @@ extension HistoryView {
                     Text("지금까지 ")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.black)
-                    + Text("\(viewModel.profileDescription.totalDate ?? 0)")
+                    + Text("\(viewStore.userHistoryDescription.totalDate ?? 0)")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.blue_4708FA)
                     + Text("일간 ")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.black)
-                    + Text("\(viewModel.profileDescription.totalPlaces ?? 0)")
+                    + Text("\(viewStore.userHistoryDescription.totalPlaces ?? 0)")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.blue_4708FA)
                     + Text("곳의 장소를 방문하며, ")
@@ -114,7 +116,7 @@ extension HistoryView {
                     Text("이번달 총 ")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.black)
-                    + Text("\(viewModel.profileDescription.totalCourses ?? 0)")
+                    + Text("\(viewStore.userHistoryDescription.totalCourses ?? 0)")
                         .font(.pretendard(.reguler, size: 14.0))
                         .foregroundColor(.blue_4708FA)
                     + Text("개의 코스를 기록했어요.")

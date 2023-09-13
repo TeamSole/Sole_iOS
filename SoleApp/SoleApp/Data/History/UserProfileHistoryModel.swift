@@ -8,12 +8,14 @@
 import Foundation
 
 
-struct UserProfileHistoryModelResponse: Codable {
+struct UserProfileHistoryModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: DataModel?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var totalCourses: Int?
         var nickname: String?
         var totalDate: Int?

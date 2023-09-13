@@ -19,3 +19,10 @@ extension HistoryClient: DependencyKey {
             return try API.responseDecodeToJson(data: data, response: UserProfileHistoryModelResponse.self)
         })
 }
+
+extension DependencyValues {
+    var historyClient: HistoryClient {
+        get { self[HistoryClient.self] }
+        set { self[HistoryClient.self] = newValue }
+    }
+}
