@@ -9,6 +9,7 @@ import Foundation
 
 struct StringConstant {
     // MARK: A
+    static let accompony: String = "동행"
     static let agreeAllTerms: String = "약관 전체 동의"
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
@@ -22,6 +23,7 @@ struct StringConstant {
     static let delete: String = "삭제"
     
     // MARK: E
+    static let emptyCourseRegistered: String = "아직 추가한 장소가 없습니다."
     static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
     static let emptyTastyTags: String = "설정한 취향 태그가 없습니다."
     
@@ -46,15 +48,20 @@ struct StringConstant {
     static let moreInformation: String = "상세정보"
     static let moreWithPlus: String = "더보기 +"
     static let move: String = "이동"
+    static let myHistory: String = "나의 기록"
     static let myNearPopularCourse: String = "내 주변 인기 코스"
     static let myPage: String = "마이페이지"
     static let myTastyCourse: String = "내 취향 코스"
     
     // MARK: P
+    static let place: String = "장소"
     static let pleaseAgreeOfTermsForSignUp: String = "회원가입을 위해 약관에 동의해주세요."
     static let pleaseTypeNickname: String = "닉네임을 입력해 주세요."
     static let pleasetypeNicknameMaxLength18: String = "닉네임을 입력해주세요. (최대 10자)"
     static let privacyPolicy: String = "개인정보 처리방침"
+    
+    // MARK: R
+    static let registeredCourse: String = "기록한 코스"
     
     // MARK: S
     static let saveChangedInfo: String = "변경사항 저장하기"
@@ -80,6 +87,7 @@ struct StringConstant {
     static let usableNickname: String = "사용 가능한 닉네임입니다."
     
     // MARK: V
+    static let vehicles: String = "교통"
     static let version: String = "버전"
     
     // MARK: W

@@ -13,7 +13,7 @@ struct HistoryView: View {
     typealias History = HistoryModelResponse.DataModel
     @StateObject var viewModel: HistoryViewModel = HistoryViewModel()
     @State private var isShowSelectTagView: Bool = false
-    private let filterType: [String] = ["장소", "동행", "교통"]
+    private let filterType: [String] = [StringConstant.place, StringConstant.accompony, StringConstant.vehicles]
     @State private var placeCategories: [String] = []
     @State private var transCategories: [String] = []
     @State private var withCategories: [String] = []
@@ -54,7 +54,7 @@ struct HistoryView: View {
 extension HistoryView {
     private var naviagationBar: some View {
         HStack(spacing: 0.0) {
-            Text("나의 기록")
+            Text(StringConstant.myHistory)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -115,13 +115,6 @@ extension HistoryView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(.bottom, 16.0)
-//                Text("지금까지 \(viewModel.profileDescription.totalDate ?? 0)일간 \(viewModel.profileDescription.totalPlaces ?? 0)곳의 장소를 방문하며, 이번달 총 \(viewModel.profileDescription.totalCourses ?? 0)개의 코스를 기록했어요.")
-//                    .foregroundColor(.black)
-//                    .font(.pretendard(.reguler, size: 14.0))
-//                    .lineLimit(nil)
-//                    .frame(maxWidth: .infinity,
-//                           alignment: .leading)
-//                    .padding(.vertical, 16.0)
                     
             }
             .frame(maxWidth: .infinity,
@@ -140,7 +133,7 @@ extension HistoryView {
     
     private var courseHistoryHeader: some View {
         VStack(spacing: 12.0) {
-            Text("기록한 코스")
+            Text(StringConstant.registeredCourse)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
@@ -237,7 +230,7 @@ extension HistoryView {
     private var emptyResultView: some View {
         VStack(spacing: 17.0) {
             Image("emptyResult")
-            Text("아직 추가한 장소가 없습니다.")
+            Text(StringConstant.emptyCourseRegistered)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -281,7 +274,7 @@ extension HistoryView {
             if viewModel.apiRequestStatus {
                 ProgressView()
             } else {
-                Text("더보기 +")
+                Text(StringConstant.moreWithPlus)
             }
         }
         .frame(maxWidth: .infinity)
