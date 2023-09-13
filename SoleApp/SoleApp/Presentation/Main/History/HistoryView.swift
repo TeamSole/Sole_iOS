@@ -17,6 +17,14 @@ struct HistoryView: View {
     @State private var placeCategories: [String] = []
     @State private var transCategories: [String] = []
     @State private var withCategories: [String] = []
+    
+    private let store: StoreOf<HistoryFeature>
+    @ObservedObject var viewStore: ViewStoreOf<HistoryFeature>
+    
+    init(store: StoreOf<HistoryFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
     var body: some View {
         ZStack() {
             VStack(spacing: 0.0) {
@@ -301,6 +309,6 @@ extension HistoryView {
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        HistoryView(store: Store(initialState: HistoryFeature.State(), reducer: { HistoryFeature() }))
     }
 }

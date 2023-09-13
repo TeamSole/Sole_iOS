@@ -17,11 +17,13 @@ struct MainFeature: Reducer {
     
     struct State: Equatable {
         var home: HomeFeature.State = HomeFeature.State()
+        var history: HistoryFeature.State = HistoryFeature.State()
         var selectedTab: Tab = .HOME
     }
     
     enum Action: Equatable {
         case home(HomeFeature.Action)
+        case history(HistoryFeature.Action)
         case selectTab(Tab)
     }
     
@@ -29,9 +31,16 @@ struct MainFeature: Reducer {
         Scope(state: \.home, action: /Action.home) {
             HomeFeature()
         }
+        
+        Scope(state: \.history, action: /Action.history) {
+            HistoryFeature()
+        }
         Reduce { state, action in
             switch action {
             case .home:
+                return .none
+                
+            case .history:
                 return .none
                 
             case .selectTab(let tab):

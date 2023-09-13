@@ -33,18 +33,21 @@ struct MainTabbarView: View {
                         Text(StringConstant.tabHome)
                     }
                     .tag(MainFeature.Tab.HOME)
-                HistoryView()
+                
+                HistoryView(store: self.store.scope(state: \.history, action: MainFeature.Action.history))
                     .tabItem {
                         viewStore.selectedTab == .HISTORY ? Image("history_tap_selected") : Image("history_tap")
                         Text(StringConstant.tabHistory)
                     }
                     .tag(MainFeature.Tab.HISTORY)
+                
                 FollowingBoardView()
                     .tabItem {
                         viewStore.selectedTab == .FOLLOWING ? Image("following_tap_selected") : Image("following_tap")
                         Text(StringConstant.tabFollowing)
                     }
                     .tag(MainFeature.Tab.FOLLOWING)
+                
                 ScrapFolderView()
                     .tabItem {
                         viewStore.selectedTab == .SCRAP ? Image("scrap_tap_selected") : Image("scrap_tap")
