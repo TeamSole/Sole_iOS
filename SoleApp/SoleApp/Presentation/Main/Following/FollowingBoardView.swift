@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct FollowingBoardView: View {
     typealias boardItem = FollowBoardModelResponse.DataModel
@@ -22,8 +23,7 @@ struct FollowingBoardView: View {
                         VStack(spacing: 16.0) {
                             ForEach(0..<viewModel.boardList.count, id: \.self) { index in
                                 NavigationLink(destination: {
-                                    CourseDetailView(courseId: viewModel.boardList[index].courseId ?? 0,
-                                                     isScrapped: viewModel.boardList[index].like == true)
+                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.boardList[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                                 }, label: {
                                     courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
                                                    index: index,

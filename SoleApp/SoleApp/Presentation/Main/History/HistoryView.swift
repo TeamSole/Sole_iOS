@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct HistoryView: View {
     typealias History = HistoryModelResponse.DataModel
@@ -178,8 +179,7 @@ extension HistoryView {
             } else {
                 ForEach(0..<viewModel.histories.count, id: \.self) { index in
                     NavigationLink (destination: {
-                        CourseDetailView(courseId: viewModel.histories[index].courseId ?? 0,
-                                         isScrapped: viewModel.histories[index].like ?? false)
+                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.histories[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                     }, label: {
                         courseHistoryItem(item: viewModel.histories[index])
                     })

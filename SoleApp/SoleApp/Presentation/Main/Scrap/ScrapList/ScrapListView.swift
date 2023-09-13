@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct ScrapListView: View {
     typealias Scrap = ScrapListModelResponse.DataModel
@@ -164,8 +165,7 @@ extension ScrapListView {
         VStack(spacing: 20.0) {
             ForEach(0..<viewModel.scraps.count, id: \.self) { index in
                 NavigationLink(destination: {
-                    CourseDetailView(courseId: viewModel.scraps[index].courseId ?? 0,
-                                     isScrapped: viewModel.scraps[index].like ?? false)
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.scraps[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
                     scrapItem(item: viewModel.scraps[index], index: index)
                 })

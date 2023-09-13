@@ -18,7 +18,8 @@ struct CourseModelResponse: APIResponse {
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable, Equatable {
+    struct DataModel: Codable, Equatable, Identifiable {
+        var id: UUID? = UUID()
         var address: String?
         var courseId: Int?
         var distance: Double?

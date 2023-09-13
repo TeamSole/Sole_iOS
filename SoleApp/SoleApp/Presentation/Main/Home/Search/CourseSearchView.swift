@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct CourseSearchView: View {
     typealias Course = CourseModelResponse.DataModel
@@ -67,8 +68,7 @@ extension CourseSearchView {
         LazyVStack(spacing: 0.0) {
             ForEach(0..<viewModel.courses.count, id: \.self) { index in
                 NavigationLink(destination: {
-                    CourseDetailView(courseId: viewModel.courses[index].courseId ?? 0,
-                                     isScrapped: viewModel.courses[index].isScrapped)
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.courses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
                     userTasteCourseItem(item: viewModel.courses[index], index: index)
                 })

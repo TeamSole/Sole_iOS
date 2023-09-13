@@ -12,6 +12,7 @@ struct HomeFeature: Reducer {
     typealias RecommendCourse = RecommendCourseModel.DataModel
     typealias Course = CourseModelResponse.DataModel
     struct State: Equatable {
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         @PresentationState var myPage: MyPageFeature.State?
         var courses: [Course] = []
         var isCalledGetNextCoursesApi: Bool = false
@@ -19,6 +20,8 @@ struct HomeFeature: Reducer {
     }
     
     enum Action: Equatable {
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        case didTappedCourseDetail(courseId: Int)
         case didTapMyPageButton
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
@@ -43,6 +46,13 @@ struct HomeFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
             case .didTapMyPageButton:
                 state.myPage = MyPageFeature.State()
                 return .none
@@ -185,6 +195,9 @@ struct HomeFeature: Reducer {
         }
         .ifLet(\.$myPage, action: /Action.myPage) {
             MyPageFeature()
+        }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
         }
     }
 }

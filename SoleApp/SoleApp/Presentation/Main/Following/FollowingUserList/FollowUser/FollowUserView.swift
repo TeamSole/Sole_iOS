@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct FollowUserView: View {
     typealias Course = FollowUserModelResponse.Place
@@ -150,11 +151,11 @@ extension FollowUserView {
                 emptyResultView(title: "아직 등록한 코스가 없습니다.")
             } else {
                 ForEach(0..<(viewModel.recentCourses?.count ?? 0), id: \.self) { index in
-                    NavigationLink(destination: {
-                        CourseDetailView(courseId: viewModel.recentCourses?[index].courseId ?? 0, isScrapped: viewModel.recentCourses?[index].isScrapped ?? false)
-                    }, label: {
-                        courseItem(item: viewModel.recentCourses?[index] ?? Course(), index: index)
-                    })
+//                    NavigationLink(destination: {
+//                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.recentCourses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+//                    }, label: {
+//                        courseItem(item: viewModel.recentCourses?[index] ?? Course(), index: index)
+//                    })
                     
                 }
                 addNextPageButton

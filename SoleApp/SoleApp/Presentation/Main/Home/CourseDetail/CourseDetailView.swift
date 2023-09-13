@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 import UIKit
+import ComposableArchitecture
 
 struct CourseDetailView: View {
     typealias Place = CourseDetailModelResponse.PlaceResponseDtos
@@ -22,11 +23,15 @@ struct CourseDetailView: View {
     @State private var isFollowing: Bool = true
     @State private var showCourseEditView: Bool = false
 
-    var courseId: Int
-    @State private var isScrapped: Bool
-    init(courseId: Int, isScrapped: Bool) {
-        self.courseId = courseId
-        self._isScrapped = State(initialValue: isScrapped)
+    var courseId: Int = 0
+    @State private var isScrapped: Bool = false
+    
+    private let store: StoreOf<CourseDetailFeature>
+    @ObservedObject var viewStore: ViewStoreOf<CourseDetailFeature>
+    
+    init(store: StoreOf<CourseDetailFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
     }
     var body: some View {
         VStack(spacing: 0.0) {
@@ -370,6 +375,6 @@ extension CourseDetailView {
 
 struct CourseDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CourseDetailView(courseId: 5, isScrapped: true)
+        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: 0), reducer: { CourseDetailFeature() }))
     }
 }

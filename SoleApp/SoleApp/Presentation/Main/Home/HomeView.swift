@@ -144,8 +144,11 @@ extension HomeView {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
                         ForEach(0..<viewModel.recommendCourses.count, id: \.self) { index in
-                            NavigationLink(destination: {
-                                CourseDetailView(courseId: viewModel.recommendCourses[index].courseId ?? 0, isScrapped: true)
+                            NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  HomeFeature.Action.courseDetail),
+                                                onTap: {
+                                viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
+                            }, destination: {
+                                CourseDetailView(store: $0)
                             }, label: {
                                 hotCourseSectionItem(image: URL(string: viewModel.recommendCourses[index].thumbnailImg ?? ""),
                                                      title: viewModel.recommendCourses[index].courseName ?? "")
@@ -215,9 +218,11 @@ extension HomeView {
                     .padding(.bottom, 10.0)
                 
                 ForEach(0..<viewStore.courses.count, id: \.self) { index in
-                    NavigationLink(destination: {
-                        CourseDetailView(courseId: viewStore.courses[index].courseId ?? 0,
-                                         isScrapped: viewStore.courses[index].isScrapped)
+                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  HomeFeature.Action.courseDetail),
+                                        onTap: {
+                        viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
+                    }, destination: {
+                        CourseDetailView(store: $0)
                     }, label: {
                         userTasteCourseItem(item: viewStore.courses[index], index: index)
                     })
