@@ -24,6 +24,8 @@
 		A42E42BF2AADBB66003D242E /* ScrapTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42BD2AADBB66003D242E /* ScrapTarget.swift */; };
 		A42E42C12AB09817003D242E /* CourseDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42C02AB09817003D242E /* CourseDetailFeature.swift */; };
 		A42E42C22AB09817003D242E /* CourseDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42C02AB09817003D242E /* CourseDetailFeature.swift */; };
+		A42E42C62AB1D742003D242E /* CourseDetailTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42C52AB1D742003D242E /* CourseDetailTarget.swift */; };
+		A42E42C72AB1D742003D242E /* CourseDetailTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42C52AB1D742003D242E /* CourseDetailTarget.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -288,6 +290,7 @@
 		A42E42B92AAB216C003D242E /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		A42E42BD2AADBB66003D242E /* ScrapTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTarget.swift; sourceTree = "<group>"; };
 		A42E42C02AB09817003D242E /* CourseDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailFeature.swift; sourceTree = "<group>"; };
+		A42E42C52AB1D742003D242E /* CourseDetailTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTarget.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -529,6 +532,22 @@
 			path = Scrap;
 			sourceTree = "<group>";
 		};
+		A42E42C32AB1D694003D242E /* CourseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */,
+			);
+			path = CourseDetail;
+			sourceTree = "<group>";
+		};
+		A42E42C42AB1D724003D242E /* CourseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A42E42C52AB1D742003D242E /* CourseDetailTarget.swift */,
+			);
+			path = CourseDetail;
+			sourceTree = "<group>";
+		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,7 +712,6 @@
 				A4760F0329BC51300080A2CD /* Components */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
 				A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */,
-				A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */,
 				A42E42C02AB09817003D242E /* CourseDetailFeature.swift */,
 			);
 			path = CourseDetail;
@@ -811,6 +829,7 @@
 		A481DF9D2A9AE3DD00AC7BF6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A42E42C32AB1D694003D242E /* CourseDetail */,
 				A4261E742AA6221A00F9786A /* Home */,
 				A481DF9E2A9AE3F300AC7BF6 /* MyPage */,
 				A481DF9F2A9AE52000AC7BF6 /* SignUp */,
@@ -899,6 +918,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A42E42C42AB1D724003D242E /* CourseDetail */,
 				A4261E762AA6284C00F9786A /* Home */,
 				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
 				A49D050B2A9A21AB00274C8D /* Auth */,
@@ -1269,6 +1289,7 @@
 				A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */,
 				A4BE4D8A2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */,
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
+				A42E42C62AB1D742003D242E /* CourseDetailTarget.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
 				A49D05132A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
@@ -1392,6 +1413,7 @@
 				A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */,
 				A4BE4D8B2A852E59005AF201 /* SignUpAgreeTermsFeature.swift in Sources */,
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
+				A42E42C72AB1D742003D242E /* CourseDetailTarget.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
 				A49D05142A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,

@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct CourseDetailModelResponse: Codable {
+struct CourseDetailModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: DataModel?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var address: String?
         var description: String?
         var courseId: Int?
@@ -33,13 +35,13 @@ struct CourseDetailModelResponse: Codable {
         
     }
     
-    struct Writer: Codable {
+    struct Writer: Codable, Equatable {
         var memberId: Int?
         var nickname: String?
         var profileImgUrl: String?
     }
     
-    struct PlaceResponseDtos: Codable {
+    struct PlaceResponseDtos: Codable, Equatable {
         var address: String?
         var description: String?
         var placeId: Int?
