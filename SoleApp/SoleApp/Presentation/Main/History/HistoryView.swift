@@ -25,6 +25,7 @@ struct HistoryView: View {
         self.store = store
         self.viewStore = ViewStore(store, observe: { $0 })
     }
+    
     var body: some View {
         ZStack() {
             VStack(spacing: 0.0) {
