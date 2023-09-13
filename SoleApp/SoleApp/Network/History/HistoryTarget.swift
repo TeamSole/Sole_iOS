@@ -8,7 +8,8 @@
 import Alamofire
 
 enum HistoryTarget {
-    case getUserHistory
+    case getUserHistories(HistoryModelRequest?)
+    case getUserHistoryDescription
 }
 
 extension HistoryTarget: TargetType {
@@ -18,14 +19,20 @@ extension HistoryTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .getUserHistory:
+        case .getUserHistories:
+            return .post
+            
+        case .getUserHistoryDescription:
             return .get
         }
     }
     
     var path: String {
         switch self {
-        case .getUserHistory:
+        case .getUserHistories:
+            return K.Path.userHistory
+            
+        case .getUserHistoryDescription:
             return K.Path.userProfileInHistory
         }
     }
@@ -38,7 +45,10 @@ extension HistoryTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .getUserHistory:
+        case .getUserHistories(let query):
+            return .query(query)
+            
+        case .getUserHistoryDescription:
             return .body(nil)
         }
     }

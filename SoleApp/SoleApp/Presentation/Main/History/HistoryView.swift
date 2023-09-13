@@ -43,9 +43,6 @@ struct HistoryView: View {
         .onLoaded {
             viewStore.send(.viewDidLoad)
         }
-        .onAppear {
-            viewModel.getUserHistoies()
-        }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
             SelectTagView(selectType: .filter, complete: {place, with, trans in
@@ -177,15 +174,15 @@ extension HistoryView {
     private var courseHistoryListView: some View {
         LazyVStack(spacing: 20.0) {
             courseHistoryHeader
-            if viewModel.apiRequestStatus == false &&
-                viewModel.histories.isEmpty {
+            if viewStore.isCalledApi == false &&
+                viewStore.userHistories.isEmpty {
                 emptyResultView
             } else {
-                ForEach(0..<viewModel.histories.count, id: \.self) { index in
+                ForEach(viewStore.userHistories, id: \.courseId) { item in
                     NavigationLink (destination: {
-                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.histories[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature()}))
                     }, label: {
-                        courseHistoryItem(item: viewModel.histories[index])
+                        courseHistoryItem(item: item)
                     })
                     
                 }
@@ -282,7 +279,7 @@ extension HistoryView {
     
     private var addNextPageButton: some View {
         HStack(spacing: 0.0) {
-            if viewModel.apiRequestStatus {
+            if viewStore.isCalledApi {
                 ProgressView()
             } else {
                 Text(StringConstant.moreWithPlus)
@@ -297,14 +294,14 @@ extension HistoryView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard viewModel.apiRequestStatus == false else { return }
+            guard viewStore.isCalledApi == false else { return }
             if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
                 viewModel.getNextUserHistoies()
             } else {
                 viewModel.getNextUserHistoiesWithParameter(place: placeCategories, with: withCategories, tras: transCategories)
             }
         }
-        .isHidden(viewModel.histories.last?.finalPage == true, remove: true)
+        .isHidden(viewStore.userHistories.last?.finalPage == true, remove: true)
     }
     
     

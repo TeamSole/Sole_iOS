@@ -8,13 +8,20 @@
 import Dependencies
 
 struct HistoryClient {
-    var getUserHistory: () async throws -> (UserProfileHistoryModelResponse)
+    var getUserHistories: (HistoryModelRequest?) async throws -> (HistoryModelResponse)
+    var getUserHistoryDescription: () async throws -> (UserProfileHistoryModelResponse)
 }
 
 extension HistoryClient: DependencyKey {
     static var liveValue: HistoryClient  = HistoryClient(
-        getUserHistory: {
-            let request = API.makeDataRequest(HistoryTarget.getUserHistory)
+        getUserHistories: { query in
+            let request = API.makeDataRequest(HistoryTarget.getUserHistories(query))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: HistoryModelResponse.self)
+            
+        },
+        getUserHistoryDescription: {
+            let request = API.makeDataRequest(HistoryTarget.getUserHistoryDescription)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: UserProfileHistoryModelResponse.self)
         })

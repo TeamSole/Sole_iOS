@@ -8,13 +8,19 @@
 import Foundation
 import SwiftUI
 
+struct HistoryModelRequest: Codable {
+    var courseId: Int
+}
 
-struct HistoryModelResponse: Codable {
+
+struct HistoryModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: [DataModel]?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var address: String?
         var courseId: Int?
         var categories: [String]?
