@@ -18,6 +18,10 @@ struct HistoryFeature: Reducer {
     
     enum Action: Equatable {
         /// 사용자 기록 가져오기 api 호출
+        case getNextUserHistories
+        /// 사용자 기록 가져오기 api 호출 리스폰스
+        case getNextUserHistoriesResponse(TaskResult<HistoryModelResponse>)
+        /// 사용자 기록 가져오기 api 호출
         case getUserHistories
         /// 사용자 기록 가져오기 api 호출 리스폰스
         case getUserHistoriesResponse(TaskResult<HistoryModelResponse>)
@@ -25,6 +29,7 @@ struct HistoryFeature: Reducer {
         case getUserHistoryDescription
         /// 사용자 기록 설명 가져오기 api 호출 리스폰스
         case getUserHistoryDescriptionResponse(TaskResult<UserProfileHistoryModelResponse>)
+        
         case viewDidLoad
     }
     
@@ -33,6 +38,33 @@ struct HistoryFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .getNextUserHistories:
+                guard state.isCalledApi == false,
+                state.userHistories.last?.finalPage == false,
+                let courseId = state.userHistories.last?.courseId else { return .none }
+                
+                return .run { send in
+                    let query = HistoryModelRequest(courseId: courseId)
+                    await send(.getUserHistoriesResponse(
+                        TaskResult { try await historyClient.getUserHistories(query) }
+                    ))
+                }
+                
+            case .getNextUserHistoriesResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true,
+                   let data = response.data {
+                    state.userHistories += data
+                    return .none
+                } else {
+                    return .none
+                }
+                
+            case .getNextUserHistoriesResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                return .none
+                
             case .getUserHistories:
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true

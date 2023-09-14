@@ -50,7 +50,7 @@ struct HistoryView: View {
                 transCategories = trans
                 withCategories = with
                 if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
-                    viewModel.getUserHistoies()
+                    viewStore.send(.getUserHistories)
                 } else {
                     viewModel.getUserHistoiesWithParameter(place: place, with: with, tras: trans)
                 }
@@ -296,7 +296,7 @@ extension HistoryView {
         .onTapGesture {
             guard viewStore.isCalledApi == false else { return }
             if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
-                viewModel.getNextUserHistoies()
+                viewStore.send(.getNextUserHistories)
             } else {
                 viewModel.getNextUserHistoiesWithParameter(place: placeCategories, with: withCategories, tras: transCategories)
             }

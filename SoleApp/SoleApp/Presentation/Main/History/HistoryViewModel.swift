@@ -18,79 +18,79 @@ final class HistoryViewModel: ObservableObject {
 }
 
 extension HistoryViewModel {
-    func getUserProfile() {
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userProfileInHistory)!
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": Utility.load(key: Constant.token)
-        ]
-        AF.request(url, method: .get, headers: headers)
-            .validate()
-            .responseDecodable(of: UserProfileHistoryModelResponse.self, completionHandler: { [weak self] response in
-                switch response.result {
-                case .success(let response):
-                    if response.success == true,
-                       let data = response.data {
-                        self?.profileDescription = data
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            })
-    }
+//    func getUserProfile() {
+//        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userProfileInHistory)!
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "Authorization": Utility.load(key: Constant.token)
+//        ]
+//        AF.request(url, method: .get, headers: headers)
+//            .validate()
+//            .responseDecodable(of: UserProfileHistoryModelResponse.self, completionHandler: { [weak self] response in
+//                switch response.result {
+//                case .success(let response):
+//                    if response.success == true,
+//                       let data = response.data {
+//                        self?.profileDescription = data
+//                    }
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            })
+//    }
     
-    func getUserHistoies() {
-        guard apiRequestStatus == false else { return }
-        apiRequestStatus = true
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userHistory)!
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": Utility.load(key: Constant.token)
-        ]
-        AF.request(url, method: .post, headers: headers)
-            .validate()
-            .responseDecodable(of: HistoryModelResponse.self, completionHandler: { [weak self] response in
-                switch response.result {
-                case .success(let response):
-                    if response.success == true,
-                       let data = response.data {
-                        self?.histories = data
-                    }
-                    self?.apiRequestStatus = false
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    self?.apiRequestStatus = false
-                }
-            })
-    }
+//    func getUserHistoies() {
+//        guard apiRequestStatus == false else { return }
+//        apiRequestStatus = true
+//        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userHistory)!
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "Authorization": Utility.load(key: Constant.token)
+//        ]
+//        AF.request(url, method: .post, headers: headers)
+//            .validate()
+//            .responseDecodable(of: HistoryModelResponse.self, completionHandler: { [weak self] response in
+//                switch response.result {
+//                case .success(let response):
+//                    if response.success == true,
+//                       let data = response.data {
+//                        self?.histories = data
+//                    }
+//                    self?.apiRequestStatus = false
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                    self?.apiRequestStatus = false
+//                }
+//            })
+//    }
     
-    func getNextUserHistoies() {
-        guard histories.last?.finalPage == false,
-              apiRequestStatus == false else { return }
-        apiRequestStatus = true
-        
-        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userHistory + "?courseId=\(histories.last?.courseId ?? 0)")!
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": Utility.load(key: Constant.token)
-        ]
-        AF.request(url, method: .post, headers: headers)
-            .validate()
-            .responseDecodable(of: HistoryModelResponse.self, completionHandler: { [weak self] response in
-                switch response.result {
-                case .success(let response):
-                    if response.success == true,
-                       let data = response.data {
-                        self?.histories += data
-                    }
-                    self?.apiRequestStatus = false
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    self?.apiRequestStatus = false
-                }
-            })
-    }
-    
+//    func getNextUserHistoies() {
+//        guard histories.last?.finalPage == false,
+//              apiRequestStatus == false else { return }
+//        apiRequestStatus = true
+//        
+//        let url: URLConvertible = URL(string: K.baseUrl + K.Path.userHistory + "?courseId=\(histories.last?.courseId ?? 0)")!
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "Authorization": Utility.load(key: Constant.token)
+//        ]
+//        AF.request(url, method: .post, headers: headers)
+//            .validate()
+//            .responseDecodable(of: HistoryModelResponse.self, completionHandler: { [weak self] response in
+//                switch response.result {
+//                case .success(let response):
+//                    if response.success == true,
+//                       let data = response.data {
+//                        self?.histories += data
+//                    }
+//                    self?.apiRequestStatus = false
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                    self?.apiRequestStatus = false
+//                }
+//            })
+//    }
+//    
     func getNextUserHistoiesWithParameter(place: [String], with: [String], tras: [String]) {
         guard histories.last?.finalPage == false,
               apiRequestStatus == false else { return }
