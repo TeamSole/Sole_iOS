@@ -32,10 +32,22 @@ extension TargetType {
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
             components?.queryItems = queryParams
             urlRequest.url = components?.url
+            
         case .body(let request):
             guard let request = request else { break }
             let parameter = request.toParameter()
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameter)
+            
+        case .queryWithBody(let query, let parameter):
+            let params = query?.toParameter()
+            let queryParams = params?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
+            components?.queryItems = queryParams
+            urlRequest.url = components?.url
+            
+            guard let request = parameter else { break }
+//            let parameter = request.toParameter()
+            urlRequest.httpBody = try JSONEncoder().encode(request)// JSONSerialization.data(withJSONObject: parameter)
         }
 
         return urlRequest
@@ -45,6 +57,7 @@ extension TargetType {
 enum RequestParams {
     case query(_ parameter: Encodable?)
     case body(_ parameter: Encodable?)
+    case queryWithBody(_ query: Encodable?, _ parameter: Encodable?)
 }
 
 extension Encodable {

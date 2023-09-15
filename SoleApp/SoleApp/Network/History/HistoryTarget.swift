@@ -8,7 +8,7 @@
 import Alamofire
 
 enum HistoryTarget {
-    case getUserHistories(HistoryModelRequest?)
+    case getUserHistories(HistoryModelRequest?, CategoryModelRequest?)
     case getUserHistoryDescription
 }
 
@@ -39,14 +39,15 @@ extension HistoryTarget: TargetType {
     
     var headers: Alamofire.HTTPHeaders {
         return [
-            "Authorization": Utility.load(key: Constant.token)
+            "Authorization": Utility.load(key: Constant.token),
+            "Content-Type": "application/json"
         ]
     }
     
     var parameters: RequestParams {
         switch self {
-        case .getUserHistories(let query):
-            return .query(query)
+        case .getUserHistories(let query, let parameter):
+            return .queryWithBody(query, parameter)
             
         case .getUserHistoryDescription:
             return .body(nil)

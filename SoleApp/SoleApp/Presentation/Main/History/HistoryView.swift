@@ -46,14 +46,7 @@ struct HistoryView: View {
         .sheet(isPresented: $isShowSelectTagView,
                content: {
             SelectTagView(selectType: .filter, complete: {place, with, trans in
-                placeCategories = place
-                transCategories = trans
-                withCategories = with
-                if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
-                    viewStore.send(.getUserHistories)
-                } else {
-                    viewModel.getUserHistoiesWithParameter(place: place, with: with, tras: trans)
-                }
+                viewStore.send(.setHistoryParameter(places: place, with: with, vehicles: trans))
             })
         })
     }
@@ -294,12 +287,7 @@ extension HistoryView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard viewStore.isCalledApi == false else { return }
-            if placeCategories.isEmpty && transCategories.isEmpty && withCategories.isEmpty {
-                viewStore.send(.getNextUserHistories)
-            } else {
-                viewModel.getNextUserHistoiesWithParameter(place: placeCategories, with: withCategories, tras: transCategories)
-            }
+            viewStore.send(.getNextUserHistories)
         }
         .isHidden(viewStore.userHistories.last?.finalPage == true, remove: true)
     }

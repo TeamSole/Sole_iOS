@@ -12,8 +12,18 @@ struct HistoryFeature: Reducer {
     typealias Histories = [HistoryModelResponse.DataModel]
     struct State: Equatable {
         var isCalledApi: Bool = false
+        var selectedPlaceParameter: [String] = []
+        var selectedWithParameter: [String] = []
+        var selectedVehiclesParameter: [String] = []
         var userHistories: Histories = []
         var userHistoryDescription: UserProfileHistoryModelResponse.DataModel = .init()
+        var isEmptyUserHistorParameters: Bool {
+            return selectedWithParameter.isEmpty == true &&
+            selectedWithParameter.isEmpty == true &&
+            selectedVehiclesParameter.isEmpty == true
+            
+        }
+       
     }
     
     enum Action: Equatable {
@@ -30,6 +40,8 @@ struct HistoryFeature: Reducer {
         /// 사용자 기록 설명 가져오기 api 호출 리스폰스
         case getUserHistoryDescriptionResponse(TaskResult<UserProfileHistoryModelResponse>)
         
+        case setHistoryParameter(places: [String], with: [String], vehicles: [String])
+        
         case viewDidLoad
     }
     
@@ -42,11 +54,14 @@ struct HistoryFeature: Reducer {
                 guard state.isCalledApi == false,
                 state.userHistories.last?.finalPage == false,
                 let courseId = state.userHistories.last?.courseId else { return .none }
+                let parameter = isEmptyUserHistorParameters() == true ? nil : CategoryModelRequest(placeCategories: state.selectedPlaceParameter,
+                                                                                                       withCategories: state.selectedWithParameter,
+                                                                                                       transCategories: state.selectedVehiclesParameter)
                 
+                let query = HistoryModelRequest(courseId: courseId)
                 return .run { send in
-                    let query = HistoryModelRequest(courseId: courseId)
                     await send(.getUserHistoriesResponse(
-                        TaskResult { try await historyClient.getUserHistories(query) }
+                        TaskResult { try await historyClient.getUserHistories(query, parameter) }
                     ))
                 }
                 
@@ -68,9 +83,14 @@ struct HistoryFeature: Reducer {
             case .getUserHistories:
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
+                let parameter = isEmptyUserHistorParameters() == true ? nil : CategoryModelRequest(placeCategories: state.selectedPlaceParameter,
+                                                                                                       withCategories: state.selectedWithParameter,
+                                                                                                       transCategories: state.selectedVehiclesParameter)
+                print(isEmptyUserHistorParameters())
                 return .run { send in
                     await send(.getUserHistoriesResponse(
-                        TaskResult { try await historyClient.getUserHistories(nil) }
+                        
+                        TaskResult { try await historyClient.getUserHistories(nil, parameter) }
                     ))
                 }
                 
@@ -110,9 +130,22 @@ struct HistoryFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .setHistoryParameter(let places, let with, let vehicles):
+                state.selectedPlaceParameter = places
+                state.selectedWithParameter = with
+                state.selectedVehiclesParameter = vehicles
+                
+                return .send(.getUserHistories)
+                
             case .viewDidLoad:
                 return .merge([.send(.getUserHistoryDescription),
                                .send(.getUserHistories)])
+            }
+            
+            func isEmptyUserHistorParameters() -> Bool {
+                return state.selectedPlaceParameter.isEmpty == true &&
+                state.selectedWithParameter.isEmpty == true &&
+                state.selectedVehiclesParameter.isEmpty == true
             }
         }
     }
