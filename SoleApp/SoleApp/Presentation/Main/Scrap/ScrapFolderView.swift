@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct ScrapFolderView: View {
     @StateObject var viewModel: ScrapFolderViewModel = ScrapFolderViewModel()
@@ -17,6 +18,15 @@ struct ScrapFolderView: View {
     ]
     
     private let gridItemHeight: CGFloat = (UIScreen.main.bounds.width - 48) / 2
+    
+    private let store: StoreOf<ScrapFolderFeature>
+    @ObservedObject var viewStore: ViewStoreOf<ScrapFolderFeature>
+    
+    init(store: StoreOf<ScrapFolderFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             naviagationBar
@@ -109,6 +119,6 @@ extension ScrapFolderView {
 
 struct ScrapFolderView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrapFolderView()
+        ScrapFolderView(store: Store(initialState: ScrapFolderFeature.State(), reducer: { ScrapFolderFeature() }))
     }
 }

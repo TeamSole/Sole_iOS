@@ -48,7 +48,7 @@ struct MainTabbarView: View {
                     }
                     .tag(MainFeature.Tab.FOLLOWING)
                 
-                ScrapFolderView()
+                ScrapFolderView(store: self.store.scope(state: \.scrap, action: MainFeature.Action.scrap))
                     .tabItem {
                         viewStore.selectedTab == .SCRAP ? Image("scrap_tap_selected") : Image("scrap_tap")
                         Text(StringConstant.tabScrap)
