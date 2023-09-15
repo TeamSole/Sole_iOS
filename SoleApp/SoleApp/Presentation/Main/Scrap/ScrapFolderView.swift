@@ -32,15 +32,15 @@ struct ScrapFolderView: View {
             naviagationBar
             ScrollView {
                 LazyVGrid(columns: gridItem, spacing: 16.0) {
-                    ForEach(0..<viewModel.folders.count + 1, id: \.self) { index in
-                        if index == viewModel.folders.count {
+                    ForEach(0..<viewStore.folders.count + 1, id: \.self) { index in
+                        if index == viewStore.folders.count {
                             addFolderButtonView
                         } else {
                             NavigationLink(destination: {
-                                ScrapListView(folderId: viewModel.folders[index].scrapFolderId ?? 0,
-                                              folderName: viewModel.folders[index].scrapFolderName ?? "")
+                                ScrapListView(folderId: viewStore.folders[index].scrapFolderId ?? 0,
+                                              folderName: viewStore.folders[index].scrapFolderName ?? "")
                             }, label: {
-                                folderItem(image: viewModel.folders[index].scrapFolderImg ?? "", title: viewModel.folders[index].scrapFolderName ?? "")
+                                folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", title: viewStore.folders[index].scrapFolderName ?? "")
                             })
                            
                         }
@@ -50,7 +50,7 @@ struct ScrapFolderView: View {
             }
         }
         .onAppear {
-            viewModel.getFolders()
+            viewStore.send(.viewDidLoad)
         }
         .modifier(FolderPopupTextFieldModifier(isShowFlag: $showPopup,
                                                folderPopupType: .add,

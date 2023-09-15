@@ -8,6 +8,7 @@
 import Alamofire
 
 enum ScrapTarget {
+    case getScrapFolderList
     case scrap(courseId: Int)
 }
 
@@ -18,6 +19,8 @@ extension ScrapTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
+        case .getScrapFolderList:
+            return .get
         case .scrap:
             return .post
         }
@@ -25,6 +28,8 @@ extension ScrapTarget: TargetType {
     
     var path: String {
         switch self {
+        case .getScrapFolderList:
+            return K.Path.folderList
         case .scrap(let courseId):
             return K.Path.couseScrap(courseId: courseId)
         }
@@ -38,6 +43,8 @@ extension ScrapTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
+        case .getScrapFolderList:
+            return .body(nil)
         case .scrap:
             return .body(nil)
         }

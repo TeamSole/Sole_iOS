@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct ScrapFolderResponseModel: Codable {
+struct ScrapFolderResponseModel: APIResponse {
+    var message: String?
+    var code: String?
     let data: [DataModel]?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var scrapFolderId: Int?
         var scrapFolderName: String?
         var scrapFolderImg: String?
