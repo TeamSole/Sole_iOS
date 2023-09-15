@@ -8,7 +8,7 @@
 import SwiftUI
 import Alamofire
 
-enum selectType {
+enum SelectType {
     case first, add, filter
 }
 
@@ -18,8 +18,20 @@ struct SelectTagView: View {
     @State private var selectedWith: [Category] = []
     @State private var selectedTrans: [Category] = []
     @State private var availableWidth: CGFloat = 10
-    var selectType: selectType
-    let complete: ([String], [String], [String]) -> ()
+    var selectType: SelectType
+    let complete: ([String], [String], [String]) -> Void
+    
+    init(selectedPlace: [String] = [],
+         selectedWith: [String] = [],
+         selectedTrans: [String] = [],
+         selectType: SelectType,
+         complete: @escaping ([String], [String], [String]) -> Void) {
+        self._selectedPlace = State(initialValue: selectedPlace.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
+        self._selectedWith = State(initialValue: selectedWith.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
+        self._selectedTrans = State(initialValue: selectedTrans.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
+        self.selectType = selectType
+        self.complete = complete
+    }
     
     
     var body: some View {

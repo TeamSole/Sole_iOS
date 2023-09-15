@@ -11,13 +11,10 @@ import ComposableArchitecture
 
 struct HistoryView: View {
     typealias History = HistoryModelResponse.DataModel
-    @StateObject var viewModel: HistoryViewModel = HistoryViewModel()
-    @State private var isShowSelectTagView: Bool = false
-    private let filterType: [String] = [StringConstant.place, StringConstant.accompony, StringConstant.vehicles]
-    @State private var placeCategories: [String] = []
-    @State private var transCategories: [String] = []
-    @State private var withCategories: [String] = []
     
+    @State private var isShowSelectTagView: Bool = false
+    
+    private let filterType: [String] = [StringConstant.place, StringConstant.accompony, StringConstant.vehicles]
     private let store: StoreOf<HistoryFeature>
     @ObservedObject var viewStore: ViewStoreOf<HistoryFeature>
     
@@ -45,7 +42,11 @@ struct HistoryView: View {
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectType: .filter, complete: {place, with, trans in
+            SelectTagView(selectedPlace: viewStore.selectedPlaceParameter,
+                          selectedWith: viewStore.selectedWithParameter,
+                          selectedTrans: viewStore.selectedVehiclesParameter,
+                          selectType: .filter,
+                          complete: {place, with, trans in
                 viewStore.send(.setHistoryParameter(places: place, with: with, vehicles: trans))
             })
         })

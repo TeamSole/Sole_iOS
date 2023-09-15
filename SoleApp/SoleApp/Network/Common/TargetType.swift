@@ -26,28 +26,28 @@ extension TargetType {
         urlRequest.setValue(Utility.load(key: Constant.token), forHTTPHeaderField: "Authorization")
 
         switch parameters {
-        case .query(let request):
-            let params = request?.toParameter()
-            let queryParams = params?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        case .query(let query):
+            let queryParameter = query?.toParameter()
+            let queryItems = queryParameter?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
-            components?.queryItems = queryParams
+            components?.queryItems = queryItems
             urlRequest.url = components?.url
             
-        case .body(let request):
-            guard let request = request else { break }
-            let parameter = request.toParameter()
-            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameter)
+        case .body(let parameter):
+            guard let request = parameter else { break }
+            let parameterParameter = request.toParameter()
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject:parameterParameter)
             
         case .queryWithBody(let query, let parameter):
-            let params = query?.toParameter()
-            let queryParams = params?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            let queryParameter = query?.toParameter()
+            let queryItems = queryParameter?.compactMap { URLQueryItem(name: $0.key, value: "\($0.value)") }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
-            components?.queryItems = queryParams
+            components?.queryItems = queryItems
             urlRequest.url = components?.url
             
             guard let request = parameter else { break }
-//            let parameter = request.toParameter()
-            urlRequest.httpBody = try JSONEncoder().encode(request)// JSONSerialization.data(withJSONObject: parameter)
+            let parameterParameter = request.toParameter()
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject:parameterParameter)
         }
 
         return urlRequest

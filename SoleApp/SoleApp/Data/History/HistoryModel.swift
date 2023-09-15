@@ -62,6 +62,7 @@ extension HistoryModelResponse.DataModel {
 }
 
 enum Category: String {
+    // MARK: 
     case TASTY_PLACE = "TASTY_PLACE"
     case CAFE = "CAFE"
     case CULTURE_ART = "CULTURE_ART"
@@ -82,6 +83,8 @@ enum Category: String {
     case COUPLE = "COUPLE"
     case KID = "KID"
     case PET = "PET"
+    
+    case none
     
     var title: String {
         switch self {
@@ -121,6 +124,8 @@ enum Category: String {
             return "👶 아이와"
         case .PET:
             return "🐶 반려동물과"
+        default:
+            return ""
         }
     }
 }
