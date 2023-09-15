@@ -10,6 +10,7 @@ import Foundation
 struct StringConstant {
     // MARK: A
     static let accompony: String = "동행"
+    static let addFolder: String = "폴더 추가"
     static let agreeAllTerms: String = "약관 전체 동의"
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
@@ -29,6 +30,7 @@ struct StringConstant {
     
     // MARK: F
     static let fix: String = "수정"
+    static let folder: String = "폴더"
     static let follow: String = "팔로우"
     static let follower: String = "팔로워"
     static let following: String = "팔로잉"
@@ -65,6 +67,7 @@ struct StringConstant {
     
     // MARK: S
     static let saveChangedInfo: String = "변경사항 저장하기"
+    static let scrap: String = "스크랩"
     static let setMyTasty: String = "취향 설정하기"
     static let signInWithKakao: String = "Kakao로 계속하기"
     static let signInWithApple: String = "Apple로 계속하기"

@@ -63,7 +63,7 @@ struct ScrapFolderView: View {
 extension ScrapFolderView {
     private var naviagationBar: some View {
         HStack(spacing: 0.0) {
-            Text("스크랩")
+            Text(StringConstant.scrap)
                 .font(.pretendard(.bold, size: 14.0))
                 .foregroundColor(.black)
         }
@@ -93,7 +93,7 @@ extension ScrapFolderView {
     private var addFolderButtonView: some View {
         VStack(spacing: 8.0) {
             VStack(spacing: 4.0) {
-                Text("폴더 추가")
+                Text(StringConstant.addFolder)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 16.0))
                 Image("add_circle_blue")
@@ -109,7 +109,7 @@ extension ScrapFolderView {
             .onTapGesture {
                 showPopup = true
             }
-            Text("폴더")
+            Text(StringConstant.folder)
                 .foregroundColor(.clear)
                 .font(.pretendard(.bold, size: 16.0))
         }
