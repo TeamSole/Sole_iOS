@@ -55,7 +55,7 @@ struct ScrapFolderView: View {
         .modifier(FolderPopupTextFieldModifier(isShowFlag: $showPopup,
                                                folderPopupType: .add,
                                                complete: { foldername in
-            viewModel.addFolder(folderName: foldername)
+            viewStore.send(.addFolder(folderName: foldername))
         }))
     }
 }
