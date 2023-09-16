@@ -37,7 +37,7 @@ struct ScrapListView: View {
             ScrollView {
                 LazyVStack(spacing: 0.0) {
                     if viewModel.apiRequestStatus == false &&
-                        viewModel.scraps.isEmpty {
+                        viewStore.scrapList.isEmpty {
                         emptyResultView
                     } else {
                         listHeaderView
@@ -47,8 +47,8 @@ struct ScrapListView: View {
             }
         }
         .navigationBarHidden(true)
-        .onAppear {
-            viewModel.getScraps(isDefaultFolder: isDefaultFolder, folderId: folderId)
+        .onLoaded {
+            viewStore.send(.viewDidLoad)
         }
         .modifier(BottomSheetModifier(showFlag: $showBottomPopup,
                                       edit: {
@@ -165,11 +165,11 @@ extension ScrapListView {
     
     private var scrapList: some View {
         VStack(spacing: 20.0) {
-            ForEach(0..<viewModel.scraps.count, id: \.self) { index in
+            ForEach(0..<viewStore.scrapList.count, id: \.self) { index in
                 NavigationLink(destination: {
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.scraps[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId:  viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
-                    scrapItem(item: viewModel.scraps[index], index: index)
+                    scrapItem(item: viewStore.scrapList[index], index: index)
                 })
             }
         }
@@ -243,7 +243,7 @@ extension ScrapListView {
     }
     
     private var isDefaultFolder: Bool {
-        return folderName == StringConstant.baseFolder
+        return folderName == StringConstant.defaultFolder
     }
     
     private func popupComplete(foldername: String) {

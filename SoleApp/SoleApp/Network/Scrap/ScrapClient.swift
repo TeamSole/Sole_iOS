@@ -10,6 +10,7 @@ import Dependencies
 struct ScrapClient {
     var addFolder: (ScrapAddFolderModelRequest) async throws -> (BaseResponse)
     var getScrapFolderList: () async throws -> (ScrapFolderResponseModel)
+    var getScrapList: (_ isDefaultFolder: Bool, _ folderId: Int) async throws -> (ScrapListModelResponse)
 }
 
 extension ScrapClient: DependencyKey {
@@ -23,6 +24,11 @@ extension ScrapClient: DependencyKey {
             let request = API.makeDataRequest(ScrapTarget.getScrapFolderList)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: ScrapFolderResponseModel.self)
+        },
+        getScrapList: { isDefaultFolder, folderId in
+            let request = API.makeDataRequest(ScrapTarget.getScrapList(isDefaultFolder: isDefaultFolder, folderId: folderId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: ScrapListModelResponse.self)
         })
 }
 

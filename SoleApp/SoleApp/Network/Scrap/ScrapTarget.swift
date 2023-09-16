@@ -10,6 +10,7 @@ import Alamofire
 enum ScrapTarget {
     case addFolder(ScrapAddFolderModelRequest)
     case getScrapFolderList
+    case getScrapList(isDefaultFolder: Bool, folderId: Int)
     case scrap(courseId: Int)
 }
 
@@ -20,24 +21,23 @@ extension ScrapTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .addFolder:
+        case .addFolder, .scrap:
             return .post
             
-        case .getScrapFolderList:
+        case .getScrapFolderList, .getScrapList:
             return .get
-            
-        case .scrap:
-            return .post
         }
     }
     
     var path: String {
         switch self {
-        case .addFolder:
+        case .addFolder, .getScrapFolderList:
             return K.Path.folderList
             
-        case .getScrapFolderList:
-            return K.Path.folderList
+        case .getScrapList(let isDefaultFolder, let folderId):
+            return isDefaultFolder ?
+            K.Path.folderList + "/default" :
+            K.Path.folderList + "/\(folderId)"
             
         case .scrap(let courseId):
             return K.Path.couseScrap(courseId: courseId)
@@ -55,11 +55,8 @@ extension ScrapTarget: TargetType {
         switch self {
         case .addFolder(let parameter):
             return .body(parameter)
-            
-        case .getScrapFolderList:
-            return .body(nil)
-            
-        case .scrap:
+        
+        case .scrap, .getScrapFolderList, .getScrapList:
             return .body(nil)
         }
     }

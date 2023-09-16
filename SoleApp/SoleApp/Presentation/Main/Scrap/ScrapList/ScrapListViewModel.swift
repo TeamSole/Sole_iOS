@@ -11,7 +11,7 @@ import Alamofire
 final class ScrapListViewModel: ObservableObject {
     typealias Scraps = [ScrapListModelResponse.DataModel]
     
-    @Published var scraps: Scraps = Scraps()
+//    @Published var scraps: Scraps = Scraps()
     @Published var apiRequestStatus: Bool = false
 }
 
@@ -33,7 +33,7 @@ extension ScrapListViewModel {
                 case .success(let response):
                     if response.success == true,
                        let data = response.data {
-                        self?.scraps = data
+//                        self?.scraps = data
                     }
                     self?.apiRequestStatus = false
                 case .failure(let error):

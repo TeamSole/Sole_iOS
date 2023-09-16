@@ -8,12 +8,14 @@
 import Foundation
 
 
-struct ScrapListModelResponse: Codable {
+struct ScrapListModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: [DataModel]?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var address: String?
         var courseId: Int?
         var distance: Double?

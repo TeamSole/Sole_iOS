@@ -15,7 +15,7 @@ struct StringConstant {
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
     // MARK: B
-    static let baseFolder: String = "기본 폴더"
+   
     
     // MARK: C
     static let cancel: String = "취소"
@@ -25,6 +25,7 @@ struct StringConstant {
     static let continueAfterAgree: String = "동의하고 계속하기"
     
     // MARK: D
+    static let defaultFolder: String = "기본 폴더"
     static let delete: String = "삭제"
     
     // MARK: E
