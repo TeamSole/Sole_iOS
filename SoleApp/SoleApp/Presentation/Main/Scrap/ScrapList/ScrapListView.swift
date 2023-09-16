@@ -85,7 +85,7 @@ extension ScrapListView {
                 .frame(maxWidth: .infinity,
                        alignment: .center)
             if isEditMode {
-                Text("완료")
+                Text(StringConstant.complete)
                     .foregroundColor(.blue_4708FA)
                     .font(.pretendard(.medium, size: 14.0))
                     .onTapGesture {
@@ -107,7 +107,7 @@ extension ScrapListView {
     private var listHeaderView: some View {
         HStack(spacing: 8.0) {
             if isEditMode {
-                Text("이동")
+                Text(StringConstant.move)
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)
 
@@ -123,7 +123,7 @@ extension ScrapListView {
                         guard selectedScraps.isEmpty == false else { return }
                         showMoveScrapPopup = true
                     }
-                Text("삭제")
+                Text(StringConstant.delete)
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)
                     .frame(width: 60.0,
@@ -142,7 +142,7 @@ extension ScrapListView {
             } else {
                 HStack(spacing: 2.0) {
                     Image("edit")
-                    Text("편집")
+                    Text(StringConstant.edit)
                         .font(.pretendard(.medium, size: 12.0))
                         .foregroundColor(.black)
                 }
@@ -207,7 +207,7 @@ extension ScrapListView {
                             }
                     }
                 }
-                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
+                Text(String(format: "%@ · %@ · %@ \(StringConstant.move)", item.address ?? "", item.computedDuration, item.scaledDistance))
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_999999)
                     .frame(maxWidth: .infinity,
@@ -232,7 +232,7 @@ extension ScrapListView {
     private var emptyResultView: some View {
         VStack(spacing: 17.0) {
             Image("emptyResult")
-            Text("아직 스크랩한 장소가 없습니다.")
+            Text(StringConstant.emptyCourseScrapped)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
@@ -243,7 +243,7 @@ extension ScrapListView {
     }
     
     private var isDefaultFolder: Bool {
-        return folderName == "기본 폴더"
+        return folderName == StringConstant.baseFolder
     }
     
     private func popupComplete(foldername: String) {

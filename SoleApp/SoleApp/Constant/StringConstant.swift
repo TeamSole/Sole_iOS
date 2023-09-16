@@ -14,9 +14,13 @@ struct StringConstant {
     static let agreeAllTerms: String = "약관 전체 동의"
     static let alreadyExistNickname: String = "이 닉네임은 이미 다른 사람이 사용하고 있어요."
     
+    // MARK: B
+    static let baseFolder: String = "기본 폴더"
+    
     // MARK: C
     static let cancel: String = "취소"
     static let collectYourTastyCourses: String = "설정한 취향태그에 맞는 코스만 모았어요 :)"
+    static let complete: String = "완료"
     static let completeSignUp: String = "회원가입 완료!"
     static let continueAfterAgree: String = "동의하고 계속하기"
     
@@ -24,8 +28,11 @@ struct StringConstant {
     static let delete: String = "삭제"
     
     // MARK: E
+    static let edit: String = "편집"
     static let emptyCourseRegistered: String = "아직 추가한 장소가 없습니다."
+    static let emptyCourseScrapped: String = "아직 스크랩한 장소가 없습니다."
     static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
+
     static let emptyTastyTags: String = "설정한 취향 태그가 없습니다."
     
     // MARK: F
