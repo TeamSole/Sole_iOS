@@ -35,13 +35,14 @@ struct ScrapFolderView: View {
                         if index == viewStore.folders.count {
                             addFolderButtonView
                         } else {
-                            NavigationLink(destination: {
-                                ScrapListView(folderId: viewStore.folders[index].scrapFolderId ?? 0,
-                                              folderName: viewStore.folders[index].scrapFolderName ?? "")
+                            NavigationLinkStore(self.store.scope(state: \.$scrapList, action: ScrapFolderFeature.Action.scrapList),
+                                                onTap: {
+                                viewStore.send(.didTappedScrapFolder(folderId: viewStore.folders[index].scrapFolderId ?? 0, folderName: viewStore.folders[index].scrapFolderName ?? ""))
+                            }, destination: {
+                                ScrapListView(store: $0)
                             }, label: {
                                 folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", title: viewStore.folders[index].scrapFolderName ?? "")
                             })
-                           
                         }
                     }
                 }

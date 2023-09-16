@@ -20,13 +20,15 @@ struct ScrapListView: View {
     @State private var popupType: FolderPopupType = .rename
     @State private var selectedScraps: [Int] = []
     
-    var folderId: Int
-    @State private var folderName: String
+    var folderId: Int = 0
+    @State private var folderName: String = ""
     
+    private let store: StoreOf<ScrapListFeature>
+    @ObservedObject var viewStore: ViewStoreOf<ScrapListFeature>
     
-    init(folderId: Int, folderName: String) {
-        self.folderId = folderId
-        self._folderName = State(initialValue: folderName)
+    init(store: StoreOf<ScrapListFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
     }
 
     var body: some View {
@@ -270,6 +272,6 @@ extension ScrapListView {
 
 struct ScrapListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrapListView(folderId: 0, folderName: "폴더명")
+        ScrapListView(store: Store(initialState: ScrapListFeature.State(folderId: 0, folderName: ""), reducer: { ScrapListFeature() }))
     }
 }

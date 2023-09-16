@@ -36,6 +36,8 @@
 		A42E42D52AB46448003D242E /* ScrapFolderFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42D32AB46448003D242E /* ScrapFolderFeature.swift */; };
 		A42E42D82AB46CB6003D242E /* ScrapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42D72AB46CB6003D242E /* ScrapClient.swift */; };
 		A42E42D92AB46CB6003D242E /* ScrapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42D72AB46CB6003D242E /* ScrapClient.swift */; };
+		A42E42DB2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */; };
+		A42E42DC2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -304,6 +306,7 @@
 		A42E42D02AB1E538003D242E /* HistoryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryClient.swift; sourceTree = "<group>"; };
 		A42E42D32AB46448003D242E /* ScrapFolderFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderFeature.swift; sourceTree = "<group>"; };
 		A42E42D72AB46CB6003D242E /* ScrapClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapClient.swift; sourceTree = "<group>"; };
+		A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListFeature.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -842,6 +845,7 @@
 				A47EEAB029C825D4006BA3DB /* Components */,
 				A46B3B6129C0A6230026D961 /* ScrapListView.swift */,
 				A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */,
+				A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */,
 			);
 			path = ScrapList;
 			sourceTree = "<group>";
@@ -1372,6 +1376,7 @@
 				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
+				A42E42DB2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */,
 				A42E42BA2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
@@ -1500,6 +1505,7 @@
 				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
 				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
+				A42E42DC2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */,
 				A42E42BB2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,

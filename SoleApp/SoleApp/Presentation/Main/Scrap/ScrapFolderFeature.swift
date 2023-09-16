@@ -11,13 +11,16 @@ struct ScrapFolderFeature: Reducer {
     typealias Folder = ScrapFolderResponseModel.DataModel
     struct State: Equatable {
         var folders: [Folder] = []
+        @PresentationState var scrapList: ScrapListFeature.State?
     }
     
     enum Action: Equatable {
         case addFolder(folderName: String)
         case addFolderResponse(TaskResult<BaseResponse>)
+        case didTappedScrapFolder(folderId: Int, folderName: String)
         case getScrapFolderList
         case getScrapFolderListResponse(TaskResult<ScrapFolderResponseModel>)
+        case scrapList(PresentationAction<ScrapListFeature.Action>)
         case viewDidLoad
     }
     
@@ -43,6 +46,10 @@ struct ScrapFolderFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .didTappedScrapFolder(let folderId, let folderName):
+                state.scrapList = ScrapListFeature.State(folderId: folderId, folderName: folderName)
+                return .none
+                
             case .getScrapFolderList:
                 return .run { send in
                     await send(.getScrapFolderListResponse(
@@ -60,9 +67,15 @@ struct ScrapFolderFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .scrapList:
+                return .none
+                
             case .viewDidLoad:
                 return .send(.getScrapFolderList)
             }
+        }
+        .ifLet(\.$scrapList, action: /Action.scrapList) {
+            ScrapListFeature()
         }
     }
 }
