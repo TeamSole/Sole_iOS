@@ -146,8 +146,6 @@
 		A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */; };
 		A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
 		A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
-		A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
-		A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */; };
 		A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
 		A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
 		A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
@@ -361,7 +359,6 @@
 		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
 		A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResonse.swift; sourceTree = "<group>"; };
-		A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderViewModel.swift; sourceTree = "<group>"; };
 		A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardViewModel.swift; sourceTree = "<group>"; };
 		A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardModel.swift; sourceTree = "<group>"; };
 		A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListView.swift; sourceTree = "<group>"; };
@@ -676,7 +673,6 @@
 				A47EEAA929C8086E006BA3DB /* ScrapList */,
 				A47EEAA229C7F6D2006BA3DB /* Components */,
 				A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */,
-				A47EEA7F29C712DD006BA3DB /* ScrapFolderViewModel.swift */,
 				A42E42D32AB46448003D242E /* ScrapFolderFeature.swift */,
 			);
 			path = Scrap;
@@ -1276,7 +1272,6 @@
 				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
-				A47EEA8029C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
@@ -1405,7 +1400,6 @@
 				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
-				A47EEA8129C712DD006BA3DB /* ScrapFolderViewModel.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,

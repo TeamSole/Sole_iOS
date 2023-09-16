@@ -10,7 +10,6 @@ import Kingfisher
 import ComposableArchitecture
 
 struct ScrapFolderView: View {
-    @StateObject var viewModel: ScrapFolderViewModel = ScrapFolderViewModel()
     @State private var showPopup: Bool = false
     private let gridItem: [GridItem] = [
         GridItem(.flexible(minimum: 100.0, maximum: (UIScreen.main.bounds.width - 48) / 2), spacing: 16.0),
