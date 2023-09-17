@@ -40,6 +40,10 @@
 		A42E42DC2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */; };
 		A42E42DE2AB724E8003D242E /* FollowBoardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */; };
 		A42E42DF2AB724E8003D242E /* FollowBoardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */; };
+		A42E42E32AB72715003D242E /* FollowTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42E22AB72715003D242E /* FollowTarget.swift */; };
+		A42E42E42AB72715003D242E /* FollowTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42E22AB72715003D242E /* FollowTarget.swift */; };
+		A42E42E62AB727EA003D242E /* FollowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42E52AB727EA003D242E /* FollowClient.swift */; };
+		A42E42E72AB727EA003D242E /* FollowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42E52AB727EA003D242E /* FollowClient.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -310,6 +314,8 @@
 		A42E42D72AB46CB6003D242E /* ScrapClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapClient.swift; sourceTree = "<group>"; };
 		A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListFeature.swift; sourceTree = "<group>"; };
 		A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardFeature.swift; sourceTree = "<group>"; };
+		A42E42E22AB72715003D242E /* FollowTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTarget.swift; sourceTree = "<group>"; };
+		A42E42E52AB727EA003D242E /* FollowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowClient.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -596,6 +602,23 @@
 			path = Scrap;
 			sourceTree = "<group>";
 		};
+		A42E42E02AB726E3003D242E /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		A42E42E12AB72705003D242E /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				A42E42E22AB72715003D242E /* FollowTarget.swift */,
+				A42E42E52AB727EA003D242E /* FollowClient.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
 		A441776F29A3B4DC00FAE837 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,7 +792,6 @@
 				A47EEA8829C7B0FE006BA3DB /* FollowingUserList */,
 				A46D713F29B8C74400944912 /* FollowingBoardView.swift */,
 				A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */,
-				A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */,
 				A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */,
 			);
 			path = Following;
@@ -876,6 +898,7 @@
 			isa = PBXGroup;
 			children = (
 				A42E42C32AB1D694003D242E /* CourseDetail */,
+				A42E42E02AB726E3003D242E /* Follow */,
 				A4261E742AA6221A00F9786A /* Home */,
 				A42E42CB2AB1DE0B003D242E /* History */,
 				A481DF9E2A9AE3F300AC7BF6 /* MyPage */,
@@ -967,6 +990,7 @@
 			isa = PBXGroup;
 			children = (
 				A42E42C42AB1D724003D242E /* CourseDetail */,
+				A42E42E12AB72705003D242E /* Follow */,
 				A4261E762AA6284C00F9786A /* Home */,
 				A42E42CC2AB1DE46003D242E /* History */,
 				A481DF9B2A9AE39A00AC7BF6 /* MyPage */,
@@ -1311,6 +1335,7 @@
 				A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A42E42C92AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
 				A42E42B02AAAEFF8003D242E /* ViewDidLoadModifier.swift in Sources */,
+				A42E42E62AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
@@ -1341,6 +1366,7 @@
 				A46B3B5B29C070220026D961 /* SelectTagView.swift in Sources */,
 				A42E42C62AB1D742003D242E /* CourseDetailTarget.swift in Sources */,
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
+				A42E42E32AB72715003D242E /* FollowTarget.swift in Sources */,
 				A49D05132A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A42E42CE2AB1DE57003D242E /* HistoryTarget.swift in Sources */,
@@ -1441,6 +1467,7 @@
 				A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */,
 				A42E42CA2AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
 				A42E42B12AAAF11B003D242E /* ViewDidLoadModifier.swift in Sources */,
+				A42E42E72AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */,
@@ -1471,6 +1498,7 @@
 				A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
 				A42E42C72AB1D742003D242E /* CourseDetailTarget.swift in Sources */,
 				A46B3B5C29C070220026D961 /* SelectTagView.swift in Sources */,
+				A42E42E42AB72715003D242E /* FollowTarget.swift in Sources */,
 				A49D05142A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A42E42CF2AB1DE57003D242E /* HistoryTarget.swift in Sources */,

@@ -26,21 +26,21 @@ struct FollowingBoardView: View {
                 navigationView
                 ScrollView {
                     if viewModel.apiRequestStatus == false &&
-                        viewModel.boardList.isEmpty {
+                        viewStore.courses.isEmpty {
                         emptyResultView
                     } else {
                         VStack(spacing: 16.0) {
-                            ForEach(0..<viewModel.boardList.count, id: \.self) { index in
+                            ForEach(0..<viewStore.courses.count, id: \.self) { index in
                                 NavigationLink(destination: {
-                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.boardList[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.courses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                                 }, label: {
-                                    courseListItem(courseId: viewModel.boardList[index].courseId ?? 0,
+                                    courseListItem(courseId: viewStore.courses[index].courseId ?? 0,
                                                    index: index,
-                                                   image: viewModel.boardList[index].profileImg,
-                                                   image: viewModel.boardList[index].thumbnailImg,
-                                                   userName: viewModel.boardList[index].nickname ?? "",
-                                                   title: viewModel.boardList[index].title ?? "",
-                                                   description: viewModel.boardList[index].description ?? "")
+                                                   image: viewStore.courses[index].profileImg ?? "",
+                                                   image: viewStore.courses[index].thumbnailImg ?? "",
+                                                   userName: viewStore.courses[index].nickname ?? "",
+                                                   title: viewStore.courses[index].title ?? "",
+                                                   description: viewStore.courses[index].description ?? "")
                                 })
                             }
                         }
@@ -49,8 +49,8 @@ struct FollowingBoardView: View {
             }
             .frame(maxHeight: .infinity)
             .navigationBarHidden(true)
-            .onAppear {
-                viewModel.getFollowingBoardList()
+            .onLoaded() {
+                viewStore.send(.viewDidLoad)
             }
     }
 }
@@ -73,17 +73,17 @@ extension FollowingBoardView {
         .frame(height: 46.0)
     }
     
-    private func courseListItem(courseId: Int, index: Int, image profileImgurl: String?, image thumbnailImgurl: String?, userName: String, title: String, description: String) -> some View {
+    private func courseListItem(courseId: Int, index: Int, image profileImgurl: String, image thumbnailImgurl: String, userName: String, title: String, description: String) -> some View {
         VStack(spacing: 0.0) {
-            courseHeader(courseId: courseId, image: URL(string: profileImgurl ?? ""), userName: userName, index: index)
-            courseItem(courseId: courseId, image: URL(string: thumbnailImgurl ?? ""), courseName: title, description: description)
+//            courseHeader(courseId: courseId, image: URL(string: profileImgurl), userName: userName, index: index)
+            courseItem(courseId: courseId, image: URL(string: thumbnailImgurl), courseName: title, description: description)
         }
         .frame(maxWidth: .infinity,
                alignment: .leading)
         .padding(.horizontal, 16.0)
     }
     
-    private func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
+    private mutating func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
         HStack(spacing: 0.0) {
             KFImage(url)
                 .resizable()
@@ -103,10 +103,10 @@ extension FollowingBoardView {
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            Image(viewModel.boardList[index].like == true ? "love_selected" : "love")
+            Image(viewStore.courses[index].like == true ? "love_selected" : "love")
                 .onTapGesture {
-                    viewModel.boardList[index].like?.toggle()
-                    viewModel.scrap(courseId: courseId)
+//                    viewStore.courses[index].like?.toggle()
+//                    viewModel.scrap(courseId: courseId)
                 }
         }
         .padding(.horizontal, 3.0)

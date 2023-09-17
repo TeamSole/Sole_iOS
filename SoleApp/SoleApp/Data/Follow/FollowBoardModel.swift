@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct FollowBoardModelResponse: Codable {
+struct FollowBoardModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: [DataModel]?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var courseId: Int?
         var description: String?
         var like: Bool?
