@@ -23,16 +23,23 @@ struct ScrapListFeature: Reducer {
     }
     
     enum Action: Equatable {
+        case didTappedDismissButton
         case getScrapList
         case getScrapListResponse(TaskResult<ScrapListModelResponse>)
         case viewDidLoad
     }
     
+    @Dependency(\.dismiss) var dismiss
     @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .didTappedDismissButton:
+                return .run { send in
+                    await dismiss()
+                }
+                
             case .getScrapList:
                 return .run { [isDefaultFolder = state.isDefaultFolder,
                                folderId = state.folderId] send in

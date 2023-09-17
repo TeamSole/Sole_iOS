@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct ScrapListView: View {
     typealias Scrap = ScrapListModelResponse.DataModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
     @State private var isEditMode: Bool = false
     @State private var showBottomPopup: Bool = false
@@ -77,9 +76,9 @@ extension ScrapListView {
         HStack {
             Image("arrow_back")
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
-            Text(folderName)
+            Text(viewStore.folderName)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -94,7 +93,7 @@ extension ScrapListView {
                     }
             } else {
                 Image("more-vertical")
-                    .isHidden(isDefaultFolder)
+                    .isHidden(viewStore.isDefaultFolder)
                     .onTapGesture {
                         showBottomPopup = true
                     }
@@ -167,6 +166,7 @@ extension ScrapListView {
         VStack(spacing: 20.0) {
             ForEach(0..<viewStore.scrapList.count, id: \.self) { index in
                 NavigationLink(destination: {
+                    // TODO: 상세화면 feature 추가 후 연결 작업 필요
                     CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId:  viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
                     scrapItem(item: viewStore.scrapList[index], index: index)
@@ -250,7 +250,7 @@ extension ScrapListView {
         if popupType == .remove {
             viewModel.removeFolder(folderId: folderId,
                                    complete: {
-                presentationMode.wrappedValue.dismiss()
+                viewStore.send(.didTappedDismissButton)
             })
         } else if popupType == .rename {
             viewModel.renameFolder(folderId: folderId,
