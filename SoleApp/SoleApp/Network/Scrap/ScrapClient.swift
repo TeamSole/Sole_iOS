@@ -11,6 +11,8 @@ struct ScrapClient {
     var addFolder: (ScrapAddFolderModelRequest) async throws -> (BaseResponse)
     var getScrapFolderList: () async throws -> (ScrapFolderResponseModel)
     var getScrapList: (_ isDefaultFolder: Bool, _ folderId: Int) async throws -> (ScrapListModelResponse)
+    
+    var removeFolder: (_ folderId: Int) async throws -> (BaseResponse)
 }
 
 extension ScrapClient: DependencyKey {
@@ -29,6 +31,11 @@ extension ScrapClient: DependencyKey {
             let request = API.makeDataRequest(ScrapTarget.getScrapList(isDefaultFolder: isDefaultFolder, folderId: folderId))
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: ScrapListModelResponse.self)
+        },
+        removeFolder: { folderId in
+            let request = API.makeDataRequest(ScrapTarget.removeFolder(folderId: folderId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         })
 }
 

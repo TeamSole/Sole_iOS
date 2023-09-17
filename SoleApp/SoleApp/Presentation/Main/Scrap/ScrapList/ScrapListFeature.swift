@@ -23,9 +23,16 @@ struct ScrapListFeature: Reducer {
     }
     
     enum Action: Equatable {
+        
         case didTappedDismissButton
+        /// 스크랩 리스트 불러오기 Api 호출
         case getScrapList
+        /// 스크랩 리스트 불러오기 Api response
         case getScrapListResponse(TaskResult<ScrapListModelResponse>)
+        /// 폴더 삭제  Api 호출
+        case removeFolder
+        /// 폴더 삭제  Api response
+        case removeFolderResponse(TaskResult<BaseResponse>)
         case viewDidLoad
     }
     
@@ -57,6 +64,23 @@ struct ScrapListFeature: Reducer {
             case .getScrapListResponse(.failure(let error)):
                 debugPrint(error.localizedDescription)
                 return .none
+                
+            case .removeFolder:
+                return .run { [folderId = state.folderId] send in
+                    await send(.removeFolderResponse(
+                        TaskResult { try await scrapClient.removeFolder(folderId) }))
+                }
+                
+            case .removeFolderResponse(.success(let response)):
+                if response.success == true {
+                    return .send(.didTappedDismissButton)
+                }
+                return .none
+                
+            case .removeFolderResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
+                
                 
             case .viewDidLoad:
                 return .send(.getScrapList)

@@ -248,10 +248,7 @@ extension ScrapListView {
     
     private func popupComplete(foldername: String) {
         if popupType == .remove {
-            viewModel.removeFolder(folderId: folderId,
-                                   complete: {
-                viewStore.send(.didTappedDismissButton)
-            })
+            viewStore.send(.removeFolder)
         } else if popupType == .rename {
             viewModel.renameFolder(folderId: folderId,
                                    folderName: foldername,
