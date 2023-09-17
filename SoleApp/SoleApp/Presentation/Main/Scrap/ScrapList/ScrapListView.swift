@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct ScrapListView: View {
     typealias Scrap = ScrapListModelResponse.DataModel
     @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
-    @State private var isEditMode: Bool = false
+//    @State private var isEditMode: Bool = false
     @State private var showBottomPopup: Bool = false
     @State private var showPopup: Bool = false
     @State private var showMoveScrapPopup: Bool = false
@@ -63,10 +63,10 @@ struct ScrapListView: View {
                                                complete: { foldername in
             popupComplete(foldername: foldername)
         }))
-        .modifier(MoveScrapsPopupModifier(isShowFlag: $showMoveScrapPopup, scraps: selectedScraps,
+        .modifier(MoveScrapsPopupModifier(isShowFlag: $showMoveScrapPopup, scraps: viewStore.selectedScrapsCourseId,
                                           complete: { moveToFolderId in
             selectedScraps = []
-            isEditMode = false
+            viewStore.send(.setEditMode(isEditMode: false))
         }))
     }
 }
@@ -83,13 +83,13 @@ extension ScrapListView {
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .center)
-            if isEditMode {
+            if viewStore.isEditMode {
                 Text(StringConstant.complete)
                     .foregroundColor(.blue_4708FA)
                     .font(.pretendard(.medium, size: 14.0))
                     .onTapGesture {
-                        isEditMode = false
-                        selectedScraps = []
+                        viewStore.send(.setEditMode(isEditMode: false))
+//                        selectedScraps = []
                     }
             } else {
                 Image("more-vertical")
@@ -105,7 +105,7 @@ extension ScrapListView {
     
     private var listHeaderView: some View {
         HStack(spacing: 8.0) {
-            if isEditMode {
+            if viewStore.isEditMode {
                 Text(StringConstant.move)
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)
@@ -117,7 +117,7 @@ extension ScrapListView {
                             .stroke(selectedScraps.isEmpty ? Color.gray_D3D4D5 : Color.blue_4708FA,
                                     lineWidth: 1.0)
                     )
-                    .isHidden(isDefaultFolder == false, remove: true)
+                    .isHidden(viewStore.isDefaultFolder == false, remove: true)
                     .onTapGesture {
                         guard selectedScraps.isEmpty == false else { return }
                         showMoveScrapPopup = true
@@ -133,7 +133,7 @@ extension ScrapListView {
                                     lineWidth: 1.0)
                     )
                     .onTapGesture {
-                        guard selectedScraps.isEmpty == false else { return }
+                        guard viewStore.selectedScrapsCourseId.isEmpty == false else { return }
                         popupType = .removeScrap
                         showPopup = true
                     }
@@ -152,7 +152,7 @@ extension ScrapListView {
                         .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
                 )
                 .onTapGesture {
-                    isEditMode = true
+                    viewStore.send(.setEditMode(isEditMode: true))
                 }
             }
         }
@@ -196,14 +196,11 @@ extension ScrapListView {
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                         .padding(.bottom, 7.0)
-                    if isEditMode {
-                        Image(selectedScraps.contains(item.courseId ?? 0) ? "check_circle" : "radio_button_unchecked")
+                    if viewStore.isEditMode {
+                        Image(viewStore.selectedScrapsCourseId.contains(item.courseId ?? 0) ? "check_circle" : "radio_button_unchecked")
                             .onTapGesture {
-                                if selectedScraps.contains(item.courseId ?? 0) {
-                                    selectedScraps = selectedScraps.filter({ $0 != item.courseId })
-                                } else {
-                                    selectedScraps.append(item.courseId ?? 0)
-                                }
+                                guard let courseId = item.courseId else { return }
+                                viewStore.send(.toggleSelectScrap(courseId: courseId))
                             }
                     }
                 }
@@ -242,23 +239,13 @@ extension ScrapListView {
         .padding(.top, 100.0)
     }
     
-    private var isDefaultFolder: Bool {
-        return folderName == StringConstant.defaultFolder
-    }
-    
     private func popupComplete(foldername: String) {
         if popupType == .remove {
             viewStore.send(.removeFolder)
         } else if popupType == .rename {
             viewStore.send(.renameFolder(folderName: foldername))
         } else {
-            viewModel.removeScraps(isDefaultFolder: isDefaultFolder,
-                                   folderId: folderId,
-                                   scraps: selectedScraps,
-                                   complete: {
-                selectedScraps = []
-                isEditMode = false
-            })
+            viewStore.send(.removeScraps)
         }
     }
 }

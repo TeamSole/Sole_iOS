@@ -12,6 +12,7 @@ enum ScrapTarget {
     case getScrapFolderList
     case getScrapList(isDefaultFolder: Bool, folderId: Int)
     case removeFolder(folderId: Int)
+    case removeScraps(isDefaultFolder: Bool, folderId: Int, scrapsCourseIds: [Int])
     case renameFolder(folderId: Int, ScrapRenameFolderRequest)
     case scrap(courseId: Int)
 }
@@ -29,7 +30,7 @@ extension ScrapTarget: TargetType {
         case .getScrapFolderList, .getScrapList:
             return .get
             
-        case .removeFolder:
+        case .removeFolder, .removeScraps:
             return .delete
             
         case .renameFolder:
@@ -49,6 +50,12 @@ extension ScrapTarget: TargetType {
             
         case .removeFolder(let folderId), .renameFolder(let folderId, _):
             return K.Path.folderList + "/\(folderId)"
+            
+        case .removeScraps(let isDefaultFolder, let folderId, let scrapsCourseIds):
+            let courseIds = scrapsCourseIds.map({ String($0) }).joined(separator: ",")
+            return isDefaultFolder
+            ? K.Path.folderList + "/default/\(courseIds)"
+            : K.Path.folderList + "/\(folderId)/\(courseIds)"
             
         case .scrap(let courseId):
             return K.Path.couseScrap(courseId: courseId)
@@ -70,7 +77,7 @@ extension ScrapTarget: TargetType {
         case .renameFolder(_, let parameter):
             return .body(parameter)
         
-        case .scrap, .getScrapFolderList, .getScrapList, .removeFolder:
+        case .scrap, .getScrapFolderList, .getScrapList, .removeFolder, .removeScraps:
             return .body(nil)
         }
     }
