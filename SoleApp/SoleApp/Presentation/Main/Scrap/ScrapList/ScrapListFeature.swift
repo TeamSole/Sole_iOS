@@ -12,6 +12,7 @@ struct ScrapListFeature: Reducer {
     struct State: Equatable {
         var folderId: Int
         var folderName: String
+        var isCalledApi: Bool = false
         var isDefaultFolder: Bool
         var isEditMode: Bool = false
         var scrapList: [Scrap] = []
@@ -62,6 +63,8 @@ struct ScrapListFeature: Reducer {
                 }
                 
             case .getScrapList:
+                guard state.isCalledApi == false else { return .none }
+                state.isCalledApi = true
                 return .run { [isDefaultFolder = state.isDefaultFolder,
                                folderId = state.folderId] send in
                     await send(.getScrapListResponse(
@@ -69,6 +72,7 @@ struct ScrapListFeature: Reducer {
                 }
                 
             case .getScrapListResponse(.success(let response)):
+                state.isCalledApi = false
                 if response.success == true,
                    let data = response.data {
                     state.scrapList = data
@@ -76,6 +80,7 @@ struct ScrapListFeature: Reducer {
                 return .none
                 
             case .getScrapListResponse(.failure(let error)):
+                state.isCalledApi = false
                 debugPrint(error.localizedDescription)
                 return .none
                 

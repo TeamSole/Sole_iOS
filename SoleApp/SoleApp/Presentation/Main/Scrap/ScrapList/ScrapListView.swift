@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 struct ScrapListView: View {
     typealias Scrap = ScrapListModelResponse.DataModel
-    @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
+//    @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
 //    @State private var isEditMode: Bool = false
     @State private var showBottomPopup: Bool = false
     @State private var showPopup: Bool = false
@@ -35,7 +35,7 @@ struct ScrapListView: View {
             navigationBar
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    if viewModel.apiRequestStatus == false &&
+                    if viewStore.isCalledApi == false &&
                         viewStore.scrapList.isEmpty {
                         emptyResultView
                     } else {
@@ -49,6 +49,7 @@ struct ScrapListView: View {
         .onLoaded {
             viewStore.send(.viewDidLoad)
         }
+        // TODO: modifier alert나 popup으로 바꾸기
         .modifier(BottomSheetModifier(showFlag: $showBottomPopup,
                                       edit: {
             popupType = .rename
@@ -109,7 +110,6 @@ extension ScrapListView {
                 Text(StringConstant.move)
                     .font(.pretendard(.medium, size: 12.0))
                     .foregroundColor(.black)
-
                     .frame(width: 60.0,
                            height: 24.0)
                     .overlay(
@@ -119,7 +119,7 @@ extension ScrapListView {
                     )
                     .isHidden(viewStore.isDefaultFolder == false, remove: true)
                     .onTapGesture {
-                        guard selectedScraps.isEmpty == false else { return }
+                        guard viewStore.selectedScrapsCourseId.isEmpty == false else { return }
                         showMoveScrapPopup = true
                     }
                 Text(StringConstant.delete)
@@ -164,19 +164,19 @@ extension ScrapListView {
     
     private var scrapList: some View {
         VStack(spacing: 20.0) {
-            ForEach(0..<viewStore.scrapList.count, id: \.self) { index in
+            ForEach(viewStore.scrapList, id: \.courseId) { item in
                 NavigationLink(destination: {
                     // TODO: 상세화면 feature 추가 후 연결 작업 필요
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId:  viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId:  item.courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
-                    scrapItem(item: viewStore.scrapList[index], index: index)
+                    scrapItem(item: item)
                 })
             }
         }
         .padding(.horizontal, 16.0)
     }
     
-    private func scrapItem(item: Scrap, index: Int) -> some View {
+    private func scrapItem(item: Scrap) -> some View {
         HStack(alignment: .top, spacing: 15.0) {
             KFImage(URL(string: item.thumbnailImg ?? ""))
                 .placeholder {
