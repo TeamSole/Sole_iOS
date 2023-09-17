@@ -250,11 +250,7 @@ extension ScrapListView {
         if popupType == .remove {
             viewStore.send(.removeFolder)
         } else if popupType == .rename {
-            viewModel.renameFolder(folderId: folderId,
-                                   folderName: foldername,
-                                   complete: {
-                folderName = foldername
-            })
+            viewStore.send(.renameFolder(folderName: foldername))
         } else {
             viewModel.removeScraps(isDefaultFolder: isDefaultFolder,
                                    folderId: folderId,

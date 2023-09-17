@@ -12,6 +12,7 @@ enum ScrapTarget {
     case getScrapFolderList
     case getScrapList(isDefaultFolder: Bool, folderId: Int)
     case removeFolder(folderId: Int)
+    case renameFolder(folderId: Int, ScrapRenameFolderRequest)
     case scrap(courseId: Int)
 }
 
@@ -30,6 +31,9 @@ extension ScrapTarget: TargetType {
             
         case .removeFolder:
             return .delete
+            
+        case .renameFolder:
+            return .patch
         }
     }
     
@@ -43,7 +47,7 @@ extension ScrapTarget: TargetType {
             K.Path.folderList + "/default" :
             K.Path.folderList + "/\(folderId)"
             
-        case .removeFolder(let folderId):
+        case .removeFolder(let folderId), .renameFolder(let folderId, _):
             return K.Path.folderList + "/\(folderId)"
             
         case .scrap(let courseId):
@@ -61,6 +65,9 @@ extension ScrapTarget: TargetType {
     var parameters: RequestParams {
         switch self {
         case .addFolder(let parameter):
+            return .body(parameter)
+            
+        case .renameFolder(_, let parameter):
             return .body(parameter)
         
         case .scrap, .getScrapFolderList, .getScrapList, .removeFolder:
