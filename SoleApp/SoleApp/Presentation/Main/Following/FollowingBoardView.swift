@@ -10,7 +10,8 @@ import Kingfisher
 import ComposableArchitecture
 
 struct FollowingBoardView: View {
-    typealias boardItem = FollowBoardModelResponse.DataModel
+//    typealias CourseOfFollower = FollowBoardModelResponse.DataModel
+    typealias CourseOfFollower = FollowBoardModelResponse.DataModel
     @StateObject var viewModel: FollowingBoardViewModel = FollowingBoardViewModel()
     
     private let store: StoreOf<FollowBoardFeature>
@@ -25,22 +26,17 @@ struct FollowingBoardView: View {
             VStack(spacing: 0.0) {
                 navigationView
                 ScrollView {
-                    if viewModel.apiRequestStatus == false &&
+                    if viewStore.isCalledApi == false &&
                         viewStore.courses.isEmpty {
                         emptyResultView
                     } else {
                         VStack(spacing: 16.0) {
-                            ForEach(0..<viewStore.courses.count, id: \.self) { index in
+                            ForEach(viewStore.courses, id: \.courseId) { item in
+                                // TODO: NavigationLinkStore 연결해야함
                                 NavigationLink(destination: {
-                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.courses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature()}))
                                 }, label: {
-                                    courseListItem(courseId: viewStore.courses[index].courseId ?? 0,
-                                                   index: index,
-                                                   image: viewStore.courses[index].profileImg ?? "",
-                                                   image: viewStore.courses[index].thumbnailImg ?? "",
-                                                   userName: viewStore.courses[index].nickname ?? "",
-                                                   title: viewStore.courses[index].title ?? "",
-                                                   description: viewStore.courses[index].description ?? "")
+                                    courseListItem(item: item)
                                 })
                             }
                         }
@@ -73,17 +69,68 @@ extension FollowingBoardView {
         .frame(height: 46.0)
     }
     
-    private func courseListItem(courseId: Int, index: Int, image profileImgurl: String, image thumbnailImgurl: String, userName: String, title: String, description: String) -> some View {
+    private func courseListItem(item: CourseOfFollower) -> some View {
         VStack(spacing: 0.0) {
-//            courseHeader(courseId: courseId, image: URL(string: profileImgurl), userName: userName, index: index)
-            courseItem(courseId: courseId, image: URL(string: thumbnailImgurl), courseName: title, description: description)
+            HStack(spacing: 0.0) {
+                KFImage(URL(string: item.profileImg ?? ""))
+                    .resizable()
+                    .placeholder {
+                        Image(uiImage: UIImage(named: "profile24") ?? UIImage())
+                            .resizable()
+                            .frame(width: 32.0,
+                                   height: 32.0)
+                    }
+                    .scaledToFill()
+                    .frame(width: 32.0,
+                           height: 32.0)
+                    .cornerRadius(.infinity)
+                    .padding(.trailing, 8.0)
+                Text(item.nickname ?? "")
+                    .font(Font(UIFont.pretendardRegular(size: 14.0)))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                Image(item.like == true ? "love_selected" : "love")
+                    .onTapGesture {
+    //                    viewStore.courses[index].like?.toggle()
+    //                    viewModel.scrap(courseId: courseId)
+                    }
+            }
+            .padding(.horizontal, 3.0)
+            .frame(height: 52.0)
+            
+            VStack(spacing: 0.0) {
+                KFImage(URL(string: item.thumbnailImg ?? ""))
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 186.0)
+                    .scaledToFit()
+                    .padding(.bottom, 10.0)
+                Text(item.title ?? "")
+                    .font(Font(UIFont.pretendardBold(size: 16.0)))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .padding(.bottom, 4.0)
+                Text(item.description ?? "")
+                    .font(Font(UIFont.pretendardRegular(size: 13.0)))
+                    .lineSpacing(4.0)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .lineLimit(nil)
+                
+            }
+            .frame(maxWidth: .infinity,
+                   alignment: .leading)
         }
         .frame(maxWidth: .infinity,
                alignment: .leading)
         .padding(.horizontal, 16.0)
     }
     
-    private mutating func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
+    private func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
         HStack(spacing: 0.0) {
             KFImage(url)
                 .resizable()

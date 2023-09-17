@@ -11,6 +11,7 @@ struct FollowBoardFeature: Reducer {
     typealias CourseOfFollower = FollowBoardModelResponse.DataModel
     struct State: Equatable {
         var courses: [CourseOfFollower] = []
+        var isCalledApi: Bool = false
     }
     
     enum Action: Equatable {
@@ -25,12 +26,15 @@ struct FollowBoardFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .getCoursesOfFollowers:
+                guard state.isCalledApi == false else { return .none }
+                state.isCalledApi = true
                 return .run { send in
                     await send(.getCoursesOfFollowersResponse(
                         TaskResult { try await followClient.getCoursesOfFollowers()}))
                 }
                 
             case .getCoursesOfFollowersResponse(.success(let response)):
+                state.isCalledApi = false
                 if response.success == true,
                    let data = response.data {
                     state.courses = data
@@ -38,6 +42,7 @@ struct FollowBoardFeature: Reducer {
                 return .none
                 
             case .getCoursesOfFollowersResponse(.failure(let error)):
+                state.isCalledApi = false
                 debugPrint(error.localizedDescription)
                 return .none
                 
