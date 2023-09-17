@@ -92,8 +92,8 @@ extension FollowingBoardView {
                            alignment: .leading)
                 Image(item.like == true ? "love_selected" : "love")
                     .onTapGesture {
-    //                    viewStore.courses[index].like?.toggle()
-    //                    viewModel.scrap(courseId: courseId)
+                        guard let courseId = item.courseId else { return }
+                        viewStore.send(.scrap(couseId: courseId))
                     }
             }
             .padding(.horizontal, 3.0)
@@ -129,65 +129,6 @@ extension FollowingBoardView {
                alignment: .leading)
         .padding(.horizontal, 16.0)
     }
-    
-    private func courseHeader(courseId: Int, image url: URL?, userName: String, index: Int) -> some View {
-        HStack(spacing: 0.0) {
-            KFImage(url)
-                .resizable()
-                .placeholder {
-                    Image(uiImage: UIImage(named: "profile24") ?? UIImage())
-                        .resizable()
-                        .frame(width: 32.0,
-                               height: 32.0)
-                }
-                .scaledToFill()
-                .frame(width: 32.0,
-                       height: 32.0)
-                .cornerRadius(.infinity)
-                .padding(.trailing, 8.0)
-            Text(userName)
-                .font(Font(UIFont.pretendardRegular(size: 14.0)))
-                .foregroundColor(.black)
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-            Image(viewStore.courses[index].like == true ? "love_selected" : "love")
-                .onTapGesture {
-//                    viewStore.courses[index].like?.toggle()
-//                    viewModel.scrap(courseId: courseId)
-                }
-        }
-        .padding(.horizontal, 3.0)
-        .frame(height: 52.0)
-    }
-    
-    private func courseItem(courseId: Int, image url: URL?, courseName: String, description: String) -> some View {
-        VStack(spacing: 0.0) {
-            KFImage(url)
-                .resizable()
-                .frame(maxWidth: .infinity)
-                .frame(height: 186.0)
-                .scaledToFit()
-                .padding(.bottom, 10.0)
-            Text(courseName)
-                .font(Font(UIFont.pretendardBold(size: 16.0)))
-                .foregroundColor(.black)
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .padding(.bottom, 4.0)
-            Text(description)
-                .font(Font(UIFont.pretendardRegular(size: 13.0)))
-                .lineSpacing(4.0)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                .frame(maxWidth: .infinity,
-                       alignment: .leading)
-                .lineLimit(nil)
-            
-        }
-        .frame(maxWidth: .infinity,
-               alignment: .leading)
-    }
-    
     
     private var emptyResultView: some View {
         VStack(spacing: 17.0) {

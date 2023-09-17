@@ -14,6 +14,7 @@ struct ScrapClient {
     var removeFolder: (_ folderId: Int) async throws -> (BaseResponse)
     var removeScraps: (_ isDefaultFolder: Bool, _ folderId: Int, _ scrapsCourseIds: [Int]) async throws -> (BaseResponse)
     var renameFolder: (_ folderId: Int, ScrapRenameFolderRequest) async throws -> (BaseResponse)
+    var scrap: (_ courseId: Int) async throws -> (BaseResponse)
     
 }
 
@@ -50,7 +51,19 @@ extension ScrapClient: DependencyKey {
             let request = API.makeDataRequest(ScrapTarget.renameFolder(folderId: folderId, parameter))
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
-        })
+        },
+        scrap: { courseId in
+            let request = API.makeDataRequest(ScrapTarget.scrap(courseId: courseId))
+            let data = await request.validate().serializingData().result
+            switch data {
+            case .success(_):
+                return BaseResponse(status: 200, success: true)
+                
+            case .failure(let error):
+                return BaseResponse(message: error.localizedDescription, status: 0, success: false)
+            }
+        }
+    )
 }
 
 extension DependencyValues {

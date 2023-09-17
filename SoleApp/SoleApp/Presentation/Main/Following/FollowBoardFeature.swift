@@ -17,10 +17,13 @@ struct FollowBoardFeature: Reducer {
     enum Action: Equatable {
         case getCoursesOfFollowers
         case getCoursesOfFollowersResponse(TaskResult<FollowBoardModelResponse>)
+        case scrap(couseId: Int)
+        case scrapResponse(TaskResult<BaseResponse>)
         case viewDidLoad
     }
     
     @Dependency(\.followClient) var followClient
+    @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -42,6 +45,29 @@ struct FollowBoardFeature: Reducer {
                 return .none
                 
             case .getCoursesOfFollowersResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                return .none
+                
+            case .scrap(let courseId):
+                guard state.isCalledApi == false else { return .none }
+                state.isCalledApi = true
+                if let index = state.courses.firstIndex(where: { $0.courseId == courseId }) {
+                    state.courses[index].like?.toggle()
+                }
+                return .run { send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrap(courseId)}))
+                }
+                
+            case .scrapResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                  
+                }
+                return .none
+                
+            case .scrapResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
                 return .none
