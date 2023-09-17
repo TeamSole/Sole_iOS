@@ -49,7 +49,7 @@ struct FollowingBoardView: View {
 extension FollowingBoardView {
     private var navigationView: some View {
         ZStack(alignment: .trailing) {
-            Text("팔로잉")
+            Text(StringConstant.following)
                 .foregroundColor(.black)
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .frame(maxWidth: .infinity,
@@ -136,7 +136,7 @@ extension FollowingBoardView {
     private var emptyResultView: some View {
         VStack(spacing: 17.0) {
             Image("emptyResult")
-            Text("아직 팔로우한 유저의 장소가 없습니다.")
+            Text(StringConstant.emptyCourseFollowed)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
