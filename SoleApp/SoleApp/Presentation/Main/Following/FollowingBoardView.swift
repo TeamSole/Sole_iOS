@@ -12,6 +12,15 @@ import ComposableArchitecture
 struct FollowingBoardView: View {
     typealias boardItem = FollowBoardModelResponse.DataModel
     @StateObject var viewModel: FollowingBoardViewModel = FollowingBoardViewModel()
+    
+    private let store: StoreOf<FollowBoardFeature>
+    @ObservedObject var viewStore: ViewStoreOf<FollowBoardFeature>
+    
+    init(store: StoreOf<FollowBoardFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
             VStack(spacing: 0.0) {
                 navigationView
@@ -150,6 +159,6 @@ extension FollowingBoardView {
 
 struct FollowingBoardView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowingBoardView()
+        FollowingBoardView(store: Store(initialState: FollowBoardFeature.State(), reducer: { FollowBoardFeature() }))
     }
 }

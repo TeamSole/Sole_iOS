@@ -18,6 +18,7 @@ struct MainFeature: Reducer {
     struct State: Equatable {
         var home: HomeFeature.State = HomeFeature.State()
         var history: HistoryFeature.State = HistoryFeature.State()
+        var follow: FollowBoardFeature.State = FollowBoardFeature.State()
         var scrap: ScrapFolderFeature.State = ScrapFolderFeature.State()
         var selectedTab: Tab = .HOME
     }
@@ -25,6 +26,7 @@ struct MainFeature: Reducer {
     enum Action: Equatable {
         case home(HomeFeature.Action)
         case history(HistoryFeature.Action)
+        case follow(FollowBoardFeature.Action)
         case scrap(ScrapFolderFeature.Action)
         case selectTab(Tab)
     }
@@ -38,6 +40,10 @@ struct MainFeature: Reducer {
             HistoryFeature()
         }
         
+        Scope(state: \.follow, action: /Action.follow) {
+            FollowBoardFeature()
+        }
+        
         Scope(state: \.scrap, action: /Action.scrap) {
             ScrapFolderFeature()
         }
@@ -47,6 +53,9 @@ struct MainFeature: Reducer {
                 return .none
                 
             case .history:
+                return .none
+                
+            case .follow:
                 return .none
                 
             case .scrap:

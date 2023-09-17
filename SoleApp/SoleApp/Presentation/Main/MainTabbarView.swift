@@ -41,7 +41,7 @@ struct MainTabbarView: View {
                     }
                     .tag(MainFeature.Tab.HISTORY)
                 
-                FollowingBoardView()
+                FollowingBoardView(store: self.store.scope(state: \.follow, action: MainFeature.Action.follow))
                     .tabItem {
                         viewStore.selectedTab == .FOLLOWING ? Image("following_tap_selected") : Image("following_tap")
                         Text(StringConstant.tabFollowing)
