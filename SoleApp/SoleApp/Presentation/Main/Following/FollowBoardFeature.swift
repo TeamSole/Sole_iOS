@@ -11,10 +11,13 @@ struct FollowBoardFeature: Reducer {
     typealias CourseOfFollower = FollowBoardModelResponse.DataModel
     struct State: Equatable {
         var courses: [CourseOfFollower] = []
+        @PresentationState var followingUserList: FollowingUserListFeature.State?
         var isCalledApi: Bool = false
     }
     
     enum Action: Equatable {
+        case didTappedFollowingUserListView
+        case followingUserList(PresentationAction<FollowingUserListFeature.Action>)
         case getCoursesOfFollowers
         case getCoursesOfFollowersResponse(TaskResult<FollowBoardModelResponse>)
         case scrap(couseId: Int)
@@ -28,6 +31,13 @@ struct FollowBoardFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .didTappedFollowingUserListView:
+                state.followingUserList = FollowingUserListFeature.State()
+                return .none
+                
+            case .followingUserList:
+                return .none
+                
             case .getCoursesOfFollowers:
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
@@ -75,6 +85,9 @@ struct FollowBoardFeature: Reducer {
             case .viewDidLoad:
                 return .send(.getCoursesOfFollowers)
             }
+        }
+        .ifLet(\.$followingUserList, action: /Action.followingUserList) {
+            FollowingUserListFeature()
         }
     }
 }

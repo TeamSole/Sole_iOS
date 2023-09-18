@@ -7,12 +7,22 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct FollowingUserListView: View {
     typealias FollowItem = FollowListModelResponse.DataModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: FollowingUserListViewModel = FollowingUserListViewModel()
     @State private var selectedIndex: Int = 0
+    
+    private let store: StoreOf<FollowingUserListFeature>
+    @ObservedObject var viewStore: ViewStoreOf<FollowingUserListFeature>
+    
+    init(store: StoreOf<FollowingUserListFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -180,6 +190,6 @@ extension FollowingUserListView {
 
 struct FollowingUserListView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowingUserListView()
+        FollowingUserListView(store: Store(initialState: FollowingUserListFeature.State(), reducer: { FollowingUserListFeature() }))
     }
 }
