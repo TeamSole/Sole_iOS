@@ -9,6 +9,8 @@ import Alamofire
 
 enum FollowTarget {
     case getCoursesOfFollowers
+    case getFollowers
+    case getFollows
 }
 
 extension FollowTarget: TargetType {
@@ -18,7 +20,7 @@ extension FollowTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .getCoursesOfFollowers:
+        case .getCoursesOfFollowers, .getFollowers, .getFollows:
             return .get
         }
     }
@@ -27,6 +29,12 @@ extension FollowTarget: TargetType {
         switch self {
         case .getCoursesOfFollowers:
             return K.Path.boardList
+            
+        case .getFollowers:
+            return K.Path.followerList
+            
+        case .getFollows:
+            return K.Path.followList
         }
     }
     
@@ -39,7 +47,7 @@ extension FollowTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .getCoursesOfFollowers:
+        case .getCoursesOfFollowers, .getFollowers, .getFollows:
             return .body(nil)
         }
     }

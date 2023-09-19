@@ -8,12 +8,14 @@
 import Foundation
 
 
-struct FollowListModelResponse: Codable {
+struct FollowListModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: [DataModel]?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var followId: Int?
         var followStatus: String?
         var followerCount: Int?
@@ -21,7 +23,7 @@ struct FollowListModelResponse: Codable {
         var member: Member?
     }
     
-    struct Member: Codable {
+    struct Member: Codable, Equatable {
         var memberId: Int?
         var nickname: String?
         var profileImgUrl: String?

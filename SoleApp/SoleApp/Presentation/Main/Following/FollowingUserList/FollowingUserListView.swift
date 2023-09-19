@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct FollowingUserListView: View {
     typealias FollowItem = FollowListModelResponse.DataModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: FollowingUserListViewModel = FollowingUserListViewModel()
     @State private var selectedIndex: Int = 0
     
@@ -36,8 +35,7 @@ struct FollowingUserListView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.getFollowList()
-            viewModel.getFollowerList()
+            viewStore.send(.viewDidLoad)
         }
     }
 }
@@ -49,7 +47,7 @@ extension FollowingUserListView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
         }
         .frame(height: 48.0)
@@ -68,12 +66,12 @@ extension FollowingUserListView {
     
     private var followerListView: some View {
         LazyVStack(spacing: 0.0) {
-            ForEach(0..<viewModel.followerList.count, id: \.self) { index in
+            ForEach(viewStore.followers, id: \.member?.memberId) { item in
                 NavigationLink(destination: {
-                    FollowUserView(socialId: viewModel.followerList[index].member?.socialId ?? "",
-                    memberId: viewModel.followerList[index].member?.memberId ?? 0)
+                    FollowUserView(socialId: item.member?.socialId ?? "",
+                    memberId: item.member?.memberId ?? 0)
                 }, label: {
-                    profileItem(item: viewModel.followerList[index], index: index)
+                    profileItem(item: item)
                 })
             }
         }
@@ -81,12 +79,12 @@ extension FollowingUserListView {
     
     private var followingListView: some View {
         LazyVStack(spacing: 0.0) {
-            ForEach(0..<viewModel.followList.count, id: \.self) { index in
+            ForEach(viewStore.follows, id: \.member?.memberId) { item in
                 NavigationLink(destination: {
-                    FollowUserView(socialId: viewModel.followList[index].member?.socialId ?? "",
-                    memberId: viewModel.followList[index].member?.memberId ?? 0)
+                    FollowUserView(socialId: item.member?.socialId ?? "",
+                                   memberId: item.member?.memberId ?? 0)
                 }, label: {
-                    profileItem(item: viewModel.followList[index], index: index)
+                    profileItem(item: item)
                 })
             }
         }
@@ -124,7 +122,7 @@ extension FollowingUserListView {
     
     
     
-    private func profileItem(item: FollowItem, index: Int) -> some View {
+    private func profileItem(item: FollowItem) -> some View {
         HStack(alignment: .center, spacing: 0.0) {
             KFImage(URL(string: item.member?.profileImgUrl ?? ""))
                 .placeholder {
@@ -173,12 +171,12 @@ extension FollowingUserListView {
                 .cornerRadius(4.0)
                 .onTapGesture {
 //                    isFollowing.toggle()
-                    if selectedIndex == 0 {
-                        viewModel.followerList[index].followStatus = viewModel.followerList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
-                    } else {
-                        viewModel.followList[index].followStatus = viewModel.followList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
-                    }
-                    viewModel.follow(memberId: item.member?.memberId ?? 0)
+//                    if selectedIndex == 0 {
+//                        viewModel.followerList[index].followStatus = viewModel.followerList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+//                    } else {
+//                        viewModel.followList[index].followStatus = viewModel.followList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+//                    }
+//                    viewModel.follow(memberId: item.member?.memberId ?? 0)
                 }
             
                

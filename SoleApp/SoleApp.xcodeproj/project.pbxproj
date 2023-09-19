@@ -608,6 +608,7 @@
 		A42E42E02AB726E3003D242E /* Follow */ = {
 			isa = PBXGroup;
 			children = (
+				A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */,
 				A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */,
 			);
 			path = Follow;
@@ -844,7 +845,6 @@
 			children = (
 				A47EEA9229C7BE60006BA3DB /* FollowUser */,
 				A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */,
-				A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */,
 				A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */,
 				A42E42E82AB881B7003D242E /* FollowingUserListFeature.swift */,
 			);
