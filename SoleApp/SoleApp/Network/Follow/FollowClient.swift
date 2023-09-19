@@ -8,6 +8,7 @@
 import Dependencies
 
 struct FollowClient {
+    var follow: (_ memberId: Int) async throws -> (BaseResponse)
     var getCoursesOfFollowers: () async throws -> (FollowBoardModelResponse)
     var getFollowers: () async throws -> (FollowListModelResponse)
     var getFollows: () async throws -> (FollowListModelResponse)
@@ -15,6 +16,11 @@ struct FollowClient {
 
 extension FollowClient: DependencyKey {
     static var liveValue: FollowClient = FollowClient(
+        follow: { memberId in
+            let request = API.makeDataRequest(FollowTarget.follow(memberId: memberId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
+        },
         getCoursesOfFollowers: {
             let request = API.makeDataRequest(FollowTarget.getCoursesOfFollowers)
             let data = try await request.validate().serializingData().value

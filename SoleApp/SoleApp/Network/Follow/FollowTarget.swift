@@ -8,8 +8,13 @@
 import Alamofire
 
 enum FollowTarget {
+    /// 팔로우
+    case follow(memberId: Int)
+    /// 팔로우한 사람의 코스 상세 불러오기 할 때 사용
     case getCoursesOfFollowers
+    /// 팔로워 목록 가저오기
     case getFollowers
+    /// 팔로우 목록 가져오기
     case getFollows
 }
 
@@ -20,6 +25,9 @@ extension FollowTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
+        case .follow:
+            return .post
+            
         case .getCoursesOfFollowers, .getFollowers, .getFollows:
             return .get
         }
@@ -27,6 +35,9 @@ extension FollowTarget: TargetType {
     
     var path: String {
         switch self {
+        case .follow(let memberId):
+            return K.Path.follow(memberId: memberId)
+            
         case .getCoursesOfFollowers:
             return K.Path.boardList
             
@@ -47,7 +58,7 @@ extension FollowTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .getCoursesOfFollowers, .getFollowers, .getFollows:
+        case .follow, .getCoursesOfFollowers, .getFollowers, .getFollows:
             return .body(nil)
         }
     }

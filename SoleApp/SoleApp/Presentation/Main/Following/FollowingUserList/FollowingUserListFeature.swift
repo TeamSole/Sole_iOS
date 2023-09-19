@@ -16,6 +16,9 @@ struct FollowingUserListFeature: Reducer {
     
     enum Action: Equatable {
         case didTappedDismissButton
+        /// 팔로우
+        case follow(categoryIndex: Int, memberId: Int?)
+        case followResponse(TaskResult<BaseResponse>)
         /// 팔로워 한 사람 목록 Api 호출
         case getFollowers
         case getFollowersResponse(TaskResult<FollowListModelResponse>)
@@ -35,6 +38,33 @@ struct FollowingUserListFeature: Reducer {
                 return .run { _ in
                     await dismiss()
                 }
+                
+            case .follow(let categoryIndex, let memberId):
+                guard let memberId = memberId else { return .none }
+                if categoryIndex == 0 {
+                    if let index = state.followers.firstIndex(where: { $0.member?.memberId == memberId}) {
+                        state.followers[index].followStatus = state.followers[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+                    }
+                } else if categoryIndex == 1 {
+                    if let index = state.follows.firstIndex(where: { $0.member?.memberId == memberId}) {
+                        state.follows[index].followStatus = state.follows[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
+                    }
+                }
+                return .run { send in
+                    await send(.followResponse(
+                        TaskResult { try await followClient.follow(memberId)}))
+                }
+                
+            case .followResponse(.success(let response)):
+                if response.success == true {
+                    
+                }
+                return .none
+                
+            case .followResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
+            
                 
             case .getFollowers:
                 return .run { send in

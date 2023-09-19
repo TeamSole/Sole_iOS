@@ -27,7 +27,7 @@ struct FollowingUserListView: View {
             navigationBar
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    topCategoriesView(items: ["팔로워", "팔로잉"], selectedIndex: $selectedIndex)
+                    topCategoriesView(items: [StringConstant.follower, StringConstant.following], selectedIndex: $selectedIndex)
                     followNFollowingListView
                 }
             }
@@ -142,13 +142,13 @@ extension FollowingUserListView {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 7.0) {
-                    Text("팔로워 \(item.followerCount ?? 0)")
+                    Text("\(StringConstant.follower) \(item.followerCount ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                     Color.black
                         .frame(width: 1.0,
                                height: 11.0)
-                    Text("팔로잉 \(item.followingCount ?? 0)")
+                    Text("\(StringConstant.following) \(item.followingCount ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                         .frame(maxWidth: .infinity,
@@ -157,7 +157,7 @@ extension FollowingUserListView {
                 }
             }
             .padding(.leading)
-            Text(item.followStatus == "FOLLOWING" ? "팔로잉" : "팔로우")
+            Text(item.followStatus == "FOLLOWING" ? StringConstant.following : StringConstant.follow)
                 .foregroundColor(item.followStatus == "FOLLOWING" ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
@@ -170,6 +170,7 @@ extension FollowingUserListView {
                 )
                 .cornerRadius(4.0)
                 .onTapGesture {
+                    viewStore.send(.follow(categoryIndex: selectedIndex, memberId: item.member?.memberId))
 //                    isFollowing.toggle()
 //                    if selectedIndex == 0 {
 //                        viewModel.followerList[index].followStatus = viewModel.followerList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
