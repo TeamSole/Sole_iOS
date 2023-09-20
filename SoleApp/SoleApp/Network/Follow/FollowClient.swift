@@ -12,6 +12,7 @@ struct FollowClient {
     var getCoursesOfFollowers: () async throws -> (FollowBoardModelResponse)
     var getFollowers: () async throws -> (FollowListModelResponse)
     var getFollows: () async throws -> (FollowListModelResponse)
+    var getUserDetail: (_ socialId: String) async throws -> (FollowUserModelResponse)
 }
 
 extension FollowClient: DependencyKey {
@@ -35,7 +36,13 @@ extension FollowClient: DependencyKey {
             let request = API.makeDataRequest(FollowTarget.getFollows)
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: FollowListModelResponse.self)
+        },
+        getUserDetail: { socialId in
+            let request = API.makeDataRequest(FollowTarget.getUserDetail(socialId: socialId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: FollowUserModelResponse.self)
         }
+        
     )
 }
 

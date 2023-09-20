@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct FollowUserModelResponse: Codable {
-    
+struct FollowUserModelResponse: APIResponse {
+    var message: String?
+    var code: String?
     let data: DataModel?
     let status: Int
     let success: Bool
     
-    struct DataModel: Codable {
+    struct DataModel: Codable, Equatable {
         var followId: Int?
         var followStatus: String?
         var followerCount: Int?
@@ -26,7 +27,7 @@ struct FollowUserModelResponse: Codable {
         var recentCourses: [Place]?
     }
     
-    struct Place: Codable {
+    struct Place: Codable, Equatable {
         var courseId: Int?
         var address: String?
         var categories: [String]?

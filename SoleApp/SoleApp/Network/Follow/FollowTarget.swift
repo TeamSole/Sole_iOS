@@ -16,6 +16,8 @@ enum FollowTarget {
     case getFollowers
     /// 팔로우 목록 가져오기
     case getFollows
+    /// 팔로우 한 유저 정보
+    case getUserDetail(socialId: String)
 }
 
 extension FollowTarget: TargetType {
@@ -28,7 +30,7 @@ extension FollowTarget: TargetType {
         case .follow:
             return .post
             
-        case .getCoursesOfFollowers, .getFollowers, .getFollows:
+        case .getCoursesOfFollowers, .getFollowers, .getFollows, .getUserDetail:
             return .get
         }
     }
@@ -46,6 +48,9 @@ extension FollowTarget: TargetType {
             
         case .getFollows:
             return K.Path.followList
+            
+        case .getUserDetail(let socialId):
+            return K.Path.boardList + "/\(socialId)"
         }
     }
     
@@ -58,7 +63,7 @@ extension FollowTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .follow, .getCoursesOfFollowers, .getFollowers, .getFollows:
+        case .follow, .getCoursesOfFollowers, .getFollowers, .getFollows, .getUserDetail:
             return .body(nil)
         }
     }

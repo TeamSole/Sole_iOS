@@ -610,6 +610,7 @@
 			children = (
 				A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */,
 				A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */,
+				A47EEAC929C98926006BA3DB /* FollowUserModel.swift */,
 			);
 			path = Follow;
 			sourceTree = "<group>";
@@ -855,7 +856,6 @@
 			isa = PBXGroup;
 			children = (
 				A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */,
-				A47EEAC929C98926006BA3DB /* FollowUserModel.swift */,
 				A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */,
 			);
 			path = FollowUser;
