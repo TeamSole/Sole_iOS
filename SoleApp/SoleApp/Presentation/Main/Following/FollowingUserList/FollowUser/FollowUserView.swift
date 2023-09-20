@@ -14,8 +14,14 @@ struct FollowUserView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: FollowUserViewModel = FollowUserViewModel()
     @State private var availableWidth: CGFloat = 10
-    var socialId: String
-    var memberId: Int
+    
+    private let store: StoreOf<FollowUserFeature>
+    @ObservedObject var viewStore: ViewStoreOf<FollowUserFeature>
+    
+    init(store: StoreOf<FollowUserFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -29,7 +35,7 @@ struct FollowUserView: View {
         }
         .navigationBarHidden(true)
         .onAppear{
-            viewModel.getUserDetail(socialId: socialId)
+//            viewModel.getUserDetail(socialId: socialId)
         }
     }
 }
@@ -101,7 +107,7 @@ extension FollowUserView {
                     } else {
                         viewModel.userDetail.followStatus = "FOLLOWING"
                     }
-                    viewModel.follow(memberId: memberId)
+//                    viewModel.follow(memberId: memberId)
                 }
         }
         .frame(height: 76.0)
@@ -258,7 +264,7 @@ extension FollowUserView {
         .contentShape(Rectangle())
         .onTapGesture {
             guard viewModel.callingRequest == false else { return }
-            viewModel.getNextUserDetail(socialId: socialId)
+//            viewModel.getNextUserDetail(socialId: socialId)
         }
         .isHidden(viewModel.recentCourses?.last?.finalPage == true, remove: true)
     }
@@ -267,6 +273,6 @@ extension FollowUserView {
 
 struct FollowUserView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowUserView(socialId: "", memberId: 0)
+        FollowUserView(store: Store(initialState: FollowUserFeature.State(socialId: "", memberId: 0), reducer: { FollowUserFeature() }))
     }
 }

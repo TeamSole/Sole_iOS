@@ -67,12 +67,10 @@ extension FollowingUserListView {
     private var followerListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(viewStore.followers, id: \.member?.memberId) { item in
-                NavigationLink(destination: {
-                    FollowUserView(socialId: item.member?.socialId ?? "",
-                    memberId: item.member?.memberId ?? 0)
-                }, label: {
-                    profileItem(item: item)
-                })
+                NavigationLinkStore(self.store.scope(state: \.$followUser, action: FollowingUserListFeature.Action.followUser),
+                                    onTap: { viewStore.send(.didTappedUser(socialId: item.member?.socialId, memberId: item.member?.memberId)) },
+                                    destination: { FollowUserView(store: $0) },
+                                    label: { profileItem(item: item) })
             }
         }
     }
@@ -80,12 +78,10 @@ extension FollowingUserListView {
     private var followingListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(viewStore.follows, id: \.member?.memberId) { item in
-                NavigationLink(destination: {
-                    FollowUserView(socialId: item.member?.socialId ?? "",
-                                   memberId: item.member?.memberId ?? 0)
-                }, label: {
-                    profileItem(item: item)
-                })
+                NavigationLinkStore(self.store.scope(state: \.$followUser, action: FollowingUserListFeature.Action.followUser),
+                                    onTap: { viewStore.send(.didTappedUser(socialId: item.member?.socialId, memberId: item.member?.memberId)) },
+                                    destination: { FollowUserView(store: $0) },
+                                    label: { profileItem(item: item) })
             }
         }
     }
