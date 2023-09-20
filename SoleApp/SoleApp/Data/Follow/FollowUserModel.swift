@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct FollowUserModelRequest: Codable {
+    var courseId: Int
+}
+
 struct FollowUserModelResponse: APIResponse {
     var message: String?
     var code: String?

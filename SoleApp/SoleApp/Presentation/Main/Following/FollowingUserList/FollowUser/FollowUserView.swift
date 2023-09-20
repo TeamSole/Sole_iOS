@@ -11,8 +11,6 @@ import ComposableArchitecture
 
 struct FollowUserView: View {
     typealias Course = FollowUserModelResponse.Place
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: FollowUserViewModel = FollowUserViewModel()
     @State private var availableWidth: CGFloat = 10
     
     private let store: StoreOf<FollowUserFeature>
@@ -34,8 +32,8 @@ struct FollowUserView: View {
             }
         }
         .navigationBarHidden(true)
-        .onAppear{
-//            viewModel.getUserDetail(socialId: socialId)
+        .onLoaded {
+            viewStore.send(.viewDidLoad)
         }
     }
 }
@@ -47,7 +45,7 @@ extension FollowUserView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
         }
         .frame(height: 48.0)
@@ -56,7 +54,7 @@ extension FollowUserView {
     
     private var profileSectionView: some View {
         HStack(alignment: .center, spacing: 0.0) {
-            KFImage(URL(string: viewModel.userDetail.profileImg ?? ""))
+            KFImage(URL(string: viewStore.userDetail.profileImg ?? ""))
                 .placeholder {
                     Image(uiImage: UIImage(named: "profile24") ?? UIImage())
                         .resizable()
@@ -68,19 +66,19 @@ extension FollowUserView {
                        height: 40.0)
                 .cornerRadius(.infinity)
             VStack(spacing: 3.0) {
-                Text(viewModel.userDetail.nickname ?? "")
+                Text(viewStore.userDetail.nickname ?? "")
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 7.0) {
-                    Text("팔로워 \(viewModel.userDetail.followerCount ?? 0)")
+                    Text("\(StringConstant.follower) \(viewStore.userDetail.followerCount ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                     Color.black
                         .frame(width: 1.0,
                                height: 11.0)
-                    Text("팔로잉 \(viewModel.userDetail.followingCount ?? 0)")
+                    Text("\(StringConstant.following) \(viewStore.userDetail.followingCount ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                         .frame(maxWidth: .infinity,
@@ -89,24 +87,24 @@ extension FollowUserView {
                 }
             }
             .padding(.leading)
-            Text(viewModel.userDetail.isFollowing ? "팔로잉" : "팔로우")
-                .foregroundColor(viewModel.userDetail.isFollowing ? .blue_4708FA : .white)
+            Text(viewStore.userDetail.isFollowing ? StringConstant.following : StringConstant.follow)
+                .foregroundColor(viewStore.userDetail.isFollowing ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
                        height: 20.0,
                        alignment: .center)
-                .background(viewModel.userDetail.isFollowing ? Color.white : Color.blue_4708FA)
+                .background(viewStore.userDetail.isFollowing ? Color.white : Color.blue_4708FA)
                 .cornerRadius(4.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
                         .stroke(Color.blue_4708FA, lineWidth: 1.0)
                 )
                 .onTapGesture {
-                    if viewModel.userDetail.isFollowing {
-                        viewModel.userDetail.followStatus = "FOLLOWER"
-                    } else {
-                        viewModel.userDetail.followStatus = "FOLLOWING"
-                    }
+//                    if viewModel.userDetail.isFollowing {
+//                        viewModel.userDetail.followStatus = "FOLLOWER"
+//                    } else {
+//                        viewModel.userDetail.followStatus = "FOLLOWING"
+//                    }
 //                    viewModel.follow(memberId: memberId)
                 }
         }
@@ -115,7 +113,7 @@ extension FollowUserView {
     }
     
     private var introduceView: some View {
-        Text(viewModel.userDetail.description ?? "")
+        Text(viewStore.userDetail.description ?? "")
             .foregroundColor(.black)
             .font(.pretendard(.reguler, size: 14.0))
             .frame(maxWidth: .infinity,
@@ -132,15 +130,15 @@ extension FollowUserView {
     
     private var popularCourseView: some View {
         VStack(spacing: 12.0) {
-            Text(String(format: "%@의 인기 코스", viewModel.userDetail.nickname ?? ""))
+            Text(String(format: "%@의 인기 코스", viewStore.userDetail.nickname ?? ""))
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            if viewModel.popularCourse == nil {
+            if viewStore.popularCourse == nil {
                 emptyResultView(title: "아직 인기 코스가 없습니다.")
             } else {
-                courseItem(item: viewModel.popularCourse ?? Course(), index: -1)
+                courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
             }
         }
         .padding(16.0)
@@ -148,15 +146,15 @@ extension FollowUserView {
     
     private var recentCourseView: some View {
         LazyVStack(spacing: 12.0) {
-            Text(String(format: "%@의 최근 코스", viewModel.userDetail.nickname ?? ""))
+            Text(String(format: "%@의 최근 코스", viewStore.userDetail.nickname ?? ""))
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            if viewModel.recentCourses?.isEmpty == true {
+            if viewStore.recentCourses?.isEmpty == true {
                 emptyResultView(title: "아직 등록한 코스가 없습니다.")
             } else {
-                ForEach(0..<(viewModel.recentCourses?.count ?? 0), id: \.self) { index in
+                ForEach(0..<(viewStore.recentCourses?.count ?? 0), id: \.self) { index in
 //                    NavigationLink(destination: {
 //                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.recentCourses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
 //                    }, label: {
@@ -190,13 +188,13 @@ extension FollowUserView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love")
                         .onTapGesture {
-                            if index == -1 {
-                                viewModel.popularCourse?.like?.toggle()
-                                viewModel.scrap(courseId: viewModel.popularCourse?.courseId ?? 0)
-                            } else {
-                                viewModel.recentCourses?[index].like?.toggle()
-                                viewModel.scrap(courseId: viewModel.recentCourses?[index].courseId ?? 0)
-                            }
+//                            if index == -1 {
+//                                viewModel.popularCourse?.like?.toggle()
+//                                viewModel.scrap(courseId: viewModel.popularCourse?.courseId ?? 0)
+//                            } else {
+//                                viewModel.recentCourses?[index].like?.toggle()
+//                                viewModel.scrap(courseId: viewModel.recentCourses?[index].courseId ?? 0)
+//                            }
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
@@ -248,7 +246,7 @@ extension FollowUserView {
     
     private var addNextPageButton: some View {
         HStack(spacing: 0.0) {
-            if viewModel.callingRequest {
+            if viewStore.isCalledApi {
                 ProgressView()
             } else {
                 Text("더보기 +")
@@ -263,10 +261,10 @@ extension FollowUserView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard viewModel.callingRequest == false else { return }
+           
 //            viewModel.getNextUserDetail(socialId: socialId)
         }
-        .isHidden(viewModel.recentCourses?.last?.finalPage == true, remove: true)
+        .isHidden(viewStore.recentCourses?.last?.finalPage == true, remove: true)
     }
 
 }
