@@ -30,8 +30,10 @@ struct StringConstant {
     
     // MARK: E
     static let edit: String = "편집"
+    static let emptyCourseAdded: String = "아직 추가한 장소가 없습니다."
     static let emptyCourseFollowed: String = "아직 팔로우한 유저의 장소가 없습니다."
-    static let emptyCourseRegistered: String = "아직 추가한 장소가 없습니다."
+    static let emptyCoursePopulate: String = "아직 인기 코스가 없습니다."
+    static let emptyCourseRegistered: String = "아직 등록한 코스가 없습니다."
     static let emptyCourseScrapped: String = "아직 스크랩한 장소가 없습니다."
     static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
 
@@ -63,6 +65,10 @@ struct StringConstant {
     static let myNearPopularCourse: String = "내 주변 인기 코스"
     static let myPage: String = "마이페이지"
     static let myTastyCourse: String = "내 취향 코스"
+    
+    // MARK: O
+    static let onesPopulateCourse: String = "의 인기 코스"
+    static let onesRecentCourse: String = "의 최근 코스"
     
     // MARK: P
     static let place: String = "장소"

@@ -130,13 +130,13 @@ extension FollowUserView {
     
     private var popularCourseView: some View {
         VStack(spacing: 12.0) {
-            Text(String(format: "%@의 인기 코스", viewStore.userDetail.nickname ?? ""))
+            Text(String(format: "%@\(StringConstant.onesPopulateCourse)", viewStore.userDetail.nickname ?? ""))
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
             if viewStore.popularCourse == nil {
-                emptyResultView(title: "아직 인기 코스가 없습니다.")
+                emptyResultView(title: StringConstant.emptyCoursePopulate)
             } else {
                 courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
             }
@@ -146,13 +146,13 @@ extension FollowUserView {
     
     private var recentCourseView: some View {
         LazyVStack(spacing: 12.0) {
-            Text(String(format: "%@의 최근 코스", viewStore.userDetail.nickname ?? ""))
+            Text(String(format: "%@\(StringConstant.onesRecentCourse)", viewStore.userDetail.nickname ?? ""))
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
             if viewStore.recentCourses?.isEmpty == true {
-                emptyResultView(title: "아직 등록한 코스가 없습니다.")
+                emptyResultView(title: StringConstant.emptyCourseRegistered)
             } else {
                 ForEach(0..<(viewStore.recentCourses?.count ?? 0), id: \.self) { index in
 //                    NavigationLink(destination: {
@@ -249,7 +249,7 @@ extension FollowUserView {
             if viewStore.isCalledApi {
                 ProgressView()
             } else {
-                Text("더보기 +")
+                Text(StringConstant.moreWithPlus)
             }
         }
         .frame(maxWidth: .infinity)

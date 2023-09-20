@@ -232,7 +232,7 @@ extension HistoryView {
     private var emptyResultView: some View {
         VStack(spacing: 17.0) {
             Image("emptyResult")
-            Text(StringConstant.emptyCourseRegistered)
+            Text(StringConstant.emptyCourseAdded)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
         }
