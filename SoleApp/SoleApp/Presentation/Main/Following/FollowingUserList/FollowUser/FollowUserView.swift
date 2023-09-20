@@ -100,12 +100,7 @@ extension FollowUserView {
                         .stroke(Color.blue_4708FA, lineWidth: 1.0)
                 )
                 .onTapGesture {
-//                    if viewModel.userDetail.isFollowing {
-//                        viewModel.userDetail.followStatus = "FOLLOWER"
-//                    } else {
-//                        viewModel.userDetail.followStatus = "FOLLOWING"
-//                    }
-//                    viewModel.follow(memberId: memberId)
+                    viewStore.send(.follow)
                 }
         }
         .frame(height: 76.0)
@@ -261,8 +256,7 @@ extension FollowUserView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-           
-//            viewModel.getNextUserDetail(socialId: socialId)
+            viewStore.send(.getNextUserDetail)
         }
         .isHidden(viewStore.recentCourses?.last?.finalPage == true, remove: true)
     }
