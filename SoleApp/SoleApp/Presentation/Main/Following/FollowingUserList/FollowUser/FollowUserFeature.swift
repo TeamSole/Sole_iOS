@@ -39,12 +39,17 @@ struct FollowUserFeature: Reducer {
         case getUserDetail
         case getUserDetailResponse(TaskResult<FollowUserModelResponse>)
         
+        /// 스크랩
+        case scrap(couseId: Int?)
+        case scrapResponse(TaskResult<BaseResponse>)
+        
         
         case viewDidLoad
     }
     
-    @Dependency(\.followClient) var followClient
     @Dependency(\.dismiss) var dismiss
+    @Dependency(\.followClient) var followClient
+    @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -120,6 +125,33 @@ struct FollowUserFeature: Reducer {
                 return .none
                 
             case .getUserDetailResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                return .none
+                
+            case .scrap(let courseId):
+                guard state.isCalledApi == false,
+                      let courseId = courseId else { return .none }
+                state.isCalledApi = true
+                if let index = state.recentCourses?.firstIndex(where: { $0.courseId == courseId }) {
+                    state.recentCourses?[index].like?.toggle()
+                }
+                if state.popularCourse?.courseId == courseId {
+                    state.popularCourse?.like?.toggle()
+                }
+                return .run { send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrap(courseId)}))
+                }
+                
+            case .scrapResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                  
+                }
+                return .none
+                
+            case .scrapResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
                 return .none

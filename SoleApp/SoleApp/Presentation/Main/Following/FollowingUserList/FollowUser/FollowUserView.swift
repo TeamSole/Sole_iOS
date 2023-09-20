@@ -183,13 +183,8 @@ extension FollowUserView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love")
                         .onTapGesture {
-//                            if index == -1 {
-//                                viewModel.popularCourse?.like?.toggle()
-//                                viewModel.scrap(courseId: viewModel.popularCourse?.courseId ?? 0)
-//                            } else {
-//                                viewModel.recentCourses?[index].like?.toggle()
-//                                viewModel.scrap(courseId: viewModel.recentCourses?[index].courseId ?? 0)
-//                            }
+                            
+                            viewStore.send(.scrap(couseId: item.courseId))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
