@@ -72,7 +72,7 @@ extension HomeView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
             NavigationLink(destination: {
-                CourseSearchView()
+                CourseSearchView(store: Store(initialState: CourseSearchFeature.State(), reducer: { CourseSearchFeature() }))
             }, label: {
                 Image("search24")
             })

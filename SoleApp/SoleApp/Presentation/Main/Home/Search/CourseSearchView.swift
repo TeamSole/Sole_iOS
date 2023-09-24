@@ -16,6 +16,15 @@ struct CourseSearchView: View {
     @State private var searchText: String = ""
     @State private var title: String = ""
     @State private var availableWidth: CGFloat = 10
+    
+    private let store: StoreOf<CourseSearchFeature>
+    @ObservedObject var viewStore: ViewStoreOf<CourseSearchFeature>
+    
+    init(store: StoreOf<CourseSearchFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -211,6 +220,6 @@ extension CourseSearchView {
 
 struct CourseSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        CourseSearchView()
+        CourseSearchView(store: Store(initialState: CourseSearchFeature.State(), reducer: { CourseSearchFeature() }))
     }
 }

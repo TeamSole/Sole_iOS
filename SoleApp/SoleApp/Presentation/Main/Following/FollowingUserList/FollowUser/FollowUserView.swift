@@ -150,6 +150,7 @@ extension FollowUserView {
                 emptyResultView(title: StringConstant.emptyCourseRegistered)
             } else {
                 ForEach(0..<(viewStore.recentCourses?.count ?? 0), id: \.self) { index in
+                    // TODO: 상세화면 연결해야함
 //                    NavigationLink(destination: {
 //                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.recentCourses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
 //                    }, label: {
