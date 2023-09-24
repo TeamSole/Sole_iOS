@@ -11,10 +11,8 @@ import ComposableArchitecture
 
 struct CourseSearchView: View {
     typealias Course = CourseModelResponse.DataModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: SearchViewModel = SearchViewModel()
+//    @StateObject var viewModel: SearchViewModel = SearchViewModel()
     @State private var searchText: String = ""
-    @State private var title: String = ""
     @State private var availableWidth: CGFloat = 10
     
     private let store: StoreOf<CourseSearchFeature>
@@ -30,10 +28,10 @@ struct CourseSearchView: View {
             navigationBar
             ScrollView {
                 VStack(spacing: 0.0) {
-                    if viewModel.title.isEmpty {
+                    if viewStore.title.isEmpty {
                         searchResultListView
                     } else {
-                        emptyResultView(title: viewModel.title)
+                        emptyResultView(title: viewStore.title)
                     }
                 }
             }
@@ -48,17 +46,16 @@ extension CourseSearchView {
         HStack(spacing: 14.0) {
             Image("arrow_back")
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
             HStack(spacing: 5.0) {
                 Image(systemName: "magnifyingglass")
                 TextField(StringConstant.search, text: $searchText, onEditingChanged: { isEditing in
-                    viewModel.title = ""
+                    if viewStore.searchText.isEmpty == false {
+                        viewStore.send(.clearSearchText)
+                    }
                 }, onCommit: {
-                    guard searchText.isEmpty == false else {
-                        viewModel.title = StringConstant.pleaseTypeSearchText
-                        return }
-                    viewModel.getCourses(keyword: searchText)
+                    viewStore.send(.searchCourse(searchText: searchText))
                 })
                 .frame(maxWidth: .infinity)
             }
@@ -75,11 +72,11 @@ extension CourseSearchView {
     }
     private var searchResultListView: some View {
         LazyVStack(spacing: 0.0) {
-            ForEach(0..<viewModel.courses.count, id: \.self) { index in
+            ForEach(0..<viewStore.courses.count, id: \.self) { index in
                 NavigationLink(destination: {
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewModel.courses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.courses[index].courseId ?? 0), reducer: { CourseDetailFeature()}))
                 }, label: {
-                    userTasteCourseItem(item: viewModel.courses[index], index: index)
+                    userTasteCourseItem(item: viewStore.courses[index], index: index)
                 })
                 
             }
@@ -107,8 +104,7 @@ extension CourseSearchView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love" )
                         .onTapGesture {
-                            viewModel.courses[index].like?.toggle()
-                            viewModel.scrap(courseId: item.courseId ?? 0)
+                            viewStore.send(.scrap(courseId: item.courseId ?? 0))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")
@@ -196,7 +192,7 @@ extension CourseSearchView {
     
     private var addNextPageButton: some View {
         HStack(spacing: 0.0) {
-            if viewModel.callingRequest {
+            if viewStore.isCalledApi == true {
                 ProgressView()
             } else {
                 Text(StringConstant.moreWithPlus)
@@ -211,10 +207,9 @@ extension CourseSearchView {
         .padding(.vertical, 16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard viewModel.callingRequest == false else { return }
-            viewModel.getNextCourses(keyword: searchText)
+            viewStore.send(.searchCourseNextPage)
         }
-        .isHidden(viewModel.courses.last?.finalPage == true, remove: true)
+        .isHidden(viewStore.courses.last?.finalPage == true, remove: true)
     }
 }
 

@@ -34,6 +34,7 @@ struct StringConstant {
     static let emptyCourseFollowed: String = "아직 팔로우한 유저의 장소가 없습니다."
     static let emptyCoursePopulate: String = "아직 인기 코스가 없습니다."
     static let emptyCourseRegistered: String = "아직 등록한 코스가 없습니다."
+    static let emptyCourseSearched: String = "검색 결과가 없습니다."
     static let emptyCourseScrapped: String = "아직 스크랩한 장소가 없습니다."
     static let emptyResultInSelectedLocation: String = "이 지역에 등록된 장소가 없습니다."
 
