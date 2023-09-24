@@ -52,11 +52,11 @@ extension CourseSearchView {
                 }
             HStack(spacing: 5.0) {
                 Image(systemName: "magnifyingglass")
-                TextField("검색", text: $searchText, onEditingChanged: { isEditing in
+                TextField(StringConstant.search, text: $searchText, onEditingChanged: { isEditing in
                     viewModel.title = ""
                 }, onCommit: {
                     guard searchText.isEmpty == false else {
-                        viewModel.title = "검색어를 입력해 주세요."
+                        viewModel.title = StringConstant.pleaseTypeSearchText
                         return }
                     viewModel.getCourses(keyword: searchText)
                 })
@@ -111,7 +111,7 @@ extension CourseSearchView {
                             viewModel.scrap(courseId: item.courseId ?? 0)
                         }
                 }
-                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")
+                Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")
                     .font(.pretendard(.reguler, size: 12.0))
                     .foregroundColor(.gray_404040)
                 Color.clear
@@ -149,12 +149,12 @@ extension CourseSearchView {
     private var searchItemListView: some View {
         LazyVStack(spacing: 16.0) {
             HStack(spacing: 0.0) {
-                Text("최근 검색")
+                Text(StringConstant.recentSearchHistory)
                     .font(.pretendard(.bold, size: 14.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text("전체 삭제")
+                Text(StringConstant.removeAll)
                     .font(.pretendard(.bold, size: 12.0))
                     .foregroundColor(.blue_0996F6)
                 
@@ -199,7 +199,7 @@ extension CourseSearchView {
             if viewModel.callingRequest {
                 ProgressView()
             } else {
-                Text("더보기 +")
+                Text(StringConstant.moreWithPlus)
             }
         }
         .frame(maxWidth: .infinity)

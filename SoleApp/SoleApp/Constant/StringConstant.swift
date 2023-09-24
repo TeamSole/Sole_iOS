@@ -73,16 +73,20 @@ struct StringConstant {
     // MARK: P
     static let place: String = "장소"
     static let pleaseAgreeOfTermsForSignUp: String = "회원가입을 위해 약관에 동의해주세요."
+    static let pleaseTypeSearchText: String = "검색어를 입력해 주세요."
     static let pleaseTypeNickname: String = "닉네임을 입력해 주세요."
     static let pleasetypeNicknameMaxLength18: String = "닉네임을 입력해주세요. (최대 10자)"
     static let privacyPolicy: String = "개인정보 처리방침"
     
     // MARK: R
+    static let recentSearchHistory: String = "최근 검색"
     static let registeredCourse: String = "기록한 코스"
+    static let removeAll: String = "전체 삭제"
     
     // MARK: S
     static let saveChangedInfo: String = "변경사항 저장하기"
     static let scrap: String = "스크랩"
+    static let search: String = "검색"
     static let setMyTasty: String = "취향 설정하기"
     static let signInWithKakao: String = "Kakao로 계속하기"
     static let signInWithApple: String = "Apple로 계속하기"
