@@ -71,12 +71,15 @@ extension HomeView {
             Image("small_logo")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            NavigationLink(destination: {
-                CourseSearchView(store: Store(initialState: CourseSearchFeature.State(), reducer: { CourseSearchFeature() }))
+            NavigationLinkStore(store.scope(state: \.$courseSearch, action: HomeFeature.Action.courseSearch), onTap: {
+                viewStore.send(.didTappedCourseSearch)
+            }, destination: { store in
+                CourseSearchView(store: store)
             }, label: {
                 Image("search24")
             })
             .padding(.trailing, 11.0)
+            
             NavigationLinkStore(store.scope(state: \.$myPage, action: HomeFeature.Action.myPage), onTap: {
                 viewStore.send(.didTapMyPageButton)
             }, destination: { store in

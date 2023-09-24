@@ -13,6 +13,7 @@ struct HomeFeature: Reducer {
     typealias Course = CourseModelResponse.DataModel
     struct State: Equatable {
         @PresentationState var courseDetail: CourseDetailFeature.State?
+        @PresentationState var courseSearch: CourseSearchFeature.State?
         @PresentationState var myPage: MyPageFeature.State?
         var courses: [Course] = []
         var isCalledGetNextCoursesApi: Bool = false
@@ -21,7 +22,9 @@ struct HomeFeature: Reducer {
     
     enum Action: Equatable {
         case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        case courseSearch(PresentationAction<CourseSearchFeature.Action>)
         case didTappedCourseDetail(courseId: Int)
+        case didTappedCourseSearch
         case didTapMyPageButton
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
@@ -49,8 +52,15 @@ struct HomeFeature: Reducer {
             case .courseDetail:
                 return .none
                 
+            case .courseSearch:
+                return .none
+                
             case .didTappedCourseDetail(let courseId):
                 state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
+            case .didTappedCourseSearch:
+                state.courseSearch = CourseSearchFeature.State()
                 return .none
                 
             case .didTapMyPageButton:
@@ -193,12 +203,16 @@ struct HomeFeature: Reducer {
             }
             
         }
-        .ifLet(\.$myPage, action: /Action.myPage) {
-            MyPageFeature()
-        }
         .ifLet(\.$courseDetail, action: /Action.courseDetail) {
             CourseDetailFeature()
         }
+        .ifLet(\.$courseSearch, action: /Action.courseSearch) {
+            CourseSearchFeature()
+        }
+        .ifLet(\.$myPage, action: /Action.myPage) {
+            MyPageFeature()
+        }
+       
     }
 }
 
