@@ -11,7 +11,7 @@ import Alamofire
 final class CourseDetailViewModel: ObservableObject {
     typealias CourseDetail = CourseDetailModelResponse.DataModel
     
-    @Published var courseDetail: CourseDetail = CourseDetail()
+//    @Published var ourseDetail: CourseDetail = CourseDetail()
 }
 
 extension CourseDetailViewModel {
@@ -28,7 +28,7 @@ extension CourseDetailViewModel {
                 case .success(let response):
                     if response.success == true,
                        let data = response.data {
-                        self?.courseDetail = data
+//                        self?.courseDetail = data
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

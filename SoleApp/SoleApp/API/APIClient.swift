@@ -83,7 +83,7 @@ extension K {
         static let category: String = "api/courses/favCategory"
         static let location: String = "api/courses/currentGps"
         
-        static let courseDetail: String = "api/courses/"
+        static let courseDetail: String = "api/courses"
         
     }
 }

@@ -28,7 +28,7 @@ extension CourseTarget: TargetType {
     var path: String {
         switch self {
         case .getCourseDetail(let courseId):
-            return K.Path.courseDetail + "\(courseId)"
+            return K.Path.courseDetail + "/\(courseId)"
             
         case .searchCourse:
             return K.Path.courses

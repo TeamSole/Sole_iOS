@@ -8,11 +8,17 @@
 import Dependencies
 
 struct CourseClient {
+    var getCourseDetail: (_ courseId: Int) async throws -> (CourseDetailModelResponse)
     var searchCourse: (_ query: SearchCourseRequest) async throws -> (CourseModelResponse)
 }
 
 extension CourseClient: DependencyKey {
     static var liveValue: CourseClient = CourseClient(
+        getCourseDetail: { courseId in
+            let request = API.makeDataRequest(CourseTarget.getCourseDetail(courseId: courseId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: CourseDetailModelResponse.self)
+        },
         searchCourse: { query in
             let request = API.makeDataRequest(CourseTarget.searchCourse(query: query))
             let data = try await request.validate().serializingData().value

@@ -12,7 +12,6 @@ import ComposableArchitecture
 
 struct CourseDetailView: View {
     typealias Place = CourseDetailModelResponse.PlaceResponseDtos
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: CourseDetailViewModel = CourseDetailViewModel()
     @State private var availableWidth: CGFloat = 10
     @State private var isExpanded: Bool = false
@@ -50,14 +49,14 @@ struct CourseDetailView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.getCourseDetail(courseId: courseId)
+            viewStore.send(.viewDidLoad)
         }
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {
             if alertType == .remove {
                 viewModel.removeCourse(courseId: courseId, complete: {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 })
             } else if alertType == .declare {
                 viewModel.declareCourse(courseId: courseId)
@@ -73,14 +72,14 @@ extension CourseDetailView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
             Image(isScrapped ? "love_selected" : "love")
                 .onTapGesture {
                     isScrapped.toggle()
                     viewModel.scrap(courseId: courseId)
                 }
-            if viewModel.courseDetail.checkWriter == true {
+            if viewStore.courseDetail.checkWriter == true {
                 Image("more-vertical")
                     .onTapGesture {
                         showActionSheet = true
@@ -99,7 +98,7 @@ extension CourseDetailView {
     
     private var mapView: some View {
         VStack(spacing: 0.0) {
-            NaverMapView(places: $viewModel.courseDetail)
+            NaverMapView(places: .constant(viewStore.courseDetail))
         }
         .frame(maxWidth: .infinity)
         .frame(height: 300.0)
@@ -107,7 +106,7 @@ extension CourseDetailView {
     
     private var profileSectionView: some View {
         HStack(alignment: .center, spacing: 0.0) {
-            KFImage(URL(string: viewModel.courseDetail.writer?.profileImgUrl ?? ""))
+            KFImage(URL(string: viewStore.courseDetail.writer?.profileImgUrl ?? ""))
                 .placeholder {
                     Image(uiImage: UIImage(named: "profile24") ?? UIImage())
                         .resizable()
@@ -120,19 +119,19 @@ extension CourseDetailView {
                        height: 40.0)
                 .cornerRadius(.infinity)
             VStack(spacing: 3.0) {
-                Text(viewModel.courseDetail.writer?.nickname ?? "")
+                Text(viewStore.courseDetail.writer?.nickname ?? "")
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 HStack(spacing: 7.0) {
-                    Text("\(StringConstant.follower) \(viewModel.courseDetail.follower ?? 0)")
+                    Text("\(StringConstant.follower) \(viewStore.courseDetail.follower ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                     Color.black
                         .frame(width: 1.0,
                                height: 11.0)
-                    Text("\(StringConstant.following) \(viewModel.courseDetail.following ?? 0)")
+                    Text("\(StringConstant.following) \(viewStore.courseDetail.following ?? 0)")
                         .foregroundColor(.black)
                         .font(.pretendard(.reguler, size: 12.0))
                         .frame(maxWidth: .infinity,
@@ -141,26 +140,26 @@ extension CourseDetailView {
                 }
             }
             .padding(.leading)
-            Text(viewModel.courseDetail.isFollowing ? StringConstant.following : StringConstant.follow)
-                .foregroundColor(viewModel.courseDetail.isFollowing ? .blue_4708FA : .white)
+            Text(viewStore.courseDetail.isFollowing ? StringConstant.following : StringConstant.follow)
+                .foregroundColor(viewStore.courseDetail.isFollowing ? .blue_4708FA : .white)
                 .font(.pretendard(.reguler, size: 12.0))
                 .frame(width: 62.0,
                        height: 20.0,
                        alignment: .center)
-                .background(viewModel.courseDetail.isFollowing ? Color.white : Color.blue_4708FA)
+                .background(viewStore.courseDetail.isFollowing ? Color.white : Color.blue_4708FA)
                 .cornerRadius(4.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
                         .stroke(Color.blue_4708FA, lineWidth: 1.0)
                 )
-                .isHidden(viewModel.courseDetail.checkWriter == true)
+                .isHidden(viewStore.courseDetail.checkWriter == true)
                 .onTapGesture {
-                    if viewModel.courseDetail.isFollowing {
-                        viewModel.courseDetail.followStatus = "FOLLOWER"
-                    } else {
-                        viewModel.courseDetail.followStatus = "FOLLOWING"
-                    }
-                    viewModel.follow(memberId: viewModel.courseDetail.writer?.memberId ?? 0)
+//                    if viewStore.courseDetail.isFollowing {
+//                        viewModel.courseDetail.followStatus = "FOLLOWER"
+//                    } else {
+//                        viewModel.courseDetail.followStatus = "FOLLOWING"
+//                    }
+//                    viewModel.follow(memberId: viewModel.courseDetail.writer?.memberId ?? 0)
                 }
             
                
@@ -172,18 +171,18 @@ extension CourseDetailView {
     private var courseSummarySectionView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             HStack(spacing: 0.0) {
-                Text(viewModel.courseDetail.title ?? "")
+                Text(viewStore.courseDetail.title ?? "")
                     .font(.pretendard(.bold, size: 16.0))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Image("blackLove")
                     .padding(.trailing, 4.0)
-                Text("\(viewModel.courseDetail.scrapCount ?? 0)")
+                Text("\(viewStore.courseDetail.scrapCount ?? 0)")
                     .font(.pretendard(.reguler, size: 11.0))
                     .foregroundColor(.black)
             }
-            Text(viewModel.courseDetail.description ?? "")
+            Text(viewStore.courseDetail.description ?? "")
                 .font(.pretendard(.reguler, size: 13.0))
                 .lineSpacing(4.0)
                 .foregroundColor(.black)
@@ -191,10 +190,10 @@ extension CourseDetailView {
                 .padding(.bottom, 8.0)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            Text(viewModel.courseDetail.startDate ?? "")
+            Text(viewStore.courseDetail.startDate ?? "")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
-            Text("\(viewModel.courseDetail.address ?? "") · \(viewModel.courseDetail.computedDuration) · \(viewModel.courseDetail.scaledDistance) 이동")
+            Text("\(viewStore.courseDetail.address ?? "") · \(viewStore.courseDetail.computedDuration) · \(viewStore.courseDetail.scaledDistance) 이동")
                 .font(.pretendard(.reguler, size: 12.0))
                 .foregroundColor(.gray_404040)
             Color.clear
@@ -203,7 +202,7 @@ extension CourseDetailView {
                     availableWidth = size.width
                 }
             TagListView(availableWidth: availableWidth,
-                        data: viewModel.courseDetail.cateogoryTitles,
+                        data: viewStore.courseDetail.cateogoryTitles,
                         spacing: 8.0,
                         alignment: .leading,
                         isExpandedUserTagListView: .constant(false),
@@ -241,8 +240,8 @@ extension CourseDetailView {
             }
             .padding(.horizontal, 16.0)
             .frame(height: 40.0)
-            ForEach(0..<(viewModel.courseDetail.placeResponseDtos?.count ?? 0), id: \.self) { index in
-                courseDetailItem(item: viewModel.courseDetail.placeResponseDtos?[index] ?? Place(), index: index)
+            ForEach(0..<(viewStore.courseDetail.placeResponseDtos?.count ?? 0), id: \.self) { index in
+                courseDetailItem(item: viewStore.courseDetail.placeResponseDtos?[index] ?? Place(), index: index)
             }
         }
     }
@@ -363,7 +362,7 @@ extension CourseDetailView {
     private var navigateToCourseEditView: some View {
         NavigationLink(isActive: $showCourseEditView,
                        destination: {
-            CourseEditView(courseDetail: viewModel.courseDetail)
+            CourseEditView(courseDetail: viewStore.courseDetail)
         }, label: {
             EmptyView()
         })
