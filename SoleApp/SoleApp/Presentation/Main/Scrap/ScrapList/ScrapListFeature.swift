@@ -10,6 +10,7 @@ import ComposableArchitecture
 struct ScrapListFeature: Reducer {
     typealias Scrap = ScrapListModelResponse.DataModel
     struct State: Equatable {
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         var folderId: Int
         var folderName: String
         var isCalledApi: Bool = false
@@ -28,7 +29,8 @@ struct ScrapListFeature: Reducer {
     }
     
     enum Action: Equatable {
-        
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        case didTappedCourseDetail(courseId: Int)
         case didTappedDismissButton
         /// 스크랩 리스트 불러오기 Api 호출
         case getScrapList
@@ -57,6 +59,13 @@ struct ScrapListFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
             case .didTappedDismissButton:
                 return .run { send in
                     await dismiss()

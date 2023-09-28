@@ -147,7 +147,7 @@ extension HomeView {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
                         ForEach(0..<viewModel.recommendCourses.count, id: \.self) { index in
-                            NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  HomeFeature.Action.courseDetail),
+                            NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: HomeFeature.Action.courseDetail),
                                                 onTap: {
                                 viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
                             }, destination: {

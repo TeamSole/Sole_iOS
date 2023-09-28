@@ -342,21 +342,21 @@ extension CourseDetailView {
     }
     
     func getActionSheet() -> ActionSheet {
-        let button1: ActionSheet.Button = .default(Text(StringConstant.fix),
+        let fixButton: ActionSheet.Button = .default(Text(StringConstant.fix),
                                                    action: {
             showCourseEditView = true
         })
-        let button2: ActionSheet.Button = .default(Text(StringConstant.delete), action: {
+        let deleteButton: ActionSheet.Button = .default(Text(StringConstant.delete), action: {
             alertType = .remove
             showPopup = true
         })
-        let button3: ActionSheet.Button = .cancel(Text(StringConstant.cancel))
+        let cancelButton: ActionSheet.Button = .cancel(Text(StringConstant.cancel))
         
         let title = Text("")
         
         return ActionSheet(title: title,
                            message: nil,
-                           buttons: [button1, button2, button3])
+                           buttons: [fixButton, deleteButton, cancelButton])
     }
     
     private var navigateToCourseEditView: some View {
