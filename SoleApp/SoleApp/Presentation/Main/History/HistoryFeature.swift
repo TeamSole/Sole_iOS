@@ -11,6 +11,7 @@ struct HistoryFeature: Reducer {
     typealias ProfileDescription = UserProfileHistoryModelResponse.DataModel
     typealias Histories = [HistoryModelResponse.DataModel]
     struct State: Equatable {
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         var isCalledApi: Bool = false
         var selectedPlaceParameter: [String] = []
         var selectedWithParameter: [String] = []
@@ -27,6 +28,10 @@ struct HistoryFeature: Reducer {
     }
     
     enum Action: Equatable {
+        /// 코스 상세 연결
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        /// 코스 목록 클릭시 호출
+        case didTappedCourseDetail(courseId: Int)
         /// 사용자 기록 가져오기 api 호출
         case getNextUserHistories
         /// 사용자 기록 가져오기 api 호출 리스폰스
@@ -50,6 +55,13 @@ struct HistoryFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
             case .getNextUserHistories:
                 guard state.isCalledApi == false,
                 state.userHistories.last?.finalPage == false,

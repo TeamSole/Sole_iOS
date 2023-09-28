@@ -173,12 +173,12 @@ extension HistoryView {
                 emptyResultView
             } else {
                 ForEach(viewStore.userHistories, id: \.courseId) { item in
-                    NavigationLink (destination: {
-                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature()}))
-                    }, label: {
+                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: HistoryFeature.Action.courseDetail),
+                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+                    }, destination: { CourseDetailView(store: $0) },
+                                        label: {
                         courseHistoryItem(item: item)
                     })
-                    
                 }
                 addNextPageButton
             }
