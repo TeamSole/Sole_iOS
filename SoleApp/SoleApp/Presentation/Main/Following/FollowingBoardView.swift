@@ -33,10 +33,11 @@ struct FollowingBoardView: View {
                         VStack(spacing: 16.0) {
                             ForEach(viewStore.courses, id: \.courseId) { item in
                                 // TODO: NavigationLinkStore 연결해야함
-                                NavigationLink(destination: {
-                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature()}))
-                                }, label: {
-                                    courseListItem(item: item)
+                                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowBoardFeature.Action.courseDetail),
+                                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+                                }, destination: { CourseDetailView(store: $0) },
+                                                    label: {
+                                                        courseListItem(item: item)
                                 })
                             }
                         }

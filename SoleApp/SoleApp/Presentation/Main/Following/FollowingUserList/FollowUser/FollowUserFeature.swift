@@ -11,14 +11,14 @@ struct FollowUserFeature: Reducer {
     typealias UserDetail = FollowUserModelResponse.DataModel
     typealias Course = FollowUserModelResponse.Place
     struct State: Equatable {
-        var memberId: Int
-        var socialId: String
-        
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         var isCalledApi: Bool = false
         var popularCourse: Course? = nil
         var recentCourses: [Course]? = []
         var userDetail: UserDetail = .init()
         
+        var memberId: Int
+        var socialId: String
         
         init(socialId: String, memberId: Int) {
             self.socialId = socialId
@@ -27,6 +27,11 @@ struct FollowUserFeature: Reducer {
     }
     
     enum Action: Equatable {
+        /// 코스 상세 연결
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        /// 코스 목록 클릭시 호출
+        case didTappedCourseDetail(courseId: Int)
+        
         case didTappedDismissButton
         /// 팔로우
         case follow
@@ -54,6 +59,13 @@ struct FollowUserFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
             case .didTappedDismissButton:
                 return .run { _ in await dismiss() }
                 

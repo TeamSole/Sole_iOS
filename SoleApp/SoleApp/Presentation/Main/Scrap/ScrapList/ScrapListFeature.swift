@@ -29,7 +29,9 @@ struct ScrapListFeature: Reducer {
     }
     
     enum Action: Equatable {
+        /// 코스 상세 연결
         case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        /// 코스 목록 클릭시 호출
         case didTappedCourseDetail(courseId: Int)
         case didTappedDismissButton
         /// 스크랩 리스트 불러오기 Api 호출

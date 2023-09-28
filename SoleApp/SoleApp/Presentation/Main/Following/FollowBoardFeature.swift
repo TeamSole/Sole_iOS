@@ -10,12 +10,17 @@ import ComposableArchitecture
 struct FollowBoardFeature: Reducer {
     typealias CourseOfFollower = FollowBoardModelResponse.DataModel
     struct State: Equatable {
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         var courses: [CourseOfFollower] = []
         @PresentationState var followingUserList: FollowingUserListFeature.State?
         var isCalledApi: Bool = false
     }
     
     enum Action: Equatable {
+        /// 코스 상세 연결
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        /// 코스 목록 클릭시 호출
+        case didTappedCourseDetail(courseId: Int)
         case didTappedFollowingUserListView
         case followingUserList(PresentationAction<FollowingUserListFeature.Action>)
         case getCoursesOfFollowers
@@ -31,6 +36,13 @@ struct FollowBoardFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
             case .didTappedFollowingUserListView:
                 state.followingUserList = FollowingUserListFeature.State()
                 return .none
