@@ -10,6 +10,7 @@ import ComposableArchitecture
 struct CourseSearchFeature: Reducer {
     typealias Course = CourseModelResponse.DataModel
     struct State: Equatable {
+        @PresentationState var courseDetail: CourseDetailFeature.State?
         var courses: [Course] = []
         var isCalledApi: Bool = false
         var searchText: String = ""
@@ -18,6 +19,10 @@ struct CourseSearchFeature: Reducer {
     
     enum Action: Equatable {
         case clearSearchText
+        /// 코스 상세 연결
+        case courseDetail(PresentationAction<CourseDetailFeature.Action>)
+        /// 코스 목록 클릭시 호출
+        case didTappedCourseDetail(courseId: Int)
         case didTappedDismissButton
         case scrap(courseId: Int)
         case scrapResponse(TaskResult<BaseResponse>)
@@ -36,6 +41,13 @@ struct CourseSearchFeature: Reducer {
             switch action {
             case .clearSearchText:
                 state.searchText = ""
+                return .none
+                
+            case .courseDetail:
+                return .none
+                
+            case .didTappedCourseDetail(let courseId):
+                state.courseDetail = CourseDetailFeature.State(courseId: courseId)
                 return .none
                 
             case .didTappedDismissButton:
