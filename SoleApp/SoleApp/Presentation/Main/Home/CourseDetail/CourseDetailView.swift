@@ -23,7 +23,6 @@ struct CourseDetailView: View {
     @State private var showCourseEditView: Bool = false
 
     var courseId: Int = 0
-    @State private var isScrapped: Bool = false
     
     private let store: StoreOf<CourseDetailFeature>
     @ObservedObject var viewStore: ViewStoreOf<CourseDetailFeature>
@@ -74,10 +73,9 @@ extension CourseDetailView {
                 .onTapGesture {
                     viewStore.send(.didTappedDismissButton)
                 }
-            Image(isScrapped ? "love_selected" : "love")
+            Image(viewStore.courseDetail.like == true ? "love_selected" : "love")
                 .onTapGesture {
-                    isScrapped.toggle()
-                    viewModel.scrap(courseId: courseId)
+                    viewStore.send(.scrap)
                 }
             if viewStore.courseDetail.checkWriter == true {
                 Image("more-vertical")

@@ -25,11 +25,15 @@ struct CourseDetailFeature: Reducer {
         case didTappedDismissButton
         case getCourseDetail
         case getCourseDetailResponse(TaskResult<CourseDetailModelResponse>)
+        /// 스크랩
+        case scrap
+        case scrapResponse(TaskResult<BaseResponse>)
         case viewDidLoad
     }
     
     @Dependency(\.courseClient) var courseClient
     @Dependency(\.dismiss) var dismiss
+    @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -61,6 +65,30 @@ struct CourseDetailFeature: Reducer {
             case .getCourseDetailResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
+                return .none
+                
+            case .scrap:
+                guard state.isCalledApi == false else { return .none }
+                state.isCalledApi = true
+                state.courseDetail.like?.toggle()
+                return .run { [courseId = state.courseId] send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrap(courseId)}))
+                }
+                
+            case .scrapResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                  
+                } else {
+                    state.courseDetail.like?.toggle()
+                }
+                return .none
+                
+            case .scrapResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                state.courseDetail.like?.toggle()
                 return .none
                 
             case .viewDidLoad:
