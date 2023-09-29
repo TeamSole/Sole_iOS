@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Introspect
+import ComposableArchitecture
 
 struct RegisterCouseView: View {
     typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
@@ -34,6 +35,15 @@ struct RegisterCouseView: View {
     @State private var courses: [Course] = [Course(), Course()]
 //    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
+    
+    
+    private let store: StoreOf<RegisterCourseFeature>
+    @ObservedObject var viewStore: ViewStoreOf<RegisterCourseFeature>
+    
+    init(store: StoreOf<RegisterCourseFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
+    }
 
     var body: some View {
         VStack(spacing: 0.0) {
@@ -458,6 +468,7 @@ extension RegisterCouseView {
 
 struct RegisterCouseView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCouseView()
+        RegisterCouseView(store: Store(initialState: RegisterCourseFeature.State(),
+                                       reducer: { RegisterCourseFeature() }))
     }
 }

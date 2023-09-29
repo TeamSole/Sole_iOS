@@ -15,6 +15,7 @@ struct HomeFeature: Reducer {
         @PresentationState var courseDetail: CourseDetailFeature.State?
         @PresentationState var courseSearch: CourseSearchFeature.State?
         @PresentationState var myPage: MyPageFeature.State?
+        @PresentationState var registerCourse: RegisterCourseFeature.State?
         var courses: [Course] = []
         var isCalledGetNextCoursesApi: Bool = false
         var recommendCourses: [RecommendCourse] = []
@@ -25,7 +26,8 @@ struct HomeFeature: Reducer {
         case courseSearch(PresentationAction<CourseSearchFeature.Action>)
         case didTappedCourseDetail(courseId: Int)
         case didTappedCourseSearch
-        case didTapMyPageButton
+        case didTappedFloatingButton
+        case didTappedMyPageButton
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
         case getNextCourses
@@ -35,6 +37,7 @@ struct HomeFeature: Reducer {
         case getRecommendedCourses
         case getRecommendedCoursesResponse(TaskResult<RecommendCourseModel>)
         case myPage(PresentationAction<MyPageFeature.Action>)
+        case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
         case scrap(courseId: Int, index: Int)
         case scrapResponse(TaskResult<BaseResponse>)
         case setTasty(place: [String], with: [String], tras: [String])
@@ -63,7 +66,11 @@ struct HomeFeature: Reducer {
                 state.courseSearch = CourseSearchFeature.State()
                 return .none
                 
-            case .didTapMyPageButton:
+            case .didTappedFloatingButton:
+                state.registerCourse = RegisterCourseFeature.State()
+                return .none
+                
+            case .didTappedMyPageButton:
                 state.myPage = MyPageFeature.State()
                 return .none
                 
@@ -162,6 +169,9 @@ struct HomeFeature: Reducer {
             case .myPage:
                 return .none
                 
+            case .registerCourse:
+                return .none
+                
             case .scrap(let courseId, let index):
                 state.courses[index].like?.toggle()
                 
@@ -211,6 +221,9 @@ struct HomeFeature: Reducer {
         }
         .ifLet(\.$myPage, action: /Action.myPage) {
             MyPageFeature()
+        }
+        .ifLet(\.$registerCourse, action: /Action.registerCourse) {
+            RegisterCourseFeature()
         }
        
     }

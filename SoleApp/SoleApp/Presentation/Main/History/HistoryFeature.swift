@@ -13,6 +13,7 @@ struct HistoryFeature: Reducer {
     struct State: Equatable {
         @PresentationState var courseDetail: CourseDetailFeature.State?
         var isCalledApi: Bool = false
+        @PresentationState var registerCourse: RegisterCourseFeature.State?
         var selectedPlaceParameter: [String] = []
         var selectedWithParameter: [String] = []
         var selectedVehiclesParameter: [String] = []
@@ -32,6 +33,8 @@ struct HistoryFeature: Reducer {
         case courseDetail(PresentationAction<CourseDetailFeature.Action>)
         /// 코스 목록 클릭시 호출
         case didTappedCourseDetail(courseId: Int)
+        /// 플로팅 버튼 클릭
+        case didTappedFloatingButton
         /// 사용자 기록 가져오기 api 호출
         case getNextUserHistories
         /// 사용자 기록 가져오기 api 호출 리스폰스
@@ -44,7 +47,7 @@ struct HistoryFeature: Reducer {
         case getUserHistoryDescription
         /// 사용자 기록 설명 가져오기 api 호출 리스폰스
         case getUserHistoryDescriptionResponse(TaskResult<UserProfileHistoryModelResponse>)
-        
+        case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
         case setHistoryParameter(places: [String], with: [String], vehicles: [String])
         
         case viewDidLoad
@@ -60,6 +63,10 @@ struct HistoryFeature: Reducer {
                 
             case .didTappedCourseDetail(let courseId):
                 state.courseDetail = CourseDetailFeature.State(courseId: courseId)
+                return .none
+                
+            case .didTappedFloatingButton:
+                state.registerCourse = RegisterCourseFeature.State()
                 return .none
                 
             case .getNextUserHistories:
@@ -142,6 +149,9 @@ struct HistoryFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .registerCourse:
+                return .none
+                
             case .setHistoryParameter(let places, let with, let vehicles):
                 state.selectedPlaceParameter = places
                 state.selectedWithParameter = with
@@ -159,6 +169,9 @@ struct HistoryFeature: Reducer {
                 state.selectedWithParameter.isEmpty == true &&
                 state.selectedVehiclesParameter.isEmpty == true
             }
+        }
+        .ifLet(\.$registerCourse, action: /Action.registerCourse) {
+            RegisterCourseFeature()
         }
     }
 }

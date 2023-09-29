@@ -54,6 +54,8 @@
 		A42E42F42AC0755A003D242E /* SearchCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42F22AC0755A003D242E /* SearchCourseRequest.swift */; };
 		A42E42FA2AC08434003D242E /* CourseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42F92AC08434003D242E /* CourseClient.swift */; };
 		A42E42FB2AC08434003D242E /* CourseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E42F92AC08434003D242E /* CourseClient.swift */; };
+		A43AABB12AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */; };
+		A43AABB22AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */; };
 		A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD429A9A1B400B06132 /* APIClient.swift */; };
 		A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BD729A9C1C200B06132 /* SignUpModel.swift */; };
@@ -331,6 +333,7 @@
 		A42E42EE2AC01720003D242E /* CourseSearchFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchFeature.swift; sourceTree = "<group>"; };
 		A42E42F22AC0755A003D242E /* SearchCourseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseRequest.swift; sourceTree = "<group>"; };
 		A42E42F92AC08434003D242E /* CourseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseClient.swift; sourceTree = "<group>"; };
+		A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseFeature.swift; sourceTree = "<group>"; };
 		A4597BD429A9A1B400B06132 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A4597BD729A9C1C200B06132 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */,
+				A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */,
 				A42E42F22AC0755A003D242E /* SearchCourseRequest.swift */,
 			);
 			path = Course;
@@ -693,7 +697,7 @@
 			children = (
 				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
 				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
-				A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */,
+				A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */,
 			);
 			path = CourseRegister;
 			sourceTree = "<group>";
@@ -1438,6 +1442,7 @@
 				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
 				A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
+				A43AABB12AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
@@ -1575,6 +1580,7 @@
 				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
 				A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
+				A43AABB22AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,

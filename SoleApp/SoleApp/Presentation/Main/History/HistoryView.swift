@@ -248,9 +248,10 @@ extension HistoryView {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0.0) {
                     Spacer()
-                    NavigationLink(destination: {
-                        RegisterCouseView()
-                    }, label: {
+                    NavigationLinkStore(self.store.scope(state: \.$registerCourse, action: HistoryFeature.Action.registerCourse),
+                                        onTap: { viewStore.send(.didTappedFloatingButton) },
+                                        destination: { RegisterCouseView(store: $0) },
+                                        label: {
                         HStack(spacing: 0.0) {
                             Image(systemName: "plus")
                                 .resizable()
@@ -262,8 +263,7 @@ extension HistoryView {
                         .foregroundColor(.white)
                         .background(Circle()
                             .fill(Color.blue_4708FA)
-                            .cornerRadius(.infinity))
-                    })
+                            .cornerRadius(.infinity)) })
                 }
                 .padding(.trailing, 16.0)
                 .padding(.bottom, 16.0)
