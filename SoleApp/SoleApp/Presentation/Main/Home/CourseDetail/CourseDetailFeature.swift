@@ -22,6 +22,10 @@ struct CourseDetailFeature: Reducer {
     }
     
     enum Action: Equatable {
+        /// 코스 신고
+        case declareCourse
+        case declareCourseResponse(TaskResult<BaseResponse>)
+        
         case didTappedDismissButton
         /// 팔로우
         case follow
@@ -46,6 +50,26 @@ struct CourseDetailFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .declareCourse:
+                guard state.isCalledApi == false else { return .none}
+                state.isCalledApi = true
+                return .run { [courseId = state.courseId] send in
+                    await send(.declareCourseResponse(
+                        TaskResult { try await courseClient.declareCourse(courseId)}))
+                }
+                
+            case .declareCourseResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                    
+                }
+                return .none
+                
+            case .declareCourseResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                return .none
+                
             case .didTappedDismissButton:
                 return .run { _ in
                     await dismiss()
@@ -104,7 +128,7 @@ struct CourseDetailFeature: Reducer {
                       state.courseDetail.checkWriter == false else { return .none }
                 state.isCalledApi = true
                 return .run { [courseId = state.courseId] send in
-                    await send(.scrapResponse(
+                    await send(.removeCourseResponse(
                         TaskResult { try await scrapClient.scrap(courseId)}))
                 }
                 

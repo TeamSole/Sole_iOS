@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 struct CourseDetailView: View {
     typealias Place = CourseDetailModelResponse.PlaceResponseDtos
-    @StateObject var viewModel: CourseDetailViewModel = CourseDetailViewModel()
+//    @StateObject var viewModel: CourseDetailViewModel = CourseDetailViewModel()
     @State private var availableWidth: CGFloat = 10
     @State private var isExpanded: Bool = false
     
@@ -54,11 +54,9 @@ struct CourseDetailView: View {
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {
             if alertType == .remove {
-                viewModel.removeCourse(courseId: courseId, complete: {
-                    viewStore.send(.didTappedDismissButton)
-                })
+                viewStore.send(.removeCourse)
             } else if alertType == .declare {
-                viewModel.declareCourse(courseId: courseId)
+                viewStore.send(.declareCourse)
             }
         }))
     }
