@@ -29,6 +29,9 @@ struct CourseDetailFeature: Reducer {
         
         case getCourseDetail
         case getCourseDetailResponse(TaskResult<CourseDetailModelResponse>)
+        /// 코스 삭제
+        case removeCourse
+        case removeCourseResponse(TaskResult<BaseResponse>)
         /// 스크랩
         case scrap
         case scrapResponse(TaskResult<BaseResponse>)
@@ -94,6 +97,28 @@ struct CourseDetailFeature: Reducer {
             case .getCourseDetailResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
+                return .none
+                
+            case .removeCourse:
+                guard state.isCalledApi == false,
+                      state.courseDetail.checkWriter == false else { return .none }
+                state.isCalledApi = true
+                return .run { [courseId = state.courseId] send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrap(courseId)}))
+                }
+                
+            case .removeCourseResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                    return .send(.didTappedDismissButton)
+                }
+                return .none
+                
+            case .removeCourseResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                state.courseDetail.like?.toggle()
                 return .none
                 
             case .scrap:

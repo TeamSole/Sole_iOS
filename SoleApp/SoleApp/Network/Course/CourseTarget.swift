@@ -10,6 +10,7 @@ import Alamofire
 
 enum CourseTarget {
     case getCourseDetail(courseId: Int)
+    case removeCourse(courseId: Int)
     case searchCourse(query: SearchCourseRequest)
 }
 
@@ -22,12 +23,18 @@ extension CourseTarget: TargetType {
         switch self {
         case .getCourseDetail, .searchCourse:
             return .get
+            
+        case .removeCourse:
+            return .delete
         }
     }
     
     var path: String {
         switch self {
         case .getCourseDetail(let courseId):
+            return K.Path.courseDetail + "/\(courseId)"
+            
+        case .removeCourse(let courseId):
             return K.Path.courseDetail + "/\(courseId)"
             
         case .searchCourse:
@@ -44,7 +51,7 @@ extension CourseTarget: TargetType {
     
     var parameters: RequestParams {
         switch self {
-        case .getCourseDetail:
+        case .getCourseDetail, .removeCourse:
             return .body(nil)
             
         case .searchCourse(let query):

@@ -9,6 +9,7 @@ import Dependencies
 
 struct CourseClient {
     var getCourseDetail: (_ courseId: Int) async throws -> (CourseDetailModelResponse)
+    var removeCourse: (_ courseId: Int) async throws -> (BaseResponse)
     var searchCourse: (_ query: SearchCourseRequest) async throws -> (CourseModelResponse)
 }
 
@@ -18,6 +19,11 @@ extension CourseClient: DependencyKey {
             let request = API.makeDataRequest(CourseTarget.getCourseDetail(courseId: courseId))
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: CourseDetailModelResponse.self)
+        },
+        removeCourse: { courseId in
+            let request = API.makeDataRequest(CourseTarget.removeCourse(courseId: courseId))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         },
         searchCourse: { query in
             let request = API.makeDataRequest(CourseTarget.searchCourse(query: query))
