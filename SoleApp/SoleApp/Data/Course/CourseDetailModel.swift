@@ -29,6 +29,8 @@ struct CourseDetailModelResponse: APIResponse {
         var following: Int?
         var scrapCount: Int?
         var startDate: String?
+        /// true: 작성자가 본인
+        /// false: 작성자가 타인
         var checkWriter: Bool?
         var writer: Writer?
         var placeResponseDtos: [PlaceResponseDtos]?

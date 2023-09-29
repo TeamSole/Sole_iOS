@@ -23,6 +23,10 @@ struct CourseDetailFeature: Reducer {
     
     enum Action: Equatable {
         case didTappedDismissButton
+        /// 팔로우
+        case follow
+        case followResponse(TaskResult<BaseResponse>)
+        
         case getCourseDetail
         case getCourseDetailResponse(TaskResult<CourseDetailModelResponse>)
         /// 스크랩
@@ -33,6 +37,7 @@ struct CourseDetailFeature: Reducer {
     
     @Dependency(\.courseClient) var courseClient
     @Dependency(\.dismiss) var dismiss
+    @Dependency(\.followClient) var followClient
     @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
@@ -42,6 +47,30 @@ struct CourseDetailFeature: Reducer {
                 return .run { _ in
                     await dismiss()
                 }
+                
+            case .follow:
+                guard let memberId = state.courseDetail.writer?.memberId,
+                      state.isCalledApi == false,
+                      state.courseDetail.checkWriter == false else { return .none}
+                state.isCalledApi = true
+                state.courseDetail.followStatus = state.courseDetail.isFollowing == true ? "FOLLOWER" : "FOLLOWING"
+               
+                return .run { send in
+                    await send(.followResponse(
+                        TaskResult { try await followClient.follow(memberId)}))
+                }
+                
+            case .followResponse(.success(let response)):
+                state.isCalledApi = false
+                if response.success == true {
+                    
+                }
+                return .none
+                
+            case .followResponse(.failure(let error)):
+                state.isCalledApi = false
+                debugPrint(error.localizedDescription)
+                return .none
                 
             case .getCourseDetail:
                 guard state.isCalledApi == false else { return .none }

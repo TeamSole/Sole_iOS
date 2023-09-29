@@ -152,12 +152,7 @@ extension CourseDetailView {
                 )
                 .isHidden(viewStore.courseDetail.checkWriter == true)
                 .onTapGesture {
-//                    if viewStore.courseDetail.isFollowing {
-//                        viewModel.courseDetail.followStatus = "FOLLOWER"
-//                    } else {
-//                        viewModel.courseDetail.followStatus = "FOLLOWING"
-//                    }
-//                    viewModel.follow(memberId: viewModel.courseDetail.writer?.memberId ?? 0)
+                    viewStore.send(.follow)
                 }
             
                
