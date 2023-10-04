@@ -98,8 +98,8 @@
 		A46B3B6029C09D740026D961 /* ScrapFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */; };
 		A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
 		A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6129C0A6230026D961 /* ScrapListView.swift */; };
-		A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */; };
-		A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */; };
+		A46B3B6529C0BF590026D961 /* RegisterCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */; };
+		A46B3B6629C0BF590026D961 /* RegisterCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */; };
 		A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
 		A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */; };
 		A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */; };
@@ -354,7 +354,7 @@
 		A46B3B5A29C070220026D961 /* SelectTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTagView.swift; sourceTree = "<group>"; };
 		A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderView.swift; sourceTree = "<group>"; };
 		A46B3B6129C0A6230026D961 /* ScrapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListView.swift; sourceTree = "<group>"; };
-		A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCouseView.swift; sourceTree = "<group>"; };
+		A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseView.swift; sourceTree = "<group>"; };
 		A46B3B6729C14B9E0026D961 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		A46B46E12993133B001FAED3 /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		A46B46E92994B769001FAED3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -695,7 +695,7 @@
 		A4655BD429CC9ECB001E67DF /* CourseRegister */ = {
 			isa = PBXGroup;
 			children = (
-				A46B3B6429C0BF590026D961 /* RegisterCouseView.swift */,
+				A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */,
 				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
 				A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */,
 			);
@@ -1407,7 +1407,7 @@
 				A4DCECF02A73F88600FA2226 /* SignInFeature.swift in Sources */,
 				A46B3B4929BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
-				A46B3B6529C0BF590026D961 /* RegisterCouseView.swift in Sources */,
+				A46B3B6529C0BF590026D961 /* RegisterCourseView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A49D050D2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
@@ -1546,7 +1546,7 @@
 				A46B470E29967086001FAED3 /* UIFont.swift in Sources */,
 				A46B3B4A29BF77CC0026D961 /* NaverMapView.swift in Sources */,
 				A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
-				A46B3B6629C0BF590026D961 /* RegisterCouseView.swift in Sources */,
+				A46B3B6629C0BF590026D961 /* RegisterCourseView.swift in Sources */,
 				A49D050E2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,

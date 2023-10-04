@@ -1,5 +1,5 @@
 //
-//  RegisterCouseView.swift
+//  RegisterCourseView.swift
 //  SoleApp
 //
 //  Created by SUN on 2023/03/14.
@@ -9,13 +9,11 @@ import SwiftUI
 import Introspect
 import ComposableArchitecture
 
-struct RegisterCouseView: View {
+struct RegisterCourseView: View {
     typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
     typealias FullCourse = RegisterCourseModelRequest
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
-    @State private var courseTitle: String = ""
-    @State private var courseDescription: String = ""
     
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowCoursePhotoPicker: Bool = false
@@ -23,17 +21,7 @@ struct RegisterCouseView: View {
     @State private var isShowHourMinutePicker: Bool = false
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowLocationSearchView: Bool = false
-    
-    @State private var thumbnailImage: UIImage? = nil
     @State private var availableWidth: CGFloat = 10
-    @State private var selectedDate: Date = Date()
-    
-    @State private var selectedPlace: [String] = []
-    @State private var selectedWith: [String] = []
-    @State private var selectedTrans: [String] = []
-    
-    @State private var courses: [Course] = [Course(), Course()]
-//    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
     
     
@@ -67,7 +55,8 @@ struct RegisterCouseView: View {
         })
         .modifier(HourMinutePickerModifier(isShowFlag: $isShowHourMinutePicker,
                                            complete: { hour, minute in
-            courses[selectIndex].duration = (hour * 60) + minute
+            let duration = (hour * 60) + minute
+            viewStore.send(.setDurationOfCourse(courseIndex: selectIndex, duration: duration))
         }))
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
                content: {
@@ -75,7 +64,7 @@ struct RegisterCouseView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-                            viewModel.thumbnailImage = first
+                            viewStore.send(.selectThumbnailImage(first))
                         }
                     }
                 }
@@ -86,42 +75,44 @@ struct RegisterCouseView: View {
             PhotoPicker(isPresented: $isShowSubPhotoPicker, filter: .images, limit: 4) { result in
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
-                        viewModel.selectedImages[selectIndex] = images
+                        viewStore.send(.selectCourseImages(images: images, courseIndex: selectIndex))
                     }
                 }
             }
         })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectType: .filter, complete: {place, with, trans in
-                selectedPlace = place
-                selectedWith = with
-                selectedTrans = trans
+            SelectTagView(selectedPlace: viewStore.selectedPlaceParameter,
+                          selectedWith: viewStore.selectedWithParameter,
+                          selectedTrans: viewStore.selectedVehiclesParameter,
+                          selectType: .filter,
+                          complete: {place, with, trans in
+                viewStore.send(.setplaceTagParameter(places: place, with: with, vehicles: trans))
             })
         })
         .sheet(isPresented: $isShowLocationSearchView,
                content: {
             LocationSearchView { course in
-                courses[selectIndex] = course
+                viewStore.send(.insertSearchedPlace(courseIndex: selectIndex, course: course))
             }
         })
         .onDisappear {
-            viewModel.thumbnailImage = nil
-            viewModel.selectedImages = [[],[]]
+//            viewStore.thumbnailImage = nil
+//            viewModel.selectedImages = [[],[]]
         }
     }
 }
 
-extension RegisterCouseView {
+extension RegisterCourseView {
     private var navigationBar: some View {
         ZStack {
             Image("arrow_back")
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    viewStore.send(.didTappedDismissButton)
                 }
-            Text("코스 기록")
+            Text(StringConstant.courseHistory)
                 .foregroundColor(.black)
                 .font(.pretendard(.medium, size: 16.0))
                 .frame(maxWidth: .infinity,
@@ -143,22 +134,21 @@ extension RegisterCouseView {
     
     private var courseSubLocationSectionView: some View {
         VStack(spacing: 0.0) {
-            Text("장소 입력")
+            Text(StringConstant.inputPlace)
                 .foregroundColor(.black)
                 .font(.pretendard(.bold, size: 16.0))
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(16.0)
-            ForEach(0..<courses.count, id: \.self) { index in
+            ForEach(0..<viewStore.courses.count, id: \.self) { index in
                 VStack(spacing: 0.0) {
                     Image("close")
                         .frame(maxWidth: .infinity,
                                alignment: .trailing)
                         .padding(16.0)
-                        .isHidden(courses.count < 3, remove: true)
+                        .isHidden(viewStore.courses.count < 3, remove: true)
                         .onTapGesture {
-                            courses.remove(at: index)
-                            viewModel.selectedImages.remove(at: index)
+                            viewStore.send(.removeCourse(index: index))
                         }
                     locationTextFieldView(index: index)
                     takenTimeView(index: index)
@@ -173,7 +163,7 @@ extension RegisterCouseView {
     
     private var courseTextFeildView: some View {
         VStack(spacing: 4.0) {
-            TextField("코스 제목", text: $courseTitle)
+            TextField(StringConstant.courseTitle, text: viewStore.binding(get: \.courseTitle, send: { .setCourseTitle($0) }))
             Color.gray_D3D4D5
                 .frame(height: 1.0)
         }
@@ -184,13 +174,13 @@ extension RegisterCouseView {
     
     private var thumbnailImageView: some View {
         VStack(spacing: 0.0) {
-            if viewModel.thumbnailImage == nil {
-                Text("대표 사진 추가")
+            if viewStore.thumbnailImage == nil {
+                Text(StringConstant.addThumbnailImage)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                 Image("add_circle")
             } else {
-                Image(uiImage: viewModel.thumbnailImage ?? UIImage())
+                Image(uiImage: viewStore.thumbnailImage ?? UIImage())
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity)
@@ -216,12 +206,12 @@ extension RegisterCouseView {
     private var dateView: some View {
         VStack(spacing: 16.0) {
             HStack(spacing: 0.0) {
-                Text("방문 날짜")
+                Text(StringConstant.dateOfVisit)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                DatePicker("", selection: viewStore.binding(get: \.dateOfVisit, send: { .setDateOfVisit(date: $0) }), displayedComponents: .date)
                     .pickerStyle(.wheel)
                     .labelsHidden()
                     .background(Color.white)
@@ -242,7 +232,7 @@ extension RegisterCouseView {
     private var tagView: some View {
         VStack(alignment: .leading, spacing: 0.0) {
             HStack(spacing: 0.0) {
-                Text("태그")
+                Text(StringConstant.tag)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
@@ -260,7 +250,9 @@ extension RegisterCouseView {
                     availableWidth = size.width
                 }
             TagListView(availableWidth: availableWidth,
-                        data: selectedPlace + selectedWith + selectedTrans,
+                        data: viewStore.selectedPlaceParameter +
+                        viewStore.selectedWithParameter +
+                        viewStore.selectedVehiclesParameter,
                         spacing: 8.0,
                         alignment: .leading,
                         isExpandedUserTagListView: .constant(false),
@@ -287,12 +279,12 @@ extension RegisterCouseView {
     
     private var descriptionTextView: some View {
         VStack(spacing: 6.0) {
-            Text("코스 후기")
+            Text(StringConstant.reviewOfCourse)
                 .font(.pretendard(.reguler, size: 14.0))
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            TextEditor(text: $courseDescription)
+            TextEditor(text: viewStore.binding(get: \.courseDescription, send: { .setCourseTitle($0) }))
                 .frame(height: 86.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
@@ -314,7 +306,7 @@ extension RegisterCouseView {
         VStack(spacing: 20.0) {
             HStack(spacing: 6.0) {
                 Image(systemName: "magnifyingglass")
-                Text(courses[index].placeName.isEmpty ? "장소명" : courses[index].placeName)
+                Text(viewStore.courses[index].placeName.isEmpty ? StringConstant.placeName : viewStore.courses[index].placeName)
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }
@@ -337,12 +329,12 @@ extension RegisterCouseView {
     private func takenTimeView(index: Int) -> some View {
         VStack(spacing: 16.0) {
             HStack(spacing: 0.0) {
-                Text("소요 시간")
+                Text(StringConstant.timeTaken)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text(String(format: "%d시간 %d분", courses[index].duration / 60, courses[index].duration % 60))
+                Text(String(format: "%d\(StringConstant.hour) %d\(StringConstant.minute)", viewStore.courses[index].duration / 60, viewStore.courses[index].duration % 60))
                     .foregroundColor(.blue_4708FA)
                     .font(.pretendard(.reguler, size: 14.0))
                 Image("arrow_right")
@@ -364,8 +356,8 @@ extension RegisterCouseView {
         HStack(spacing: 0.0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0) {
-                    ForEach(0..<viewModel.selectedImages[index].count, id: \.self) { index2 in
-                        Image(uiImage: viewModel.selectedImages[index][index2])
+                    ForEach(0..<viewStore.selectedCourseImages[index].count, id: \.self) { courseImageIndex in
+                        Image(uiImage: viewStore.selectedCourseImages[index][courseImageIndex])
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80.0,
@@ -375,7 +367,7 @@ extension RegisterCouseView {
                     addSubImageView(index: index)
                         .frame(width: 80.0,
                                height: 80.0)
-                        .isHidden(viewModel.selectedImages[index].count == 4, remove: true)
+                        .isHidden(viewStore.selectedCourseImages[index].count == 4, remove: true)
                 }
                 
             }
@@ -386,11 +378,11 @@ extension RegisterCouseView {
     
     private func addSubImageView(index: Int) -> some View {
         VStack(spacing: 4.0) {
-            Text("사진 추가")
+            Text(StringConstant.addImage)
                 .foregroundColor(.black)
                 .font(.pretendard(.reguler, size: 14.0))
             Image("add_circle")
-            Text("\(viewModel.selectedImages[index].count)/4")
+            Text("\(viewStore.selectedCourseImages[index].count)/4")
                 .foregroundColor(.black)
                 .font(.pretendard(.reguler, size: 12.0))
         }
@@ -409,7 +401,7 @@ extension RegisterCouseView {
     
     private var addLocationButtonView: some View {
         VStack() {
-            Text("장소 추가하기 +")
+            Text(StringConstant.addPlaceWithPlus)
                 .font(.pretendard(.reguler, size: 14.0))
                 .foregroundColor(.black)
         }
@@ -421,54 +413,34 @@ extension RegisterCouseView {
         )
         .padding(16.0)
         .contentShape(Rectangle())
-        .isHidden(courses.count > 4, remove: true)
+        .isHidden(viewStore.courses.count > 4, remove: true)
         .onTapGesture {
-            viewModel.selectedImages.append([])
-            courses.append(Course())
+            viewStore.send(.addCourse)
         }
     }
     
     private var registerCourseButtonView: some View {
         VStack() {
-            Text("코스 업로드")
+            Text(StringConstant.uploadCourse)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 40.0)
-        .background(isValid ? Color.blue_4708FA : Color.gray_EDEDED)
+        .background(viewStore.isValid ? Color.blue_4708FA : Color.gray_EDEDED)
         .cornerRadius(8.0)
         .padding(16.0)
         .contentShape(Rectangle())
         .onTapGesture {
-            guard isValid else { return }
             hideKeyboard()
-            let fullCourse = FullCourse(title: courseTitle,
-                                        date: selectedDate.toString(format: "yyyy-MM-dd"),
-                                        description: courseDescription,
-                                        placeCategories: selectedPlace,
-                                        transCategories: selectedTrans,
-                                        withCategories: selectedWith,
-                                        placeRequestDtos: courses)
-            viewModel.uploadCourse(fullCourse: fullCourse) {
-                print("성공")
-                presentationMode.wrappedValue.dismiss()
-            }
+            viewStore.send(.uploadCourse)
         }
     }
-    
-    private var isValid: Bool {
-        return courseTitle.isEmpty == false &&
-        courseDescription.isEmpty == false &&
-        viewModel.thumbnailImage != nil &&
-        courses.first?.placeName.isEmpty == false
-    }
-    
 }
 
 struct RegisterCouseView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCouseView(store: Store(initialState: RegisterCourseFeature.State(),
+        RegisterCourseView(store: Store(initialState: RegisterCourseFeature.State(),
                                        reducer: { RegisterCourseFeature() }))
     }
 }

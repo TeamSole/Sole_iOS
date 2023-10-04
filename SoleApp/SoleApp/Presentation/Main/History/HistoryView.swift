@@ -250,7 +250,7 @@ extension HistoryView {
                     Spacer()
                     NavigationLinkStore(self.store.scope(state: \.$registerCourse, action: HistoryFeature.Action.registerCourse),
                                         onTap: { viewStore.send(.didTappedFloatingButton) },
-                                        destination: { RegisterCouseView(store: $0) },
+                                        destination: { RegisterCourseView(store: $0) },
                                         label: {
                         HStack(spacing: 0.0) {
                             Image(systemName: "plus")
