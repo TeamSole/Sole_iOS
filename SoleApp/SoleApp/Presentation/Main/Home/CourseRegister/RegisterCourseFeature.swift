@@ -34,15 +34,25 @@ struct RegisterCourseFeature: Reducer {
         /// 작성할 코스 항목 추가
         case addCourse
         case didTappedDismissButton
+        /// 코스 검색 기록 추가
         case insertSearchedPlace(courseIndex: Int, course: Course)
+        /// 코스 썸네일 이미지 추가
         case selectThumbnailImage(UIImage)
+        /// 코스별 이미지 선택
         case selectCourseImages(images: [UIImage], courseIndex: Int)
+        /// 코스 설명
         case setCourseDescription(String)
+        /// 코스 제목 입력
         case setCourseTitle(String)
+        /// 코스 소요시간 입력
         case setDurationOfCourse(courseIndex: Int, duration: Int)
+        /// 코스 관련 테그 추가
         case setplaceTagParameter(places: [String], with: [String], vehicles: [String])
+        /// 코스 방문 날짜 추가
         case setDateOfVisit(date: Date)
+        /// 추가한 코스 삭제
         case removeCourse(index: Int)
+        /// 코스 업로드
         case uploadCourse
         case uploadCourseResponse(TaskResult<BaseResponse>)
     }
@@ -124,7 +134,7 @@ struct RegisterCourseFeature: Reducer {
                 
             case .uploadCourseResponse(.success(let response)):
                 state.isCalledApi = false
-                return .none
+                return .send(.didTappedDismissButton)
                 
             case .uploadCourseResponse(.failure(let error)):
                 state.isCalledApi = false
