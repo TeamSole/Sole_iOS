@@ -165,10 +165,15 @@ extension ScrapListView {
     private var scrapList: some View {
         VStack(spacing: 20.0) {
             ForEach(viewStore.scrapList, id: \.courseId) { item in
-                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: ScrapListFeature.Action.courseDetail),
-                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0)) },
-                                    destination: { CourseDetailView(store: $0) },
-                                    label: { scrapItem(item: item) })
+                NavigationLink(destination: {
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature() }))
+                }, label: {
+                    scrapItem(item: item)
+                })
+//                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: ScrapListFeature.Action.courseDetail),
+//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0)) },
+//                                    destination: { CourseDetailView(store: $0) },
+//                                    label: { scrapItem(item: item) })
             }
         }
         .padding(.horizontal, 16.0)

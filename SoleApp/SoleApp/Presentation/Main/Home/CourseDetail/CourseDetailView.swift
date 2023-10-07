@@ -50,6 +50,11 @@ struct CourseDetailView: View {
         .onAppear {
             viewStore.send(.viewDidLoad)
         }
+        .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
+            if isDismissSelf == true {
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {

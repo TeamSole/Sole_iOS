@@ -73,10 +73,15 @@ extension CourseSearchView {
     private var searchResultListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(0..<viewStore.courses.count, id: \.self) { index in
-                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: CourseSearchFeature.Action.courseDetail),
-                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0)) },
-                                    destination: { CourseDetailView(store: $0) },
-                                    label: { userTasteCourseItem(item: viewStore.courses[index], index: index) })
+                NavigationLink(destination: {
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.courses[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
+                }, label: {
+                    userTasteCourseItem(item: viewStore.courses[index], index: index)
+                })
+//                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: CourseSearchFeature.Action.courseDetail),
+//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0)) },
+//                                    destination: { CourseDetailView(store: $0) },
+//                                    label: { userTasteCourseItem(item: viewStore.courses[index], index: index) })
             }
         }
     }

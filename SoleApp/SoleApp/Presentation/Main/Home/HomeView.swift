@@ -218,10 +218,15 @@ extension HomeView {
                     .padding(.bottom, 10.0)
                 
                 ForEach(0..<viewStore.courses.count, id: \.self) { index in
-                    userTasteCourseItem(item: viewStore.courses[index], index: index)
-                        .onTapGesture {
-                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
-                        }
+                    NavigationLink(destination: {
+                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.courses[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
+                    }, label: {
+                        userTasteCourseItem(item: viewStore.courses[index], index: index)
+                    })
+//                    userTasteCourseItem(item: viewStore.courses[index], index: index)
+//                        .onTapGesture {
+//                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
+//                        }
                 }
                 addNextPageButton
             }

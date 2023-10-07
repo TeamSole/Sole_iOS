@@ -150,12 +150,17 @@ extension FollowUserView {
                 emptyResultView(title: StringConstant.emptyCourseRegistered)
             } else {
                 ForEach(0..<(viewStore.recentCourses?.count ?? 0), id: \.self) { index in
-                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
-                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
-                    }, destination: { CourseDetailView(store: $0) },
-                                        label: {
+                    NavigationLink(destination: {
+                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.recentCourses?[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
+                    }, label: {
                         courseItem(item: viewStore.recentCourses?[index] ?? Course(), index: index)
                     })
+//                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
+//                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
+//                    }, destination: { CourseDetailView(store: $0) },
+//                                        label: {
+//                        courseItem(item: viewStore.recentCourses?[index] ?? Course(), index: index)
+//                    })
                 }
                 addNextPageButton
             }

@@ -13,7 +13,7 @@ struct CourseDetailFeature: Reducer {
         @PresentationState var courseEdit: CourseEditFeature.State?
         var courseDetail: CourseDetail = .init()
         var isCalledApi: Bool = false
-        
+        var isDismissSelf: Bool = false
         let courseId: Int
         
         init(courseId: Int) {
@@ -77,6 +77,7 @@ struct CourseDetailFeature: Reducer {
                 return .none
                 
             case .didTappedDismissButton:
+                state.isDismissSelf = true
                 return .run { _ in
                     await dismiss()
                 }
