@@ -30,7 +30,7 @@ extension K {
         ]
         
         static let multiplatformHeader: HTTPHeaders = [
-            "Content-Type" : "multipart/form-data"
+            "Content-Type" : "multipart/form-data",
             "Authorization": Utility.load(key: Constant.token)
         ]
         

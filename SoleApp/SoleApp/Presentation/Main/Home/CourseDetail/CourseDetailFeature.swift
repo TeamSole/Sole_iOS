@@ -10,9 +10,9 @@ import ComposableArchitecture
 struct CourseDetailFeature: Reducer { 
     typealias CourseDetail = CourseDetailModelResponse.DataModel
     struct State: Equatable {
+        @PresentationState var courseEdit: CourseEditFeature.State?
         var courseDetail: CourseDetail = .init()
         var isCalledApi: Bool = false
-        
         
         let courseId: Int
         
@@ -22,11 +22,14 @@ struct CourseDetailFeature: Reducer {
     }
     
     enum Action: Equatable {
+        case courseEdit(PresentationAction<CourseEditFeature.Action>)
         /// 코스 신고
         case declareCourse
         case declareCourseResponse(TaskResult<BaseResponse>)
-        
+    
         case didTappedDismissButton
+        case didTappedMoveToCourseEdtiView
+        
         /// 팔로우
         case follow
         case followResponse(TaskResult<BaseResponse>)
@@ -50,6 +53,9 @@ struct CourseDetailFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .courseEdit:
+                return .none
+                
             case .declareCourse:
                 guard state.isCalledApi == false else { return .none}
                 state.isCalledApi = true
@@ -75,6 +81,9 @@ struct CourseDetailFeature: Reducer {
                     await dismiss()
                 }
                 
+            case .didTappedMoveToCourseEdtiView:
+                state.courseEdit = CourseEditFeature.State(courseDetail: state.courseDetail)
+                return .none
             case .follow:
                 guard let memberId = state.courseDetail.writer?.memberId,
                       state.isCalledApi == false,
@@ -172,6 +181,9 @@ struct CourseDetailFeature: Reducer {
             case .viewDidLoad:
                 return .send(.getCourseDetail)
             }
+        }
+        .ifLet(\.$courseEdit, action: /Action.courseEdit) {
+            CourseEditFeature()
         }
     }
 }

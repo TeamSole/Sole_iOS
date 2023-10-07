@@ -36,6 +36,7 @@ struct HomeView: View {
                         userTasteCourseSectionView
                     }
                 }
+                navigationToCourseDetailView
             }
             floatingButton
         }
@@ -141,22 +142,18 @@ extension HomeView {
                 }
             }
             .padding(.horizontal, 16.0)
-            if viewModel.recommendCourses.isEmpty {
+            if viewStore.recommendCourses.isEmpty {
                 emptyRecommendResultView
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
                         ForEach(0..<viewModel.recommendCourses.count, id: \.self) { index in
-                            NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: HomeFeature.Action.courseDetail),
-                                                onTap: {
-                                viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
-                            }, destination: {
-                                CourseDetailView(store: $0)
-                            }, label: {
-                                hotCourseSectionItem(image: URL(string: viewModel.recommendCourses[index].thumbnailImg ?? ""),
-                                                     title: viewModel.recommendCourses[index].courseName ?? "")
-                                .cornerRadius(4.0)
-                            })
+                            hotCourseSectionItem(image: URL(string: viewStore.recommendCourses[index].thumbnailImg ?? ""),
+                                                 title: viewModel.recommendCourses[index].courseName ?? "")
+                            .cornerRadius(4.0)
+                            .onTapGesture {
+                                viewStore.send(.didTappedCourseDetail(courseId: viewStore.recommendCourses[index].courseId ?? 0))
+                            }
                         }
                     }
                 }
@@ -221,15 +218,10 @@ extension HomeView {
                     .padding(.bottom, 10.0)
                 
                 ForEach(0..<viewStore.courses.count, id: \.self) { index in
-                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  HomeFeature.Action.courseDetail),
-                                        onTap: {
-                        viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
-                    }, destination: {
-                        CourseDetailView(store: $0)
-                    }, label: {
-                        userTasteCourseItem(item: viewStore.courses[index], index: index)
-                    })
-                    
+                    userTasteCourseItem(item: viewStore.courses[index], index: index)
+                        .onTapGesture {
+                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
+                        }
                 }
                 addNextPageButton
             }
@@ -325,6 +317,16 @@ extension HomeView {
                 .padding(.bottom, 16.0)
             }
         }
+    }
+    
+    private var navigationToCourseDetailView: some View {
+        NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  HomeFeature.Action.courseDetail),
+                            onTap: {},
+                            destination: {
+            CourseDetailView(store: $0)
+        }, label: {
+            EmptyView()
+        })
     }
     
     private var emptyRecommendResultView: some View {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 struct CourseEditView: View {
     typealias Course = EditCourseModelRequest.PlaceUpdateRequestDtos
@@ -14,8 +15,8 @@ struct CourseEditView: View {
     typealias CourseDetail = CourseDetailModelResponse.DataModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: CourseEditViewModel = CourseEditViewModel()
-    @State private var courseTitle: String = ""
-    @State private var courseDescription: String = ""
+//    @State private var courseTitle: String = ""
+//    @State private var courseDescription: String = ""
     
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowCoursePhotoPicker: Bool = false
@@ -24,24 +25,29 @@ struct CourseEditView: View {
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowLocationSearchView: Bool = false
     
-    @State private var thumbnailImage: UIImage? = nil
+//    @State private var thumbnailImage: UIImage? = nil
     @State private var availableWidth: CGFloat = 10
-    @State private var selectedDate: Date = Date()
+//    @State private var selectedDate: Date = Date()
     
-    @State private var selectedPlace: [String] = []
-    @State private var selectedWith: [String] = []
-    @State private var selectedTrans: [String] = []
+//    @State private var selectedPlace: [String] = []
+//    @State private var selectedWith: [String] = []
+//    @State private var selectedTrans: [String] = []
     
-    @State private var courses: [Course] = []
-    @State private var fullCourse: FullCourse = FullCourse()
+//    @State private var courses: [Course] = []
+//    @State private var fullCourse: FullCourse = FullCourse()
 //    @State private var
 //    @State private var selectedImages: [[UIImage]] = [[]]
     @State private var selectIndex: Int = 0
-    var courseDetail: CourseDetail
-    @State private var courseId: Int = 0
-    init(courseDetail: CourseDetail) {
-        self.courseDetail = courseDetail
+//    @State private var courseId: Int = 0
+    
+    private let store: StoreOf<CourseEditFeature>
+    @ObservedObject var viewStore: ViewStoreOf<CourseEditFeature>
+    
+    init(store: StoreOf<CourseEditFeature>) {
+        self.store = store
+        self.viewStore = ViewStore(store, observe: { $0 })
     }
+    
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
@@ -63,30 +69,12 @@ struct CourseEditView: View {
             datePicker.tintColor = .blue_4708FA
         })
         .onLoaded {
-            fullCourse.title = courseDetail.title ?? ""
-            fullCourse.description = courseDetail.description ?? ""
-            fullCourse.startDate = courseDetail.startDate ?? ""
-            fullCourse.placeCategories = courseDetail.categories?.filter({ placeCategory.contains(Category(rawValue: $0) ?? .CAFE ) }) ?? []
-            fullCourse.transCategories = courseDetail.categories?.filter({ transCategory.contains(Category(rawValue: $0) ?? .WALK) }) ?? []
-            fullCourse.withCategories = courseDetail.categories?.filter({ withCategory.contains(Category(rawValue: $0) ?? .ALONE) }) ?? []
-            courseId = courseDetail.courseId ?? 0
-            selectedDate = Date(courseDetail.startDate ?? "", format: "yyyy-MM-dd") ?? Date()
-            for index in 0..<(courseDetail.placeResponseDtos?.count ?? 0) {
-                let course = Course(address: courseDetail.placeResponseDtos?[index].address ?? "",
-                                    description: courseDetail.placeResponseDtos?[index].description ?? "",
-                                    duration: courseDetail.placeResponseDtos?[index].duration ?? 0,
-                                    placeId: courseDetail.placeResponseDtos?[index].placeId ?? 0,
-                                    placeName: courseDetail.placeResponseDtos?[index].placeName ?? "",
-                                    latitude: courseDetail.placeResponseDtos?[index].latitude ?? 0.0,
-                                    longitude: courseDetail.placeResponseDtos?[index].longitude ?? 0.0,
-                                    placeImgUrls: courseDetail.placeResponseDtos?[index].placeImgUrls ?? [])
-                courses.append(course)
-            }
             
         }
         .modifier(HourMinutePickerModifier(isShowFlag: $isShowHourMinutePicker,
                                            complete: { hour, minute in
-            courses[selectIndex].duration = (hour * 60) + minute
+            let duration = (hour * 60) + minute
+            viewStore.send(.setDurationOfCourse(courseIndex: selectIndex, duration: duration))
         }))
         .sheet(isPresented: $isShowThumbnailPhotoPicker,
                content: {
@@ -94,7 +82,7 @@ struct CourseEditView: View {
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
                         if let first = images.first {
-                            viewModel.thumbnailImage = first
+                            viewStore.send(.selectThumbnailImage(first))
                         }
                     }
                 }
@@ -102,20 +90,22 @@ struct CourseEditView: View {
         })
         .sheet(isPresented: $isShowSubPhotoPicker,
                content: {
-            PhotoPicker(isPresented: $isShowSubPhotoPicker, filter: .images, limit: 4 - (courses[selectIndex].placeImgUrls.count) - viewModel.selectedImages[selectIndex].count) { result in
+            PhotoPicker(isPresented: $isShowSubPhotoPicker, filter: .images, limit: 4 - (viewStore.courses[selectIndex].placeImgUrls.count) - viewStore.selectedCourseImages[selectIndex].count) { result in
                 PhotoPicker.convertToUIImageArray(fromResults: result) { (imagesOrNil, errorOrNil) in
                     if let images = imagesOrNil {
-                        viewModel.selectedImages[selectIndex] = images
+                        viewStore.send(.selectCourseImages(images: images, courseIndex: selectIndex))
                     }
                 }
             }
         })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectType: .filter, complete: {place, with, trans in
-                fullCourse.placeCategories = place
-                fullCourse.withCategories = with
-                fullCourse.transCategories = trans
+            SelectTagView(selectedPlace: viewStore.selectedPlaceParameter,
+                          selectedWith: viewStore.selectedWithParameter,
+                          selectedTrans: viewStore.selectedVehiclesParameter,
+                          selectType: .filter,
+                          complete: {place, with, trans in
+                viewStore.send(.setplaceTagParameter(places: place, with: with, vehicles: trans))
             })
         })
         .sheet(isPresented: $isShowLocationSearchView,
@@ -123,17 +113,13 @@ struct CourseEditView: View {
             LocationSearchView { course in
                 let courseObject = Course(address: course.address,
                                           description: course.description,
-                                          placeId: selectIndex >= courses.count ? nil : courses[selectIndex].placeId ?? 0,
+                                          placeId: selectIndex >= viewStore.courses.count ? nil : viewStore.courses[selectIndex].placeId ?? 0,
                                           placeName: course.placeName,
                                           latitude: course.latitude,
                                           longitude: course.longitude,
-                                          placeImgUrls: selectIndex >= courses.count ? [] : courses[selectIndex].placeImgUrls
+                                          placeImgUrls: selectIndex >= viewStore.courses.count ? [] : viewStore.courses[selectIndex].placeImgUrls
                 )
-//                if selectIndex >= fullCourse.placeUpdateRequestDtos.count {
-//                    courses.append(courseObject)
-//                } else {
-                    courses[selectIndex] = courseObject
-//                }
+                viewStore.send(.insertSearchedPlace(courseIndex: selectIndex, course: courseObject))
             }
         })
     }
@@ -176,16 +162,15 @@ extension CourseEditView {
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
                 .padding(16.0)
-            ForEach(0..<courses.count, id: \.self) { index in
+            ForEach(0..<viewStore.courses.count, id: \.self) { index in
                 VStack(spacing: 0.0) {
                     Image("close")
                         .frame(maxWidth: .infinity,
                                alignment: .trailing)
                         .padding(16.0)
-                        .isHidden(courses.count < 3, remove: true)
+                        .isHidden(viewStore.courses.count < 3, remove: true)
                         .onTapGesture {
-                            courses.remove(at: index)
-                            viewModel.selectedImages.remove(at: index)
+                            viewStore.send(.removeCourse(index: index))
                         }
                     locationTextFieldView(index: index)
                     takenTimeView(index: index)
@@ -200,7 +185,7 @@ extension CourseEditView {
     
     private var courseTextFeildView: some View {
         VStack(spacing: 4.0) {
-            TextField("코스 제목", text: $fullCourse.title)
+            TextField(StringConstant.courseTitle, text: viewStore.binding(get: \.courseTitle, send: { .setCourseTitle($0) }))
             Color.gray_D3D4D5
                 .frame(height: 1.0)
         }
@@ -211,14 +196,14 @@ extension CourseEditView {
     
     private var thumbnailImageView: some View {
         VStack(spacing: 0.0) {
-            if viewModel.thumbnailImage == nil {
-                KFImage(URL(string: courseDetail.thumbnailUrl ?? ""))
+            if viewStore.thumbnailImage == nil {
+                KFImage(URL(string: viewStore.courseDetail.thumbnailUrl ?? ""))
                     .resizable()
                     .frame(maxWidth: .infinity)
                     .frame(height: 186.0)
                     .cornerRadius(12.0)
             } else {
-                Image(uiImage: viewModel.thumbnailImage ?? UIImage())
+                Image(uiImage: viewStore.thumbnailImage ?? UIImage())
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity)
@@ -249,7 +234,7 @@ extension CourseEditView {
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                DatePicker("", selection: viewStore.binding(get: \.dateOfVisit, send: { .setDateOfVisit(date: $0) }), displayedComponents: .date)
                     .pickerStyle(.wheel)
                     .labelsHidden()
                     .background(Color.white)
@@ -288,7 +273,9 @@ extension CourseEditView {
                     availableWidth = size.width
                 }
             TagListView(availableWidth: availableWidth,
-                        data: fullCourse.placeCategories + fullCourse.withCategories + fullCourse.transCategories,
+                        data: viewStore.selectedPlaceParameter +
+                        viewStore.selectedWithParameter +
+                        viewStore.selectedVehiclesParameter,
                         spacing: 8.0,
                         alignment: .leading,
                         isExpandedUserTagListView: .constant(false),
@@ -315,12 +302,12 @@ extension CourseEditView {
     
     private var descriptionTextView: some View {
         VStack(spacing: 6.0) {
-            Text("코스 후기")
+            Text(StringConstant.reviewOfCourse)
                 .font(.pretendard(.reguler, size: 14.0))
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            TextEditor(text: $fullCourse.description)
+            TextEditor(text: viewStore.binding(get: \.courseDescription, send: { .setCourseDescription($0) }))
                 .frame(height: 86.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)
@@ -342,7 +329,7 @@ extension CourseEditView {
         VStack(spacing: 20.0) {
             HStack(spacing: 6.0) {
                 Image(systemName: "magnifyingglass")
-                Text(courses[index].placeName.isEmpty ? "장소명" : courses[index].placeName)
+                Text(viewStore.courses[index].placeName.isEmpty ? "장소명" : viewStore.courses[index].placeName)
                     .font(.pretendard(.reguler, size: 14.0))
                     .foregroundColor(.black)
             }
@@ -365,12 +352,12 @@ extension CourseEditView {
     private func takenTimeView(index: Int) -> some View {
         VStack(spacing: 16.0) {
             HStack(spacing: 0.0) {
-                Text("소요 시간")
+                Text(StringConstant.timeTaken)
                     .foregroundColor(.black)
                     .font(.pretendard(.reguler, size: 14.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
-                Text(String(format: "%d시간 %d분", courses[index].duration / 60, courses[index].duration % 60))
+                Text(String(format: "%d시간 %d분", viewStore.courses[index].duration / 60, viewStore.courses[index].duration % 60))
                     .foregroundColor(.blue_4708FA)
                     .font(.pretendard(.reguler, size: 14.0))
                 Image("arrow_right")
@@ -392,9 +379,9 @@ extension CourseEditView {
         HStack(spacing: 0.0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0) {
-                    ForEach(0..<(courses[index].placeImgUrls.count), id: \.self) { index2 in
+                    ForEach(0..<(viewStore.courses[index].placeImgUrls.count), id: \.self) { index2 in
                         ZStack(alignment: .topTrailing) {
-                            KFImage(URL(string: courses[index].placeImgUrls[index2]))
+                            KFImage(URL(string: viewStore.courses[index].placeImgUrls[index2]))
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 80.0,
@@ -403,15 +390,15 @@ extension CourseEditView {
                             Image("closeBlack")
                                 .padding(4.0)
                                 .onTapGesture {
-                                    courses[index].placeImgUrls.remove(at: index2)
+                                    viewStore.send(.removeUploadedImageInCourse(courseIndex: index, imageIndex: index2))
                                 }
                         }
-                       
+                        
                     }
                     
-                    ForEach(0..<viewModel.selectedImages[index].count, id: \.self) { index2 in
+                    ForEach(0..<viewStore.selectedCourseImages[index].count, id: \.self) { imageIndex in
                         ZStack(alignment: .topTrailing) {
-                            Image(uiImage: viewModel.selectedImages[index][index2])
+                            Image(uiImage: viewStore.selectedCourseImages[index][imageIndex])
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 80.0,
@@ -420,14 +407,14 @@ extension CourseEditView {
                             Image("closeBlack")
                                 .padding(4.0)
                                 .onTapGesture {
-                                    viewModel.selectedImages[index].remove(at: index2)
+                                    viewStore.send(.removeImageInCourse(courseIndex: index, imageIndex: imageIndex))
                                 }
                         }
                     }
                     addSubImageView(index: index)
                         .frame(width: 80.0,
                                height: 80.0)
-                        .isHidden(viewModel.selectedImages[index].count + (courses[index].placeImgUrls.count ) > 3, remove: true)
+                        .isHidden(viewStore.selectedCourseImages[index].count + (viewStore.courses[index].placeImgUrls.count ) > 3, remove: true)
                 }
                 
             }
@@ -442,7 +429,7 @@ extension CourseEditView {
                 .foregroundColor(.black)
                 .font(.pretendard(.reguler, size: 14.0))
             Image("add_circle")
-            Text("\(viewModel.selectedImages[index].count)/4")
+            Text("\(viewStore.selectedCourseImages[index].count)/4")
                 .foregroundColor(.black)
                 .font(.pretendard(.reguler, size: 12.0))
         }
@@ -473,10 +460,9 @@ extension CourseEditView {
         )
         .padding(16.0)
         .contentShape(Rectangle())
-        .isHidden(courses.count > 4, remove: true)
+        .isHidden(viewStore.courses.count > 4, remove: true)
         .onTapGesture {
-//            viewModel.selectedImages.append([])
-            courses.append(Course())
+            viewStore.send(.addCourse)
         }
     }
     
@@ -488,45 +474,32 @@ extension CourseEditView {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 40.0)
-        .background(isValid ? Color.blue_4708FA : Color.gray_EDEDED)
+        .background(viewStore.isValid ? Color.blue_4708FA : Color.gray_EDEDED)
         .cornerRadius(8.0)
         .padding(16.0)
         .contentShape(Rectangle())
         .onTapGesture {
             hideKeyboard()
-            guard isValid else { return }
-            fullCourse.startDate = selectedDate.toString(format: "yyyy-MM-dd")
-            fullCourse.placeUpdateRequestDtos = courses
-            viewModel.updateCourse(fullCourse: fullCourse, courseId: courseId) {
-                print("성공")
-                presentationMode.wrappedValue.dismiss()
-            }
+            viewStore.send(.editCourse)
+//            guard isValid else { return }
+//            fullCourse.startDate = selectedDate.toString(format: "yyyy-MM-dd")
+//            fullCourse.placeUpdateRequestDtos = courses
+//            viewModel.updateCourse(fullCourse: fullCourse, courseId: courseId) {
+//                presentationMode.wrappedValue.dismiss()
+//            }
         }
     }
     
-    private var isValid: Bool {
-        return fullCourse.title.isEmpty == false &&
-        fullCourse.description.isEmpty == false &&
+//    private var isValid: Bool {
+//        return fullCourse.title.isEmpty == false &&
+//        fullCourse.description.isEmpty == false &&
 //        viewModel.thumbnailImage != nil &&
-        courses.first?.placeName.isEmpty == false
-    }
-    
-    private var placeCategory: [Category] {
-        return [.TASTY_PLACE, .CAFE, .CULTURE_ART, .ACTIVITY, .HEALING, .NATURE, .NIGHT_VIEW, .HISTORY, .THEME_PARK]
-    }
-    
-    private var transCategory: [Category] {
-        return [.WALK, .BIKE, .CAR, .PUBLIC_TRANSPORTATION]
-        
-    }
-    
-    private var withCategory: [Category] {
-        return [.ALONE, .FRIEND, .COUPLE, .KID, .PET]
-    }
+//        courses.first?.placeName.isEmpty == false
+//    }
 }
 
 struct CourseEditView_Previews: PreviewProvider {
     static var previews: some View {
-        CourseEditView(courseDetail: CourseDetailModelResponse.DataModel())
+        CourseEditView(store: Store(initialState: CourseEditFeature.State(courseDetail: .init()), reducer: { CourseEditFeature() }))
     }
 }

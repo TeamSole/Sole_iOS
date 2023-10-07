@@ -225,7 +225,6 @@ struct HomeFeature: Reducer {
         .ifLet(\.$registerCourse, action: /Action.registerCourse) {
             RegisterCourseFeature()
         }
-       
     }
 }
 

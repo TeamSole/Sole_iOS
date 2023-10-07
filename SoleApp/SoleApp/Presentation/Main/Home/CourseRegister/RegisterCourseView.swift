@@ -12,7 +12,6 @@ import ComposableArchitecture
 struct RegisterCourseView: View {
     typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
     typealias FullCourse = RegisterCourseModelRequest
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
     
     @State private var isShowThumbnailPhotoPicker: Bool = false
@@ -284,7 +283,7 @@ extension RegisterCourseView {
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            TextEditor(text: viewStore.binding(get: \.courseDescription, send: { .setCourseTitle($0) }))
+            TextEditor(text: viewStore.binding(get: \.courseDescription, send: { .setCourseDescription($0) }))
                 .frame(height: 86.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4.0)

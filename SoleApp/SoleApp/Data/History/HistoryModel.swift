@@ -128,7 +128,23 @@ enum Category: String {
             return ""
         }
     }
+    
+    static var placeCategory: [Category] {
+        return [.TASTY_PLACE, .CAFE, .CULTURE_ART, .ACTIVITY, .HEALING, .NATURE, .NIGHT_VIEW, .HISTORY, .THEME_PARK]
+    }
+
+    static var transCategory: [Category] {
+        return [.WALK, .BIKE, .CAR, .PUBLIC_TRANSPORTATION]
+        
+    }
+
+    static var withCategory: [Category] {
+        return [.ALONE, .FRIEND, .COUPLE, .KID, .PET]
+    }
 }
+
+
+
 
 
 //PlaceCategory

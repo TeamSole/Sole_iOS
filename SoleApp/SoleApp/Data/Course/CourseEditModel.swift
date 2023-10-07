@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct EditCourseModelRequest: Codable {
+struct EditCourseModelRequest: Codable, Equatable {
     var title: String = ""
     var startDate: String = ""
     var description: String = ""
@@ -17,7 +17,7 @@ struct EditCourseModelRequest: Codable {
     var withCategories: [String] = []
     var placeUpdateRequestDtos: [PlaceUpdateRequestDtos] = []
     
-    struct PlaceUpdateRequestDtos: Codable {
+    struct PlaceUpdateRequestDtos: Codable, Equatable {
         var address: String = ""
         var description: String = ""
         var duration: Int = 0

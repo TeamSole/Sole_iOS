@@ -8,13 +8,13 @@
 import Foundation
 
 struct RegisterCourseModelRequest: Codable, Equatable {
-    var title: String
-    var date: String
-    var description: String
-    var placeCategories: [String]
-    var transCategories: [String]
-    var withCategories: [String]
-    var placeRequestDtos: [PlaceRequestDtos]
+    var title: String = ""
+    var date: String = ""
+    var description: String = ""
+    var placeCategories: [String] = []
+    var transCategories: [String] = []
+    var withCategories: [String] = []
+    var placeRequestDtos: [PlaceRequestDtos] = []
     
     struct PlaceRequestDtos: Codable, Equatable {
         var address: String = ""

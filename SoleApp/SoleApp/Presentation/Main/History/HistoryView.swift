@@ -34,6 +34,8 @@ struct HistoryView: View {
                         courseHistoryListView
                     }
                 }
+                navigationLinkToRegisterCourseView
+                navigationLinkToCourseDetailView
             }
             floatingButton
         }
@@ -173,12 +175,10 @@ extension HistoryView {
                 emptyResultView
             } else {
                 ForEach(viewStore.userHistories, id: \.courseId) { item in
-                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: HistoryFeature.Action.courseDetail),
-                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
-                    }, destination: { CourseDetailView(store: $0) },
-                                        label: {
-                        courseHistoryItem(item: item)
-                    })
+                    courseHistoryItem(item: item)
+                        .onTapGesture {
+                            viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+                        }
                 }
                 addNextPageButton
             }
@@ -248,27 +248,44 @@ extension HistoryView {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0.0) {
                     Spacer()
-                    NavigationLinkStore(self.store.scope(state: \.$registerCourse, action: HistoryFeature.Action.registerCourse),
-                                        onTap: { viewStore.send(.didTappedFloatingButton) },
-                                        destination: { RegisterCourseView(store: $0) },
-                                        label: {
-                        HStack(spacing: 0.0) {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 15.0,
-                                       height: 15.0)
-                        }
-                        .frame(width: 48.0,
-                               height: 48.0)
-                        .foregroundColor(.white)
-                        .background(Circle()
-                            .fill(Color.blue_4708FA)
-                            .cornerRadius(.infinity)) })
+                    HStack(spacing: 0.0) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 15.0,
+                                   height: 15.0)
+                    }
+                    .frame(width: 48.0,
+                           height: 48.0)
+                    .foregroundColor(.white)
+                    .background(Circle()
+                        .fill(Color.blue_4708FA)
+                        .cornerRadius(.infinity))
+                    .onTapGesture {
+                        viewStore.send(.didTappedFloatingButton)
+                    }
                 }
                 .padding(.trailing, 16.0)
                 .padding(.bottom, 16.0)
             }
         }
+    }
+    
+    private var navigationLinkToRegisterCourseView: some View {
+        NavigationLinkStore(store.scope(state: \.$registerCourse, action: HistoryFeature.Action.registerCourse),
+                            onTap: {  },
+                            destination: { RegisterCourseView(store: $0) },
+                            label: {
+            EmptyView()
+        })
+    }
+    
+    private var navigationLinkToCourseDetailView: some View {
+        NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: HistoryFeature.Action.courseDetail),
+                            onTap: { },
+                            destination: { CourseDetailView(store: $0) },
+                            label: {
+            EmptyView()
+        })
     }
     
     private var addNextPageButton: some View {

@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 struct CourseDetailView: View {
     typealias Place = CourseDetailModelResponse.PlaceResponseDtos
-//    @StateObject var viewModel: CourseDetailViewModel = CourseDetailViewModel()
+    @Environment(\.presentationMode) var presentationMode
     @State private var availableWidth: CGFloat = 10
     @State private var isExpanded: Bool = false
     
@@ -70,6 +70,7 @@ extension CourseDetailView {
                        alignment: .leading)
                 .onTapGesture {
                     viewStore.send(.didTappedDismissButton)
+//                    presentationMode.wrappedValue.dismiss()
                 }
             Image(viewStore.courseDetail.like == true ? "love_selected" : "love")
                 .onTapGesture {
@@ -335,7 +336,7 @@ extension CourseDetailView {
     func getActionSheet() -> ActionSheet {
         let fixButton: ActionSheet.Button = .default(Text(StringConstant.fix),
                                                    action: {
-            showCourseEditView = true
+            viewStore.send(.didTappedMoveToCourseEdtiView)
         })
         let deleteButton: ActionSheet.Button = .default(Text(StringConstant.delete), action: {
             alertType = .remove
@@ -351,15 +352,10 @@ extension CourseDetailView {
     }
     
     private var navigateToCourseEditView: some View {
-        NavigationLink(isActive: $showCourseEditView,
-                       destination: {
-            CourseEditView(courseDetail: viewStore.courseDetail)
-        }, label: {
-            EmptyView()
-        })
-//        NavigationLink(destination: ,
-//                       isActive: ,
-//                       label: { })
+        NavigationLinkStore(store.scope(state: \.$courseEdit, action:  CourseDetailFeature.Action.courseEdit ),
+                            onTap: { },
+                            destination: { CourseEditView(store: $0) },
+                            label: { EmptyView() })
     }
 }
 

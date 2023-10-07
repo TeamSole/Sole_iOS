@@ -12,6 +12,7 @@ import UIKit
 
 struct CourseClient {
     var declareCourse: (_ courseId: Int) async throws -> (BaseResponse)
+    var editCourse: (_ courseId: Int, _ parameter: EditCourseModelRequest, _ thumbnailImage: UIImage?, _ coursesImages: [[UIImage]]) async throws -> (BaseResponse)
     var getCourseDetail: (_ courseId: Int) async throws -> (CourseDetailModelResponse)
     var removeCourse: (_ courseId: Int) async throws -> (BaseResponse)
     var searchCourse: (_ query: SearchCourseRequest) async throws -> (CourseModelResponse)
@@ -23,6 +24,29 @@ extension CourseClient: DependencyKey {
         declareCourse: { courseId in
             let request = API.makeDataRequest(CourseTarget.declareCourse(courseId: courseId))
             let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
+        },
+        editCourse: { courseId, parameter, thumbnailImage, coursesImages in
+            let url = K.baseUrl + K.Path.courses + "/\(courseId)"
+            let headers = K.Header.multiplatformHeader
+            
+            let data =  try await API.session.upload(multipartFormData: { multipart in
+                let data = try? JSONEncoder().encode(parameter)
+                multipart.append(data!, withName: "courseUpdateRequestDto")
+                if let image = thumbnailImage?.jpegData(compressionQuality: 0.1) {
+                    multipart.append(image, withName: "thumbnailImg", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
+                }
+                for r in 0..<(coursesImages.count ) {
+                    for c in 0..<(coursesImages[r].count) {
+                        if let image = coursesImages[r][c].jpegData(compressionQuality: 0.1) {
+                            multipart.append(image, withName: "\(parameter.placeUpdateRequestDtos[r].placeName)", fileName: "\(image).jpeg", mimeType: "multipart/form-data")
+                        }
+                    }
+                }
+            }, to: url, method: .put, headers: headers)
+                .validate()
+                .serializingData()
+                .value
             return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         },
         getCourseDetail: { courseId in
