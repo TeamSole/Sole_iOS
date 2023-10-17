@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let mainViewModel = AppDelegate.shared.mainViewModel
         window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(),
-                                                                                        reducer: { AppFeature() }))
+                                                                                        reducer: { AppFeature()
+            ._printChanges() }))
             .environmentObject(mainViewModel))
         window?.backgroundColor = .white
         window?.overrideUserInterfaceStyle = .light

@@ -32,21 +32,6 @@ struct MainFeature: Reducer {
     }
     
     var body: some Reducer<State, Action> {
-        Scope(state: \.home, action: /Action.home) {
-            HomeFeature()
-        }
-        
-        Scope(state: \.history, action: /Action.history) {
-            HistoryFeature()
-        }
-        
-        Scope(state: \.follow, action: /Action.follow) {
-            FollowBoardFeature()
-        }
-        
-        Scope(state: \.scrap, action: /Action.scrap) {
-            ScrapFolderFeature()
-        }
         Reduce { state, action in
             switch action {
             case .home:
@@ -66,5 +51,21 @@ struct MainFeature: Reducer {
                 return .none
             }
         }
+        Scope(state: \.home, action: /Action.home) {
+            HomeFeature()
+        }
+        
+        Scope(state: \.history, action: /Action.history) {
+            HistoryFeature()
+        }
+        
+        Scope(state: \.scrap, action: /Action.scrap) {
+            ScrapFolderFeature()
+        }
+        
+        Scope(state: \.follow, action: /Action.follow) {
+            FollowBoardFeature()
+        }
+        
     }
 }

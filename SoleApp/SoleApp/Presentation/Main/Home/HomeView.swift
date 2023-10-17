@@ -11,8 +11,8 @@ import ComposableArchitecture
 
 struct HomeView: View {
     typealias Course = CourseModelResponse.DataModel
-    @EnvironmentObject var mainViewModel: MainViewModel
-    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
+//    @EnvironmentObject var mainViewModel: MainViewModel
+//    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
     @State private var availableWidth: CGFloat = 10
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowFirstSelectTagView: Bool = false
@@ -41,12 +41,16 @@ struct HomeView: View {
             floatingButton
         }
         .onLoaded {
-            if mainViewModel.isFirstSignUp == true {
-                isShowFirstSelectTagView = true
+//            if mainViewModel.isFirstSignUp == true {
+//                isShowFirstSelectTagView = true
+//            }
+            Task {
+                let locationManager = LocationManager()
+                // 위치정보 반환
+                let location = try await locationManager.updateLocation()
+                viewStore.send(.setLocation(lat: location.latitude, lng: location.longitude))
             }
-//            viewModel.locationManager.requestLocation()
-            viewModel.getRecommendCourses()
-            viewStore.send(.viewDidLoad)
+            viewStore.send(.getCourses)
         }
         .fullScreenCover(isPresented: $isShowFirstSelectTagView,
                          content: {
@@ -54,7 +58,7 @@ struct HomeView: View {
                 viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
                 .onDisappear {
-                    mainViewModel.isFirstSignUp = false
+//                    mainViewModel.isFirstSignUp = false
                 }
         })
         .sheet(isPresented: $isShowSelectTagView,
@@ -127,17 +131,16 @@ extension HomeView {
                     Image("my_location")
                         .padding(4.0)
                         .onTapGesture {
-                            viewStore.send(.getLocation)
+//                            viewStore.send(.getLocation)
                             // 잘됨
-//                            Task {
-//                                let locationManager = LocationManager()
-//                                // 위치정보 반환
-//                                let info = try await locationManager.updateLocation()
-//                                print(info)
-//                                
-//                            }
+                            Task {
+                                let locationManager = LocationManager()
+                                // 위치정보 반환
+                                let location = try await locationManager.updateLocation()
+                                viewStore.send(.setLocation(lat: location.latitude, lng: location.longitude))
+                            }
                         }
-                    Text(viewModel.location.address ?? "서울 마포구")
+                    Text(viewStore.location.address ?? "서울 마포구")
                         .font(.pretendard(.reguler, size: 12.0))
                 }
             }
@@ -147,9 +150,9 @@ extension HomeView {
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
-                        ForEach(0..<viewModel.recommendCourses.count, id: \.self) { index in
+                        ForEach(0..<viewStore.recommendCourses.count, id: \.self) { index in
                             hotCourseSectionItem(image: URL(string: viewStore.recommendCourses[index].thumbnailImg ?? ""),
-                                                 title: viewModel.recommendCourses[index].courseName ?? "")
+                                                 title: viewStore.recommendCourses[index].courseName ?? "")
                             .cornerRadius(4.0)
                             .onTapGesture {
                                 viewStore.send(.didTappedCourseDetail(courseId: viewStore.recommendCourses[index].courseId ?? 0))

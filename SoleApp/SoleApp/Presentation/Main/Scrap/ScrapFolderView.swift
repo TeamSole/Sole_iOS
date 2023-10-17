@@ -31,18 +31,26 @@ struct ScrapFolderView: View {
             naviagationBar
             ScrollView {
                 LazyVGrid(columns: gridItem, spacing: 16.0) {
-                    ForEach(0..<viewStore.folders.count + 1, id: \.self) { index in
+                    ForEach(0..<viewStore.folders.count, id: \.self) { index in
                         if index == viewStore.folders.count {
                             addFolderButtonView
                         } else {
-                            NavigationLinkStore(self.store.scope(state: \.$scrapList, action: ScrapFolderFeature.Action.scrapList),
-                                                onTap: {
-                                viewStore.send(.didTappedScrapFolder(folderId: viewStore.folders[index].scrapFolderId ?? 0, folderName: viewStore.folders[index].scrapFolderName ?? ""))
-                            }, destination: {
-                                ScrapListView(store: $0)
+                            NavigationLink(destination: {
+                                ScrapListView(store: Store(initialState: ScrapListFeature.State(folderId: viewStore.folders[index].scrapFolderId ?? 0,
+                                                                                                folderName: viewStore.folders[index].scrapFolderName ?? ""),
+                                                           reducer: { ScrapListFeature() }))
                             }, label: {
-                                folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", title: viewStore.folders[index].scrapFolderName ?? "")
+                                folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", 
+                                           title: viewStore.folders[index].scrapFolderName ?? "")
                             })
+//                            NavigationLinkStore(self.store.scope(state: \.$scrapList, action: ScrapFolderFeature.Action.scrapList),
+//                                                onTap: {
+//                                viewStore.send(.didTappedScrapFolder(folderId: viewStore.folders[index].scrapFolderId ?? 0, folderName: viewStore.folders[index].scrapFolderName ?? ""))
+//                            }, destination: {
+//                                ScrapListView(store: $0)
+//                            }, label: {
+//                                folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", title: viewStore.folders[index].scrapFolderName ?? "")
+//                            })
                         }
                     }
                 }

@@ -175,6 +175,10 @@ extension HistoryView {
                 emptyResultView
             } else {
                 ForEach(viewStore.userHistories, id: \.courseId) { item in
+//                    courseHistoryItem(item: item)
+//                        .onTapGesture {
+//                            viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+//                        }
                     NavigationLink(destination: {
                         CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature() }))
                     }, label: {

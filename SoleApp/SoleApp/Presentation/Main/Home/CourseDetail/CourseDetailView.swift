@@ -21,8 +21,6 @@ struct CourseDetailView: View {
     @State private var alertType: AlertType = .declare
     @State private var isFollowing: Bool = true
     @State private var showCourseEditView: Bool = false
-
-    var courseId: Int = 0
     
     private let store: StoreOf<CourseDetailFeature>
     @ObservedObject var viewStore: ViewStoreOf<CourseDetailFeature>
@@ -47,11 +45,17 @@ struct CourseDetailView: View {
             navigateToCourseEditView
         }
         .navigationBarHidden(true)
-        .onAppear {
+        .onLoaded {
             viewStore.send(.viewDidLoad)
         }
+        .onReceive(viewStore.publisher.courseDetail, perform: { info in
+            print("==================")
+            print(info)
+            print("==================")
+        })
         .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
             if isDismissSelf == true {
+                viewStore.send(.makeIsDissmissSelfFalse)
                 presentationMode.wrappedValue.dismiss()
             }
         })

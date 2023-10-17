@@ -15,6 +15,7 @@ struct ScrapListFeature: Reducer {
         var folderName: String
         var isCalledApi: Bool = false
         var isDefaultFolder: Bool
+        var isDismissSelf: Bool = false
         var isEditMode: Bool = false
         var scrapList: [Scrap] = []
         var selectedScrapsCourseId: [Int] = []
@@ -38,6 +39,7 @@ struct ScrapListFeature: Reducer {
         case getScrapList
         /// 스크랩 리스트 불러오기 Api response
         case getScrapListResponse(TaskResult<ScrapListModelResponse>)
+        case makeIsDissmissSelfFalse
         /// 폴더 삭제  Api 호출
         case removeFolder
         /// 폴더 삭제  Api response
@@ -69,6 +71,7 @@ struct ScrapListFeature: Reducer {
                 return .none
                 
             case .didTappedDismissButton:
+                state.isDismissSelf = true
                 return .run { send in
                     await dismiss()
                 }
@@ -93,6 +96,10 @@ struct ScrapListFeature: Reducer {
             case .getScrapListResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
+                return .none
+                
+            case .makeIsDissmissSelfFalse:
+                state.isDismissSelf = false
                 return .none
                 
             case .removeFolder:

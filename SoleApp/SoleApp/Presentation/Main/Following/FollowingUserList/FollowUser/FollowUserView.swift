@@ -133,7 +133,12 @@ extension FollowUserView {
             if viewStore.popularCourse == nil {
                 emptyResultView(title: StringConstant.emptyCoursePopulate)
             } else {
-                courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
+                NavigationLink(destination: {
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.popularCourse?.courseId ?? 0), reducer: { CourseDetailFeature() }))
+                }, label: {
+                    courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
+                })
+                
             }
         }
         .padding(16.0)

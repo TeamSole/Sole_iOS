@@ -11,7 +11,8 @@ import ComposableArchitecture
 
 struct FollowingUserListView: View {
     typealias FollowItem = FollowListModelResponse.DataModel
-    @StateObject var viewModel: FollowingUserListViewModel = FollowingUserListViewModel()
+    @Environment(\.presentationMode) var presentationMode
+//    @StateObject var viewModel: FollowingUserListViewModel = FollowingUserListViewModel()
     @State private var selectedIndex: Int = 0
     
     private let store: StoreOf<FollowingUserListFeature>
@@ -37,6 +38,12 @@ struct FollowingUserListView: View {
         .onAppear {
             viewStore.send(.viewDidLoad)
         }
+        .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
+            if isDismissSelf == true {
+                viewStore.send(.makeIsDissmissSelfFalse)
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 

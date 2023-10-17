@@ -13,6 +13,7 @@ struct HomeClient {
     var getNextCourses: (CourseModelRequest) async throws -> (CourseModelResponse)
     var getRecommendedCourses: () async throws -> (RecommendCourseModel)
     var scrap: (Int) async throws -> (BaseResponse)
+    var setLocation: (LocationModelRequest) async throws -> (LocationModelResponse)
     var setTasty: (CategoryModelRequest) async throws -> (BaseResponse)
 }
 
@@ -39,7 +40,11 @@ extension HomeClient: DependencyKey {
             let data = try await request.validate().serializingData().value
             return try API.responseDecodeToJson(data: data, response: BaseResponse.self)
         },
-        
+        setLocation: { parameter in
+            let request = API.makeDataRequest(HomeTarget.setLocation(parameter))
+            let data = try await request.validate().serializingData().value
+            return try API.responseDecodeToJson(data: data, response: LocationModelResponse.self)
+        },
         setTasty: { parameter in
             let request = API.makeDataRequest(HomeTarget.setTasty(parameter))
             let data = try await request.validate().serializingData().value

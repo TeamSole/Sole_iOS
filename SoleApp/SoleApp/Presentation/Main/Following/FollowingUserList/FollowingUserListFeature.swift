@@ -13,6 +13,7 @@ struct FollowingUserListFeature: Reducer {
         var followers: [FollowUser] = []
         var follows: [FollowUser] = []
         @PresentationState var followUser: FollowUserFeature.State?
+        var isDismissSelf: Bool = false
     }
     
     enum Action: Equatable {
@@ -29,6 +30,8 @@ struct FollowingUserListFeature: Reducer {
         /// 팔로우 한 사람 목록 api 호출
         case getFollows
         case getFollowsResponse(TaskResult<FollowListModelResponse>)
+        
+        case makeIsDissmissSelfFalse
         case viewDidLoad
     }
     
@@ -39,6 +42,7 @@ struct FollowingUserListFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .didTappedDismissButton:
+                state.isDismissSelf = true
                 return .run { _ in
                     await dismiss()
                 }
@@ -111,6 +115,10 @@ struct FollowingUserListFeature: Reducer {
                 
             case .getFollowsResponse(.failure(let error)):
                 debugPrint(error.localizedDescription)
+                return .none
+                
+            case .makeIsDissmissSelfFalse:
+                state.isDismissSelf = false
                 return .none
                 
             case .viewDidLoad:

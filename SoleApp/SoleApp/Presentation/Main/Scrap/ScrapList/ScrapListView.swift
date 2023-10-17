@@ -13,6 +13,7 @@ struct ScrapListView: View {
     typealias Scrap = ScrapListModelResponse.DataModel
 //    @StateObject var viewModel: ScrapListViewModel = ScrapListViewModel()
 //    @State private var isEditMode: Bool = false
+    @Environment(\.presentationMode) var presentationMode
     @State private var showBottomPopup: Bool = false
     @State private var showPopup: Bool = false
     @State private var showMoveScrapPopup: Bool = false
@@ -49,6 +50,12 @@ struct ScrapListView: View {
         .onLoaded {
             viewStore.send(.viewDidLoad)
         }
+        .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
+            if isDismissSelf == true {
+                viewStore.send(.makeIsDissmissSelfFalse)
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
         // TODO: modifier alert나 popup으로 바꾸기
         .modifier(BottomSheetModifier(showFlag: $showBottomPopup,
                                       edit: {
@@ -164,16 +171,16 @@ extension ScrapListView {
     
     private var scrapList: some View {
         VStack(spacing: 20.0) {
-            ForEach(viewStore.scrapList, id: \.courseId) { item in
+            ForEach(0..<viewStore.scrapList.count, id: \.self) { index in
                 NavigationLink(destination: {
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature() }))
+                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
                 }, label: {
-                    scrapItem(item: item)
+                    scrapItem(item: viewStore.scrapList[index])
                 })
 //                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: ScrapListFeature.Action.courseDetail),
-//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0)) },
+//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.scrapList[index].courseId ?? 0)) },
 //                                    destination: { CourseDetailView(store: $0) },
-//                                    label: { scrapItem(item: item) })
+//                                    label: { scrapItem(item: viewStore.scrapList[index]) })
             }
         }
         .padding(.horizontal, 16.0)

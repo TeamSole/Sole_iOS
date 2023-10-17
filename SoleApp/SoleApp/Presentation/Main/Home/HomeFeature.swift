@@ -11,12 +11,14 @@ import CoreLocation
 struct HomeFeature: Reducer {
     typealias RecommendCourse = RecommendCourseModel.DataModel
     typealias Course = CourseModelResponse.DataModel
+    typealias Location = LocationModelResponse.CurrentGps
     struct State: Equatable {
         @PresentationState var courseDetail: CourseDetailFeature.State?
         @PresentationState var courseSearch: CourseSearchFeature.State?
         @PresentationState var myPage: MyPageFeature.State?
         @PresentationState var registerCourse: RegisterCourseFeature.State?
         var courses: [Course] = []
+        var location: Location = .init()
         var isCalledGetNextCoursesApi: Bool = false
         var recommendCourses: [RecommendCourse] = []
     }
@@ -40,6 +42,9 @@ struct HomeFeature: Reducer {
         case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
         case scrap(courseId: Int, index: Int)
         case scrapResponse(TaskResult<BaseResponse>)
+        /// 현재 위치 서버에 등록
+        case setLocation(lat: Double, lng: Double)
+        case setLocationResponse(TaskResult<LocationModelResponse>)
         case setTasty(place: [String], with: [String], tras: [String])
         case setTastyResponse(TaskResult<BaseResponse>)
         case viewDidLoad
@@ -146,12 +151,12 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .getRecommendedCourses:
-                return .none
-//                return .run { send in
-//                    await send(.getRecommendedCoursesResponse(
-//                        TaskResult { try await homeClient.getCourses() }
-//                    ))
-//                }
+//                return .none
+                return .run { send in
+                    await send(.getRecommendedCoursesResponse(
+                        TaskResult { try await homeClient.getRecommendedCourses() }
+                    ))
+                }
                 
             case .getRecommendedCoursesResponse(.success(let response)):
                 if response.success == true,
@@ -188,6 +193,29 @@ struct HomeFeature: Reducer {
             case .scrapResponse(.failure(let error)):
                 debugPrint(error.localizedDescription)
                 return .none
+                
+            case .setLocation(let lat, let lng):
+                let locationModel = LocationModelRequest(latitude: lat, longitude: lng)
+                return .run { send in
+                    await send(.setLocationResponse(
+                        TaskResult {
+                            try await homeClient.setLocation(locationModel)
+                        }
+                    ))
+                }
+                
+            case .setLocationResponse(.success(let response)):
+                if response.success == true,
+                   let location = response.data?.currentGps {
+                    state.location = location
+                    return .send(.getRecommendedCourses)
+                }
+                return .none
+                
+            case .setLocationResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
+                
                 
             case .setTasty(let placeCategory, let withCategory, let transCategory):
                 

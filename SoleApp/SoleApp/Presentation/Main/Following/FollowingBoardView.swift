@@ -64,10 +64,15 @@ extension FollowingBoardView {
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .frame(maxWidth: .infinity,
                        alignment: .center)
-            NavigationLinkStore(self.store.scope(state: \.$followingUserList, action: FollowBoardFeature.Action.followingUserList),
-                                onTap: { viewStore.send(.didTappedFollowingUserListView) },
-                                destination: { FollowingUserListView(store: $0) },
-                                label: { Image("people_alt") })
+            NavigationLink(destination: {
+                FollowingUserListView(store: Store(initialState: FollowingUserListFeature.State(), reducer: { FollowingUserListFeature() }))
+            }, label: {
+                Image("people_alt")
+            })
+//            NavigationLinkStore(self.store.scope(state: \.$followingUserList, action: FollowBoardFeature.Action.followingUserList),
+//                                onTap: { viewStore.send(.didTappedFollowingUserListView) },
+//                                destination: { FollowingUserListView(store: $0) },
+//                                label: { Image("people_alt") })
             .padding(.trailing, 15.0)
         }
         .frame(height: 46.0)

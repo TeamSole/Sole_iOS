@@ -22,6 +22,7 @@ struct RegisterCourseFeature: Reducer {
         var selectedVehiclesParameter: [String] = []
         var thumbnailImage: UIImage? = nil
         var isCalledApi: Bool = false
+        var isDismissSelf: Bool = false
         var isValid: Bool {
             return courseTitle.isEmpty == false &&
             courseDescription.isEmpty == false &&
@@ -69,6 +70,7 @@ struct RegisterCourseFeature: Reducer {
                 return .none
                 
             case .didTappedDismissButton:
+                state.isDismissSelf = true
                 return .run { _ in await dismiss() }
                 
             case .insertSearchedPlace(let courseIndex, let course):

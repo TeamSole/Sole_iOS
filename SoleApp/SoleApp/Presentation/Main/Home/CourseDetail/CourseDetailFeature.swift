@@ -36,6 +36,7 @@ struct CourseDetailFeature: Reducer {
         
         case getCourseDetail
         case getCourseDetailResponse(TaskResult<CourseDetailModelResponse>)
+        case makeIsDissmissSelfFalse
         /// 코스 삭제
         case removeCourse
         case removeCourseResponse(TaskResult<BaseResponse>)
@@ -133,13 +134,17 @@ struct CourseDetailFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .makeIsDissmissSelfFalse:
+                state.isDismissSelf = false
+                return .none
+                
             case .removeCourse:
                 guard state.isCalledApi == false,
-                      state.courseDetail.checkWriter == false else { return .none }
+                      state.courseDetail.checkWriter == true else { return .none }
                 state.isCalledApi = true
                 return .run { [courseId = state.courseId] send in
                     await send(.removeCourseResponse(
-                        TaskResult { try await scrapClient.scrap(courseId)}))
+                        TaskResult { try await courseClient.removeCourse(courseId)}))
                 }
                 
             case .removeCourseResponse(.success(let response)):
@@ -152,7 +157,6 @@ struct CourseDetailFeature: Reducer {
             case .removeCourseResponse(.failure(let error)):
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
-                state.courseDetail.like?.toggle()
                 return .none
                 
             case .scrap:

@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct RegisterCourseView: View {
     typealias Course = RegisterCourseModelRequest.PlaceRequestDtos
     typealias FullCourse = RegisterCourseModelRequest
-    @StateObject var viewModel: RegisterCourseViewModel = RegisterCourseViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowCoursePhotoPicker: Bool = false
@@ -47,6 +47,11 @@ struct RegisterCourseView: View {
             }
         }
         .navigationBarHidden(true)
+        .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
+            if isDismissSelf == true {
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
         .introspectDatePicker(customize: { datePicker in
             datePicker.backgroundColor = .white
             datePicker.setValue(UIColor.clear, forKey: "tintColor")
@@ -95,6 +100,7 @@ struct RegisterCourseView: View {
                 viewStore.send(.insertSearchedPlace(courseIndex: selectIndex, course: course))
             }
         })
+        
         .onDisappear {
 //            viewStore.thumbnailImage = nil
 //            viewModel.selectedImages = [[],[]]

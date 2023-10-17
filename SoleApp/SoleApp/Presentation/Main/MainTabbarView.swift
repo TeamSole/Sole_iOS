@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 
 struct MainTabbarView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
+//    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var selectedIndex: Int = 0
     
     private let store: StoreOf<MainFeature>
@@ -27,7 +27,7 @@ struct MainTabbarView: View {
             TabView(selection: viewStore.binding(get: \.selectedTab,
                                                  send: MainFeature.Action.selectTab)) {
                 HomeView(store: self.store.scope(state: \.home, action: MainFeature.Action.home))
-                    .environmentObject(mainViewModel)
+//                    .environmentObject(mainViewModel)
                     .tabItem {
                         viewStore.selectedTab == .HOME ? Image("home_tap_selected") : Image("home_tap")
                         Text(StringConstant.tabHome)
@@ -48,7 +48,8 @@ struct MainTabbarView: View {
                     }
                     .tag(MainFeature.Tab.FOLLOWING)
                 
-                ScrapFolderView(store: self.store.scope(state: \.scrap, action: MainFeature.Action.scrap))
+                ScrapFolderView(store: Store(initialState: ScrapFolderFeature.State(), reducer: { ScrapFolderFeature() }))
+//                ScrapFolderView(store: self.store.scope(state: \.scrap, action: MainFeature.Action.scrap))
                     .tabItem {
                         viewStore.selectedTab == .SCRAP ? Image("scrap_tap_selected") : Image("scrap_tap")
                         Text(StringConstant.tabScrap)

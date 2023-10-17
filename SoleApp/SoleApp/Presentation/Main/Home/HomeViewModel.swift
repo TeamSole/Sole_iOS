@@ -13,10 +13,11 @@ final class HomeViewModel: NSObject, ObservableObject {
     typealias RecommendCourse = RecommendCourseModel.DataModel
     typealias Course = CourseModelResponse.DataModel
     typealias Location = LocationModelResponse.CurrentGps
+//    let locationManager = CLLocationManager()
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var recommendCourses: [RecommendCourse] = []
     @Published var courses: [Course] = []
-    @Published var location: Location = Location()
+    @Published private var location: Location = Location()
     @Published var callingRequest: Bool = false
     
 
