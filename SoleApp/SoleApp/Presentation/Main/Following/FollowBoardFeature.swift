@@ -101,5 +101,8 @@ struct FollowBoardFeature: Reducer {
         .ifLet(\.$followingUserList, action: /Action.followingUserList) {
             FollowingUserListFeature()
         }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
+        }
     }
 }

@@ -173,5 +173,8 @@ struct HistoryFeature: Reducer {
         .ifLet(\.$registerCourse, action: /Action.registerCourse) {
             RegisterCourseFeature()
         }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
+        }
     }
 }

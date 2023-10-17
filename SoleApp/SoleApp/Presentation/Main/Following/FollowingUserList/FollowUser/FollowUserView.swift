@@ -30,6 +30,7 @@ struct FollowUserView: View {
                 popularCourseView
                 recentCourseView
             }
+            navigationLinkToCourseDetailView
         }
         .navigationBarHidden(true)
         .onLoaded {
@@ -133,11 +134,16 @@ extension FollowUserView {
             if viewStore.popularCourse == nil {
                 emptyResultView(title: StringConstant.emptyCoursePopulate)
             } else {
-                NavigationLink(destination: {
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.popularCourse?.courseId ?? 0), reducer: { CourseDetailFeature() }))
-                }, label: {
-                    courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
-                })
+//                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
+//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.popularCourse?.courseId ?? 0))
+//                }, destination: { CourseDetailView(store: $0) },
+//                                    label: {
+//                    courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
+//                })
+                courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
+                    .onTapGesture {
+                        viewStore.send(.didTappedCourseDetail(courseId: viewStore.popularCourse?.courseId ?? 0))
+                    }
                 
             }
         }
@@ -155,11 +161,10 @@ extension FollowUserView {
                 emptyResultView(title: StringConstant.emptyCourseRegistered)
             } else {
                 ForEach(0..<(viewStore.recentCourses?.count ?? 0), id: \.self) { index in
-                    NavigationLink(destination: {
-                        CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.recentCourses?[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
-                    }, label: {
-                        courseItem(item: viewStore.recentCourses?[index] ?? Course(), index: index)
-                    })
+                    courseItem(item: viewStore.recentCourses?[index] ?? Course(), index: index)
+                        .onTapGesture {
+                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
+                        }
 //                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
 //                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
 //                    }, destination: { CourseDetailView(store: $0) },
@@ -264,6 +269,15 @@ extension FollowUserView {
             viewStore.send(.getNextUserDetail)
         }
         .isHidden(viewStore.recentCourses?.last?.finalPage == true, remove: true)
+    }
+    
+    private var navigationLinkToCourseDetailView: some View {
+        NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
+                            onTap: { },
+                            destination: { CourseDetailView(store: $0) },
+                            label: {
+            EmptyView()
+        })
     }
 
 }

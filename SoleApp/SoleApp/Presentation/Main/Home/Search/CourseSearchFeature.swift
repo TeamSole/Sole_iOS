@@ -137,5 +137,8 @@ struct CourseSearchFeature: Reducer {
                 return .none
             }
         }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
+        }
     }
 }

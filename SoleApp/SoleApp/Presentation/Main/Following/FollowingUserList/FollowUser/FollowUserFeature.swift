@@ -172,6 +172,9 @@ struct FollowUserFeature: Reducer {
                 return .send(.getUserDetail)
             }
         }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
+        }
     }
 }
 

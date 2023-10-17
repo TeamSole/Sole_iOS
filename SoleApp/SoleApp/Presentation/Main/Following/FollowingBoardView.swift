@@ -32,11 +32,10 @@ struct FollowingBoardView: View {
                     } else {
                         VStack(spacing: 16.0) {
                             ForEach(viewStore.courses, id: \.courseId) { item in
-                                NavigationLink(destination: {
-                                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: item.courseId ?? 0), reducer: { CourseDetailFeature() }))
-                                }, label: {
-                                    courseListItem(item: item)
-                                })
+                                courseListItem(item: item)
+                                    .onTapGesture {
+                                        viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+                                    }
 //                                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowBoardFeature.Action.courseDetail),
 //                                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
 //                                }, destination: { CourseDetailView(store: $0) },
@@ -47,6 +46,7 @@ struct FollowingBoardView: View {
                         }
                     } 
                 }
+                navigationLinkToCourseDetailView
             }
             .frame(maxHeight: .infinity)
             .navigationBarHidden(true)
@@ -64,15 +64,15 @@ extension FollowingBoardView {
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .frame(maxWidth: .infinity,
                        alignment: .center)
-            NavigationLink(destination: {
-                FollowingUserListView(store: Store(initialState: FollowingUserListFeature.State(), reducer: { FollowingUserListFeature() }))
-            }, label: {
-                Image("people_alt")
-            })
-//            NavigationLinkStore(self.store.scope(state: \.$followingUserList, action: FollowBoardFeature.Action.followingUserList),
-//                                onTap: { viewStore.send(.didTappedFollowingUserListView) },
-//                                destination: { FollowingUserListView(store: $0) },
-//                                label: { Image("people_alt") })
+//            NavigationLink(destination: {
+//                FollowingUserListView(store: Store(initialState: FollowingUserListFeature.State(), reducer: { FollowingUserListFeature() }))
+//            }, label: {
+//                Image("people_alt")
+//            })
+            NavigationLinkStore(self.store.scope(state: \.$followingUserList, action: FollowBoardFeature.Action.followingUserList),
+                                onTap: { viewStore.send(.didTappedFollowingUserListView) },
+                                destination: { FollowingUserListView(store: $0) },
+                                label: { Image("people_alt") })
             .padding(.trailing, 15.0)
         }
         .frame(height: 46.0)
@@ -150,6 +150,15 @@ extension FollowingBoardView {
                maxHeight: .infinity,
                alignment: .center)
         .padding(.top, 100.0)
+    }
+    
+    private var navigationLinkToCourseDetailView: some View {
+        NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowBoardFeature.Action.courseDetail),
+                            onTap: { },
+                            destination: { CourseDetailView(store: $0) },
+                            label: {
+            EmptyView()
+        })
     }
     
 }
