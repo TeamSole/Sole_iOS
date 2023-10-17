@@ -116,6 +116,7 @@ struct RegisterCourseFeature: Reducer {
             case .uploadCourse:
                 guard state.isValid == true,
                       state.isCalledApi == false else { return .none }
+                Utility.showIndicator()
                 state.isCalledApi = true
                 let fullCourse = FullCourse(title: state.courseTitle,
                                             date: state.dateOfVisit.toString(format: "yyyy-MM-dd"),
@@ -136,10 +137,15 @@ struct RegisterCourseFeature: Reducer {
                 
             case .uploadCourseResponse(.success(let response)):
                 state.isCalledApi = false
-                return .send(.didTappedDismissButton)
+                Utility.dismissIndicator()
+                if response.success == true {
+                    return .send(.didTappedDismissButton)
+                }
+                return .none
                 
             case .uploadCourseResponse(.failure(let error)):
                 state.isCalledApi = false
+                Utility.dismissIndicator()
                 debugPrint(error.localizedDescription)
                 return .none
             }

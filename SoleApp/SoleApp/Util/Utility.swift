@@ -32,4 +32,14 @@ final class Utility {
             complete?()
         }
     }
+    
+    static func showIndicator() {
+        IndicatorView.shared.show()
+        IndicatorView.shared.showIndicator()
+    }
+    
+    // MARK: 인디케이터 숨김
+    static func dismissIndicator() {
+        IndicatorView.shared.dismiss()
+    }
 }
