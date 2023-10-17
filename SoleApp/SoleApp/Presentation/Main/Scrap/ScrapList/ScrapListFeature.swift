@@ -174,5 +174,8 @@ struct ScrapListFeature: Reducer {
                 return .send(.getScrapList)
             }
         }
+        .ifLet(\.$courseDetail, action: /Action.courseDetail) {
+            CourseDetailFeature()
+        }
     }
 }

@@ -35,14 +35,11 @@ struct ScrapFolderView: View {
                         if index == viewStore.folders.count {
                             addFolderButtonView
                         } else {
-                            NavigationLink(destination: {
-                                ScrapListView(store: Store(initialState: ScrapListFeature.State(folderId: viewStore.folders[index].scrapFolderId ?? 0,
-                                                                                                folderName: viewStore.folders[index].scrapFolderName ?? ""),
-                                                           reducer: { ScrapListFeature() }))
-                            }, label: {
-                                folderItem(image: viewStore.folders[index].scrapFolderImg ?? "", 
-                                           title: viewStore.folders[index].scrapFolderName ?? "")
-                            })
+                            folderItem(image: viewStore.folders[index].scrapFolderImg ?? "",
+                                       title: viewStore.folders[index].scrapFolderName ?? "")
+                            .onTapGesture {
+                                viewStore.send(.didTappedScrapFolder(folderId: viewStore.folders[index].scrapFolderId ?? 0, folderName: viewStore.folders[index].scrapFolderName ?? ""))
+                            }
 //                            NavigationLinkStore(self.store.scope(state: \.$scrapList, action: ScrapFolderFeature.Action.scrapList),
 //                                                onTap: {
 //                                viewStore.send(.didTappedScrapFolder(folderId: viewStore.folders[index].scrapFolderId ?? 0, folderName: viewStore.folders[index].scrapFolderName ?? ""))
@@ -55,6 +52,7 @@ struct ScrapFolderView: View {
                     }
                 }
                 .padding(.horizontal, 16.0)
+                navigationLinkToScrapList
             }
         }
         .onAppear {
@@ -122,6 +120,17 @@ extension ScrapFolderView {
                 .font(.pretendard(.bold, size: 16.0))
         }
         
+    }
+    
+    private var navigationLinkToScrapList: some View {
+        NavigationLinkStore(self.store.scope(state: \.$scrapList, action: ScrapFolderFeature.Action.scrapList),
+                            onTap: {
+            
+        }, destination: {
+            ScrapListView(store: $0)
+        }, label: {
+            EmptyView()
+        })
     }
 }
 

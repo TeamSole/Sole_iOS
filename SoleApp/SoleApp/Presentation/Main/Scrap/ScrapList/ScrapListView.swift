@@ -45,6 +45,7 @@ struct ScrapListView: View {
                     }
                 }
             }
+            navigationToCourseDetailView
         }
         .navigationBarHidden(true)
         .onLoaded {
@@ -172,11 +173,15 @@ extension ScrapListView {
     private var scrapList: some View {
         VStack(spacing: 20.0) {
             ForEach(0..<viewStore.scrapList.count, id: \.self) { index in
-                NavigationLink(destination: {
-                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
-                }, label: {
-                    scrapItem(item: viewStore.scrapList[index])
-                })
+                scrapItem(item: viewStore.scrapList[index])
+                    .onTapGesture {
+                        viewStore.send(.didTappedCourseDetail(courseId: viewStore.scrapList[index].courseId ?? 0))
+                    }
+//                NavigationLink(destination: {
+//                    CourseDetailView(store: Store(initialState: CourseDetailFeature.State(courseId: viewStore.scrapList[index].courseId ?? 0), reducer: { CourseDetailFeature() }))
+//                }, label: {
+//                    scrapItem(item: viewStore.scrapList[index])
+//                })
 //                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: ScrapListFeature.Action.courseDetail),
 //                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.scrapList[index].courseId ?? 0)) },
 //                                    destination: { CourseDetailView(store: $0) },
@@ -257,6 +262,16 @@ extension ScrapListView {
         } else {
             viewStore.send(.removeScraps)
         }
+    }
+    
+    private var navigationToCourseDetailView: some View {
+        NavigationLinkStore(self.store.scope(state: \.$courseDetail, action:  ScrapListFeature.Action.courseDetail),
+                            onTap: {},
+                            destination: {
+            CourseDetailView(store: $0)
+        }, label: {
+            EmptyView()
+        })
     }
 }
 
