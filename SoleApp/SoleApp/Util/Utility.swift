@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class Utility {
     class func save(key: String, value: String) {
@@ -24,4 +25,21 @@ final class Utility {
         UserDefaults.standard.removeObject(forKey: key)
     }
     
+    // MARK: 외부 브라우저(사파리) 사용
+    class func openUrlWithSafari(url: String, _ complete: (() -> Void)? = nil) {
+        guard let url = URL(string: url) else { return }
+        UIApplication.shared.open(url, options: [:]) { result in
+            complete?()
+        }
+    }
+    
+    static func showIndicator() {
+        IndicatorView.shared.show()
+        IndicatorView.shared.showIndicator()
+    }
+    
+    // MARK: 인디케이터 숨김
+    static func dismissIndicator() {
+        IndicatorView.shared.dismiss()
+    }
 }

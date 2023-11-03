@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import SwiftUI
+import ComposableArchitecture
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let mainViewModel = AppDelegate.shared.mainViewModel
-        window?.rootViewController = UIHostingController(rootView: IntroView().environmentObject(mainViewModel)) // MainTabbarViewController()//UINavigationController(rootViewController: LoginViewController())//
+        window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(),
+                                                                                        reducer: { AppFeature()
+            ._printChanges() }))
+            .environmentObject(mainViewModel))
         window?.backgroundColor = .white
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()

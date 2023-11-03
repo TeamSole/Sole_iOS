@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct BaseResponse: Codable {
+struct BaseResponse: APIResponse {
+    var message: String?
+    var code: String?
     let status: Int
     let success: Bool
-    let message: String?
-    let code: String?
 }

@@ -15,13 +15,23 @@ struct K {
 }
 
 extension K {
+    static func getPrivacyPolicyUrl() -> String {
+        "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3"
+    }
+    static func getTermsUrl() -> String {
+        "https://team-sole.notion.site/64e1f0366c8a4f65ac0a3040776594b3"
+    }
+}
+
+extension K {
     struct Header {
         static let jsonHeader: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
         
         static let multiplatformHeader: HTTPHeaders = [
-            "Content-Type" : "multipart/form-data"
+            "Content-Type" : "multipart/form-data",
+            "Authorization": Utility.load(key: Constant.token)
         ]
         
         static let naverSearhHeader: HTTPHeaders = [
@@ -34,6 +44,9 @@ extension K {
 extension K {
     struct Path {
         static let validCheckForNickName: String = "api/members/nickname"
+        static func signUp(platform: String) -> String {
+            return "api/members/\(platform)/signup"
+        }
         static let signUpApple: String = "api/members/apple/signup"
         static let signUpKakao: String = "api/members/kakao/signup"
         static let reissueToken: String = "api/members/reissue"
@@ -71,7 +84,7 @@ extension K {
         static let category: String = "api/courses/favCategory"
         static let location: String = "api/courses/currentGps"
         
-        static let courseDetail: String = "api/courses/"
+        static let courseDetail: String = "api/courses"
         
     }
 }
