@@ -38,8 +38,11 @@ final class CommonAuthenticator: Authenticator {
                         completion(.success(Credential(accessToken: token,
                                                        refreshToken: refreshToken,
                                                        expiredAt: Date(timeIntervalSinceNow: 60 * 1440))))
+                    } else {
+                        
                     }
                 case .failure(let error):
+                    NotificationCenter.default.post(name: Notification.notifyRefreshTokenExpired, object: nil)
                     completion(.failure(error))
                 }
             }

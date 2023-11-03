@@ -46,6 +46,9 @@ struct MainTabbarView: View {
                 .background(Rectangle()
                     .fill(Color.white))
             }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.notifyRefreshTokenExpired)) { _ in
+                viewStore.send(.moveToSignIn)
+            }
         }
         .navigationViewStyle(.stack)
 //        NavigationView {

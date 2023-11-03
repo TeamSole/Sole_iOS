@@ -26,7 +26,7 @@ struct HomeFeature: Reducer {
     enum Action: Equatable {
         case courseDetail(PresentationAction<CourseDetailFeature.Action>)
         case courseSearch(PresentationAction<CourseSearchFeature.Action>)
-        case didTappedCourseDetail(courseId: Int)
+        case didTappedCourseDetail(courseId: Int?)
         case didTappedCourseSearch
         case didTappedFloatingButton
         case didTappedMyPageButton
@@ -64,6 +64,7 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .didTappedCourseDetail(let courseId):
+                guard let courseId = courseId else { return .none }
                 state.courseDetail = CourseDetailFeature.State(courseId: courseId)
                 return .none
                 

@@ -12,7 +12,6 @@ import ComposableArchitecture
 
 struct CourseDetailView: View {
     typealias Place = CourseDetailModelResponse.PlaceResponseDtos
-    @Environment(\.presentationMode) var presentationMode
     @State private var availableWidth: CGFloat = 10
     @State private var isExpanded: Bool = false
     
@@ -48,17 +47,6 @@ struct CourseDetailView: View {
         .onLoaded {
             viewStore.send(.viewDidLoad)
         }
-        .onReceive(viewStore.publisher.courseDetail, perform: { info in
-            print("==================")
-            print(info)
-            print("==================")
-        })
-        .onReceive(viewStore.publisher.isDismissSelf, perform: { isDismissSelf in
-            if isDismissSelf == true {
-                viewStore.send(.makeIsDissmissSelfFalse)
-                presentationMode.wrappedValue.dismiss()
-            }
-        })
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
         .modifier(BasePopupModifier(isShowFlag: $showPopup, detailViewAlertType: alertType,
                                             complete: {

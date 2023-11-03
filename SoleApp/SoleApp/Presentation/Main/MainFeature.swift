@@ -27,6 +27,7 @@ struct MainFeature: Reducer {
         case home(HomeFeature.Action)
         case history(HistoryFeature.Action)
         case follow(FollowBoardFeature.Action)
+        case moveToSignIn
         case scrap(ScrapFolderFeature.Action)
         case selectTab(Tab)
     }
@@ -43,12 +44,23 @@ struct MainFeature: Reducer {
             case .follow:
                 return .none
                 
+            case .moveToSignIn:
+                resetAccountInfo()
+                return .none
+                
             case .scrap:
                 return .none
                 
             case .selectTab(let tab):
                 state.selectedTab = tab
                 return .none
+            }
+            
+            func resetAccountInfo() {
+                Utility.delete(key: Constant.token)
+                Utility.delete(key: Constant.refreshToken)
+                Utility.delete(key: Constant.loginPlatform)
+                Utility.delete(key: Constant.profileImage)
             }
         }
         Scope(state: \.home, action: /Action.home) {

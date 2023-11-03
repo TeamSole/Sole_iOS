@@ -192,7 +192,7 @@ extension HomeView {
     }
     
     private var userTasteCourseSectionView: some View {
-        LazyVStack(spacing: 0.0) {
+        VStack(spacing: 0.0) {
             HStack(spacing: 0.0) {
                 Text(StringConstant.myTastyCourse)
                     .font(.pretendard(.bold, size: 16.0))
@@ -228,7 +228,7 @@ extension HomeView {
 //                    })
                     userTasteCourseItem(item: viewStore.courses[index], index: index)
                         .onTapGesture {
-                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
+                            viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId))
                         }
                 }
                 addNextPageButton
@@ -241,7 +241,7 @@ extension HomeView {
         VStack(alignment: .leading, spacing: 0.0) {
             KFImage(URL(string: item.thumbnailImg ?? ""))
                 .resizable()
-                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
                 .frame(maxWidth: .infinity)
                 .frame(height: 186.0)
                 .cornerRadius(4.0)
@@ -249,6 +249,9 @@ extension HomeView {
                     RoundedCorners(color: .gray_EDEDED,
                                    tl: 0.0, tr: 0.0 ,bl: 0.0, br: 0.0)
                 )
+                .contentShape(Rectangle())
+                .compositingGroup()
+                .clipped()
             VStack(alignment: .leading, spacing: 0.0) {
                 HStack(spacing: 0.0) {
                     Text(item.title ?? "")
@@ -257,6 +260,7 @@ extension HomeView {
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love" )
+                        .frame(width: 38.0, height: 38.0)
                         .onTapGesture {
                             viewStore.send(.scrap(courseId: item.courseId ?? 0, index: index))
                         }

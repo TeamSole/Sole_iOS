@@ -308,6 +308,8 @@
 		A4E052EF29BF4C9600FDB84B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052ED29BF4C9600FDB84B /* HomeView.swift */; };
 		A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */; };
 		A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */; };
+		A4EE0B5B2AEA97B000B7C0A4 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE0B5A2AEA97B000B7C0A4 /* NotificationExtension.swift */; };
+		A4EE0B5C2AEA97B000B7C0A4 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE0B5A2AEA97B000B7C0A4 /* NotificationExtension.swift */; };
 		FE01069E35B1A1072368E401 /* Pods_Release.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465B9E530A5BC24A061BF6 /* Pods_Release.framework */; };
 /* End PBXBuildFile section */
 
@@ -464,6 +466,7 @@
 		A4E052EA29BE170F00FDB84B /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A4E052ED29BF4C9600FDB84B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarView.swift; sourceTree = "<group>"; };
+		A4EE0B5A2AEA97B000B7C0A4 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		A648897200F7A406D45245E2 /* Pods-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.debug.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F07EFE21596AC1C86AA2FD /* Pods-Release.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.debug.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.debug.xcconfig"; sourceTree = "<group>"; };
@@ -763,6 +766,7 @@
 				A46B3B3629BF58010026D961 /* ColorExtension.swift */,
 				A46B3B3929BF5AB40026D961 /* ViewExtension.swift */,
 				A47EEAE729CA2470006BA3DB /* DateExtension.swift */,
+				A4EE0B5A2AEA97B000B7C0A4 /* NotificationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1420,6 +1424,7 @@
 				A46B3B6529C0BF590026D961 /* RegisterCourseView.swift in Sources */,
 				A46B3B3D29BF5B010026D961 /* TagListView.swift in Sources */,
 				A49D050D2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
+				A4EE0B5B2AEA97B000B7C0A4 /* NotificationExtension.swift in Sources */,
 				A4C31C7A29913CF00014F458 /* AppDelegate.swift in Sources */,
 				A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */,
 				A47EEAD329C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */,
@@ -1560,6 +1565,7 @@
 				A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */,
 				A46B3B6629C0BF590026D961 /* RegisterCourseView.swift in Sources */,
 				A49D050E2A9A21F000274C8D /* CommonAuthenticationCredential.swift in Sources */,
+				A4EE0B5C2AEA97B000B7C0A4 /* NotificationExtension.swift in Sources */,
 				A46B3B3E29BF5B010026D961 /* TagListView.swift in Sources */,
 				A4C31C90299140200014F458 /* AppDelegate.swift in Sources */,
 				A47EEAD429C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */,
@@ -1738,7 +1744,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = WC4SMWCBL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
@@ -1772,7 +1778,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = WC4SMWCBL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
