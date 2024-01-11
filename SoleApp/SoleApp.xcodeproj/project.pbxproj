@@ -220,8 +220,6 @@
 		A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */; };
 		A47EEADC29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
 		A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
-		A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
-		A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
 		A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */; };
@@ -413,7 +411,6 @@
 		A47EEAD529C9AE07006BA3DB /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		A47EEADB29C9F800006BA3DB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinutePickerModifier.swift; sourceTree = "<group>"; };
 		A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -686,7 +683,6 @@
 			children = (
 				A46B3B4229BF624E0026D961 /* CourseSearchView.swift */,
 				A42E42EE2AC01720003D242E /* CourseSearchFeature.swift */,
-				A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1425,7 +1421,6 @@
 				A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A481DFA12A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A42E42DE2AB724E8003D242E /* FollowBoardFeature.swift in Sources */,
-				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A42E42D12AB1E538003D242E /* HistoryClient.swift in Sources */,
 				A49D04FF2A94F04100274C8D /* IntroView.swift in Sources */,
 				A42E42BE2AADBB66003D242E /* ScrapTarget.swift in Sources */,
@@ -1562,7 +1557,6 @@
 				A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A481DFA22A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A42E42DF2AB724E8003D242E /* FollowBoardFeature.swift in Sources */,
-				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A42E42D22AB1E538003D242E /* HistoryClient.swift in Sources */,
 				A49D05002A94F04100274C8D /* IntroView.swift in Sources */,
 				A42E42BF2AADBB66003D242E /* ScrapTarget.swift in Sources */,

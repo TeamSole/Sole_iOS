@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct CourseSearchView: View {
     typealias Course = CourseModelResponse.DataModel
-//    @StateObject var viewModel: SearchViewModel = SearchViewModel()
     @State private var searchText: String = ""
     @State private var availableWidth: CGFloat = 10
     
