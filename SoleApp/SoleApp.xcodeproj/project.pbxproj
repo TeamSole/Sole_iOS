@@ -154,8 +154,6 @@
 		A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
 		A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
 		A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
-		A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
-		A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
 		A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* AppView.swift */; };
@@ -182,8 +180,6 @@
 		A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
 		A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
 		A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
-		A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
-		A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
 		A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
 		A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
 		A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */; };
@@ -388,7 +384,6 @@
 		A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
 		A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteView.swift; sourceTree = "<group>"; };
 		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A47EEA6A29C50C7D006BA3DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupModifier.swift; sourceTree = "<group>"; };
@@ -402,7 +397,6 @@
 		A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListModel.swift; sourceTree = "<group>"; };
 		A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListViewModel.swift; sourceTree = "<group>"; };
 		A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserView.swift; sourceTree = "<group>"; };
-		A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHistoryModel.swift; sourceTree = "<group>"; };
 		A47EEA9F29C7F2AF006BA3DB /* ScrapFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderModel.swift; sourceTree = "<group>"; };
@@ -787,7 +781,6 @@
 				A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */,
 				A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */,
 				A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */,
-				A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */,
 				A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */,
 				A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */,
 				A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */,
@@ -1102,7 +1095,6 @@
 			children = (
 				A46B3B5929C070090026D961 /* Components */,
 				A4E052E729BE160C00FDB84B /* HistoryView.swift */,
-				A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */,
 				A42E42C82AB1DAEB003D242E /* HistoryFeature.swift */,
 			);
 			path = History;
@@ -1342,7 +1334,6 @@
 				A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
-				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
@@ -1433,7 +1424,6 @@
 				A47EEABB29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
-				A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A481DFAA2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
@@ -1483,7 +1473,6 @@
 				A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
-				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
@@ -1574,7 +1563,6 @@
 				A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
-				A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A481DFAB2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,

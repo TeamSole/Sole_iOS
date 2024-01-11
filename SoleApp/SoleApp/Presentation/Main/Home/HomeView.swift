@@ -11,8 +11,6 @@ import ComposableArchitecture
 
 struct HomeView: View {
     typealias Course = CourseModelResponse.DataModel
-//    @EnvironmentObject var mainViewModel: MainViewModel
-//    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
     @State private var availableWidth: CGFloat = 10
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowFirstSelectTagView: Bool = false
@@ -41,9 +39,6 @@ struct HomeView: View {
             floatingButton
         }
         .onLoaded {
-//            if mainViewModel.isFirstSignUp == true {
-//                isShowFirstSelectTagView = true
-//            }
             Task {
                 let locationManager = LocationManager()
                 // 위치정보 반환
@@ -57,9 +52,6 @@ struct HomeView: View {
             SelectTagView(selectType: .first, complete: { place, with, trans in
                 viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
-                .onDisappear {
-//                    mainViewModel.isFirstSignUp = false
-                }
         })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
@@ -392,6 +384,5 @@ extension HomeView {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(store: Store(initialState: HomeFeature.State(), reducer: { HomeFeature() }))
-            .environmentObject(MainViewModel())
     }
 }

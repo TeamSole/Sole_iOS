@@ -18,11 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let mainViewModel = AppDelegate.shared.mainViewModel
         window?.rootViewController = UIHostingController(rootView: AppView(store: Store(initialState: AppFeature.State(),
                                                                                         reducer: { AppFeature()
-            ._printChanges() }))
-            .environmentObject(mainViewModel))
+            ._printChanges() })))
         window?.backgroundColor = .white
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
