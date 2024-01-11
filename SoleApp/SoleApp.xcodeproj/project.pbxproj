@@ -168,8 +168,6 @@
 		A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */; };
 		A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */; };
 		A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */; };
-		A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
-		A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
 		A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
 		A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
 		A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
@@ -375,7 +373,6 @@
 		A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardModel.swift; sourceTree = "<group>"; };
 		A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListView.swift; sourceTree = "<group>"; };
 		A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListModel.swift; sourceTree = "<group>"; };
-		A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListViewModel.swift; sourceTree = "<group>"; };
 		A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserView.swift; sourceTree = "<group>"; };
 		A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHistoryModel.swift; sourceTree = "<group>"; };
@@ -840,7 +837,6 @@
 			children = (
 				A47EEA9229C7BE60006BA3DB /* FollowUser */,
 				A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */,
-				A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */,
 				A42E42E82AB881B7003D242E /* FollowingUserListFeature.swift */,
 			);
 			path = FollowingUserList;
@@ -1301,7 +1297,6 @@
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
-				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */,
@@ -1432,7 +1427,6 @@
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
 				A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
-				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */,

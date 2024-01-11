@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct FollowingUserListView: View {
     typealias FollowItem = FollowListModelResponse.DataModel
     @Environment(\.presentationMode) var presentationMode
-//    @StateObject var viewModel: FollowingUserListViewModel = FollowingUserListViewModel()
+
     @State private var selectedIndex: Int = 0
     
     private let store: StoreOf<FollowingUserListFeature>
@@ -174,13 +174,6 @@ extension FollowingUserListView {
                 .cornerRadius(4.0)
                 .onTapGesture {
                     viewStore.send(.follow(categoryIndex: selectedIndex, memberId: item.member?.memberId))
-//                    isFollowing.toggle()
-//                    if selectedIndex == 0 {
-//                        viewModel.followerList[index].followStatus = viewModel.followerList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
-//                    } else {
-//                        viewModel.followList[index].followStatus = viewModel.followList[index].followStatus == "FOLLOWING" ? "FOLLOWER" : "FOLLOWING"
-//                    }
-//                    viewModel.follow(memberId: item.member?.memberId ?? 0)
                 }
             
                
