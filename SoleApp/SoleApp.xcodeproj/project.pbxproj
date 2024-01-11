@@ -180,8 +180,6 @@
 		A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA329C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift */; };
 		A47EEAA729C7FB25006BA3DB /* ScrapAddFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */; };
 		A47EEAA829C7FB26006BA3DB /* ScrapAddFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */; };
-		A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */; };
-		A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */; };
 		A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */; };
 		A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */; };
 		A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */; };
@@ -377,7 +375,6 @@
 		A47EEA9F29C7F2AF006BA3DB /* ScrapFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderModel.swift; sourceTree = "<group>"; };
 		A47EEAA329C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPopupTextFieldModifier.swift; sourceTree = "<group>"; };
 		A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapAddFolderModel.swift; sourceTree = "<group>"; };
-		A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListViewModel.swift; sourceTree = "<group>"; };
 		A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
 		A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetModifier.swift; sourceTree = "<group>"; };
 		A47EEAB429C830AB006BA3DB /* ScrapRenameFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRenameFolderModel.swift; sourceTree = "<group>"; };
@@ -861,7 +858,6 @@
 			children = (
 				A47EEAB029C825D4006BA3DB /* Components */,
 				A46B3B6129C0A6230026D961 /* ScrapListView.swift */,
-				A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */,
 				A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */,
 			);
 			path = ScrapList;
@@ -1288,7 +1284,6 @@
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A42E42EF2AC01720003D242E /* CourseSearchFeature.swift in Sources */,
-				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
@@ -1417,7 +1412,6 @@
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
 				A42E42F02AC01720003D242E /* CourseSearchFeature.swift in Sources */,
-				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
