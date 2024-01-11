@@ -152,8 +152,6 @@
 		A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */; };
 		A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
 		A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
-		A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
-		A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
 		A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* AppView.swift */; };
@@ -383,7 +381,6 @@
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
 		A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
 		A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteView.swift; sourceTree = "<group>"; };
-		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A47EEA6A29C50C7D006BA3DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupModifier.swift; sourceTree = "<group>"; };
@@ -1049,7 +1046,6 @@
 				A4E052E629BE15EA00FDB84B /* History */,
 				A4D983CF299F661C008C599D /* Home */,
 				A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */,
-				A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */,
 				A49D04FA2A94EBBD00274C8D /* MainFeature.swift */,
 			);
 			path = Main;
@@ -1452,7 +1448,6 @@
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA729C7FB25006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 				A49D05082A96524200274C8D /* MyPageFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1591,7 +1586,6 @@
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA829C7FB26006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 				A49D05092A96524200274C8D /* MyPageFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
