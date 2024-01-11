@@ -69,11 +69,9 @@
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
-		A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
 		A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
 		A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
 		A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
-		A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
 		A4655BE029CDB1CC001E67DF /* MoveScrapsPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */; };
 		A4655BE129CDB1CC001E67DF /* MoveScrapsPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */; };
 		A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
@@ -332,7 +330,6 @@
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		A4655BD629CC9EF5001E67DF /* CourseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditView.swift; sourceTree = "<group>"; };
-		A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditViewModel.swift; sourceTree = "<group>"; };
 		A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditModel.swift; sourceTree = "<group>"; };
 		A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveScrapsPopupModifier.swift; sourceTree = "<group>"; };
 		A46B3B3629BF58010026D961 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -694,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				A4655BD629CC9EF5001E67DF /* CourseEditView.swift */,
-				A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */,
 				A43AABB32ACE98BD002F89E5 /* CourseEditFeature.swift */,
 			);
 			path = CourseEdit;
@@ -1315,7 +1311,6 @@
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
 				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
-				A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */,
@@ -1450,7 +1445,6 @@
 				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
-				A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */,
 				A4DDA6BD2A7DE93C00017C49 /* APIEventLogger.swift in Sources */,
