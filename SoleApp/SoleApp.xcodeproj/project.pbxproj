@@ -202,8 +202,6 @@
 		A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */; };
 		A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
 		A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
-		A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */; };
-		A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */; };
 		A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
 		A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
 		A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */; };
@@ -402,7 +400,6 @@
 		A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchModel.swift; sourceTree = "<group>"; };
 		A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
-		A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewModel.swift; sourceTree = "<group>"; };
 		A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailModel.swift; sourceTree = "<group>"; };
 		A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseViewModel.swift; sourceTree = "<group>"; };
 		A47EEAC929C98926006BA3DB /* FollowUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserModel.swift; sourceTree = "<group>"; };
@@ -799,7 +796,6 @@
 			children = (
 				A4760F0329BC51300080A2CD /* Components */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
-				A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */,
 				A42E42C02AB09817003D242E /* CourseDetailFeature.swift */,
 			);
 			path = CourseDetail;
@@ -1315,7 +1311,6 @@
 				A4261E782AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
-				A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A42E42EF2AC01720003D242E /* CourseSearchFeature.swift in Sources */,
 				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
@@ -1451,7 +1446,6 @@
 				A4261E792AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
-				A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A42E42F02AC01720003D242E /* CourseSearchFeature.swift in Sources */,
 				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
