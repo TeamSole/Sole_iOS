@@ -162,8 +162,6 @@
 		A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7629C60928006BA3DB /* MyPageModel.swift */; };
 		A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
 		A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
-		A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
-		A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
 		A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
 		A47EEA8729C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
 		A47EEA8A29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */; };
@@ -374,7 +372,6 @@
 		A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExistAccountModel.swift; sourceTree = "<group>"; };
 		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
 		A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResonse.swift; sourceTree = "<group>"; };
-		A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardViewModel.swift; sourceTree = "<group>"; };
 		A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardModel.swift; sourceTree = "<group>"; };
 		A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListView.swift; sourceTree = "<group>"; };
 		A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListModel.swift; sourceTree = "<group>"; };
@@ -794,7 +791,6 @@
 			children = (
 				A47EEA8829C7B0FE006BA3DB /* FollowingUserList */,
 				A46D713F29B8C74400944912 /* FollowingBoardView.swift */,
-				A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */,
 				A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */,
 			);
 			path = Following;
@@ -1412,7 +1408,6 @@
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
-				A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A43AABB12AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
@@ -1544,7 +1539,6 @@
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
-				A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A43AABB22AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
