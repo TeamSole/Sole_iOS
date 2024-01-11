@@ -277,9 +277,7 @@ extension HomeView {
                 TagListView(availableWidth: availableWidth,
                             data: item.cateogoryTitles,
                             spacing: 8.0,
-                            alignment: .leading,
-                            isExpandedUserTagListView: .constant(false),
-                            maxRows: .constant(0)) { item in
+                            alignment: .leading) { item in
                     HStack(spacing: 0.0) {
                         Text(item)
                             .foregroundColor(.black)

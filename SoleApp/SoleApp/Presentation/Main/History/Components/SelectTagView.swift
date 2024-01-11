@@ -37,6 +37,7 @@ struct SelectTagView: View {
     var body: some View {
         VStack(spacing: 0.0) {
             navigationBar
+                .padding(.horizontal, 16.0)
                 .isHidden(selectType == .first, remove: true)
             ScrollView {
                 VStack(spacing: 0.0) {
@@ -49,6 +50,7 @@ struct SelectTagView: View {
                 }
             }
             confirmButtonView
+                .padding(16.0)
         }
         .onLoaded {
             if selectType == .add {
@@ -68,13 +70,14 @@ extension SelectTagView {
                     .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
+                    .padding(.leading, 16.0)
                 Image("closeBk")
+                    .padding(.trailing, 16.0)
                     .onTapGesture {
                         presentationMode.wrappedValue.dismiss()
                     }
             }
             .frame(height: 60.0)
-            .padding(.horizontal, 16.0)
             Color.gray_EDEDED
                 .frame(height: 1.0)
                 .frame(maxWidth: .infinity)
@@ -119,9 +122,7 @@ extension SelectTagView {
                 TagListView(availableWidth: availableWidth,
                             data: categories,
                             spacing: 8.0,
-                            alignment: .leading,
-                            isExpandedUserTagListView: .constant(false),
-                            maxRows: .constant(0)) { item in
+                            alignment: .leading) { item in
                     HStack(spacing: 0.0) {
                         Text(item.title)
                             .foregroundColor(selectedArray(index: index).contains(item) ? .white : .black)

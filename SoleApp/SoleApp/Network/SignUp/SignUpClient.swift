@@ -34,7 +34,7 @@ extension SignUpClient: DependencyKey {
             return (isAleadyExist == "false")
         },
         signInKakao: {
-            return await SignUpViewModel.kakaoLogin()
+            return await SignUpClient.kakaoLogin()
         },
         signUp: { parameter, image in
             
@@ -62,6 +62,39 @@ extension SignUpClient: DependencyKey {
             return URL(string:  K.baseUrl + K.Path.signUpKakao)
         } else {
             return nil
+        }
+    }
+}
+
+extension SignUpClient {
+    static func kakaoLogin() async -> String? {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            return await withCheckedContinuation { coutinuation in
+                UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+                    if let error = error {
+                        debugPrint(error)
+                        coutinuation.resume(returning: nil)
+                    }
+                    else {
+                        debugPrint("loginWithKakaoTalk() success.")
+                        coutinuation.resume(returning: oauthToken?.accessToken)
+                    }
+                }
+            }
+           
+        } else {
+            return await withCheckedContinuation { coutinuation in
+                UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                    if let error = error {
+                        debugPrint(error)
+                        coutinuation.resume(returning: nil)
+                    }
+                    else {
+                        debugPrint("loginWithKakaoTalk() success.")
+                        coutinuation.resume(returning: oauthToken?.accessToken)
+                    }
+                }
+            }
         }
     }
 }

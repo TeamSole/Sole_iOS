@@ -277,9 +277,7 @@ extension CourseEditView {
                         viewStore.selectedWithParameter +
                         viewStore.selectedVehiclesParameter,
                         spacing: 8.0,
-                        alignment: .leading,
-                        isExpandedUserTagListView: .constant(false),
-                        maxRows: .constant(0)) { item in
+                        alignment: .leading) { item in
                 HStack(spacing: 0.0) {
                     Text(Category(rawValue: item)?.title ?? "카페")
                         .foregroundColor(.black)
