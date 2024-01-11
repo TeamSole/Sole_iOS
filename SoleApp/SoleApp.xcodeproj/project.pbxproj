@@ -204,8 +204,6 @@
 		A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
 		A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
 		A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
-		A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */; };
-		A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */; };
 		A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC929C98926006BA3DB /* FollowUserModel.swift */; };
 		A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC929C98926006BA3DB /* FollowUserModel.swift */; };
 		A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */; };
@@ -401,7 +399,6 @@
 		A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchModel.swift; sourceTree = "<group>"; };
 		A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailModel.swift; sourceTree = "<group>"; };
-		A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseViewModel.swift; sourceTree = "<group>"; };
 		A47EEAC929C98926006BA3DB /* FollowUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserModel.swift; sourceTree = "<group>"; };
 		A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserViewModel.swift; sourceTree = "<group>"; };
 		A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCourseModel.swift; sourceTree = "<group>"; };
@@ -688,7 +685,6 @@
 			isa = PBXGroup;
 			children = (
 				A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */,
-				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
 				A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */,
 			);
 			path = CourseRegister;
@@ -1348,7 +1344,6 @@
 				A42E42C92AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
 				A42E42B02AAAEFF8003D242E /* ViewDidLoadModifier.swift in Sources */,
 				A42E42E62AB727EA003D242E /* FollowClient.swift in Sources */,
-				A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4DDA6B92A7DE90800017C49 /* API.swift in Sources */,
@@ -1484,7 +1479,6 @@
 				A42E42B12AAAF11B003D242E /* ViewDidLoadModifier.swift in Sources */,
 				A42E42E72AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
-				A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A4DDA6BA2A7DE90800017C49 /* API.swift in Sources */,
 				A49D05062A96453800274C8D /* HomeFeature.swift in Sources */,
