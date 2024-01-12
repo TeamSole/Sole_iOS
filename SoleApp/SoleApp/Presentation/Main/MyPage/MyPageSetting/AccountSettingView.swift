@@ -11,7 +11,6 @@ import Combine
 import ComposableArchitecture
 
 struct AccountSettingView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
     
     @State private var nickName: String = ""
     @State private var introduceInfo: String = ""

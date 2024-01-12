@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpUserInfoView: View {
-    @ObservedObject var viewModel: SignUpViewModel
     @State private var showPhotoPicker: Bool = false
     @State private var showSignUpCompleteView: Bool = false
 
@@ -17,7 +16,6 @@ struct SignUpUserInfoView: View {
     @ObservedObject var viewStore: ViewStoreOf<SignUpUserInfoFeature>
     
     init(store: StoreOf<SignUpUserInfoFeature>) {
-        self.viewModel = .init()
         self.store = store
         self.viewStore = ViewStore(store, observe: { $0 })
     }
@@ -144,14 +142,6 @@ extension SignUpUserInfoView {
         }, label: {
             continueButton
         })
-//        NavigationLink(destination:
-//                        SignUpCompleteView(store: Store(initialState: SignUpCompleteFeature.State(), reducer: { SignUpCompleteFeature() }))
-//            .environmentObject(AppDelegate.shared.mainViewModel),
-//                       isActive: $showSignUpCompleteView,
-//                       label: {
-//            EmptyView()
-//        })
-//        .isDetailLink(false)
     }
 }
 

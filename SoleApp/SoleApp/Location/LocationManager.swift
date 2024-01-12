@@ -33,7 +33,6 @@ final class LocationManager: NSObject {
 extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // 안되는 경우는 여기 호출 안됩니다ㅠ
         guard let location = locations.last else { return }
             print("위도: \(location.coordinate.latitude)")
             print("경도: \(location.coordinate.longitude)")

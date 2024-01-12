@@ -80,8 +80,6 @@ extension SignInView {
                     print("Apple Login Successful")
                     switch authResults.credential{
                     case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                        // 계정 정보 가져오기
-                        let fullName = appleIDCredential.fullName
                         let IdentityToken = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8)
                         viewStore.send(.didTapSignWithApple(token: IdentityToken))
                         

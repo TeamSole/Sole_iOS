@@ -14,31 +14,17 @@ struct CourseEditView: View {
     typealias FullCourse = EditCourseModelRequest
     typealias CourseDetail = CourseDetailModelResponse.DataModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: CourseEditViewModel = CourseEditViewModel()
-//    @State private var courseTitle: String = ""
-//    @State private var courseDescription: String = ""
-    
     @State private var isShowThumbnailPhotoPicker: Bool = false
     @State private var isShowCoursePhotoPicker: Bool = false
     @State private var isShowSubPhotoPicker: Bool = false
     @State private var isShowHourMinutePicker: Bool = false
     @State private var isShowSelectTagView: Bool = false
     @State private var isShowLocationSearchView: Bool = false
-    
-//    @State private var thumbnailImage: UIImage? = nil
+
     @State private var availableWidth: CGFloat = 10
-//    @State private var selectedDate: Date = Date()
-    
-//    @State private var selectedPlace: [String] = []
-//    @State private var selectedWith: [String] = []
-//    @State private var selectedTrans: [String] = []
-    
-//    @State private var courses: [Course] = []
-//    @State private var fullCourse: FullCourse = FullCourse()
-//    @State private var
-//    @State private var selectedImages: [[UIImage]] = [[]]
+
     @State private var selectIndex: Int = 0
-//    @State private var courseId: Int = 0
+
     
     private let store: StoreOf<CourseEditFeature>
     @ObservedObject var viewStore: ViewStoreOf<CourseEditFeature>
@@ -277,9 +263,7 @@ extension CourseEditView {
                         viewStore.selectedWithParameter +
                         viewStore.selectedVehiclesParameter,
                         spacing: 8.0,
-                        alignment: .leading,
-                        isExpandedUserTagListView: .constant(false),
-                        maxRows: .constant(0)) { item in
+                        alignment: .leading) { item in
                 HStack(spacing: 0.0) {
                     Text(Category(rawValue: item)?.title ?? "카페")
                         .foregroundColor(.black)
@@ -481,21 +465,8 @@ extension CourseEditView {
         .onTapGesture {
             hideKeyboard()
             viewStore.send(.editCourse)
-//            guard isValid else { return }
-//            fullCourse.startDate = selectedDate.toString(format: "yyyy-MM-dd")
-//            fullCourse.placeUpdateRequestDtos = courses
-//            viewModel.updateCourse(fullCourse: fullCourse, courseId: courseId) {
-//                presentationMode.wrappedValue.dismiss()
-//            }
         }
     }
-    
-//    private var isValid: Bool {
-//        return fullCourse.title.isEmpty == false &&
-//        fullCourse.description.isEmpty == false &&
-//        viewModel.thumbnailImage != nil &&
-//        courses.first?.placeName.isEmpty == false
-//    }
 }
 
 struct CourseEditView_Previews: PreviewProvider {

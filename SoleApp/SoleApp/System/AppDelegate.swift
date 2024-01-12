@@ -13,8 +13,6 @@ import NMapsMap
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static let shared = UIApplication.shared.delegate as! AppDelegate
     
-    var mainViewModel = MainViewModel()
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KakaoSDK.initSDK(appKey: Constant.kakaoAppKey)
         NMFAuthManager.shared().clientId = Constant.nmfClientId

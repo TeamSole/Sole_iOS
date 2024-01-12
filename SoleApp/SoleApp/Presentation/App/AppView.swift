@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AppView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var checkToken = true
     let store: StoreOf<AppFeature>
     

@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct TagListView<Data: Collection, Content: View>: View where Data.Element: Hashable {
-    let availableWidth: CGFloat
-    let data: Data
-    let spacing: CGFloat
-    let alignment: HorizontalAlignment
-    @Binding var isExpandedUserTagListView: Bool
-    @Binding var maxRows: Int
-    let content: (Data.Element) -> Content
+    private let availableWidth: CGFloat
+    private let data: Data
+    private let spacing: CGFloat
+    private let alignment: HorizontalAlignment
+    private let content: (Data.Element) -> Content
     
     @State var elementSize: [Data.Element: CGSize] = [:]
     
+    init(availableWidth: CGFloat,
+         data: Data,
+         spacing: CGFloat,
+         alignment: HorizontalAlignment,
+         content: @escaping (Data.Element) -> Content) {
+        self.availableWidth = availableWidth
+        self.data = data
+        self.spacing = spacing
+        self.alignment = alignment
+        self.content = content
+    }
     
     
     var body: some View {
@@ -48,20 +57,14 @@ struct TagListView<Data: Collection, Content: View>: View where Data.Element: Ha
                 rows[currentRow].append(element)
             } else {
                 currentRow += 1
-                if isExpandedUserTagListView {
-                    if currentRow < 2 {
-                        rows.append([element])
-                        remainingWidth = availableWidth
-                    }
-                } else {
-                    rows.append([element])
-                    remainingWidth = availableWidth
-                }
+                rows.append([element])
+                remainingWidth = availableWidth
             }
             
             remainingWidth -= (elementSize.width + spacing)
         }
-        maxRows = currentRow
+        
+//        maxRows = currentRow
         return rows
     }
 }

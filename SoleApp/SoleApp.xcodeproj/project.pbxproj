@@ -69,11 +69,9 @@
 		A4597BE929AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4597BEA29AF60D600B06132 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */; };
 		A4655BD729CC9EF5001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
-		A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
 		A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
 		A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */; };
 		A4655BDD29CCA4A0001E67DF /* CourseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD629CC9EF5001E67DF /* CourseEditView.swift */; };
-		A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */; };
 		A4655BE029CDB1CC001E67DF /* MoveScrapsPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */; };
 		A4655BE129CDB1CC001E67DF /* MoveScrapsPopupModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */; };
 		A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B3B3629BF58010026D961 /* ColorExtension.swift */; };
@@ -152,10 +150,6 @@
 		A47EEA5829C34EC2006BA3DB /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */; };
 		A47EEA5A29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
 		A47EEA5B29C3547F006BA3DB /* SignUpCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */; };
-		A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
-		A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */; };
-		A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
-		A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */; };
 		A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6529C45B96006BA3DB /* Utility.swift */; };
 		A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA6A29C50C7D006BA3DB /* AppView.swift */; };
@@ -166,24 +160,16 @@
 		A47EEA7229C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */; };
 		A47EEA7729C60928006BA3DB /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7629C60928006BA3DB /* MyPageModel.swift */; };
 		A47EEA7829C60928006BA3DB /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7629C60928006BA3DB /* MyPageModel.swift */; };
-		A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */; };
-		A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */; };
 		A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
 		A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */; };
-		A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
-		A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */; };
 		A47EEA8629C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
 		A47EEA8729C7A568006BA3DB /* FollowBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */; };
 		A47EEA8A29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */; };
 		A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */; };
 		A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */; };
 		A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */; };
-		A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
-		A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */; };
 		A47EEA9429C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
 		A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */; };
-		A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
-		A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */; };
 		A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
 		A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */; };
 		A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */; };
@@ -194,8 +180,6 @@
 		A47EEAA529C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA329C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift */; };
 		A47EEAA729C7FB25006BA3DB /* ScrapAddFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */; };
 		A47EEAA829C7FB26006BA3DB /* ScrapAddFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */; };
-		A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */; };
-		A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */; };
 		A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */; };
 		A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */; };
 		A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */; };
@@ -208,18 +192,10 @@
 		A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */; };
 		A47EEABE29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
 		A47EEABF29C88C3E006BA3DB /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */; };
-		A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */; };
-		A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */; };
 		A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
 		A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */; };
-		A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */; };
-		A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */; };
 		A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC929C98926006BA3DB /* FollowUserModel.swift */; };
 		A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAC929C98926006BA3DB /* FollowUserModel.swift */; };
-		A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */; };
-		A47EEACE29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */; };
-		A47EEAD029C99A86006BA3DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEACF29C99A86006BA3DB /* HomeViewModel.swift */; };
-		A47EEAD129C99A86006BA3DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEACF29C99A86006BA3DB /* HomeViewModel.swift */; };
 		A47EEAD329C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */; };
 		A47EEAD429C9A5E7006BA3DB /* RecommendCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */; };
 		A47EEAD629C9AE07006BA3DB /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD529C9AE07006BA3DB /* CourseModel.swift */; };
@@ -228,8 +204,6 @@
 		A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */; };
 		A47EEADC29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
 		A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
-		A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
-		A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */; };
 		A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */; };
@@ -346,7 +320,6 @@
 		A4597BE529AF12E100B06132 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		A4597BE829AF60D600B06132 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		A4655BD629CC9EF5001E67DF /* CourseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditView.swift; sourceTree = "<group>"; };
-		A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditViewModel.swift; sourceTree = "<group>"; };
 		A4655BDA29CCA49C001E67DF /* CourseEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditModel.swift; sourceTree = "<group>"; };
 		A4655BDF29CDB1CB001E67DF /* MoveScrapsPopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveScrapsPopupModifier.swift; sourceTree = "<group>"; };
 		A46B3B3629BF58010026D961 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -387,45 +360,33 @@
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
 		A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
 		A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteView.swift; sourceTree = "<group>"; };
-		A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A47EEA6529C45B96006BA3DB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A47EEA6A29C50C7D006BA3DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A47EEA6D29C530F0006BA3DB /* BasePopupModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupModifier.swift; sourceTree = "<group>"; };
 		A47EEA7029C5E921006BA3DB /* CheckExistAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExistAccountModel.swift; sourceTree = "<group>"; };
 		A47EEA7629C60928006BA3DB /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
-		A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		A47EEA7C29C6EF0B006BA3DB /* BaseResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResonse.swift; sourceTree = "<group>"; };
-		A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingBoardViewModel.swift; sourceTree = "<group>"; };
 		A47EEA8529C7A568006BA3DB /* FollowBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowBoardModel.swift; sourceTree = "<group>"; };
 		A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListView.swift; sourceTree = "<group>"; };
 		A47EEA8C29C7B662006BA3DB /* FollowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListModel.swift; sourceTree = "<group>"; };
-		A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingUserListViewModel.swift; sourceTree = "<group>"; };
 		A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserView.swift; sourceTree = "<group>"; };
-		A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A47EEA9929C7C1A1006BA3DB /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		A47EEA9C29C7C32F006BA3DB /* UserProfileHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHistoryModel.swift; sourceTree = "<group>"; };
 		A47EEA9F29C7F2AF006BA3DB /* ScrapFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFolderModel.swift; sourceTree = "<group>"; };
 		A47EEAA329C7F6FE006BA3DB /* FolderPopupTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPopupTextFieldModifier.swift; sourceTree = "<group>"; };
 		A47EEAA629C7FB25006BA3DB /* ScrapAddFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapAddFolderModel.swift; sourceTree = "<group>"; };
-		A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListViewModel.swift; sourceTree = "<group>"; };
 		A47EEAAD29C80AF2006BA3DB /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
 		A47EEAB129C8260D006BA3DB /* BottomSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetModifier.swift; sourceTree = "<group>"; };
 		A47EEAB429C830AB006BA3DB /* ScrapRenameFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRenameFolderModel.swift; sourceTree = "<group>"; };
 		A47EEAB729C8526B006BA3DB /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		A47EEABA29C85762006BA3DB /* NaverSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchModel.swift; sourceTree = "<group>"; };
 		A47EEABD29C88C3E006BA3DB /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
-		A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewModel.swift; sourceTree = "<group>"; };
 		A47EEAC329C8AAA5006BA3DB /* CourseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailModel.swift; sourceTree = "<group>"; };
-		A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseViewModel.swift; sourceTree = "<group>"; };
 		A47EEAC929C98926006BA3DB /* FollowUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserModel.swift; sourceTree = "<group>"; };
-		A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserViewModel.swift; sourceTree = "<group>"; };
-		A47EEACF29C99A86006BA3DB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD529C9AE07006BA3DB /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		A47EEADB29C9F800006BA3DB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinutePickerModifier.swift; sourceTree = "<group>"; };
 		A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -687,7 +648,6 @@
 				A4597BE529AF12E100B06132 /* AccountSettingView.swift */,
 				A46B3B5329C021710026D961 /* NotiSettingView.swift */,
 				A46B3B5629C04D940026D961 /* NotiListView.swift */,
-				A47EEA7929C6EB19006BA3DB /* AccountSettingViewModel.swift */,
 				A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */,
 			);
 			path = MyPageSetting;
@@ -698,7 +658,6 @@
 			children = (
 				A46B3B4229BF624E0026D961 /* CourseSearchView.swift */,
 				A42E42EE2AC01720003D242E /* CourseSearchFeature.swift */,
-				A47EEADE29CA0AFE006BA3DB /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -707,7 +666,6 @@
 			isa = PBXGroup;
 			children = (
 				A46B3B6429C0BF590026D961 /* RegisterCourseView.swift */,
-				A47EEAC629C91C64006BA3DB /* RegisterCourseViewModel.swift */,
 				A43AABB02AC6864C002F89E5 /* RegisterCourseFeature.swift */,
 			);
 			path = CourseRegister;
@@ -717,7 +675,6 @@
 			isa = PBXGroup;
 			children = (
 				A4655BD629CC9EF5001E67DF /* CourseEditView.swift */,
-				A4655BD829CC9F04001E67DF /* CourseEditViewModel.swift */,
 				A43AABB32ACE98BD002F89E5 /* CourseEditFeature.swift */,
 			);
 			path = CourseEdit;
@@ -787,7 +744,6 @@
 				A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */,
 				A47EEA5629C34EC2006BA3DB /* SignUpUserInfoView.swift */,
 				A47EEA5929C3547F006BA3DB /* SignUpCompleteView.swift */,
-				A47EEA6129C3CF97006BA3DB /* SignUpViewModel.swift */,
 				A4BE4D892A852E59005AF201 /* SignUpAgreeTermsFeature.swift */,
 				A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */,
 				A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */,
@@ -816,7 +772,6 @@
 			children = (
 				A4760F0329BC51300080A2CD /* Components */,
 				A46B3B4529BF77B80026D961 /* CourseDetailView.swift */,
-				A47EEAC029C8AA82006BA3DB /* CourseDetailViewModel.swift */,
 				A42E42C02AB09817003D242E /* CourseDetailFeature.swift */,
 			);
 			path = CourseDetail;
@@ -827,7 +782,6 @@
 			children = (
 				A47EEA8829C7B0FE006BA3DB /* FollowingUserList */,
 				A46D713F29B8C74400944912 /* FollowingBoardView.swift */,
-				A47EEA8229C7A52B006BA3DB /* FollowingBoardViewModel.swift */,
 				A42E42DD2AB724E7003D242E /* FollowBoardFeature.swift */,
 			);
 			path = Following;
@@ -877,7 +831,6 @@
 			children = (
 				A47EEA9229C7BE60006BA3DB /* FollowUser */,
 				A47EEA8929C7B11E006BA3DB /* FollowingUserListView.swift */,
-				A47EEA8F29C7B73E006BA3DB /* FollowingUserListViewModel.swift */,
 				A42E42E82AB881B7003D242E /* FollowingUserListFeature.swift */,
 			);
 			path = FollowingUserList;
@@ -887,7 +840,6 @@
 			isa = PBXGroup;
 			children = (
 				A47EEA9329C7BE7B006BA3DB /* FollowUserView.swift */,
-				A47EEACC29C98A3E006BA3DB /* FollowUserViewModel.swift */,
 				A42E42EB2ABB1E0A003D242E /* FollowUserFeature.swift */,
 			);
 			path = FollowUser;
@@ -906,7 +858,6 @@
 			children = (
 				A47EEAB029C825D4006BA3DB /* Components */,
 				A46B3B6129C0A6230026D961 /* ScrapListView.swift */,
-				A47EEAAA29C80888006BA3DB /* ScrapListViewModel.swift */,
 				A42E42DA2AB5FAA8003D242E /* ScrapListFeature.swift */,
 			);
 			path = ScrapList;
@@ -1056,7 +1007,6 @@
 				A4E052E629BE15EA00FDB84B /* History */,
 				A4D983CF299F661C008C599D /* Home */,
 				A4E052F029BF4EE200FDB84B /* MainTabbarView.swift */,
-				A47EEA5E29C3CB64006BA3DB /* MainViewModel.swift */,
 				A49D04FA2A94EBBD00274C8D /* MainFeature.swift */,
 			);
 			path = Main;
@@ -1072,7 +1022,6 @@
 				A4597BCC29A89D8800B06132 /* Component */,
 				A4E052ED29BF4C9600FDB84B /* HomeView.swift */,
 				A49D05042A96453800274C8D /* HomeFeature.swift */,
-				A47EEACF29C99A86006BA3DB /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1102,7 +1051,6 @@
 			children = (
 				A46B3B5929C070090026D961 /* Components */,
 				A4E052E729BE160C00FDB84B /* HistoryView.swift */,
-				A47EEA9629C7C188006BA3DB /* HistoryViewModel.swift */,
 				A42E42C82AB1DAEB003D242E /* HistoryFeature.swift */,
 			);
 			path = History;
@@ -1331,22 +1279,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A49D05102A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
-				A47EEAD029C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05022A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A4261E782AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4629BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
-				A47EEAC129C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A42E42EF2AC01720003D242E /* CourseSearchFeature.swift in Sources */,
-				A47EEAAB29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7D2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB829C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471C2998B395001FAED3 /* UIButton.swift in Sources */,
-				A47EEA6229C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7D29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
-				A47EEA9029C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD829A9C1C200B06132 /* SignUpModel.swift in Sources */,
-				A4655BD929CC9F04001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEA9D29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
 				A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8D29C7B662006BA3DB /* FollowListModel.swift in Sources */,
@@ -1375,7 +1317,6 @@
 				A42E42C92AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
 				A42E42B02AAAEFF8003D242E /* ViewDidLoadModifier.swift in Sources */,
 				A42E42E62AB727EA003D242E /* FollowClient.swift in Sources */,
-				A47EEAC729C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
 				A4DDA6B92A7DE90800017C49 /* API.swift in Sources */,
@@ -1409,7 +1350,6 @@
 				A46B3B5729C04D940026D961 /* NotiListView.swift in Sources */,
 				A42E42E32AB72715003D242E /* FollowTarget.swift in Sources */,
 				A49D05132A9A2C3500274C8D /* RefreshModel.swift in Sources */,
-				A47EEACD29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A42E42CE2AB1DE57003D242E /* HistoryTarget.swift in Sources */,
 				A46B3B6229C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
@@ -1433,7 +1373,6 @@
 				A47EEABB29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4C29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEAC429C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
-				A47EEA9729C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6829C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A481DFAA2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5429C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
@@ -1444,25 +1383,21 @@
 				A47EEAB229C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A481DFA12A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A42E42DE2AB724E8003D242E /* FollowBoardFeature.swift in Sources */,
-				A47EEADF29CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A42E42D12AB1E538003D242E /* HistoryClient.swift in Sources */,
 				A49D04FF2A94F04100274C8D /* IntroView.swift in Sources */,
 				A42E42BE2AADBB66003D242E /* ScrapTarget.swift in Sources */,
 				A47EEA6B29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAE29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
-				A47EEA7A29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A42E42DB2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */,
 				A42E42BA2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E22993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714029B8C74400944912 /* FollowingBoardView.swift in Sources */,
-				A47EEA8329C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A43AABB12AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE629AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD529A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA729C7FB25006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A47EEA5F29C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 				A49D05082A96524200274C8D /* MyPageFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1472,23 +1407,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A49D05112A9A238400274C8D /* CommonAuthenticator.swift in Sources */,
-				A47EEAD129C99A86006BA3DB /* HomeViewModel.swift in Sources */,
 				A49D05032A94F04E00274C8D /* IntroFeature.swift in Sources */,
 				A4261E792AA6286400F9786A /* HomeTarget.swift in Sources */,
 				A46B3B4729BF77B80026D961 /* CourseDetailView.swift in Sources */,
 				A49D04F32A92115600274C8D /* CheckValidationForNickname.swift in Sources */,
-				A47EEAC229C8AA82006BA3DB /* CourseDetailViewModel.swift in Sources */,
 				A42E42F02AC01720003D242E /* CourseSearchFeature.swift in Sources */,
-				A47EEAAC29C80888006BA3DB /* ScrapListViewModel.swift in Sources */,
 				A4BE4D7E2A7E22BF005AF201 /* SignUpTarget.swift in Sources */,
 				A47EEAB929C8526B006BA3DB /* LocationSearchView.swift in Sources */,
 				A46B471D2998B395001FAED3 /* UIButton.swift in Sources */,
-				A47EEA6329C3CF97006BA3DB /* SignUpViewModel.swift in Sources */,
 				A47EEA7E29C6EF0B006BA3DB /* BaseResonse.swift in Sources */,
-				A47EEA9129C7B73E006BA3DB /* FollowingUserListViewModel.swift in Sources */,
 				A4597BD929A9C1C200B06132 /* SignUpModel.swift in Sources */,
 				A47EEA9E29C7C32F006BA3DB /* UserProfileHistoryModel.swift in Sources */,
-				A4655BDE29CCA4A2001E67DF /* CourseEditViewModel.swift in Sources */,
 				A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */,
 				A47EEA8E29C7B662006BA3DB /* FollowListModel.swift in Sources */,
 				A4DDA6BD2A7DE93C00017C49 /* APIEventLogger.swift in Sources */,
@@ -1517,7 +1446,6 @@
 				A42E42B12AAAF11B003D242E /* ViewDidLoadModifier.swift in Sources */,
 				A42E42E72AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
-				A47EEAC829C91C64006BA3DB /* RegisterCourseViewModel.swift in Sources */,
 				A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A4DDA6BA2A7DE90800017C49 /* API.swift in Sources */,
 				A49D05062A96453800274C8D /* HomeFeature.swift in Sources */,
@@ -1552,7 +1480,6 @@
 				A49D05142A9A2C3500274C8D /* RefreshModel.swift in Sources */,
 				A46B3B5829C04D940026D961 /* NotiListView.swift in Sources */,
 				A42E42CF2AB1DE57003D242E /* HistoryTarget.swift in Sources */,
-				A47EEACE29C98A3E006BA3DB /* FollowUserViewModel.swift in Sources */,
 				A46B3B6329C0A6230026D961 /* ScrapListView.swift in Sources */,
 				A42E42ED2ABB1E0A003D242E /* FollowUserFeature.swift in Sources */,
 				A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */,
@@ -1574,7 +1501,6 @@
 				A47EEABC29C85762006BA3DB /* NaverSearchModel.swift in Sources */,
 				A46B3B4D29C006440026D961 /* MyPageView.swift in Sources */,
 				A47EEAC529C8AAA5006BA3DB /* CourseDetailModel.swift in Sources */,
-				A47EEA9829C7C188006BA3DB /* HistoryViewModel.swift in Sources */,
 				A46B3B6929C14B9E0026D961 /* PhotoPicker.swift in Sources */,
 				A481DFAB2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */,
 				A47EEA5529C1F1DC006BA3DB /* SignUpAgreeTermsView.swift in Sources */,
@@ -1585,25 +1511,21 @@
 				A47EEAB329C8260D006BA3DB /* BottomSheetModifier.swift in Sources */,
 				A481DFA22A9AE5AC00AC7BF6 /* MyPageTarget.swift in Sources */,
 				A42E42DF2AB724E8003D242E /* FollowBoardFeature.swift in Sources */,
-				A47EEAE029CA0AFE006BA3DB /* SearchViewModel.swift in Sources */,
 				A42E42D22AB1E538003D242E /* HistoryClient.swift in Sources */,
 				A49D05002A94F04100274C8D /* IntroView.swift in Sources */,
 				A42E42BF2AADBB66003D242E /* ScrapTarget.swift in Sources */,
 				A47EEA6C29C50C7D006BA3DB /* AppView.swift in Sources */,
 				A47EEAAF29C80AF2006BA3DB /* ScrapListModel.swift in Sources */,
-				A47EEA7B29C6EB19006BA3DB /* AccountSettingViewModel.swift in Sources */,
 				A42E42DC2AB5FAA8003D242E /* ScrapListFeature.swift in Sources */,
 				A42E42BB2AAB216C003D242E /* LocationClient.swift in Sources */,
 				A46B46E32993133B001FAED3 /* UIViewControllerRepresentable.swift in Sources */,
 				A47EEAE629CA2243006BA3DB /* RegisterCourseModel.swift in Sources */,
 				A46D714229B8C8C300944912 /* FollowingBoardView.swift in Sources */,
-				A47EEA8429C7A52B006BA3DB /* FollowingBoardViewModel.swift in Sources */,
 				A43AABB22AC6864C002F89E5 /* RegisterCourseFeature.swift in Sources */,
 				A47EEA5129C1E7BC006BA3DB /* SignInView.swift in Sources */,
 				A4597BE729AF12E100B06132 /* AccountSettingView.swift in Sources */,
 				A4597BD629A9A1B400B06132 /* APIClient.swift in Sources */,
 				A47EEAA829C7FB26006BA3DB /* ScrapAddFolderModel.swift in Sources */,
-				A47EEA6029C3CB64006BA3DB /* MainViewModel.swift in Sources */,
 				A49D05092A96524200274C8D /* MyPageFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1744,7 +1666,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = WC4SMWCBL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
@@ -1758,7 +1680,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sole.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1778,7 +1700,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = WC4SMWCBL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoleApp/Resources/Info.plist;
@@ -1792,7 +1714,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sole.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

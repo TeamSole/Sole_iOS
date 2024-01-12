@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct CourseSearchView: View {
     typealias Course = CourseModelResponse.DataModel
-//    @StateObject var viewModel: SearchViewModel = SearchViewModel()
     @State private var searchText: String = ""
     @State private var availableWidth: CGFloat = 10
     
@@ -121,9 +120,7 @@ extension CourseSearchView {
                 TagListView(availableWidth: availableWidth,
                             data: item.cateogoryTitles,
                             spacing: 8.0,
-                            alignment: .leading,
-                            isExpandedUserTagListView: .constant(false),
-                            maxRows: .constant(0)) { item in
+                            alignment: .leading) { item in
                     HStack(spacing: 0.0) {
                         Text(item)
                             .foregroundColor(.black)
