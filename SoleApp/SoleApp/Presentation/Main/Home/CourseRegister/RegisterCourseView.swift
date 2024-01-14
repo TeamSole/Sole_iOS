@@ -254,12 +254,12 @@ extension RegisterCourseView {
                 .readSize { size in
                     availableWidth = size.width
                 }
-            TagListView(availableWidth: availableWidth,
-                        data: viewStore.selectedPlaceParameter +
+            TagListView(data: viewStore.selectedPlaceParameter +
                         viewStore.selectedWithParameter +
                         viewStore.selectedVehiclesParameter,
                         spacing: 8.0,
-                        alignment: .leading) { item in
+                        alignment: .leading,
+                        availableWidth: availableWidth) { item in
                 HStack(spacing: 0.0) {
                     Text(Category(rawValue: item)?.title ?? "카페")
                         .foregroundColor(.black)
