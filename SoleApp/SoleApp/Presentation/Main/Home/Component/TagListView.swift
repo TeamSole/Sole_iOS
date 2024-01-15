@@ -8,26 +8,35 @@
 import SwiftUI
 
 struct TagListView<Data: Collection, Content: View>: View where Data.Element: Hashable {
-    private let availableWidth: CGFloat
     private let data: Data
+    private let minRows: Int
     private let spacing: CGFloat
     private let alignment: HorizontalAlignment
+    private let availableWidth: CGFloat
     private let content: (Data.Element) -> Content
     
     @State var elementSize: [Data.Element: CGSize] = [:]
     
-    init(availableWidth: CGFloat,
-         data: Data,
+    @Binding var isExpandedTagListView: Bool
+    @Binding var maxRows: Int
+    
+    init(data: Data,
          spacing: CGFloat,
          alignment: HorizontalAlignment,
+         availableWidth: CGFloat,
+         minRows: Int = 2,
+         maxRows: Binding<Int> = .constant(0),
+         isExpandedTagListView: Binding<Bool> = .constant(true),
          content: @escaping (Data.Element) -> Content) {
-        self.availableWidth = availableWidth
         self.data = data
         self.spacing = spacing
         self.alignment = alignment
+        self.availableWidth = availableWidth
+        self.minRows = minRows
+        self._maxRows = maxRows
+        self._isExpandedTagListView = isExpandedTagListView
         self.content = content
     }
-    
     
     var body: some View {
         VStack(alignment: alignment, spacing: spacing) {
@@ -45,8 +54,7 @@ struct TagListView<Data: Collection, Content: View>: View where Data.Element: Ha
         }
     }
     
-    
-    func computeRows() -> [[Data.Element]] {
+    private func computeRows() -> [[Data.Element]] {
         var rows: [[Data.Element]] = [[]]
         var currentRow = 0
         var remainingWidth = availableWidth
@@ -57,14 +65,23 @@ struct TagListView<Data: Collection, Content: View>: View where Data.Element: Ha
                 rows[currentRow].append(element)
             } else {
                 currentRow += 1
-                rows.append([element])
-                remainingWidth = availableWidth
+                // 전체 보기
+                if isExpandedTagListView {
+                    rows.append([element])
+                    remainingWidth = availableWidth
+                } else {
+                    // 축소된 형태로 보기
+                    if currentRow < minRows {
+                        rows.append([element])
+                        remainingWidth = availableWidth
+                    }
+                }
             }
             
             remainingWidth -= (elementSize.width + spacing)
         }
         
-//        maxRows = currentRow
+        maxRows = currentRow
         return rows
     }
 }

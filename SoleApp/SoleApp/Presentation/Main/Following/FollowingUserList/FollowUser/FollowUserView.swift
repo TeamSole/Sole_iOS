@@ -211,10 +211,10 @@ extension FollowUserView {
                     .readSize { size in
                         availableWidth = size.width
                     }
-                TagListView(availableWidth: availableWidth,
-                            data: item.cateogoryTitles,
+                TagListView(data: item.cateogoryTitles,
                             spacing: 8.0,
-                            alignment: .leading) { item in
+                            alignment: .leading,
+                            availableWidth: availableWidth) { item in
                     HStack(spacing: 0.0) {
                         Text(item)
                             .foregroundColor(.black)
