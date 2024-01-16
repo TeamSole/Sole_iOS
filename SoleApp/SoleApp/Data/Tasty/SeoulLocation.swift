@@ -35,14 +35,6 @@ enum SeoulLocation: String {
     case Jung = "S24"
     case Jungnang = "S25"
     
-    var seoul: String {
-        return self.rawValue
-    }
-    
-    var englishName: String {
-        return self.rawValue.replacingOccurrences(of: "S", with: "").replacingOccurrences(of: "구", with: "")
-    }
-    
     var koreanName: String {
         switch self {
         case .Whole: return "서울 전체"
