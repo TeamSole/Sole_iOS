@@ -174,6 +174,8 @@
 		A46DEFAC2B56CD5B00655C2A /* GyeongsangbukLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFAA2B56CD5B00655C2A /* GyeongsangbukLocation.swift */; };
 		A46DEFAE2B56CE3D00655C2A /* GyeongsangnamLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */; };
 		A46DEFAF2B56CE3D00655C2A /* GyeongsangnamLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */; };
+		A46DEFB12B56D0E400655C2A /* JejuLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB02B56D0E400655C2A /* JejuLocation.swift */; };
+		A46DEFB22B56D0E400655C2A /* JejuLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB02B56D0E400655C2A /* JejuLocation.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
@@ -406,6 +408,7 @@
 		A46DEFA72B56CBB900655C2A /* JeonnamLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JeonnamLocation.swift; sourceTree = "<group>"; };
 		A46DEFAA2B56CD5B00655C2A /* GyeongsangbukLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyeongsangbukLocation.swift; sourceTree = "<group>"; };
 		A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyeongsangnamLocation.swift; sourceTree = "<group>"; };
+		A46DEFB02B56D0E400655C2A /* JejuLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuLocation.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
@@ -858,6 +861,7 @@
 				A46DEFA72B56CBB900655C2A /* JeonnamLocation.swift */,
 				A46DEFAA2B56CD5B00655C2A /* GyeongsangbukLocation.swift */,
 				A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */,
+				A46DEFB02B56D0E400655C2A /* JejuLocation.swift */,
 			);
 			path = Tasty;
 			sourceTree = "<group>";
@@ -1391,6 +1395,7 @@
 				A46DEF842B56BE1600655C2A /* DaeguLocation.swift in Sources */,
 				A46DEF9C2B56CAA400655C2A /* ChungbukLocation.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
+				A46DEFB12B56D0E400655C2A /* JejuLocation.swift in Sources */,
 				A42E42D82AB46CB6003D242E /* ScrapClient.swift in Sources */,
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A4D958EE2ADEDC470041FD51 /* IndicatorView.swift in Sources */,
@@ -1536,6 +1541,7 @@
 				A46DEF852B56BE1600655C2A /* DaeguLocation.swift in Sources */,
 				A46DEF9D2B56CAA400655C2A /* ChungbukLocation.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
+				A46DEFB22B56D0E400655C2A /* JejuLocation.swift in Sources */,
 				A42E42D92AB46CB6003D242E /* ScrapClient.swift in Sources */,
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4D958EF2ADEDC470041FD51 /* IndicatorView.swift in Sources */,
