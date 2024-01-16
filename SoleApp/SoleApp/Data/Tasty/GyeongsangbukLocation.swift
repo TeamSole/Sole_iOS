@@ -33,7 +33,7 @@ enum GyeongsangbukLocation: String {
     case Chilgok = "GB22"
     case Pohang = "GB23"
     
-    var gyeongsangbuk: String {
+    var koreanName: String {
         switch self {
         case .Whole: return "경상북도 전체"
         case .Gyeongsan: return "경산시"
