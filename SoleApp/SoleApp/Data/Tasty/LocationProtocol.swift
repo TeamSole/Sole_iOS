@@ -7,10 +7,12 @@
 
 import Foundation
 
-protocol LocationProtocol {
+protocol LocationProtocol: CaseIterable {
     var allCode: [String] { get }
     
     var mainLocationName: String { get }
+    
+    var isWholeLocation: Bool { get }
     
     
 }

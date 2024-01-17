@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum SeoulLocation: String {
+enum SeoulLocation: String, LocationProtocol {
+    
     case Whole = "S00"
     case Gangnam = "S01"
     case Gangdong = "S02"
@@ -35,9 +36,23 @@ enum SeoulLocation: String {
     case Jung = "S24"
     case Jungnang = "S25"
     
+    
+    var allCode: [String] {
+        return SeoulLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
+    }
+    
+    var mainLocationName: String {
+        return "서울"
+    }
+    
+    var isWholeLocation: Bool {
+        return self == .Whole
+    }
+    
+    
     var koreanName: String {
         switch self {
-        case .Whole: return "서울 전체"
+        case .Whole: return "전체"
         case .Gangnam: return "강남구"
         case .Gangdong: return "강동구"
         case .Gangbuk: return "강북구"
