@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F9B3152EAB491127C8DBAFF /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08CEF1E7BB80CC858623F11 /* Pods_Dev.framework */; };
+		A401527B2B5B529C00CF7C01 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A401527A2B5B529C00CF7C01 /* LocationModel.swift */; };
+		A401527C2B5B529C00CF7C01 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A401527A2B5B529C00CF7C01 /* LocationModel.swift */; };
 		A422C2322ACEF07000F20373 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A422C2312ACEF07000F20373 /* ComposableArchitecture */; };
 		A422C2342ACEF08800F20373 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A422C2332ACEF08800F20373 /* ComposableArchitecture */; };
 		A4261E782AA6286400F9786A /* HomeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4261E772AA6286400F9786A /* HomeTarget.swift */; };
@@ -178,6 +180,8 @@
 		A46DEFB22B56D0E400655C2A /* JejuLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB02B56D0E400655C2A /* JejuLocation.swift */; };
 		A46DEFB42B56D19D00655C2A /* LocationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB32B56D19D00655C2A /* LocationProtocol.swift */; };
 		A46DEFB52B56D19D00655C2A /* LocationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB32B56D19D00655C2A /* LocationProtocol.swift */; };
+		A46DEFB72B5816D200655C2A /* KoreaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB62B5816D200655C2A /* KoreaLocation.swift */; };
+		A46DEFB82B5816D200655C2A /* KoreaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46DEFB62B5816D200655C2A /* KoreaLocation.swift */; };
 		A4712C9729A1DF2000CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A4712C9829A1DF2A00CE1A59 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712C9629A1DF2000CE1A59 /* Constant.swift */; };
 		A47EEA5029C1E7BC006BA3DB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */; };
@@ -328,6 +332,7 @@
 /* Begin PBXFileReference section */
 		0F0D34AC6D69564AA99A9AEA /* Pods-Release.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Release.release.xcconfig"; path = "Target Support Files/Pods-Release/Pods-Release.release.xcconfig"; sourceTree = "<group>"; };
 		5463913E3158E13BBE8D8DCA /* Pods-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dev.release.xcconfig"; path = "Target Support Files/Pods-Dev/Pods-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		A401527A2B5B529C00CF7C01 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		A4261E772AA6286400F9786A /* HomeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTarget.swift; sourceTree = "<group>"; };
 		A42D27142A768A8C003B11E5 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		A42E42AF2AAAEFF8003D242E /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
@@ -412,6 +417,7 @@
 		A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyeongsangnamLocation.swift; sourceTree = "<group>"; };
 		A46DEFB02B56D0E400655C2A /* JejuLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuLocation.swift; sourceTree = "<group>"; };
 		A46DEFB32B56D19D00655C2A /* LocationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocol.swift; sourceTree = "<group>"; };
+		A46DEFB62B5816D200655C2A /* KoreaLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaLocation.swift; sourceTree = "<group>"; };
 		A4712C9629A1DF2000CE1A59 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A47EEA4F29C1E7BC006BA3DB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A47EEA5329C1F1DC006BA3DB /* SignUpAgreeTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeTermsView.swift; sourceTree = "<group>"; };
@@ -866,6 +872,8 @@
 				A46DEFAD2B56CE3D00655C2A /* GyeongsangnamLocation.swift */,
 				A46DEFB02B56D0E400655C2A /* JejuLocation.swift */,
 				A46DEFB32B56D19D00655C2A /* LocationProtocol.swift */,
+				A46DEFB62B5816D200655C2A /* KoreaLocation.swift */,
+				A401527A2B5B529C00CF7C01 /* LocationModel.swift */,
 			);
 			path = Tasty;
 			sourceTree = "<group>";
@@ -1404,6 +1412,7 @@
 				A4E052F129BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A4D958EE2ADEDC470041FD51 /* IndicatorView.swift in Sources */,
 				A42E42E92AB881B7003D242E /* FollowingUserListFeature.swift in Sources */,
+				A401527B2B5B529C00CF7C01 /* LocationModel.swift in Sources */,
 				A47EEA6629C45B96006BA3DB /* Utility.swift in Sources */,
 				A47EEA9A29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A42E42C92AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
@@ -1419,6 +1428,7 @@
 				A4E052EB29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A46B3B5429C021710026D961 /* NotiSettingView.swift in Sources */,
 				A46DEF962B56C89D00655C2A /* GyeonggiLocation.swift in Sources */,
+				A46DEFB72B5816D200655C2A /* KoreaLocation.swift in Sources */,
 				A46DEF7B2B56BB7F00655C2A /* Category.swift in Sources */,
 				A4655BDB29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A49D04F82A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
@@ -1551,6 +1561,7 @@
 				A46B46EB2994B769001FAED3 /* UIColor.swift in Sources */,
 				A4D958EF2ADEDC470041FD51 /* IndicatorView.swift in Sources */,
 				A42E42EA2AB881B7003D242E /* FollowingUserListFeature.swift in Sources */,
+				A401527C2B5B529C00CF7C01 /* LocationModel.swift in Sources */,
 				A4E052F229BF4EE200FDB84B /* MainTabbarView.swift in Sources */,
 				A47EEA6729C45B96006BA3DB /* Utility.swift in Sources */,
 				A42E42CA2AB1DAEB003D242E /* HistoryFeature.swift in Sources */,
@@ -1566,6 +1577,7 @@
 				A47EEA9529C7BE7B006BA3DB /* FollowUserView.swift in Sources */,
 				A4655BDC29CCA49C001E67DF /* CourseEditModel.swift in Sources */,
 				A46DEF972B56C89D00655C2A /* GyeonggiLocation.swift in Sources */,
+				A46DEFB82B5816D200655C2A /* KoreaLocation.swift in Sources */,
 				A46DEF7C2B56BB7F00655C2A /* Category.swift in Sources */,
 				A4E052EC29BE170F00FDB84B /* FontExtension.swift in Sources */,
 				A49D04F92A93ACF100274C8D /* SignUpCompleteFeature.swift in Sources */,
