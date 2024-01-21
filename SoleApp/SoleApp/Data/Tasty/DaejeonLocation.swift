@@ -20,7 +20,7 @@ enum DaejeonLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "DJ00" })
+        return DaejeonLocation.allCases.map({ $0.rawValue }).filter({ $0 != "DJ00" })
     }
     
     var mainLocationName: String {

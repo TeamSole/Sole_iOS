@@ -15,7 +15,7 @@ enum SejongLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return BusanLocation.allCases.map({ $0.rawValue })
+        return SejongLocation.allCases.map({ $0.rawValue })
     }
     
     var mainLocationName: String {

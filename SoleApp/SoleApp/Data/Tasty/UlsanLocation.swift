@@ -20,7 +20,7 @@ enum UlsanLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "U00" })
+        return UlsanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "U00" })
     }
     
     var mainLocationName: String {

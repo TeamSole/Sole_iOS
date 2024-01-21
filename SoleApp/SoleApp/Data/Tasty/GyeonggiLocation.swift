@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GyeonggiLocation: String {
+enum GyeonggiLocation: String, LocationProtocol {
     case Whole = "K00"
     case Gapyeong = "K01"
     case Goyang = "K02"
@@ -40,6 +40,26 @@ enum GyeonggiLocation: String {
     case Pocheon = "K29"
     case Hanam = "K30"
     case Hwaseong = "K31"
+    
+    var locationCode: String {
+        return self.rawValue
+    }
+    
+    var allCode: [String] {
+        return GyeonggiLocation.allCases.map({ $0.rawValue }).filter({ $0 != "K00" })
+    }
+    
+    var mainLocationName: String {
+        return "경기"
+    }
+    
+    var isWholeLocation: Bool {
+        return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "K"
+    }
 
     var koreanName: String {
         switch self {
