@@ -7,8 +7,28 @@
 
 import Foundation
 
-enum SejongLocation: String {
+enum SejongLocation: String, LocationProtocol {
     case Whole = "SGG"
+    
+    var locationCode: String {
+        return self.rawValue
+    }
+    
+    var allCode: [String] {
+        return BusanLocation.allCases.map({ $0.rawValue })
+    }
+    
+    var mainLocationName: String {
+        return "세종"
+    }
+    
+    var isWholeLocation: Bool {
+        return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "SGG"
+    }
     
     var koreanName: String {
         switch self {
