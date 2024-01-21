@@ -65,4 +65,43 @@ enum KoreaLocation: String {
         }
     }
     
+    func getInnerLocations() -> [LocationModel] {
+        switch self {
+        case .Seoul:
+            return SeoulLocation.toLocationModel()
+        case .Gyeonggi:
+            return GyeonggiLocation.toLocationModel()
+        case .Incheon:
+            return IncheonLocation.toLocationModel()
+        case .Daejeon:
+            return DaejeonLocation.toLocationModel()
+        case .Sejong:
+            return SejongLocation.toLocationModel()
+        case .Chungnam:
+            return ChungnamLocation.toLocationModel()
+        case .Chungbuk:
+            return ChungbukLocation.toLocationModel()
+        case .Gwangju:
+            return GwangjuLocation.toLocationModel()
+        case .Jeonnam:
+            return JeonnamLocation.toLocationModel()
+        case .Jeonbuk:
+            return JeonbukLocation.toLocationModel()
+        case .Daegu:
+            return DaeguLocation.toLocationModel()
+        case .Gyeongbuk:
+            return GyeongbukLocation.toLocationModel()
+        case .Busan:
+            return BusanLocation.toLocationModel()
+        case .Ulsan:
+            return UlsanLocation.toLocationModel()
+        case .Gyeongnam:
+            return GyeongnamLocation.toLocationModel()
+        case .Gangwon:
+            return GangwonLocation.toLocationModel()
+        case .Jeju:
+            return JejuLocation.toLocationModel()
+        }
+    }
+    
 }

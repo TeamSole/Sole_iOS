@@ -72,13 +72,13 @@ enum BusanLocation: String, LocationProtocol {
 }
 
 extension BusanLocation {
-    func toLocationModel() -> [LocationModel] {
+    static func toLocationModel() -> [LocationModel] {
         return BusanLocation.allCases
             .map({ LocationModel(locationName: $0.koreanName,
                                  locationCode: $0.locationCode,
-                                 mainLocationName: self.mainLocationName,
-                                 mainLocationPrefixCode: self.prefixCode,
-                                 isWholeLocation: self.isWholeLocation,
+                                 mainLocationName: $0.mainLocationName,
+                                 mainLocationPrefixCode: $0.prefixCode,
+                                 isWholeLocation: $0.isWholeLocation,
                                  wholeLoactionCode: $0.allCode) })
     }
 }

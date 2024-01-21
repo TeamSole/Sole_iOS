@@ -244,8 +244,8 @@
 		A47EEAD729C9AE07006BA3DB /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD529C9AE07006BA3DB /* CourseModel.swift */; };
 		A47EEAD929C9EF39006BA3DB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */; };
 		A47EEADA29C9EF39006BA3DB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */; };
-		A47EEADC29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
-		A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModel.swift */; };
+		A47EEADC29C9F800006BA3DB /* LocationModelDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModelDto.swift */; };
+		A47EEADD29C9F800006BA3DB /* LocationModelDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEADB29C9F800006BA3DB /* LocationModelDto.swift */; };
 		A47EEAE229CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE329CA1ACE006BA3DB /* HourMinutePickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */; };
 		A47EEAE529CA2243006BA3DB /* RegisterCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */; };
@@ -449,7 +449,7 @@
 		A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD529C9AE07006BA3DB /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
-		A47EEADB29C9F800006BA3DB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		A47EEADB29C9F800006BA3DB /* LocationModelDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModelDto.swift; sourceTree = "<group>"; };
 		A47EEAE129CA1ACE006BA3DB /* HourMinutePickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinutePickerModifier.swift; sourceTree = "<group>"; };
 		A47EEAE429CA2243006BA3DB /* RegisterCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCourseModel.swift; sourceTree = "<group>"; };
 		A47EEAE729CA2470006BA3DB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -546,7 +546,7 @@
 				A47EEAD229C9A5E7006BA3DB /* RecommendCourseModel.swift */,
 				A47EEAD529C9AE07006BA3DB /* CourseModel.swift */,
 				A47EEAD829C9EF39006BA3DB /* CategoryModel.swift */,
-				A47EEADB29C9F800006BA3DB /* LocationModel.swift */,
+				A47EEADB29C9F800006BA3DB /* LocationModelDto.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1444,7 +1444,7 @@
 				A4DDA6BF2A7DEA2600017C49 /* TargetType.swift in Sources */,
 				A42E42FA2AC08434003D242E /* CourseClient.swift in Sources */,
 				A49D04FB2A94EBBD00274C8D /* MainFeature.swift in Sources */,
-				A47EEADC29C9F800006BA3DB /* LocationModel.swift in Sources */,
+				A47EEADC29C9F800006BA3DB /* LocationModelDto.swift in Sources */,
 				A4DDA6C32A7DF2BD00017C49 /* SignUpClient.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
 				A46DEFA82B56CBB900655C2A /* JeonnamLocation.swift in Sources */,
@@ -1595,7 +1595,7 @@
 				A49D04FC2A94EBBD00274C8D /* MainFeature.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A4DDA6C42A7DF2BD00017C49 /* SignUpClient.swift in Sources */,
-				A47EEADD29C9F800006BA3DB /* LocationModel.swift in Sources */,
+				A47EEADD29C9F800006BA3DB /* LocationModelDto.swift in Sources */,
 				A46DEFA92B56CBB900655C2A /* JeonnamLocation.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
 				A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */,
