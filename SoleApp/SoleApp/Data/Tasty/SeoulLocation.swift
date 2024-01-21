@@ -88,3 +88,15 @@ enum SeoulLocation: String, LocationProtocol {
         }
     }
 }
+
+extension SeoulLocation {
+    func toLocationModel() -> [LocationModel] {
+        return SeoulLocation.allCases
+            .map({ LocationModel(locationName: $0.koreanName,
+                                 locationCode: $0.locationCode,
+                                 mainLocationName: self.mainLocationName,
+                                 mainLocationPrefixCode: self.prefixCode,
+                                 isWholeLocation: self.isWholeLocation,
+                                 wholeLoactionCode: $0.allCode) })
+    }
+}

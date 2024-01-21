@@ -12,7 +12,11 @@ protocol LocationProtocol: CaseIterable {
     
     var mainLocationName: String { get }
     
+    var locationCode: String { get }
+    
     var isWholeLocation: Bool { get }
     
+    var koreanName: String { get }
     
+    var prefixCode: String { get }
 }
