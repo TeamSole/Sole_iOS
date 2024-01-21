@@ -1,5 +1,5 @@
 //
-//  GyeongsangnamLocation.swift
+//  GyeongnamLocation.swift
 //  SoleApp
 //
 //  Created by SUN on 1/16/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GyeongsangnamLocation: String {
+enum GyeongnamLocation: String {
     case Whole = "GN00"
     case Geoje = "GN01"
     case Geochang = "GN02"

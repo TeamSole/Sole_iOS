@@ -1,5 +1,5 @@
 //
-//  GyeongsangbukLocation.swift
+//  GyeongbukLocation.swift
 //  SoleApp
 //
 //  Created by SUN on 1/16/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GyeongsangbukLocation: String {
+enum GyeongbukLocation: String, LocationProtocol {
     case Whole = "GB00"
     case Gyeongsan = "GB01"
     case Gyeongju = "GB02"
@@ -33,9 +33,29 @@ enum GyeongsangbukLocation: String {
     case Chilgok = "GB22"
     case Pohang = "GB23"
     
+    var locationCode: String {
+        return self.rawValue
+    }
+    
+    var allCode: [String] {
+        return GyeongbukLocation.allCases.map({ $0.rawValue }).filter({ $0 != "GB00" })
+    }
+    
+    var mainLocationName: String {
+        return "경북"
+    }
+    
+    var isWholeLocation: Bool {
+        return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "GB"
+    }
+    
     var koreanName: String {
         switch self {
-        case .Whole: return "경상북도 전체"
+        case .Whole: return "전체"
         case .Gyeongsan: return "경산시"
         case .Gyeongju: return "경주시"
         case .Goryeong: return "고령군"
