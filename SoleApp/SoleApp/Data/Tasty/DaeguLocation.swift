@@ -19,8 +19,12 @@ enum DaeguLocation: String, LocationProtocol {
     case Jung = "D08"
     
     
+    var locationCode: String {
+        return self.rawValue
+    }
+    
     var allCode: [String] {
-        return DaeguLocation.allCases.map({ $0.rawValue }).filter({ $0 != "D00" })
+        return DaeguLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
     }
     
     var mainLocationName: String {
@@ -29,6 +33,10 @@ enum DaeguLocation: String, LocationProtocol {
     
     var isWholeLocation: Bool {
         return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "D"
     }
     
 
