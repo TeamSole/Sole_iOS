@@ -58,3 +58,15 @@ enum ChungbukLocation: String, LocationProtocol {
         }
     }
 }
+
+extension ChungbukLocation {
+    func toLocationModel() -> [LocationModel] {
+        return ChungbukLocation.allCases
+            .map({ LocationModel(locationName: $0.koreanName,
+                                 locationCode: $0.locationCode,
+                                 mainLocationName: self.mainLocationName,
+                                 mainLocationPrefixCode: self.prefixCode,
+                                 isWholeLocation: self.isWholeLocation,
+                                 wholeLoactionCode: $0.allCode) })
+    }
+}
