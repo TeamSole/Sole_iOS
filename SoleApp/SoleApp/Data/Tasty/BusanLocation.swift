@@ -32,7 +32,7 @@ enum BusanLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
+        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "B00" })
     }
     
     var mainLocationName: String {

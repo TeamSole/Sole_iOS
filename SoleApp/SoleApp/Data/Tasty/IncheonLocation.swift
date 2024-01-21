@@ -25,7 +25,7 @@ enum IncheonLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return IncheonLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
+        return IncheonLocation.allCases.map({ $0.rawValue }).filter({ $0 != "I00" })
     }
     
     var mainLocationName: String {

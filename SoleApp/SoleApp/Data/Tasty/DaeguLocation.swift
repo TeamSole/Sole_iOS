@@ -24,7 +24,7 @@ enum DaeguLocation: String, LocationProtocol {
     }
     
     var allCode: [String] {
-        return DaeguLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
+        return DaeguLocation.allCases.map({ $0.rawValue }).filter({ $0 != "D00" })
     }
     
     var mainLocationName: String {
