@@ -37,12 +37,24 @@ enum GwangjuLocation: String, LocationProtocol {
 
     var koreanName: String {
         switch self {
-        case .Whole: return "광주 전체"
+        case .Whole: return "전체"
         case .Gwangsan: return "광산구"
         case .Nam: return "남구"
         case .Dong: return "동구"
         case .Buk: return "북구"
         case .Seo: return "서구"
         }
+    }
+}
+
+extension GwangjuLocation {
+    func toLocationModel() -> [LocationModel] {
+        return GwangjuLocation.allCases
+            .map({ LocationModel(locationName: $0.koreanName,
+                                 locationCode: $0.locationCode,
+                                 mainLocationName: self.mainLocationName,
+                                 mainLocationPrefixCode: self.prefixCode,
+                                 isWholeLocation: self.isWholeLocation,
+                                 wholeLoactionCode: $0.allCode) })
     }
 }
