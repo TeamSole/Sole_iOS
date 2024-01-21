@@ -27,8 +27,12 @@ enum BusanLocation: String, LocationProtocol {
     case Jung = "B15"
     case Haeundae = "B16"
     
+    var locationCode: String {
+        return self.rawValue
+    }
+    
     var allCode: [String] {
-        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "B00" })
+        return BusanLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
     }
     
     var mainLocationName: String {
@@ -37,6 +41,10 @@ enum BusanLocation: String, LocationProtocol {
     
     var isWholeLocation: Bool {
         return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "B"
     }
     
 

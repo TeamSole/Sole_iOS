@@ -36,6 +36,9 @@ enum SeoulLocation: String, LocationProtocol {
     case Jung = "S24"
     case Jungnang = "S25"
     
+    var locationCode: String {
+        return self.rawValue
+    }
     
     var allCode: [String] {
         return SeoulLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
@@ -47,6 +50,10 @@ enum SeoulLocation: String, LocationProtocol {
     
     var isWholeLocation: Bool {
         return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "S"
     }
     
     
