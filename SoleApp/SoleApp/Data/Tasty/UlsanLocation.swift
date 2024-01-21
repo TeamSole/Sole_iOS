@@ -46,3 +46,15 @@ enum UlsanLocation: String, LocationProtocol {
         }
     }
 }
+
+extension UlsanLocation {
+    func toLocationModel() -> [LocationModel] {
+        return UlsanLocation.allCases
+            .map({ LocationModel(locationName: $0.koreanName,
+                                 locationCode: $0.locationCode,
+                                 mainLocationName: self.mainLocationName,
+                                 mainLocationPrefixCode: self.prefixCode,
+                                 isWholeLocation: self.isWholeLocation,
+                                 wholeLoactionCode: $0.allCode) })
+    }
+}
