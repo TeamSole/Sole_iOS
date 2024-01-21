@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum IncheonLocation: String {
+enum IncheonLocation: String, LocationProtocol {
     case Whole = "I00"
     case Ganghwa = "I01"
     case Gyeyang = "I02"
@@ -19,6 +19,26 @@ enum IncheonLocation: String {
     case Yeonsu = "I08"
     case Ongjin = "I09"
     case Jung = "I10"
+    
+    var locationCode: String {
+        return self.rawValue
+    }
+    
+    var allCode: [String] {
+        return IncheonLocation.allCases.map({ $0.rawValue }).filter({ $0 != "S00" })
+    }
+    
+    var mainLocationName: String {
+        return "인천"
+    }
+    
+    var isWholeLocation: Bool {
+        return self == .Whole
+    }
+    
+    var prefixCode: String {
+        return "I"
+    }
 
     var koreanName: String {
         switch self {
