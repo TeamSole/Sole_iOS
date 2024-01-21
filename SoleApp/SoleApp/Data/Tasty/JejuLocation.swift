@@ -40,3 +40,16 @@ enum JejuLocation: String, LocationProtocol {
         }
     }
 }
+
+extension JejuLocation {
+    func toLocationModel() -> [LocationModel] {
+        return JejuLocation.allCases
+            .map({ LocationModel(locationName: $0.koreanName,
+                                 locationCode: $0.locationCode,
+                                 mainLocationName: self.mainLocationName,
+                                 mainLocationPrefixCode: self.prefixCode,
+                                 isWholeLocation: self.isWholeLocation,
+                                 wholeLoactionCode: $0.allCode) })
+    }
+}
+
