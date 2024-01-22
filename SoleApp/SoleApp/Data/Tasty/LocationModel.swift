@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationModel {
+struct LocationModel: Identifiable, Hashable {
     /// 지역 명
     var locationName: String
     /// 지역 코드
@@ -20,7 +20,10 @@ struct LocationModel {
     var isWholeLocation: Bool
     /// 전체지역일 경우 사용되는 전체 지역 코드
     var wholeLoactionCode: [String]
-
+    
+    var id: String {
+        return locationCode
+    }
     init(locationName: String,
          locationCode: String,
          mainLocationName: String,

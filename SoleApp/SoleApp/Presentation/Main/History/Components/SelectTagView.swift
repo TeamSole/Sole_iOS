@@ -12,12 +12,31 @@ enum SelectType {
     case first, add, filter
 }
 
+enum SelectTagCategory: CaseIterable {
+//    case location
+    case tasty
+    
+    var title: String {
+        switch self {
+//        case .location:
+//            "지역"
+        case .tasty:
+            "취향"
+        }
+    }
+}
+
 struct SelectTagView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selectedPlace: [Category] = []
     @State private var selectedWith: [Category] = []
     @State private var selectedTrans: [Category] = []
     @State private var availableWidth: CGFloat = 10
+    @State private var selectedCategory: SelectTagCategory = .tasty
+    
+    @State private var selectedMainLocation: KoreaLocation = .Seoul
+    @State private var selectedLocation: [LocationModel] = []
+    
     var selectType: SelectType
     let complete: ([String], [String], [String]) -> Void
     
@@ -39,16 +58,22 @@ struct SelectTagView: View {
             navigationBar
                 .padding(.horizontal, 16.0)
                 .isHidden(selectType == .first, remove: true)
-            ScrollView {
-                VStack(spacing: 0.0) {
-                    if selectType == .first {
-                        firstSelectTopBar
+            switch selectedCategory {
+//            case .location:
+//                locationCategoryView
+            case .tasty:
+                ScrollView {
+                    VStack(spacing: 0.0) {
+                        if selectType == .first {
+                            firstSelectTopBar
+                        }
+                        tagItems(title: "장소", categories: placeCategory, index: 0)
+                        tagItems(title: "동행", categories: withCategory, index: 1)
+                        tagItems(title: "교통", categories: transCategory, index: 2)
                     }
-                    tagItems(title: "장소", categories: placeCategory, index: 0)
-                    tagItems(title: "동행", categories: withCategory, index: 1)
-                    tagItems(title: "교통", categories: transCategory, index: 2)
                 }
             }
+            
             confirmButtonView
                 .padding(16.0)
         }
@@ -65,12 +90,19 @@ extension SelectTagView {
     private var navigationBar: some View {
         VStack(spacing: 0.0) {
             HStack {
-                Text("취향")
-                    .foregroundColor(.black)
-                    .font(.pretendard(.bold, size: 16.0))
-                    .frame(maxWidth: .infinity,
-                           alignment: .leading)
-                    .padding(.leading, 16.0)
+                HStack(spacing: 12.0) {
+                    ForEach(SelectTagCategory.allCases, id: \.self) { category in
+                        Text(category.title)
+                            .foregroundColor(selectedCategory == category ? .black : .gray_999999)
+                            .font(.pretendard(.bold, size: 16.0))
+                            .onTapGesture {
+                                selectedCategory = category
+                            }
+                    }
+                }
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
+                .padding(.leading, 16.0)
                 Image("closeBk")
                     .padding(.trailing, 16.0)
                     .onTapGesture {
@@ -104,6 +136,82 @@ extension SelectTagView {
                        alignment: .center)
                 .padding(.bottom, 50.0)
             
+        }
+    }
+    
+    private var locationCategoryView: some View {
+        VStack(spacing: 0.0) {
+            HStack(spacing: 0.0) {
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 0.0) {
+                        ForEach(KoreaLocation.allCases, id: \.self) { location in
+                            
+                            Text(location.koreanName)
+                                .font(.pretendard(.medium, size: 16.0))
+                                .foregroundColor(selectedMainLocation == location ? .blue_4708FA : .black_151515)
+                                .frame(width: 135.0,
+                                       height: 40.0)
+                                .background(selectedMainLocation == location ? Color.white: Color.gray_EDEDED)
+                                .onTapGesture {
+                                    selectedMainLocation = location
+                                }
+                        }
+                    }
+                }
+                .frame(width: 135.0)
+
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 0.0) {
+                        ForEach(selectedMainLocation.getInnerLocations(), id: \.id) { innerLocation in
+                            Text(innerLocation.locationName)
+                                .font(.pretendard(.medium, size: 14.0))
+                                .foregroundColor(selectedLocation.contains(innerLocation) ? .blue_4708FA : .black_151515)
+                                .padding(.leading, 20.0)
+                                .frame(height: 40.0)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .onTapGesture {
+                                    selectedLocation.append(innerLocation)
+                                }
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            VStack(spacing: 8.0) {
+                HStack(spacing: 8.0) {
+                    Text("선택한 지역")
+                        .foregroundColor(.black)
+                        .font(.pretendard(.medium, size: 14.0))
+                    Text("\(selectedLocation.count)")
+                        .foregroundColor(.blue_4708FA)
+                        .font(.pretendard(.medium, size: 14.0))
+                }
+                .frame(maxWidth: .infinity, 
+                       alignment: .leading)
+               
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                        ForEach(selectedLocation) { selectedLocation in
+                            HStack(spacing: 4.0) {
+                                Text(selectedLocation.mainLocationName)
+                                Text(">")
+                                Text(selectedLocation.locationName)
+                                Image("close")
+                                
+                            }
+                            .padding(.horizontal, 8.0)
+                            .frame(height: 30.0)
+                            .background(Color.gray_EDEDED)
+                            .cornerRadius(4.0)
+                            
+                        }
+                    }
+                }
+            }
+            .padding(.leading, 16.0)
+            .padding(.vertical, 12.0)
+            .isHidden(selectedLocation.isEmpty == true, 
+                      remove: true)
         }
     }
     
@@ -173,7 +281,8 @@ extension SelectTagView {
             .frame(maxWidth: .infinity)
             .frame(height: 48.0)
             .background(Color.blue_4708FA.cornerRadius(8.0))
-            .padding(16.0)
+            .padding(.horizontal, 16.0)
+            .padding(.top, 12.0)
             .contentShape(Rectangle())
             .onTapGesture {
                 complete(selectedPlace.map({$0.rawValue}),
