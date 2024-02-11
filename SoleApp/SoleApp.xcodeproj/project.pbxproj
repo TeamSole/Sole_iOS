@@ -260,6 +260,10 @@
 		A481DFA82A9B331900AC7BF6 /* MyPageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */; };
 		A481DFAA2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */; };
 		A481DFAB2A9B389C00AC7BF6 /* AccountSettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */; };
+		A483D9F52B78BBE100FE600A /* ScrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F42B78BBE100FE600A /* ScrapView.swift */; };
+		A483D9F62B78BBE100FE600A /* ScrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F42B78BBE100FE600A /* ScrapView.swift */; };
+		A483D9F82B78BBEF00FE600A /* ScrapFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */; };
+		A483D9F92B78BBEF00FE600A /* ScrapFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */; };
 		A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
@@ -457,6 +461,8 @@
 		A481DFA32A9AE75200AC7BF6 /* MyPageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageClient.swift; sourceTree = "<group>"; };
 		A481DFA62A9B331900AC7BF6 /* MyPageCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCellData.swift; sourceTree = "<group>"; };
 		A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingFeature.swift; sourceTree = "<group>"; };
+		A483D9F42B78BBE100FE600A /* ScrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapView.swift; sourceTree = "<group>"; };
+		A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFeature.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
@@ -758,6 +764,8 @@
 				A47EEAA229C7F6D2006BA3DB /* Components */,
 				A46B3B5E29C09D740026D961 /* ScrapFolderView.swift */,
 				A42E42D32AB46448003D242E /* ScrapFolderFeature.swift */,
+				A483D9F42B78BBE100FE600A /* ScrapView.swift */,
+				A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -1404,6 +1412,7 @@
 				A46DEF902B56BF8C00655C2A /* UlsanLocation.swift in Sources */,
 				A49D05162A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A46B3B4329BF624E0026D961 /* CourseSearchView.swift in Sources */,
+				A483D9F82B78BBEF00FE600A /* ScrapFeature.swift in Sources */,
 				A46DEF842B56BE1600655C2A /* DaeguLocation.swift in Sources */,
 				A46DEF9C2B56CAA400655C2A /* ChungbukLocation.swift in Sources */,
 				A46B46EA2994B769001FAED3 /* UIColor.swift in Sources */,
@@ -1420,6 +1429,7 @@
 				A42E42E62AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEACA29C98926006BA3DB /* FollowUserModel.swift in Sources */,
 				A46B471629975CDE001FAED3 /* UIViewController.swift in Sources */,
+				A483D9F52B78BBE100FE600A /* ScrapView.swift in Sources */,
 				A4DDA6B92A7DE90800017C49 /* API.swift in Sources */,
 				A49D05052A96453800274C8D /* HomeFeature.swift in Sources */,
 				A46B3B5F29C09D740026D961 /* ScrapFolderView.swift in Sources */,
@@ -1553,6 +1563,7 @@
 				A46DEF912B56BF8C00655C2A /* UlsanLocation.swift in Sources */,
 				A49D05172A9A2C7E00274C8D /* APIResponse.swift in Sources */,
 				A47EEA8B29C7B11E006BA3DB /* FollowingUserListView.swift in Sources */,
+				A483D9F92B78BBEF00FE600A /* ScrapFeature.swift in Sources */,
 				A46DEF852B56BE1600655C2A /* DaeguLocation.swift in Sources */,
 				A46DEF9D2B56CAA400655C2A /* ChungbukLocation.swift in Sources */,
 				A46B3B4429BF624E0026D961 /* CourseSearchView.swift in Sources */,
@@ -1569,6 +1580,7 @@
 				A42E42E72AB727EA003D242E /* FollowClient.swift in Sources */,
 				A47EEA9B29C7C1A1006BA3DB /* HistoryModel.swift in Sources */,
 				A47EEACB29C98926006BA3DB /* FollowUserModel.swift in Sources */,
+				A483D9F62B78BBE100FE600A /* ScrapView.swift in Sources */,
 				A4DDA6BA2A7DE90800017C49 /* API.swift in Sources */,
 				A49D05062A96453800274C8D /* HomeFeature.swift in Sources */,
 				A46B471729975CDE001FAED3 /* UIViewController.swift in Sources */,
