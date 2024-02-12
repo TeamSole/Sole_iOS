@@ -30,6 +30,7 @@ struct HomeFeature: Reducer {
         case didTappedCourseSearch
         case didTappedFloatingButton
         case didTappedMyPageButton
+        case didTappedScrapButton(Course)
         case getCourses
         case getCoursesResponse(TaskResult<CourseModelResponse>)
         case getNextCourses
@@ -78,6 +79,9 @@ struct HomeFeature: Reducer {
                 
             case .didTappedMyPageButton:
                 state.myPage = MyPageFeature.State()
+                return .none
+                
+            case .didTappedScrapButton(let course):
                 return .none
                 
             case .getCourses:
