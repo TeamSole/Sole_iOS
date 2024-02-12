@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Base Url</key>
-	<string>https://www.api-teamsole.site:443/</string>
+	<string>https://www.teamsole.site:443/</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>CFBundleURLTypes</key>
