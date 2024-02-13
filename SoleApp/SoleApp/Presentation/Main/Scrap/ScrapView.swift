@@ -27,6 +27,9 @@ struct ScrapView: View {
                 }
             }
         }
+        .onLoaded {
+            viewStore.send(.viewDidLoad)
+        }
     }
 }
 

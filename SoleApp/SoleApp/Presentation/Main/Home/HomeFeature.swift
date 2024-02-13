@@ -17,6 +17,7 @@ struct HomeFeature: Reducer {
         @PresentationState var courseSearch: CourseSearchFeature.State?
         @PresentationState var myPage: MyPageFeature.State?
         @PresentationState var registerCourse: RegisterCourseFeature.State?
+        @PresentationState var scrapFeature: ScrapFeature.State?
         var courses: [Course] = []
         var location: Location = .init()
         var isCalledGetNextCoursesApi: Bool = false
@@ -41,6 +42,8 @@ struct HomeFeature: Reducer {
         case getRecommendedCoursesResponse(TaskResult<RecommendCourseModel>)
         case myPage(PresentationAction<MyPageFeature.Action>)
         case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
+        
+        case scrapFeature(PresentationAction<ScrapFeature.Action>)
         case scrap(courseId: Int, index: Int)
         case scrapResponse(TaskResult<BaseResponse>)
         /// 현재 위치 서버에 등록
@@ -48,6 +51,7 @@ struct HomeFeature: Reducer {
         case setLocationResponse(TaskResult<LocationModelResponse>)
         case setTasty(place: [String], with: [String], tras: [String])
         case setTastyResponse(TaskResult<BaseResponse>)
+        case updateScrapResult(courseId: Int)
         case viewDidLoad
         
     }
@@ -82,8 +86,15 @@ struct HomeFeature: Reducer {
                 return .none
                 
             case .didTappedScrapButton(let course):
-                return .none
-                
+                if course.like == true {
+                    return .none
+                } else {
+                    guard let courseId = course.courseId else { return .none }
+                    
+                    state.scrapFeature = ScrapFeature.State(selectedCourseId: courseId)
+                    return .none
+                }
+
             case .getCourses:
                 return .run { send in
                     await send(.getCoursesResponse(
@@ -182,6 +193,13 @@ struct HomeFeature: Reducer {
             case .registerCourse:
                 return .none
                 
+            case .scrapFeature(.presented(.completeScrap(let courseId))):
+                state.scrapFeature = nil
+                return .send(.updateScrapResult(courseId: courseId))
+                
+            case .scrapFeature:
+                return .none
+                
             case .scrap(let courseId, let index):
                 state.courses[index].like?.toggle()
                 
@@ -242,6 +260,13 @@ struct HomeFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
+            case .updateScrapResult(let courseId):
+                if let index = state.courses.firstIndex(where: { $0.courseId == courseId}) {
+                    state.courses[index].like = true
+                }
+                
+                return .none
+                
             case .viewDidLoad:
                 return .merge([.send(.getCourses), .send(.getLocation)])
             }
@@ -258,6 +283,9 @@ struct HomeFeature: Reducer {
         }
         .ifLet(\.$registerCourse, action: /Action.registerCourse) {
             RegisterCourseFeature()
+        }
+        .ifLet(\.$scrapFeature, action: /Action.scrapFeature) {
+            ScrapFeature()
         }
     }
 }

@@ -59,6 +59,11 @@ struct HomeView: View {
                 viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
         })
+        .sheet(store: store.scope(state: \.$scrapFeature,
+                                  action: HomeFeature.Action.scrapFeature), content: {
+            ScrapView(store: $0)
+        })
+        
     }
 }
 
@@ -249,7 +254,7 @@ extension HomeView {
                     Image(item.isScrapped ? "love_selected" : "love" )
                         .frame(width: 38.0, height: 38.0)
                         .onTapGesture {
-                            viewStore.send(.scrap(courseId: item.courseId ?? 0, index: index))
+                            viewStore.send(.didTappedScrapButton(item))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")

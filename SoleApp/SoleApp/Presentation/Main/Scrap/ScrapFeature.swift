@@ -20,6 +20,7 @@ struct ScrapFeature: Reducer {
     }
     
     enum Action: Equatable {
+        case completeScrap(courseId: Int)
         case getScrapFolderList
         case getScrapFolderListResponse(TaskResult<ScrapFolderResponseModel>)
         
@@ -35,6 +36,9 @@ struct ScrapFeature: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .completeScrap(let courseId):
+                return .none
+                
             case .getScrapFolderList:
                 return .run { send in
                     await send(.getScrapFolderListResponse(
@@ -63,7 +67,7 @@ struct ScrapFeature: Reducer {
                 
             case .scrapResponse(.success(let response)):
                 debugPrint(response)
-                return .none
+                return .send(.completeScrap(courseId: state.selectedCourseId))
                 
             case .scrapResponse(.failure(let error)):
                 debugPrint(error.localizedDescription)
