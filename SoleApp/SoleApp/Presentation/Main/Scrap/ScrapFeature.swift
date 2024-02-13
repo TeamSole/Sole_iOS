@@ -11,11 +11,11 @@ struct ScrapFeature: Reducer {
     typealias Folder = ScrapFolderResponseModel.DataModel
     struct State: Equatable {
         var folders: [Folder]
-        var selectedCouseId: Int
+        var selectedCourseId: Int
         
-        init(selectedCouseId: Int) {
+        init(selectedCourseId: Int) {
             self.folders = []
-            self.selectedCouseId = selectedCouseId
+            self.selectedCourseId = selectedCourseId
         }
     }
     
@@ -23,7 +23,7 @@ struct ScrapFeature: Reducer {
         case getScrapFolderList
         case getScrapFolderListResponse(TaskResult<ScrapFolderResponseModel>)
         
-        case scrap(course: CourseModelResponse.DataModel)
+        case scrap(folderId: Int)
         
         case scrapResponse(TaskResult<BaseResponse>)
         
@@ -52,11 +52,12 @@ struct ScrapFeature: Reducer {
                 debugPrint(error.localizedDescription)
                 return .none
                 
-            case .scrap(let course):
-                guard let courseId = course.courseId else { return .none }
+            case .scrap(let folderId):
+                
+                let courseId = state.selectedCourseId
                 return .run { send in
                     await send(.scrapResponse(
-                        TaskResult { try await scrapClient.scrap(courseId) }
+                        TaskResult { try await scrapClient.scrapToFolder(courseId, folderId) }
                     ))
                 }
                 

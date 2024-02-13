@@ -15,6 +15,7 @@ struct ScrapClient {
     var removeScraps: (_ isDefaultFolder: Bool, _ folderId: Int, _ scrapsCourseIds: [Int]) async throws -> (BaseResponse)
     var renameFolder: (_ folderId: Int, ScrapRenameFolderRequest) async throws -> (BaseResponse)
     var scrap: (_ courseId: Int) async throws -> (BaseResponse)
+    var scrapToFolder: (_ courseId: Int, _ folderId: Int?) async throws -> (BaseResponse)
     
     
 }
@@ -63,6 +64,24 @@ extension ScrapClient: DependencyKey {
             case .failure(let error):
                 return BaseResponse(message: error.localizedDescription, status: 0, success: false)
             }
+        },
+        scrapToFolder: { courseId, folderId in
+            var queryDto: ScrapQuaryDto? = nil
+            if let folderId = folderId {
+                queryDto = .init(scrapFolderId: folderId)
+            }
+            
+            let request = API.makeDataRequest(ScrapTarget.scrapToFolder(courseId: courseId, query: queryDto))
+            
+            let data = await request.validate().serializingData().result
+            switch data {
+            case .success(_):
+                return BaseResponse(status: 200, success: true)
+                
+            case .failure(let error):
+                return BaseResponse(message: error.localizedDescription, status: 0, success: false)
+            }
+            
         }
     )
 }

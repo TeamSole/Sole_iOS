@@ -60,7 +60,7 @@ extension ScrapView {
                            alignment: .leading)
             }
             .onTapGesture {
-                <#code#>
+                viewStore.send(.scrap(folderId: folder.scrapFolderId ?? 0))
             }
             
             Color.gray_EDEDED
@@ -72,5 +72,5 @@ extension ScrapView {
 }
 
 #Preview {
-    ScrapView(store: Store(initialState: ScrapFeature.State(selectedCouseId: 0), reducer: { ScrapFeature() }))
+    ScrapView(store: Store(initialState: ScrapFeature.State(selectedCourseId: 0), reducer: { ScrapFeature() }))
 }
