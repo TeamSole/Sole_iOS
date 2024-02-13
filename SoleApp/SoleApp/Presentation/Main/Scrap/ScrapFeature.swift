@@ -22,6 +22,11 @@ struct ScrapFeature: Reducer {
     enum Action: Equatable {
         case getScrapFolderList
         case getScrapFolderListResponse(TaskResult<ScrapFolderResponseModel>)
+        
+        case scrap(course: CourseModelResponse.DataModel)
+        
+        case scrapResponse(TaskResult<BaseResponse>)
+        
         case viewDidLoad
     }
     
@@ -44,6 +49,22 @@ struct ScrapFeature: Reducer {
                 return .none
                 
             case .getScrapFolderListResponse(.failure(let error)):
+                debugPrint(error.localizedDescription)
+                return .none
+                
+            case .scrap(let course):
+                guard let courseId = course.courseId else { return .none }
+                return .run { send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrap(courseId) }
+                    ))
+                }
+                
+            case .scrapResponse(.success(let response)):
+                debugPrint(response)
+                return .none
+                
+            case .scrapResponse(.failure(let error)):
                 debugPrint(error.localizedDescription)
                 return .none
                 

@@ -22,8 +22,8 @@ struct ScrapView: View {
         VStack(spacing: 0.0) {
             topBar
             ScrollView {
-                ForEach(viewStore.state.folders, id: \.scrapFolderId) { index in
-                    folderItem(image: "", title: "\(index)")
+                ForEach(viewStore.state.folders, id: \.scrapFolderId) { item in
+                    folderItem(item)
                 }
             }
         }
@@ -39,10 +39,10 @@ extension ScrapView {
         }
     }
     
-    private func folderItem(image url: String, title: String) -> some View {
+    private func folderItem(_ folder: ScrapFolderResponseModel.DataModel) -> some View {
         VStack(spacing: 0.0) {
             HStack(spacing: 16.0) {
-                KFImage(URL(string: url))
+                KFImage(URL(string: folder.scrapFolderImg ?? ""))
                     .placeholder {
                         Image(uiImage: UIImage(named: "folder_placeholder") ?? UIImage())
                             .resizable()
@@ -53,11 +53,14 @@ extension ScrapView {
                     .clipped()
                     .cornerRadius(4.0)
                 
-                Text(title)
+                Text(folder.scrapFolderName ?? "")
                     .foregroundColor(.black)
                     .font(.pretendard(.bold, size: 16.0))
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
+            }
+            .onTapGesture {
+                <#code#>
             }
             
             Color.gray_EDEDED

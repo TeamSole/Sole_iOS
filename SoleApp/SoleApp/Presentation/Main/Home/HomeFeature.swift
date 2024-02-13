@@ -182,23 +182,6 @@ struct HomeFeature: Reducer {
             case .registerCourse:
                 return .none
                 
-            case .scrap(let courseId, let index):
-                state.courses[index].like?.toggle()
-                
-                return .run { send in
-                    await send(.setTastyResponse(
-                        TaskResult { try await homeClient.scrap(courseId) }
-                    ))
-                }
-                
-            case .scrapResponse(.success(let response)):
-                debugPrint(response)
-                return .none
-                
-            case .scrapResponse(.failure(let error)):
-                debugPrint(error.localizedDescription)
-                return .none
-                
             case .setLocation(let lat, let lng):
                 let locationModel = LocationModelRequest(latitude: lat, longitude: lng)
                 return .run { send in
