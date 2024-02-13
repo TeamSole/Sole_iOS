@@ -16,6 +16,7 @@ struct ScrapClient {
     var renameFolder: (_ folderId: Int, ScrapRenameFolderRequest) async throws -> (BaseResponse)
     var scrap: (_ courseId: Int) async throws -> (BaseResponse)
     
+    
 }
 
 extension ScrapClient: DependencyKey {

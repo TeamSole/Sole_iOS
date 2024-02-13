@@ -15,6 +15,7 @@ enum ScrapTarget {
     case removeScraps(isDefaultFolder: Bool, folderId: Int, scrapsCourseIds: [Int])
     case renameFolder(folderId: Int, ScrapRenameFolderRequest)
     case scrap(courseId: Int)
+    case scrapToFolder(courseId: Int, query: ScrapQuaryDto?)
 }
 
 extension ScrapTarget: TargetType {
@@ -24,7 +25,7 @@ extension ScrapTarget: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .addFolder, .scrap:
+        case .addFolder, .scrap, .scrapToFolder:
             return .post
             
         case .getScrapFolderList, .getScrapList:
@@ -59,6 +60,9 @@ extension ScrapTarget: TargetType {
             
         case .scrap(let courseId):
             return K.Path.couseScrap(courseId: courseId)
+            
+        case .scrapToFolder(let courseId, _):
+            return "api/courses/\(courseId)"
         }
     }
     
@@ -76,6 +80,9 @@ extension ScrapTarget: TargetType {
             
         case .renameFolder(_, let parameter):
             return .body(parameter)
+            
+        case .scrapToFolder(_, let query):
+            return .query(query)
         
         case .scrap, .getScrapFolderList, .getScrapList, .removeFolder, .removeScraps:
             return .body(nil)

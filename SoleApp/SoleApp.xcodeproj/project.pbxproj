@@ -264,6 +264,8 @@
 		A483D9F62B78BBE100FE600A /* ScrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F42B78BBE100FE600A /* ScrapView.swift */; };
 		A483D9F82B78BBEF00FE600A /* ScrapFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */; };
 		A483D9F92B78BBEF00FE600A /* ScrapFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */; };
+		A483D9FD2B7BB35F00FE600A /* ScrapQuaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9FC2B7BB35F00FE600A /* ScrapQuaryDto.swift */; };
+		A483D9FE2B7BB35F00FE600A /* ScrapQuaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483D9FC2B7BB35F00FE600A /* ScrapQuaryDto.swift */; };
 		A49D04EF2A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F02A9102C200274C8D /* SignUpUserInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */; };
 		A49D04F22A92115600274C8D /* CheckValidationForNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */; };
@@ -463,6 +465,7 @@
 		A481DFA92A9B389C00AC7BF6 /* AccountSettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingFeature.swift; sourceTree = "<group>"; };
 		A483D9F42B78BBE100FE600A /* ScrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapView.swift; sourceTree = "<group>"; };
 		A483D9F72B78BBEF00FE600A /* ScrapFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapFeature.swift; sourceTree = "<group>"; };
+		A483D9FC2B7BB35F00FE600A /* ScrapQuaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapQuaryDto.swift; sourceTree = "<group>"; };
 		A49D04EE2A9102C200274C8D /* SignUpUserInfoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoFeature.swift; sourceTree = "<group>"; };
 		A49D04F12A92115600274C8D /* CheckValidationForNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidationForNickname.swift; sourceTree = "<group>"; };
 		A49D04F72A93ACF100274C8D /* SignUpCompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompleteFeature.swift; sourceTree = "<group>"; };
@@ -1014,6 +1017,22 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		A483D9FA2B7BB33B00FE600A /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				A483D9FB2B7BB35100FE600A /* Scrap */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
+		A483D9FB2B7BB35100FE600A /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				A483D9FC2B7BB35F00FE600A /* ScrapQuaryDto.swift */,
+			);
+			path = Scrap;
+			sourceTree = "<group>";
+		};
 		A49D04FD2A94F02900274C8D /* Intro */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1095,7 @@
 		A4C8DD572A6BAB4D000F4D62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A483D9FA2B7BB33B00FE600A /* Dto */,
 				A42E42C42AB1D724003D242E /* Course */,
 				A42E42E12AB72705003D242E /* Follow */,
 				A4261E762AA6284C00F9786A /* Home */,
@@ -1456,6 +1476,7 @@
 				A49D04FB2A94EBBD00274C8D /* MainFeature.swift in Sources */,
 				A47EEADC29C9F800006BA3DB /* LocationModelDto.swift in Sources */,
 				A4DDA6C32A7DF2BD00017C49 /* SignUpClient.swift in Sources */,
+				A483D9FD2B7BB35F00FE600A /* ScrapQuaryDto.swift in Sources */,
 				A46B3B3729BF58010026D961 /* ColorExtension.swift in Sources */,
 				A46DEFA82B56CBB900655C2A /* JeonnamLocation.swift in Sources */,
 				A47EEA7129C5E921006BA3DB /* CheckExistAccountModel.swift in Sources */,
@@ -1607,6 +1628,7 @@
 				A49D04FC2A94EBBD00274C8D /* MainFeature.swift in Sources */,
 				A46B472629992BCD001FAED3 /* UIControl.swift in Sources */,
 				A4DDA6C42A7DF2BD00017C49 /* SignUpClient.swift in Sources */,
+				A483D9FE2B7BB35F00FE600A /* ScrapQuaryDto.swift in Sources */,
 				A47EEADD29C9F800006BA3DB /* LocationModelDto.swift in Sources */,
 				A46DEFA92B56CBB900655C2A /* JeonnamLocation.swift in Sources */,
 				A46B3B3829BF58010026D961 /* ColorExtension.swift in Sources */,
