@@ -10,9 +10,7 @@ import Kingfisher
 import ComposableArchitecture
 
 struct FollowingBoardView: View {
-//    typealias CourseOfFollower = FollowBoardModelResponse.DataModel
     typealias CourseOfFollower = FollowBoardModelResponse.DataModel
-//    @StateObject var viewModel: FollowingBoardViewModel = FollowingBoardViewModel()
     
     private let store: StoreOf<FollowBoardFeature>
     @ObservedObject var viewStore: ViewStoreOf<FollowBoardFeature>
@@ -23,36 +21,34 @@ struct FollowingBoardView: View {
     }
     
     var body: some View {
-            VStack(spacing: 0.0) {
-                navigationView
-                ScrollView {
-                    if viewStore.isCalledApi == false &&
-                        viewStore.courses.isEmpty {
-                        emptyResultView
-                    } else {
-                        VStack(spacing: 16.0) {
-                            ForEach(viewStore.courses, id: \.courseId) { item in
-                                courseListItem(item: item)
-                                    .onTapGesture {
-                                        viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
-                                    }
-//                                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowBoardFeature.Action.courseDetail),
-//                                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
-//                                }, destination: { CourseDetailView(store: $0) },
-//                                                    label: {
-//                                                        courseListItem(item: item)
-//                                })
-                            }
+        VStack(spacing: 0.0) {
+            navigationView
+            ScrollView {
+                if viewStore.isCalledApi == false &&
+                    viewStore.courses.isEmpty {
+                    emptyResultView
+                } else {
+                    VStack(spacing: 16.0) {
+                        ForEach(viewStore.courses, id: \.courseId) { item in
+                            courseListItem(item: item)
+                                .onTapGesture {
+                                    viewStore.send(.didTappedCourseDetail(courseId: item.courseId ?? 0))
+                                }
                         }
-                    } 
+                    }
                 }
-                navigationLinkToCourseDetailView
             }
-            .frame(maxHeight: .infinity)
-            .navigationBarHidden(true)
-            .onLoaded() {
-                viewStore.send(.viewDidLoad)
-            }
+            navigationLinkToCourseDetailView
+        }
+        .frame(maxHeight: .infinity)
+        .navigationBarHidden(true)
+        .onLoaded() {
+            viewStore.send(.viewDidLoad)
+        }
+        .sheet(store: store.scope(state: \.$scrapFeature,
+                                  action: FollowBoardFeature.Action.scrapFeature), content: {
+            ScrapView(store: $0)
+        })
     }
 }
 
@@ -64,11 +60,6 @@ extension FollowingBoardView {
                 .font(Font(UIFont.pretendardBold(size: 16.0)))
                 .frame(maxWidth: .infinity,
                        alignment: .center)
-//            NavigationLink(destination: {
-//                FollowingUserListView(store: Store(initialState: FollowingUserListFeature.State(), reducer: { FollowingUserListFeature() }))
-//            }, label: {
-//                Image("people_alt")
-//            })
             NavigationLinkStore(self.store.scope(state: \.$followingUserList, action: FollowBoardFeature.Action.followingUserList),
                                 onTap: { viewStore.send(.didTappedFollowingUserListView) },
                                 destination: { FollowingUserListView(store: $0) },
@@ -102,7 +93,7 @@ extension FollowingBoardView {
                 Image(item.like == true ? "love_selected" : "love")
                     .onTapGesture {
                         guard let courseId = item.courseId else { return }
-                        viewStore.send(.scrap(couseId: courseId))
+                        viewStore.send(.didTappedScrapButton(item))
                     }
             }
             .padding(.horizontal, 3.0)
