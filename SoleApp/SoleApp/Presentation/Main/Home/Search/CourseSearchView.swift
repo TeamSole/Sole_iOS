@@ -38,6 +38,10 @@ struct CourseSearchView: View {
             
         }
         .navigationBarHidden(true)
+        .sheet(store: store.scope(state: \.$scrapFeature,
+                                  action: CourseSearchFeature.Action.scrapFeature), content: {
+            ScrapView(store: $0)
+        })
     }
 }
 
@@ -77,10 +81,6 @@ extension CourseSearchView {
                     .onTapGesture {
                         viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0))
                     }
-//                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: CourseSearchFeature.Action.courseDetail),
-//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.courses[index].courseId ?? 0)) },
-//                                    destination: { CourseDetailView(store: $0) },
-//                                    label: { userTasteCourseItem(item: viewStore.courses[index], index: index) })
             }
         }
     }
@@ -106,7 +106,7 @@ extension CourseSearchView {
                                alignment: .leading)
                     Image(item.isScrapped ? "love_selected" : "love" )
                         .onTapGesture {
-                            viewStore.send(.scrap(courseId: item.courseId ?? 0))
+                            viewStore.send(.didTappedScrapButton(item))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) \(StringConstant.move)")
