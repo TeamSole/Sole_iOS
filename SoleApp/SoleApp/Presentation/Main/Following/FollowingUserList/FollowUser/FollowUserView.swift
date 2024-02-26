@@ -36,6 +36,10 @@ struct FollowUserView: View {
         .onLoaded {
             viewStore.send(.viewDidLoad)
         }
+        .sheet(store: store.scope(state: \.$scrapFeature,
+                                  action: FollowUserFeature.Action.scrapFeature), content: {
+            ScrapView(store: $0)
+        })
     }
 }
 
@@ -134,12 +138,6 @@ extension FollowUserView {
             if viewStore.popularCourse == nil {
                 emptyResultView(title: StringConstant.emptyCoursePopulate)
             } else {
-//                NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
-//                                    onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.popularCourse?.courseId ?? 0))
-//                }, destination: { CourseDetailView(store: $0) },
-//                                    label: {
-//                    courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
-//                })
                 courseItem(item: viewStore.popularCourse ?? Course(), index: -1)
                     .onTapGesture {
                         viewStore.send(.didTappedCourseDetail(courseId: viewStore.popularCourse?.courseId ?? 0))
@@ -165,12 +163,6 @@ extension FollowUserView {
                         .onTapGesture {
                             viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
                         }
-//                    NavigationLinkStore(self.store.scope(state: \.$courseDetail, action: FollowUserFeature.Action.courseDetail),
-//                                        onTap: { viewStore.send(.didTappedCourseDetail(courseId: viewStore.recentCourses?[index].courseId ?? 0))
-//                    }, destination: { CourseDetailView(store: $0) },
-//                                        label: {
-//                        courseItem(item: viewStore.recentCourses?[index] ?? Course(), index: index)
-//                    })
                 }
                 addNextPageButton
             }
@@ -199,7 +191,7 @@ extension FollowUserView {
                     Image(item.isScrapped ? "love_selected" : "love")
                         .onTapGesture {
                             
-                            viewStore.send(.scrap(couseId: item.courseId))
+                            viewStore.send(.didTappedScrapButton(item))
                         }
                 }
                 Text("\(item.address ?? "") · \(item.computedDuration) · \(item.scaledDistance) 이동")

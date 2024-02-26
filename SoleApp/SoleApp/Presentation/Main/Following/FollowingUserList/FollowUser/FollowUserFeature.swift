@@ -12,6 +12,7 @@ struct FollowUserFeature: Reducer {
     typealias Course = FollowUserModelResponse.Place
     struct State: Equatable {
         @PresentationState var courseDetail: CourseDetailFeature.State?
+        @PresentationState var scrapFeature: ScrapFeature.State?
         var isCalledApi: Bool = false
         var popularCourse: Course? = nil
         var recentCourses: [Course]? = []
@@ -33,6 +34,9 @@ struct FollowUserFeature: Reducer {
         case didTappedCourseDetail(courseId: Int)
         
         case didTappedDismissButton
+        
+        case didTappedScrapButton(Course)
+        
         /// 팔로우
         case follow
         case followResponse(TaskResult<BaseResponse>)
@@ -48,6 +52,8 @@ struct FollowUserFeature: Reducer {
         case scrap(couseId: Int?)
         case scrapResponse(TaskResult<BaseResponse>)
         
+        case scrapFeature(PresentationAction<ScrapFeature.Action>)
+        case scrapCancel(courseId: Int)
         
         case viewDidLoad
     }
@@ -68,6 +74,16 @@ struct FollowUserFeature: Reducer {
                 
             case .didTappedDismissButton:
                 return .run { _ in await dismiss() }
+                
+            case .didTappedScrapButton(let course):
+                if course.like == true {
+                    return .send(.scrapCancel(courseId: course.courseId ?? 0))
+                } else {
+                    guard let courseId = course.courseId else { return .none }
+                    
+                    state.scrapFeature = ScrapFeature.State(selectedCourseId: courseId)
+                    return .none
+                }
                 
             case .getNextUserDetail:
                 guard state.isCalledApi == false,
@@ -156,6 +172,32 @@ struct FollowUserFeature: Reducer {
                         TaskResult { try await scrapClient.scrap(courseId)}))
                 }
                 
+            case .scrapFeature(.presented(.completeScrap(let courseId))):
+                state.scrapFeature = nil
+                if let index = state.recentCourses?.firstIndex(where: { $0.courseId == courseId && $0.like == false }) {
+                    state.recentCourses?[index].like = true
+                }
+                if state.popularCourse?.courseId == courseId {
+                    state.popularCourse?.like = true
+                }
+                return .none
+                
+            case .scrapFeature:
+                return .none
+                
+            case .scrapCancel(let courseId):
+                if let index = state.recentCourses?.firstIndex(where: { $0.courseId == courseId && $0.like == true }) {
+                    state.recentCourses?[index].like = false
+                }
+                if state.popularCourse?.courseId == courseId && state.popularCourse?.like == true {
+                    state.popularCourse?.like = false
+                }
+                return .run { send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrapToFolder(courseId, nil) }
+                    ))
+                }
+                
             case .scrapResponse(.success(let response)):
                 state.isCalledApi = false
                 if response.success == true {
@@ -174,6 +216,9 @@ struct FollowUserFeature: Reducer {
         }
         .ifLet(\.$courseDetail, action: /Action.courseDetail) {
             CourseDetailFeature()
+        }
+        .ifLet(\.$scrapFeature, action: /Action.scrapFeature) {
+            ScrapFeature()
         }
     }
 }
