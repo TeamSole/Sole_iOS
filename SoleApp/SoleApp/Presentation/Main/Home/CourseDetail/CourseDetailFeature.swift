@@ -11,6 +11,7 @@ struct CourseDetailFeature: Reducer {
     typealias CourseDetail = CourseDetailModelResponse.DataModel
     struct State: Equatable {
         @PresentationState var courseEdit: CourseEditFeature.State?
+        @PresentationState var scrapFeature: ScrapFeature.State?
         var courseDetail: CourseDetail = .init()
         var isCalledApi: Bool = false
         var isDismissSelf: Bool = false
@@ -29,7 +30,7 @@ struct CourseDetailFeature: Reducer {
     
         case didTappedDismissButton
         case didTappedMoveToCourseEdtiView
-        
+        case didTappedScrapButton
         /// 팔로우
         case follow
         case followResponse(TaskResult<BaseResponse>)
@@ -42,6 +43,8 @@ struct CourseDetailFeature: Reducer {
         case removeCourseResponse(TaskResult<BaseResponse>)
         /// 스크랩
         case scrap
+        case scrapFeature(PresentationAction<ScrapFeature.Action>)
+        case scrapCancel
         case scrapResponse(TaskResult<BaseResponse>)
         case viewDidLoad
     }
@@ -86,6 +89,16 @@ struct CourseDetailFeature: Reducer {
             case .didTappedMoveToCourseEdtiView:
                 state.courseEdit = CourseEditFeature.State(courseDetail: state.courseDetail)
                 return .none
+                
+            case .didTappedScrapButton:
+                if state.courseDetail.like == true {
+                    return .send(.scrapCancel)
+                } else {
+                   
+                    state.scrapFeature = ScrapFeature.State(selectedCourseId: state.courseId)
+                    return .none
+                }
+                
             case .follow:
                 guard let memberId = state.courseDetail.writer?.memberId,
                       state.isCalledApi == false,
@@ -168,6 +181,23 @@ struct CourseDetailFeature: Reducer {
                         TaskResult { try await scrapClient.scrap(courseId)}))
                 }
                 
+            case .scrapFeature(.presented(.completeScrap(let courseId))):
+                state.scrapFeature = nil
+                state.courseDetail.like = true
+                return .none
+                
+            case .scrapFeature:
+                return .none
+                
+            case .scrapCancel:
+                state.courseDetail.like = false
+                let courseId = state.courseId
+                return .run { send in
+                    await send(.scrapResponse(
+                        TaskResult { try await scrapClient.scrapToFolder(courseId, nil) }
+                    ))
+                }
+                
             case .scrapResponse(.success(let response)):
                 state.isCalledApi = false
                 if response.success == true {
@@ -189,6 +219,9 @@ struct CourseDetailFeature: Reducer {
         }
         .ifLet(\.$courseEdit, action: /Action.courseEdit) {
             CourseEditFeature()
+        }
+        .ifLet(\.$scrapFeature, action: /Action.scrapFeature) {
+            ScrapFeature()
         }
     }
 }

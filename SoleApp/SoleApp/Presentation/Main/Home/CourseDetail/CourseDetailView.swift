@@ -56,6 +56,10 @@ struct CourseDetailView: View {
                 viewStore.send(.declareCourse)
             }
         }))
+        .sheet(store: store.scope(state: \.$scrapFeature,
+                                  action: CourseDetailFeature.Action.scrapFeature), content: {
+            ScrapView(store: $0)
+        })
     }
 }
 
@@ -71,7 +75,7 @@ extension CourseDetailView {
                 }
             Image(viewStore.courseDetail.like == true ? "love_selected" : "love")
                 .onTapGesture {
-                    viewStore.send(.scrap)
+                    viewStore.send(.didTappedScrapButton)
                 }
             if viewStore.courseDetail.checkWriter == true {
                 Image("more-vertical")
