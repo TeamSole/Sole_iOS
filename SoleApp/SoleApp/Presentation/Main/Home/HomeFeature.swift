@@ -44,7 +44,7 @@ struct HomeFeature: Reducer {
         case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
         
         case scrapFeature(PresentationAction<ScrapFeature.Action>)
-        case scrap(courseId: Int, index: Int)
+        case scrapCancel(courseId: Int)
         case scrapResponse(TaskResult<BaseResponse>)
         /// 현재 위치 서버에 등록
         case setLocation(lat: Double, lng: Double)
@@ -58,6 +58,7 @@ struct HomeFeature: Reducer {
     
     @Dependency(\.homeClient) var homeClient
     @Dependency(\.locationClient) var locationClient
+    @Dependency(\.scrapClient) var scrapClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -87,7 +88,7 @@ struct HomeFeature: Reducer {
                 
             case .didTappedScrapButton(let course):
                 if course.like == true {
-                    return .none
+                    return .send(.scrapCancel(courseId: course.courseId ?? 0))
                 } else {
                     guard let courseId = course.courseId else { return .none }
                     
@@ -200,12 +201,14 @@ struct HomeFeature: Reducer {
             case .scrapFeature:
                 return .none
                 
-            case .scrap(let courseId, let index):
-                state.courses[index].like?.toggle()
+            case .scrapCancel(let courseId):
+                if let index = state.courses.firstIndex(where: { $0.courseId == courseId}) {
+                    state.courses[index].like?.toggle()
+                }
                 
                 return .run { send in
                     await send(.setTastyResponse(
-                        TaskResult { try await homeClient.scrap(courseId) }
+                        TaskResult { try await scrapClient.scrapToFolder(courseId, nil) }
                     ))
                 }
                 
