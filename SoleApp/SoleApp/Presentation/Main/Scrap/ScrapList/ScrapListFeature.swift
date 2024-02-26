@@ -79,10 +79,9 @@ struct ScrapListFeature: Reducer {
             case .getScrapList:
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
-                return .run { [isDefaultFolder = state.isDefaultFolder,
-                               folderId = state.folderId] send in
+                return .run { [folderId = state.folderId] send in
                     await send(.getScrapListResponse(
-                        TaskResult { try await scrapClient.getScrapList(isDefaultFolder, folderId) }))
+                        TaskResult { try await scrapClient.getScrapList(folderId) }))
                 }
                 
             case .getScrapListResponse(.success(let response)):

@@ -10,7 +10,7 @@ import Alamofire
 enum ScrapTarget {
     case addFolder(ScrapAddFolderModelRequest)
     case getScrapFolderList
-    case getScrapList(isDefaultFolder: Bool, folderId: Int)
+    case getScrapList(folderId: Int)
     case removeFolder(folderId: Int)
     case removeScraps(isDefaultFolder: Bool, folderId: Int, scrapsCourseIds: [Int])
     case renameFolder(folderId: Int, ScrapRenameFolderRequest)
@@ -44,10 +44,8 @@ extension ScrapTarget: TargetType {
         case .addFolder, .getScrapFolderList:
             return K.Path.folderList
             
-        case .getScrapList(let isDefaultFolder, let folderId):
-            return isDefaultFolder ?
-            K.Path.folderList + "/default" :
-            K.Path.folderList + "/\(folderId)"
+        case .getScrapList(let folderId):
+            return K.Path.folderList + "/\(folderId)"
             
         case .removeFolder(let folderId), .renameFolder(let folderId, _):
             return K.Path.folderList + "/\(folderId)"
