@@ -86,11 +86,12 @@ struct RegisterCourseView: View {
         })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectedPlace: viewStore.selectedPlaceParameter,
+            SelectTagView(isHiddenLocationSection: true,
+                          selectedPlace: viewStore.selectedPlaceParameter,
                           selectedWith: viewStore.selectedWithParameter,
                           selectedTrans: viewStore.selectedVehiclesParameter,
                           selectType: .filter,
-                          complete: {place, with, trans in
+                          complete: {place, with, trans, _ in
                 viewStore.send(.setplaceTagParameter(places: place, with: with, vehicles: trans))
             })
         })

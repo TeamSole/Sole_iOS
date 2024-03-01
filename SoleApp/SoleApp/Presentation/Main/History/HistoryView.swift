@@ -48,7 +48,7 @@ struct HistoryView: View {
                           selectedWith: viewStore.selectedWithParameter,
                           selectedTrans: viewStore.selectedVehiclesParameter,
                           selectType: .filter,
-                          complete: {place, with, trans in
+                          complete: {place, with, trans, location in
                 viewStore.send(.setHistoryParameter(places: place, with: with, vehicles: trans))
             })
         })
@@ -136,34 +136,28 @@ extension HistoryView {
     }
     
     private var courseHistoryHeader: some View {
-        VStack(spacing: 12.0) {
+        HStack(spacing: 12.0) {
             Text(StringConstant.registeredCourse)
                 .font(.pretendard(.bold, size: 16.0))
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity,
                        alignment: .leading)
-            HStack(spacing: 8.0) {
-                ForEach(0..<filterType.count, id: \.self) { index in
-                    HStack(spacing: 4.0){
-                        Text(filterType[index])
-                            .foregroundColor(.black)
-                            .font(.pretendard(.reguler, size: 12.0))
-                        Image("chevron.forward")
-                    }
-                    .padding(.horizontal, 12.0)
-                    .padding(.vertical, 5.0)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
-                    )
-                    .onTapGesture {
-                        isShowSelectTagView = true
-                    }
-                    
-                }
+            
+            HStack(spacing: 4.0) {
+                Image("SlidersHorizontal")
+                Text("필터")
+                    .font(.pretendard(.medium, size: 14.0))
+                    .foregroundColor(.black)
             }
-            .frame(maxWidth: .infinity,
-                   alignment: .leading)
+            .padding(.horizontal, 12.0)
+            .padding(.vertical, 5.0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 4.0)
+                    .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+            )
+            .onTapGesture {
+                isShowSelectTagView = true
+            }
         }
     }
     

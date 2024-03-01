@@ -49,13 +49,13 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $isShowFirstSelectTagView,
                          content: {
-            SelectTagView(selectType: .first, complete: { place, with, trans in
+            SelectTagView(isHiddenLocationSection: true, selectType: .first, complete: { place, with, trans, _ in
                 viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
         })
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectType: .add, complete: {place, with, trans in
+            SelectTagView(isHiddenLocationSection: true, selectType: .add, complete: {place, with, trans, _ in
                 viewStore.send(.setTasty(place: place, with: with, tras: trans))
             })
         })

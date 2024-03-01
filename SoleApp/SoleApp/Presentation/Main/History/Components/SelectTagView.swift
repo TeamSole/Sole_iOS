@@ -13,13 +13,13 @@ enum SelectType {
 }
 
 enum SelectTagCategory: CaseIterable {
-//    case location
+    case location
     case tasty
     
     var title: String {
         switch self {
-//        case .location:
-//            "지역"
+        case .location:
+            "지역"
         case .tasty:
             "취향"
         }
@@ -37,14 +37,24 @@ struct SelectTagView: View {
     @State private var selectedMainLocation: KoreaLocation = .Seoul
     @State private var selectedLocation: [LocationModel] = []
     
+    private let selectCategoryAllCase: [SelectTagCategory]
+    let isHiddenLocationSection: Bool
     var selectType: SelectType
-    let complete: ([String], [String], [String]) -> Void
+    let complete: ([String], [String], [String], [LocationModel]) -> Void
     
-    init(selectedPlace: [String] = [],
+    init(isHiddenLocationSection: Bool = true,
+         selectedPlace: [String] = [],
          selectedWith: [String] = [],
          selectedTrans: [String] = [],
+         selectedResion: [LocationModel] = [],
          selectType: SelectType,
-         complete: @escaping ([String], [String], [String]) -> Void) {
+         complete: @escaping ([String], [String], [String], [LocationModel]) -> Void) {
+        self.isHiddenLocationSection = isHiddenLocationSection
+        if isHiddenLocationSection == true {
+            selectCategoryAllCase = [.tasty]
+        } else {
+            selectCategoryAllCase = SelectTagCategory.allCases
+        }
         self._selectedPlace = State(initialValue: selectedPlace.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
         self._selectedWith = State(initialValue: selectedWith.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
         self._selectedTrans = State(initialValue: selectedTrans.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
@@ -59,8 +69,8 @@ struct SelectTagView: View {
                 .padding(.horizontal, 16.0)
                 .isHidden(selectType == .first, remove: true)
             switch selectedCategory {
-//            case .location:
-//                locationCategoryView
+            case .location:
+                locationCategoryView
             case .tasty:
                 ScrollView {
                     VStack(spacing: 0.0) {
@@ -91,7 +101,7 @@ extension SelectTagView {
         VStack(spacing: 0.0) {
             HStack {
                 HStack(spacing: 12.0) {
-                    ForEach(SelectTagCategory.allCases, id: \.self) { category in
+                    ForEach(selectCategoryAllCase, id: \.self) { category in
                         Text(category.title)
                             .foregroundColor(selectedCategory == category ? .black : .gray_999999)
                             .font(.pretendard(.bold, size: 16.0))
@@ -145,7 +155,6 @@ extension SelectTagView {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0.0) {
                         ForEach(KoreaLocation.allCases, id: \.self) { location in
-                            
                             Text(location.koreanName)
                                 .font(.pretendard(.medium, size: 16.0))
                                 .foregroundColor(selectedMainLocation == location ? .blue_4708FA : .black_151515)
@@ -170,7 +179,11 @@ extension SelectTagView {
                                 .frame(height: 40.0)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .onTapGesture {
-                                    selectedLocation.append(innerLocation)
+                                    if selectedLocation.contains(innerLocation) {
+                                        selectedLocation = selectedLocation.filter({ $0 != innerLocation })
+                                    } else {
+                                        selectedLocation.append(innerLocation)
+                                    }
                                 }
                         }
                     }
@@ -197,6 +210,9 @@ extension SelectTagView {
                                 Text(">")
                                 Text(selectedLocation.locationName)
                                 Image("close")
+                                    .onTapGesture {
+                                        self.selectedLocation = self.selectedLocation.filter({ $0 != selectedLocation })
+                                    }
                                 
                             }
                             .padding(.horizontal, 8.0)
@@ -287,7 +303,8 @@ extension SelectTagView {
             .onTapGesture {
                 complete(selectedPlace.map({$0.rawValue}),
                          selectedWith.map({$0.rawValue}),
-                         selectedTrans.map({$0.rawValue}))
+                         selectedTrans.map({$0.rawValue}),
+                         selectedLocation)
                 presentationMode.wrappedValue.dismiss()
             }
         
@@ -385,7 +402,7 @@ enum TransCategory: String {
 
 struct SelectTagView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectTagView(selectType: .add, complete: {_,_,_ in })
+        SelectTagView(isHiddenLocationSection: false, selectType: .add, complete: {_,_,_,_ in })
             .previewDevice("iphone11")
     }
 }
