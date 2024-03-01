@@ -17,13 +17,14 @@ struct HistoryFeature: Reducer {
         var selectedPlaceParameter: [String] = []
         var selectedWithParameter: [String] = []
         var selectedVehiclesParameter: [String] = []
+        var selectedLocation: [LocationModel] = []
         var userHistories: Histories = []
         var userHistoryDescription: UserProfileHistoryModelResponse.DataModel = .init()
         var isEmptyUserHistorParameters: Bool {
             return selectedWithParameter.isEmpty == true &&
             selectedWithParameter.isEmpty == true &&
-            selectedVehiclesParameter.isEmpty == true
-            
+            selectedVehiclesParameter.isEmpty == true &&
+            selectedLocation.isEmpty == true
         }
        
     }
@@ -48,7 +49,7 @@ struct HistoryFeature: Reducer {
         /// 사용자 기록 설명 가져오기 api 호출 리스폰스
         case getUserHistoryDescriptionResponse(TaskResult<UserProfileHistoryModelResponse>)
         case registerCourse(PresentationAction<RegisterCourseFeature.Action>)
-        case setHistoryParameter(places: [String], with: [String], vehicles: [String])
+        case setHistoryParameter(places: [String], with: [String], vehicles: [String], locations: [LocationModel])
         
         case viewDidLoad
     }
@@ -74,8 +75,9 @@ struct HistoryFeature: Reducer {
                 state.userHistories.last?.finalPage == false,
                 let courseId = state.userHistories.last?.courseId else { return .none }
                 let parameter = isEmptyUserHistorParameters() == true ? nil : CategoryModelRequest(placeCategories: state.selectedPlaceParameter,
-                                                                                                       withCategories: state.selectedWithParameter,
-                                                                                                       transCategories: state.selectedVehiclesParameter)
+                                                                                                   withCategories: state.selectedWithParameter,
+                                                                                                   transCategories: state.selectedVehiclesParameter,
+                                                                                                   regions: state.selectedLocation.map({ $0.locationCode }))
                 
                 let query = HistoryModelRequest(courseId: courseId)
                 return .run { send in
@@ -103,8 +105,9 @@ struct HistoryFeature: Reducer {
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
                 let parameter = isEmptyUserHistorParameters() == true ? nil : CategoryModelRequest(placeCategories: state.selectedPlaceParameter,
-                                                                                                       withCategories: state.selectedWithParameter,
-                                                                                                       transCategories: state.selectedVehiclesParameter)
+                                                                                                   withCategories: state.selectedWithParameter,
+                                                                                                   transCategories: state.selectedVehiclesParameter,
+                                                                                                   regions: state.selectedLocation.map({ $0.locationCode }))
                 print(isEmptyUserHistorParameters())
                 return .run { send in
                     await send(.getUserHistoriesResponse(
@@ -152,10 +155,11 @@ struct HistoryFeature: Reducer {
             case .registerCourse:
                 return .none
                 
-            case .setHistoryParameter(let places, let with, let vehicles):
+            case .setHistoryParameter(let places, let with, let vehicles, let locations):
                 state.selectedPlaceParameter = places
                 state.selectedWithParameter = with
                 state.selectedVehiclesParameter = vehicles
+                state.selectedLocation = locations
                 
                 return .send(.getUserHistories)
                 
@@ -167,7 +171,8 @@ struct HistoryFeature: Reducer {
             func isEmptyUserHistorParameters() -> Bool {
                 return state.selectedPlaceParameter.isEmpty == true &&
                 state.selectedWithParameter.isEmpty == true &&
-                state.selectedVehiclesParameter.isEmpty == true
+                state.selectedVehiclesParameter.isEmpty == true &&
+                state.selectedLocation.isEmpty == true
             }
         }
         .ifLet(\.$registerCourse, action: /Action.registerCourse) {

@@ -44,12 +44,14 @@ struct HistoryView: View {
         }
         .sheet(isPresented: $isShowSelectTagView,
                content: {
-            SelectTagView(selectedPlace: viewStore.selectedPlaceParameter,
+            SelectTagView(isHiddenLocationSection: false,
+                          selectedPlace: viewStore.selectedPlaceParameter,
                           selectedWith: viewStore.selectedWithParameter,
                           selectedTrans: viewStore.selectedVehiclesParameter,
+                          selectedResion: viewStore.selectedLocation,
                           selectType: .filter,
                           complete: {place, with, trans, location in
-                viewStore.send(.setHistoryParameter(places: place, with: with, vehicles: trans))
+                viewStore.send(.setHistoryParameter(places: place, with: with, vehicles: trans, locations: location))
             })
         })
     }
@@ -153,7 +155,7 @@ extension HistoryView {
             .padding(.vertical, 5.0)
             .overlay(
                 RoundedRectangle(cornerRadius: 4.0)
-                    .stroke(Color.gray_D3D4D5, lineWidth: 1.0)
+                    .stroke(viewStore.isEmptyUserHistorParameters == true ? Color.gray_D3D4D5 : Color.blue_4708FA, lineWidth: 1.0)
             )
             .onTapGesture {
                 isShowSelectTagView = true

@@ -11,6 +11,7 @@ struct CategoryModelRequest: Codable {
     var placeCategories: [String] = []
     var withCategories: [String] = []
     var transCategories: [String] = []
+    var regions: [String] = []
 }
 
 struct CategoryModelResponse: APIResponse {
