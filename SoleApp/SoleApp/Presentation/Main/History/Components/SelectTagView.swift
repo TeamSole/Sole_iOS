@@ -58,6 +58,7 @@ struct SelectTagView: View {
         self._selectedPlace = State(initialValue: selectedPlace.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
         self._selectedWith = State(initialValue: selectedWith.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
         self._selectedTrans = State(initialValue: selectedTrans.map({ Category(rawValue: $0) ?? .none}).filter({ $0 != .none}))
+        self._selectedLocation = State(initialValue: selectedResion)
         self.selectType = selectType
         self.complete = complete
     }

@@ -135,10 +135,10 @@ struct CourseSearchFeature: Reducer {
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
                 state.searchText = searchText
-                let query = SearchCourseRequest(searchWord: searchText, placeCategories: state.selectedPlaceParameter.joined(separator: ","),
-                                                withCategories: state.selectedWithParameter.joined(separator: ","),
-                                                transCategories: state.selectedVehiclesParameter.joined(separator: ","),
-                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
+                let query = SearchCourseRequest(searchWord: searchText, placeCategories: state.selectedPlaceParameter.joined(separator: ",").isEmpty ? nil : state.selectedPlaceParameter.joined(separator: ","),
+                                                withCategories: state.selectedWithParameter.joined(separator: ",").isEmpty ? nil : state.selectedWithParameter.joined(separator: ","),
+                                                transCategories: state.selectedVehiclesParameter.joined(separator: ",").isEmpty ? nil : state.selectedVehiclesParameter.joined(separator: ","),
+                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ",").isEmpty ? nil : state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
                 return .run { send in
                     await send(.searchCourseResponse(
                         TaskResult { try await CourseClient.searchCourse(query)}))
@@ -172,11 +172,10 @@ struct CourseSearchFeature: Reducer {
                       let courseId = state.courses.last?.courseId else { return .none }
                 state.isCalledApi = true
                 let query = SearchCourseRequest(searchWord: state.searchText,
-                                                courseId: courseId,
-                                                placeCategories: state.selectedPlaceParameter.joined(separator: ","),
-                                                withCategories: state.selectedWithParameter.joined(separator: ","),
-                                                transCategories: state.selectedVehiclesParameter.joined(separator: ","),
-                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
+                                                placeCategories: state.selectedPlaceParameter.joined(separator: ",").isEmpty ? nil : state.selectedPlaceParameter.joined(separator: ","),
+                                                withCategories: state.selectedWithParameter.joined(separator: ",").isEmpty ? nil : state.selectedWithParameter.joined(separator: ","),
+                                                transCategories: state.selectedVehiclesParameter.joined(separator: ",").isEmpty ? nil : state.selectedVehiclesParameter.joined(separator: ","),
+                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ",").isEmpty ? nil : state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
                 return .run { send in
                     await send(.searchCourseNextPageResponse(
                         TaskResult { try await CourseClient.searchCourse(query)}))
