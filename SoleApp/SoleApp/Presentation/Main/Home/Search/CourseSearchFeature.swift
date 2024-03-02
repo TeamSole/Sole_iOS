@@ -15,7 +15,19 @@ struct CourseSearchFeature: Reducer {
         var courses: [Course] = []
         var isCalledApi: Bool = false
         var searchText: String = ""
+        var selectedPlaceParameter: [String] = []
+        var selectedWithParameter: [String] = []
+        var selectedVehiclesParameter: [String] = []
+        var selectedLocation: [LocationModel] = []
+        
         var title: String = ""
+        
+        var isEmptyUserHistorParameters: Bool {
+            return selectedWithParameter.isEmpty == true &&
+            selectedWithParameter.isEmpty == true &&
+            selectedVehiclesParameter.isEmpty == true &&
+            selectedLocation.isEmpty == true
+        }
     }
     
     enum Action: Equatable {
@@ -34,6 +46,8 @@ struct CourseSearchFeature: Reducer {
         case searchCourseResponse(TaskResult<CourseModelResponse>)
         case searchCourseNextPage
         case searchCourseNextPageResponse(TaskResult<CourseModelResponse>)
+        
+        case setHistoryParameter(searchText: String, places: [String], with: [String], vehicles: [String], locations: [LocationModel])
     }
     
     @Dependency(\.courseClient) var CourseClient
@@ -121,8 +135,11 @@ struct CourseSearchFeature: Reducer {
                 guard state.isCalledApi == false else { return .none }
                 state.isCalledApi = true
                 state.searchText = searchText
-                return .run { [searchText = state.searchText] send in
-                    let query = SearchCourseRequest(searchWord: searchText)
+                let query = SearchCourseRequest(searchWord: searchText, placeCategories: state.selectedPlaceParameter.joined(separator: ","),
+                                                withCategories: state.selectedWithParameter.joined(separator: ","),
+                                                transCategories: state.selectedVehiclesParameter.joined(separator: ","),
+                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
+                return .run { send in
                     await send(.searchCourseResponse(
                         TaskResult { try await CourseClient.searchCourse(query)}))
                 }
@@ -154,8 +171,13 @@ struct CourseSearchFeature: Reducer {
                       state.courses.last?.finalPage == false,
                       let courseId = state.courses.last?.courseId else { return .none }
                 state.isCalledApi = true
-                return .run { [searchText = state.searchText] send in
-                    let query = SearchCourseRequest(searchWord: searchText, courseId: courseId)
+                let query = SearchCourseRequest(searchWord: state.searchText,
+                                                courseId: courseId,
+                                                placeCategories: state.selectedPlaceParameter.joined(separator: ","),
+                                                withCategories: state.selectedWithParameter.joined(separator: ","),
+                                                transCategories: state.selectedVehiclesParameter.joined(separator: ","),
+                                                regions: state.selectedLocation.map({ $0.locationCode }).joined(separator: ","))
+                return .run { send in
                     await send(.searchCourseNextPageResponse(
                         TaskResult { try await CourseClient.searchCourse(query)}))
                 }
@@ -172,6 +194,14 @@ struct CourseSearchFeature: Reducer {
                 state.isCalledApi = false
                 debugPrint(error.localizedDescription)
                 return .none
+                
+            case .setHistoryParameter(let searchText, let places, let with, let vehicles, let locations):
+                state.selectedPlaceParameter = places
+                state.selectedWithParameter = with
+                state.selectedVehiclesParameter = vehicles
+                state.selectedLocation = locations
+                
+                return .send(.searchCourse(searchText: searchText))
             }
         }
         .ifLet(\.$courseDetail, action: /Action.courseDetail) {

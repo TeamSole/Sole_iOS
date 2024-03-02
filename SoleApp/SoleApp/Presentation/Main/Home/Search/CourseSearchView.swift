@@ -13,6 +13,7 @@ struct CourseSearchView: View {
     typealias Course = CourseModelResponse.DataModel
     @State private var searchText: String = ""
     @State private var availableWidth: CGFloat = 10
+    @State private var isShowSelectTagView: Bool = false
     
     private let store: StoreOf<CourseSearchFeature>
     @ObservedObject var viewStore: ViewStoreOf<CourseSearchFeature>
@@ -27,6 +28,7 @@ struct CourseSearchView: View {
             navigationBar
             ScrollView {
                 VStack(spacing: 0.0) {
+                    searchFilterView
                     if viewStore.title.isEmpty {
                         searchResultListView
                     } else {
@@ -38,6 +40,18 @@ struct CourseSearchView: View {
             
         }
         .navigationBarHidden(true)
+        .sheet(isPresented: $isShowSelectTagView,
+               content: {
+            SelectTagView(isHiddenLocationSection: false,
+                          selectedPlace: viewStore.selectedPlaceParameter,
+                          selectedWith: viewStore.selectedWithParameter,
+                          selectedTrans: viewStore.selectedVehiclesParameter,
+                          selectedResion: viewStore.selectedLocation,
+                          selectType: .filter,
+                          complete: {place, with, trans, location in
+                viewStore.send(.setHistoryParameter(searchText: searchText, places: place, with: with, vehicles: trans, locations: location))
+            })
+        })
         .sheet(store: store.scope(state: \.$scrapFeature,
                                   action: CourseSearchFeature.Action.scrapFeature), content: {
             ScrapView(store: $0)
@@ -74,6 +88,30 @@ extension CourseSearchView {
         .padding(.horizontal, 16.0)
         .frame(height: 50.0)
     }
+    
+    private var searchFilterView: some View {
+        HStack(spacing: 0.0) {
+            Spacer()
+            HStack(spacing: 4.0) {
+                Image("SlidersHorizontal")
+                Text("필터")
+                    .font(.pretendard(.medium, size: 14.0))
+                    .foregroundColor(.black)
+            }
+            .padding(.horizontal, 12.0)
+            .padding(.vertical, 5.0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 4.0)
+                    .stroke(viewStore.isEmptyUserHistorParameters == true ? Color.gray_D3D4D5 : Color.blue_4708FA, lineWidth: 1.0)
+            )
+            .onTapGesture {
+                isShowSelectTagView = true
+            }
+        }
+        .padding(.trailing, 16.0)
+        .padding(.vertical, 8.0)
+    }
+    
     private var searchResultListView: some View {
         LazyVStack(spacing: 0.0) {
             ForEach(0..<viewStore.courses.count, id: \.self) { index in
